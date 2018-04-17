@@ -1,5 +1,5 @@
 /*Author: UDA Corp.*/
-/*License: MIT*/
+/*License: MIT license*/
 drop table equipo_juega;
 DROP TABLE partido;
 DROP TABLE calendario;
@@ -11,50 +11,55 @@ drop table equipo;
  
 --Crear tabla equipo
 CREATE TABLE equipo ( 
-cod NUMBER(11) primary key, 
-Nombre varchar(20) NOT NULL,
-Descripcion varchar(45) NOT NULL 
+cod NUMBER(3) primary key GENERATED ALWAYS as IDENTITY(start with 1 INCREMENT  BY 1 MAX VALUE 999), 
+nombre varchar2(20) NOT NULL,
+descripcion varchar2(45) NOT NULL 
 ); 
 
 --Crear tabla jugador
-CREATE TABLE jugador ( cod NUMBER(11) primary key, 
-nombre varchar(20) NOT NULL, 
-apellido varchar(20) NOT NULL, 
-nickname varchar(15) NOT NULL, 
+CREATE TABLE jugador ( 
+dni varchar2(9) primary key, 
+nombre varchar2(20) NOT NULL, 
+apellido varchar2(20) NOT NULL, 
+nickname varchar2(15) NOT NULL, 
 sueldo NUMBER(11) NOT NULL, 
-calle varchar(45) NOT NULL, 
-nro varchar(3) NOT NULL, 
-piso varchar(3) NOT NULL, 
-ciudad varchar(45) NOT NULL, 
-cp varchar(9) NOT NULL, 
-pais varchar(45) NOT NULL, 
+calle varchar2(45) NOT NULL, 
+nro varchar2(3) NOT NULL, 
+piso varchar2(3) NOT NULL, 
+ciudad varchar2(45) NOT NULL, 
+cp varchar2(9) NOT NULL, 
+pais varchar2(45) NOT NULL, 
+telefono varchar2(9) NOT NULL,
 equipo_cod NUMBER(11) REFERENCES EQUIPO (cod) on delete cascade
 ); 
 
 --Crear tabla dueno
 CREATE TABLE dueno ( 
-dni varchar(9) NOT NULL, nombre varchar(45) primary key, 
-apellido varchar(45) NOT NULL, 
-calle varchar(20) NOT NULL, 
-num varchar(3) NOT NULL, 
-piso varchar(3) NOT NULL, 
-ciudad varchar(45) NOT NULL, 
-cp varchar(9) NOT NULL, 
-pais varchar(45) NOT NULL, 
+dni varchar2(9) PRIMARY KEY, 
+nombre varchar2(45) NOT NULL, 
+apellido varchar2(45) NOT NULL, 
+calle varchar2(20) NOT NULL, 
+num varchar2(3) NOT NULL, 
+piso varchar2(3) NOT NULL, 
+ciudad varchar2(45) NOT NULL, 
+cp varchar2(9) NOT NULL, 
+pais varchar2(45) NOT NULL,
+telefono varchar2(9) NOT NULL, 
 equipo_cod NUMBER(11) references equipo (cod) on delete cascade
  ); 
 
 --Crear tabla calendario
 CREATE TABLE calendario ( 
-cod NUMBER(11) PRIMARY KEY
+cod NUMBER(11) PRIMARY KEY,
+
 );
 
 --Crear tabla partido
 CREATE TABLE partido ( 
-cod number(11) primary key, 
-lugar varchar(45) NOT NULL, 
+cod number(11) primary key GENERATED ALWAYS as IDENTITY(start with 1 INCREMENT  BY 1 MAX VALUE 999), 
+lugar varchar2(45) NOT NULL, 
 codGanador number(11), 
-empate varchar(1), 
+empate varchar2(1), 
 fecha DATE NOT NULL,
 calendario_cod number(11) references calendario (cod) on delete cascade
 ); 

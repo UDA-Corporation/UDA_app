@@ -21,3 +21,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Visual paradigm y Mysql Workbench
+*.bak
