@@ -1,0 +1,102 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="5BED1335-3503-577C-E514-037BF697341B" name="Partido">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-18 07:31:02 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>mer_dataM</ownerDesignName>
+<engineerTo>
+<item key="E8E5B3C1-2E0A-8CE1-E58D-9BAEA133716E" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="cod" id="9281A659-1912-7142-7D56-AAE56F1820C4">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-18 07:31:31 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>mer_dataM</ownerDesignName>
+<engineerTo>
+<item key="E8E5B3C1-2E0A-8CE1-E58D-9BAEA133716E" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="lugar" id="8411E7A9-88FE-3466-074C-9A3F8289FA4C">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-18 07:31:35 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>mer_dataM</ownerDesignName>
+<engineerTo>
+<item key="E8E5B3C1-2E0A-8CE1-E58D-9BAEA133716E" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="codGanador" id="FAFD4382-5928-ECFF-DE32-BED8C1794BF6">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-18 07:31:38 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>mer_dataM</ownerDesignName>
+<engineerTo>
+<item key="E8E5B3C1-2E0A-8CE1-E58D-9BAEA133716E" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="empate" id="B19EF4DE-3586-DF64-1413-11AAD46CA164">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-18 07:31:45 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>mer_dataM</ownerDesignName>
+<engineerTo>
+<item key="E8E5B3C1-2E0A-8CE1-E58D-9BAEA133716E" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha" id="59C1E7EB-F41C-DDAD-98BB-280D929CA6EF">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-18 07:32:04 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>mer_dataM</ownerDesignName>
+<engineerTo>
+<item key="E8E5B3C1-2E0A-8CE1-E58D-9BAEA133716E" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cod_1" id="0B4B9782-2554-50AB-8275-2CA2D708FAE0">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-18 07:34:08 UTC</createdTime>
+<generatorID>D5E888BF-EE72-A39E-E229-2F1FB9D60FD9</generatorID>
+<ownerDesignName>mer_dataM</ownerDesignName>
+<engineerTo>
+<item key="E8E5B3C1-2E0A-8CE1-E58D-9BAEA133716E" value="true"/>
+</engineerTo>
+<referedAttribute>40E6ACC7-1D90-6193-559D-C30738DF1D24</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="C4FD920E-839D-82E6-A3FF-C2BD0A5B219A" name="Partido PK">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-18 07:31:34 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>mer_dataM</ownerDesignName>
+<engineerTo>
+<item key="E8E5B3C1-2E0A-8CE1-E58D-9BAEA133716E" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>9281A659-1912-7142-7D56-AAE56F1820C4</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
