@@ -5,7 +5,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
 <engineerTo>
-<item key="E8E5B3C1-2E0A-8CE1-E58D-9BAEA133716E" value="true"/>
+<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -22,10 +22,13 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
 <engineerTo>
-<item key="E8E5B3C1-2E0A-8CE1-E58D-9BAEA133716E" value="true"/>
+<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
 </engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="nombre" id="E5FA3AC7-40FF-04C8-A23E-BE61B808E010">
 <createdBy>1gdaw02</createdBy>
@@ -33,10 +36,13 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
 <engineerTo>
-<item key="E8E5B3C1-2E0A-8CE1-E58D-9BAEA133716E" value="true"/>
+<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
 </engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="desripcion" id="57D40F8A-CFEB-F7CA-4FAA-79240A751C91">
 <createdBy>1gdaw02</createdBy>
@@ -44,22 +50,28 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
 <engineerTo>
-<item key="E8E5B3C1-2E0A-8CE1-E58D-9BAEA133716E" value="true"/>
+<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
 </engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="dni" id="DCDA234D-DBEB-05F7-2E53-898F5DA33FE7">
+<Attribute name="dni" id="937E15DC-F9C6-AEB6-6547-A2F51CCFE7FD">
 <createdBy>1gdaw02</createdBy>
-<createdTime>2018-04-18 07:29:48 UTC</createdTime>
-<generatorID>F37A5A39-294B-69D6-006D-E5AABCB480D4</generatorID>
+<createdTime>2018-04-18 10:01:05 UTC</createdTime>
+<generatorID>CE657EC0-3D1D-750F-01F6-F8575D173007</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
 <engineerTo>
-<item key="E8E5B3C1-2E0A-8CE1-E58D-9BAEA133716E" value="true"/>
+<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
 </engineerTo>
 <referedAttribute>87E01B64-993E-8201-DD0A-97DD19D83584</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>9</dataTypeSize>
+<ownDataTypeParameters>9,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -69,7 +81,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
 <engineerTo>
-<item key="E8E5B3C1-2E0A-8CE1-E58D-9BAEA133716E" value="true"/>
+<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

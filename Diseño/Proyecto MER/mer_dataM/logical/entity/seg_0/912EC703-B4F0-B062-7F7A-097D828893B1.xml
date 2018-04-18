@@ -5,7 +5,7 @@
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
 <engineerTo>
-<item key="E8E5B3C1-2E0A-8CE1-E58D-9BAEA133716E" value="true"/>
+<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -17,17 +17,20 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="cod" id="F52DACF7-7287-F65B-37D3-DB209717F2CF">
+<Attribute name="cod" id="FF3CF5F4-AA04-7A32-D8EB-712C3DC76B3B">
 <createdBy>1gdaw02</createdBy>
-<createdTime>2018-04-18 07:29:50 UTC</createdTime>
-<generatorID>F37A5A39-294B-69D6-006D-E5AABCB480D4</generatorID>
+<createdTime>2018-04-18 10:01:07 UTC</createdTime>
+<generatorID>CE657EC0-3D1D-750F-01F6-F8575D173007</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
 <engineerTo>
-<item key="E8E5B3C1-2E0A-8CE1-E58D-9BAEA133716E" value="true"/>
+<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
 </engineerTo>
 <referedAttribute>FD9F9D03-FCD2-B775-C9AA-098F8184712A</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 </Entity>
