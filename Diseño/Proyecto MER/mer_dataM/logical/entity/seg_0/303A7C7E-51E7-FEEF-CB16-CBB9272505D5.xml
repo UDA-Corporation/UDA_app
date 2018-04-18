@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="303A7C7E-51E7-FEEF-CB16-CBB9272505D5" name="Calendario">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="303A7C7E-51E7-FEEF-CB16-CBB9272505D5" name="Liga">
 <createdBy>1gdaw02</createdBy>
 <createdTime>2018-04-18 07:32:48 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>

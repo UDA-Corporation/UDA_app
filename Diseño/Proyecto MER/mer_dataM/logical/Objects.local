@@ -1,22 +1,22 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <oracle.dbtools.crest.model.design.logical.LogicalDesign>
-   <object objectType="Entity" objectID="2C0B085D-66BC-B1AE-9666-0A7206291890" name="Jugador" seqName="seg_0"/>
-   <object objectType="Entity" objectID="303A7C7E-51E7-FEEF-CB16-CBB9272505D5" name="Calendario" seqName="seg_0"/>
-   <object objectType="Entity" objectID="457D83E1-C25F-6F04-7BC8-98AF3DA1B79E" name="Admin" seqName="seg_0"/>
-   <object objectType="Entity" objectID="5BED1335-3503-577C-E514-037BF697341B" name="Partido" seqName="seg_0"/>
-   <object objectType="Entity" objectID="5D235191-DF23-1AFE-C851-B205C28AE5F0" name="Persona" seqName="seg_0"/>
-   <object objectType="Entity" objectID="65FCFF55-D545-888A-6B31-A4183EA42CA0" name="Usuario" seqName="seg_0"/>
-   <object objectType="Entity" objectID="912EC703-B4F0-B062-7F7A-097D828893B1" name="Dueno" seqName="seg_0"/>
-   <object objectType="Entity" objectID="CB34BC7B-15A6-E4CD-909B-CFBCF4B5120E" name="Jornadas" seqName="seg_0"/>
-   <object objectType="Entity" objectID="F29F0BFB-D46E-E44A-513F-D413E51157EE" name="Cuenta" seqName="seg_0"/>
-   <object objectType="Entity" objectID="FB877911-FE71-61F6-2941-7801A6C7AB61" name="Equipo" seqName="seg_0"/>
-   <object objectType="Relation" objectID="4A7A1854-360B-97EC-5071-4F7B8EF4175B" name="Relation_6" seqName="seg_0"/>
-   <object objectType="Relation" objectID="944D82BD-789C-CEB3-6332-35972D5270AE" name="Relation_3" seqName="seg_0"/>
-   <object objectType="Relation" objectID="A6C30EFC-AE88-DAD5-FF07-F16E48E94FC2" name="Relation_4" seqName="seg_0"/>
-   <object objectType="Relation" objectID="D5E888BF-EE72-A39E-E229-2F1FB9D60FD9" name="Relation_5" seqName="seg_0"/>
-   <object objectType="Relation" objectID="F0371BD6-34B1-EAFC-900E-59C6EB2CF1ED" name="Relation_2" seqName="seg_0"/>
-   <object objectType="Relation" objectID="F37A5A39-294B-69D6-006D-E5AABCB480D4" name="Relation_1" seqName="seg_0"/>
-   <object objectType="Hierarchy relation" objectID="257C4275-5E32-79DA-184D-5743771A442D" name="Hierarchy_2" seqName="seg_0"/>
-   <object objectType="Hierarchy relation" objectID="387DA120-ADA4-4804-4559-25D8DF0293FC" name="Hierarchy_1" seqName="seg_0"/>
-   <object objectType="Hierarchy relation" objectID="9828D005-D5F4-1D5F-F53C-86F0CD8B98BB" name="Hierarchy_3" seqName="seg_0"/>
+   <object objectType="Entity" objectID="2C0B085D-66BC-B1AE-9666-0A7206291890" name="Jugador" seqName="seg_0" propertyClassName="" propertyParentId="" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="303A7C7E-51E7-FEEF-CB16-CBB9272505D5" name="Calendario" seqName="seg_0" propertyClassName="" propertyParentId="" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="457D83E1-C25F-6F04-7BC8-98AF3DA1B79E" name="Admin" seqName="seg_0" propertyClassName="" propertyParentId="" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="5BED1335-3503-577C-E514-037BF697341B" name="Partido" seqName="seg_0" propertyClassName="" propertyParentId="" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="5D235191-DF23-1AFE-C851-B205C28AE5F0" name="Persona" seqName="seg_0" propertyClassName="" propertyParentId="" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="65FCFF55-D545-888A-6B31-A4183EA42CA0" name="Usuario" seqName="seg_0" propertyClassName="" propertyParentId="" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="912EC703-B4F0-B062-7F7A-097D828893B1" name="Dueno" seqName="seg_0" propertyClassName="" propertyParentId="" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="CB34BC7B-15A6-E4CD-909B-CFBCF4B5120E" name="Jornadas" seqName="seg_0" propertyClassName="" propertyParentId="" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="F29F0BFB-D46E-E44A-513F-D413E51157EE" name="Cuenta" seqName="seg_0" propertyClassName="" propertyParentId="" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="FB877911-FE71-61F6-2941-7801A6C7AB61" name="Equipo" seqName="seg_0" propertyClassName="" propertyParentId="" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Relation" objectID="4A7A1854-360B-97EC-5071-4F7B8EF4175B" name="Relation_6" seqName="seg_0" propertyClassName="" propertyParentId="" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Relation" objectID="944D82BD-789C-CEB3-6332-35972D5270AE" name="Relation_3" seqName="seg_0" propertyClassName="" propertyParentId="" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Relation" objectID="A6C30EFC-AE88-DAD5-FF07-F16E48E94FC2" name="Relation_4" seqName="seg_0" propertyClassName="" propertyParentId="" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Relation" objectID="D5E888BF-EE72-A39E-E229-2F1FB9D60FD9" name="Relation_5" seqName="seg_0" propertyClassName="" propertyParentId="" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Relation" objectID="F0371BD6-34B1-EAFC-900E-59C6EB2CF1ED" name="Relation_2" seqName="seg_0" propertyClassName="" propertyParentId="" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Relation" objectID="F37A5A39-294B-69D6-006D-E5AABCB480D4" name="Relation_1" seqName="seg_0" propertyClassName="" propertyParentId="" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Hierarchy relation" objectID="257C4275-5E32-79DA-184D-5743771A442D" name="Hierarchy_2" seqName="seg_0" propertyClassName="" propertyParentId="" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Hierarchy relation" objectID="387DA120-ADA4-4804-4559-25D8DF0293FC" name="Hierarchy_1" seqName="seg_0" propertyClassName="" propertyParentId="" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Hierarchy relation" objectID="9828D005-D5F4-1D5F-F53C-86F0CD8B98BB" name="Hierarchy_3" seqName="seg_0" propertyClassName="" propertyParentId="" propertySourceId="" propertyTargetId=""/>
 </oracle.dbtools.crest.model.design.logical.LogicalDesign>
