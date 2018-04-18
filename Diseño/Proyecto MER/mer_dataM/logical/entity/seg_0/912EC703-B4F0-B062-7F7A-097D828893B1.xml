@@ -1,0 +1,33 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="912EC703-B4F0-B062-7F7A-097D828893B1" name="Dueno">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-18 07:26:23 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>mer_dataM</ownerDesignName>
+<engineerTo>
+<item key="E8E5B3C1-2E0A-8CE1-E58D-9BAEA133716E" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<hierarchicalParent>5D235191-DF23-1AFE-C851-B205C28AE5F0</hierarchicalParent>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="cod" id="F52DACF7-7287-F65B-37D3-DB209717F2CF">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-18 07:29:50 UTC</createdTime>
+<generatorID>F37A5A39-294B-69D6-006D-E5AABCB480D4</generatorID>
+<ownerDesignName>mer_dataM</ownerDesignName>
+<engineerTo>
+<item key="E8E5B3C1-2E0A-8CE1-E58D-9BAEA133716E" value="true"/>
+</engineerTo>
+<referedAttribute>FD9F9D03-FCD2-B775-C9AA-098F8184712A</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>
