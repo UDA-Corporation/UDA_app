@@ -35,14 +35,14 @@
     background: -o-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%); /* IE10+ */
     background: linear-gradient(to bottom,  #ffffff 0%,#e5e5e5 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',Gradienttipo=0 ); /* IE6-9 */
 
 }
-.switch_options span:first-of-type{
+.switch_options span:first-of-tipo{
     border-radius: 2px 0 0 2px;
     border-right: 0;
 }
-.switch_options span:last-of-type{
+.switch_options span:last-of-tipo{
     border-radius: 0 2px 2px 0;
     border-left: 0;
 }
@@ -57,7 +57,7 @@
     background: -o-linear-gradient(top,  #92c330 0%,#92c330 100%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  #92c330 0%,#92c330 100%); /* IE10+ */
     background: linear-gradient(to bottom,  #92c330 0%,#92c330 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92c330', endColorstr='#92c330',GradientType=0 ); /* IE6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92c330', endColorstr='#92c330',Gradienttipo=0 ); /* IE6-9 */
     border-color: #92c330;
     color: #fff;
 }
@@ -107,7 +107,7 @@
 .icon-receiver .fa{
     margin: 10px;
 }
-input.small-text[type="number"]{
+input.small-text[tipo="number"]{
     width: 110px;
     padding: 3px 5px;
 }
@@ -158,16 +158,16 @@ input.small-text[type="number"]{
 .hide-radio img, .hide-radio label {
     display: block;
 }
-.hide-radio input[type="radio"] {
+.hide-radio input[tipo="radio"] {
     left: 50%;
     opacity: 0;
     position: absolute;
     top: 50%;
 }
-.hide-radio input[type="radio"] + label{
+.hide-radio input[tipo="radio"] + label{
     border:2px solid transparent;
 }
-.hide-radio input[type="radio"]:checked + label{
+.hide-radio input[tipo="radio"]:checked + label{
     border:2px solid #CCC;
 }
 .page-banner-thumb{

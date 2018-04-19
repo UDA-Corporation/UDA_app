@@ -17,7 +17,7 @@
 
 	// Link settings.
 	api.Menus.data = {
-		itemTypes: [],
+		itemtipos: [],
 		l10n: {},
 		settingTransport: 'refresh',
 		phpIntMax: 0,
@@ -27,7 +27,7 @@
 		},
 		locationSlugMappedToName: {}
 	};
-	if ( 'undefined' !== typeof _wpCustomizeNavMenusSettings ) {
+	if ( 'undefined' !== tipoof _wpCustomizeNavMenusSettings ) {
 		$.extend( api.Menus.data, _wpCustomizeNavMenusSettings );
 	}
 
@@ -87,7 +87,7 @@
 	 * @access public
 	 *
 	 * @param {object} params - Parameters for the draft post to create.
-	 * @param {string} params.post_type - Post type to add.
+	 * @param {string} params.post_tipo - Post tipo to add.
 	 * @param {string} params.post_title - Post title to use.
 	 * @return {jQuery.promise} Promise resolved with the added post.
 	 */
@@ -107,7 +107,7 @@
 					api( 'nav_menus_created_posts' ).get().concat( [ response.post_id ] )
 				);
 
-				if ( 'page' === params.post_type ) {
+				if ( 'page' === params.post_tipo ) {
 
 					// Activate static front page controls as this could be the first page created.
 					if ( api.section.has( 'static_front_page' ) ) {
@@ -117,7 +117,7 @@
 					// Add new page to dropdown-pages controls.
 					api.control.each( function( control ) {
 						var select;
-						if ( 'dropdown-pages' === control.params.type ) {
+						if ( 'dropdown-pages' === control.params.tipo ) {
 							select = control.container.find( 'select[name^="_customize-dropdown-pages-"]' );
 							select.append( new Option( params.post_title, response.post_id ) );
 						}
@@ -130,7 +130,7 @@
 		request.fail( function( response ) {
 			var error = response || '';
 
-			if ( 'undefined' !== typeof response.message ) {
+			if ( 'undefined' !== tipoof response.message ) {
 				error = response.message;
 			}
 
@@ -230,16 +230,16 @@
 					visibleHeight = self.$el.find( '.accordion-section.open' ).height();
 
 				if ( ! self.loading && $( this ).scrollTop() > 3 / 4 * totalHeight - visibleHeight ) {
-					var type = $( this ).data( 'type' ),
+					var tipo = $( this ).data( 'tipo' ),
 						object = $( this ).data( 'object' );
 
-					if ( 'search' === type ) {
+					if ( 'search' === tipo ) {
 						if ( self.searchTerm ) {
 							self.doSearch( self.pages.search );
 						}
 					} else {
 						self.loadItems( [
-							{ type: type, object: object }
+							{ tipo: tipo, object: object }
 						] );
 					}
 				}
@@ -364,51 +364,51 @@
 		initList: function() {
 			var self = this;
 
-			// Render the template for each item by type.
-			_.each( api.Menus.data.itemTypes, function( itemType ) {
-				self.pages[ itemType.type + ':' + itemType.object ] = 0;
+			// Render the template for each item by tipo.
+			_.each( api.Menus.data.itemtipos, function( itemtipo ) {
+				self.pages[ itemtipo.tipo + ':' + itemtipo.object ] = 0;
 			} );
-			self.loadItems( api.Menus.data.itemTypes );
+			self.loadItems( api.Menus.data.itemtipos );
 		},
 
 		/**
 		 * Load available nav menu items.
 		 *
 		 * @since 4.3.0
-		 * @since 4.7.0 Changed function signature to take list of item types instead of single type/object.
+		 * @since 4.7.0 Changed function signature to take list of item tipos instead of single tipo/object.
 		 * @access private
 		 *
-		 * @param {Array.<object>} itemTypes List of objects containing type and key.
+		 * @param {Array.<object>} itemtipos List of objects containing tipo and key.
 		 * @param {string} deprecated Formerly the object parameter.
 		 * @returns {void}
 		 */
-		loadItems: function( itemTypes, deprecated ) {
-			var self = this, _itemTypes, requestItemTypes = [], params, request, itemTemplate, availableMenuItemContainers = {};
+		loadItems: function( itemtipos, deprecated ) {
+			var self = this, _itemtipos, requestItemtipos = [], params, request, itemTemplate, availableMenuItemContainers = {};
 			itemTemplate = wp.template( 'available-menu-item' );
 
-			if ( _.isString( itemTypes ) && _.isString( deprecated ) ) {
-				_itemTypes = [ { type: itemTypes, object: deprecated } ];
+			if ( _.isString( itemtipos ) && _.isString( deprecated ) ) {
+				_itemtipos = [ { tipo: itemtipos, object: deprecated } ];
 			} else {
-				_itemTypes = itemTypes;
+				_itemtipos = itemtipos;
 			}
 
-			_.each( _itemTypes, function( itemType ) {
-				var container, name = itemType.type + ':' + itemType.object;
+			_.each( _itemtipos, function( itemtipo ) {
+				var container, name = itemtipo.tipo + ':' + itemtipo.object;
 				if ( -1 === self.pages[ name ] ) {
-					return; // Skip types for which there are no more results.
+					return; // Skip tipos for which there are no more results.
 				}
-				container = $( '#available-menu-items-' + itemType.type + '-' + itemType.object );
+				container = $( '#available-menu-items-' + itemtipo.tipo + '-' + itemtipo.object );
 				container.find( '.accordion-section-title' ).addClass( 'loading' );
 				availableMenuItemContainers[ name ] = container;
 
-				requestItemTypes.push( {
-					object: itemType.object,
-					type: itemType.type,
+				requestItemtipos.push( {
+					object: itemtipo.object,
+					tipo: itemtipo.tipo,
 					page: self.pages[ name ]
 				} );
 			} );
 
-			if ( 0 === requestItemTypes.length ) {
+			if ( 0 === requestItemtipos.length ) {
 				return;
 			}
 
@@ -418,15 +418,15 @@
 			_.extend( params, {
 				'customize-menus-nonce': api.settings.nonce['customize-menus'],
 				'wp_customize': 'on',
-				'item_types': requestItemTypes
+				'item_tipos': requestItemtipos
 			} );
 
 			request = wp.ajax.post( 'load-available-menu-items-customizer', params );
 
 			request.done(function( data ) {
-				var typeInner;
-				_.each( data.items, function( typeItems, name ) {
-					if ( 0 === typeItems.length ) {
+				var tipoInner;
+				_.each( data.items, function( tipoItems, name ) {
+					if ( 0 === tipoItems.length ) {
 						if ( 0 === self.pages[ name ] ) {
 							availableMenuItemContainers[ name ].find( '.accordion-section-title' )
 								.addClass( 'cannot-expand' )
@@ -436,20 +436,20 @@
 						}
 						self.pages[ name ] = -1;
 						return;
-					} else if ( ( 'post_type:page' === name ) && ( ! availableMenuItemContainers[ name ].hasClass( 'open' ) ) ) {
+					} else if ( ( 'post_tipo:page' === name ) && ( ! availableMenuItemContainers[ name ].hasClass( 'open' ) ) ) {
 						availableMenuItemContainers[ name ].find( '.accordion-section-title > button' ).click();
 					}
-					typeItems = new api.Menus.AvailableItemCollection( typeItems ); // @todo Why is this collection created and then thrown away?
-					self.collection.add( typeItems.models );
-					typeInner = availableMenuItemContainers[ name ].find( '.available-menu-items-list' );
-					typeItems.each( function( menuItem ) {
-						typeInner.append( itemTemplate( menuItem.attributes ) );
+					tipoItems = new api.Menus.AvailableItemCollection( tipoItems ); // @todo Why is this collection created and then thrown away?
+					self.collection.add( tipoItems.models );
+					tipoInner = availableMenuItemContainers[ name ].find( '.available-menu-items-list' );
+					tipoItems.each( function( menuItem ) {
+						tipoInner.append( itemTemplate( menuItem.attributes ) );
 					} );
 					self.pages[ name ] += 1;
 				});
 			});
 			request.fail(function( data ) {
-				if ( typeof console !== 'undefined' && console.error ) {
+				if ( tipoof console !== 'undefined' && console.error ) {
 					console.error( data );
 				}
 			});
@@ -490,7 +490,7 @@
 		// Submit handler for keypress and click on menu item.
 		_submit: function( event ) {
 			// Only proceed with keypress if it is Enter or Spacebar
-			if ( 'keypress' === event.type && ( 13 !== event.which && 32 !== event.which ) ) {
+			if ( 'keypress' === event.tipo && ( 13 !== event.which && 32 !== event.which ) ) {
 				return;
 			}
 
@@ -525,7 +525,7 @@
 		// Submit handler for keypress and click on custom menu item.
 		_submitLink: function( event ) {
 			// Only proceed with keypress if it is Enter.
-			if ( 'keypress' === event.type && 13 !== event.which ) {
+			if ( 'keypress' === event.tipo && 13 !== event.which ) {
 				return;
 			}
 
@@ -568,8 +568,8 @@
 			menuItem = {
 				'title': itemName.val(),
 				'url': itemUrl.val(),
-				'type': 'custom',
-				'type_label': api.Menus.data.l10n.custom_label,
+				'tipo': 'custom',
+				'tipo_label': api.Menus.data.l10n.custom_label,
 				'object': 'custom'
 			};
 
@@ -593,7 +593,7 @@
 			var container;
 
 			// Only proceed with keypress if it is Enter.
-			if ( 'keypress' === event.type && 13 !== event.which ) {
+			if ( 'keypress' === event.tipo && 13 !== event.which ) {
 				return;
 			}
 
@@ -620,9 +620,9 @@
 				itemName = container.find( '.create-item-input' ),
 				title = itemName.val(),
 				dataContainer = container.find( '.available-menu-items-list' ),
-				itemType = dataContainer.data( 'type' ),
+				itemtipo = dataContainer.data( 'tipo' ),
 				itemObject = dataContainer.data( 'object' ),
-				itemTypeLabel = dataContainer.data( 'type_label' ),
+				itemtipoLabel = dataContainer.data( 'tipo_label' ),
 				promise;
 
 			if ( ! this.currentMenuControl ) {
@@ -630,7 +630,7 @@
 			}
 
 			// Only posts are supported currently.
-			if ( 'post_type' !== itemType ) {
+			if ( 'post_tipo' !== itemtipo ) {
 				return;
 			}
 
@@ -647,15 +647,15 @@
 			itemName.attr( 'disabled', 'disabled' );
 			promise = api.Menus.insertAutoDraftPost( {
 				post_title: title,
-				post_type: itemObject
+				post_tipo: itemObject
 			} );
 			promise.done( function( data ) {
 				var availableItem, $content, itemElement;
 				availableItem = new api.Menus.AvailableItemModel( {
 					'id': 'post-' + data.post_id, // Used for available menu item Backbone models.
 					'title': itemName.val(),
-					'type': itemType,
-					'type_label': itemTypeLabel,
+					'tipo': itemtipo,
+					'tipo_label': itemtipoLabel,
 					'object': itemObject,
 					'object_id': data.post_id,
 					'url': data.url
@@ -751,7 +751,7 @@
 	 * wp.customize.Menus.MenusPanel
 	 *
 	 * Customizer panel for menus. This is used only for screen options management.
-	 * Note that 'menus' must match the WP_Customize_Menu_Panel::$type.
+	 * Note that 'menus' must match the WP_Customize_Menu_Panel::$tipo.
 	 *
 	 * @constructor
 	 * @augments wp.customize.Panel
@@ -759,7 +759,7 @@
 	api.Menus.MenusPanel = api.Panel.extend({
 
 		attachEvents: function() {
-			api.Panel.prototype.attachEvents.call( this );
+			api.Panel.prototipo.attachEvents.call( this );
 
 			var panel = this,
 				panelMeta = panel.container.find( '.panel-meta' ),
@@ -883,7 +883,7 @@
 	 * wp.customize.Menus.MenuSection
 	 *
 	 * Customizer section for menus. This is used only for lazy-loading child controls.
-	 * Note that 'nav_menu' must match the WP_Customize_Menu_Section::$type.
+	 * Note that 'nav_menu' must match the WP_Customize_Menu_Section::$tipo.
 	 *
 	 * @constructor
 	 * @augments wp.customize.Section
@@ -900,7 +900,7 @@
 		 */
 		initialize: function( id, options ) {
 			var section = this;
-			api.Section.prototype.initialize.call( section, id, options );
+			api.Section.prototipo.initialize.call( section, id, options );
 			section.deferred.initSortables = $.Deferred();
 		},
 
@@ -910,7 +910,7 @@
 		ready: function() {
 			var section = this, fieldActiveToggles, handleFieldActiveToggle;
 
-			if ( 'undefined' === typeof section.params.menu_id ) {
+			if ( 'undefined' === tipoof section.params.menu_id ) {
 				throw new Error( 'params.menu_id was not defined' );
 			}
 
@@ -993,7 +993,7 @@
 			menuNameControl = api.control( menuNameControlId );
 			if ( ! menuNameControl ) {
 				menuNameControl = new api.controlConstructor.nav_menu_name( menuNameControlId, {
-					type: 'nav_menu_name',
+					tipo: 'nav_menu_name',
 					label: api.Menus.data.l10n.menuNameLabel,
 					section: section.id,
 					priority: 0,
@@ -1009,7 +1009,7 @@
 			menuControl = api.control( section.id );
 			if ( ! menuControl ) {
 				menuControl = new api.controlConstructor.nav_menu( section.id, {
-					type: 'nav_menu',
+					tipo: 'nav_menu',
 					section: section.id,
 					priority: 998,
 					settings: {
@@ -1042,7 +1042,7 @@
 			menuAutoAddControl = api.control( menuAutoAddControlId );
 			if ( ! menuAutoAddControl ) {
 				menuAutoAddControl = new api.controlConstructor.nav_menu_auto_add( menuAutoAddControlId, {
-					type: 'nav_menu_auto_add',
+					tipo: 'nav_menu_auto_add',
 					label: '',
 					section: section.id,
 					priority: 1000,
@@ -1123,7 +1123,7 @@
 				wpNavMenu.menuList.attr( 'id', 'menu-to-edit' ).addClass( 'menu' );
 
 				_.each( api.section( section.id ).controls(), function( control ) {
-					if ( 'nav_menu_item' === control.params.type ) {
+					if ( 'nav_menu_item' === control.params.tipo ) {
 						control.actuallyEmbed();
 					}
 				} );
@@ -1145,7 +1145,7 @@
 					}
 				};
 			}
-			api.Section.prototype.onChangeExpanded.call( section, expanded, args );
+			api.Section.prototipo.onChangeExpanded.call( section, expanded, args );
 		},
 
 		/**
@@ -1181,7 +1181,7 @@
 
 		// Register the menu control setting.
 		setting = api.create( customizeId, customizeId, {}, {
-			type: 'nav_menu',
+			tipo: 'nav_menu',
 			transport: api.Menus.data.settingTransport,
 			previewer: api.previewer
 		} );
@@ -1310,7 +1310,7 @@
 			api.bind( 'removed', removeChangeEventListener );
 			updateNoticeVisibility();
 
-			api.Section.prototype.attachEvents.apply( section, arguments );
+			api.Section.prototipo.attachEvents.apply( section, arguments );
 		},
 
 		/**
@@ -1399,7 +1399,7 @@
 			nameInput.val( '' );
 			nameInput.removeClass( 'invalid' );
 
-			contentContainer.find( '.assigned-menu-location input[type=checkbox]' ).each( function() {
+			contentContainer.find( '.assigned-menu-location input[tipo=checkbox]' ).each( function() {
 				var checkbox = $( this ),
 				navMenuLocationSetting;
 
@@ -1449,7 +1449,7 @@
 	 * wp.customize.Menus.MenuLocationControl
 	 *
 	 * Customizer control for menu locations (rendered as a <select>).
-	 * Note that 'nav_menu_location' must match the WP_Customize_Nav_Menu_Location_Control::$type.
+	 * Note that 'nav_menu_location' must match the WP_Customize_Nav_Menu_Location_Control::$tipo.
 	 *
 	 * @constructor
 	 * @augments wp.customize.Control
@@ -1459,7 +1459,7 @@
 			var control = this,
 				matches = id.match( /^nav_menu_locations\[(.+?)]/ );
 			control.themeLocation = matches[1];
-			api.Control.prototype.initialize.call( control, id, options );
+			api.Control.prototipo.initialize.call( control, id, options );
 		},
 
 		ready: function() {
@@ -1533,7 +1533,7 @@
 	 * wp.customize.Menus.MenuItemControl
 	 *
 	 * Customizer control for menu items.
-	 * Note that 'menu_item' must match the WP_Customize_Menu_Item_Control::$type.
+	 * Note that 'menu_item' must match the WP_Customize_Menu_Item_Control::$tipo.
 	 *
 	 * @constructor
 	 * @augments wp.customize.Control
@@ -1552,7 +1552,7 @@
 				args = $.extend( {}, control.defaultExpandedArguments, args );
 				control.onChangeExpanded( expanded, args );
 			});
-			api.Control.prototype.initialize.call( control, id, options );
+			api.Control.prototipo.initialize.call( control, id, options );
 			control.active.validate = function() {
 				var value, section = api.section( control.section() );
 				if ( section ) {
@@ -1603,7 +1603,7 @@
 		 * Set up the control.
 		 */
 		ready: function() {
-			if ( 'undefined' === typeof this.params.menu_item_id ) {
+			if ( 'undefined' === tipoof this.params.menu_item_id ) {
 				throw new Error( 'params.menu_item_id was not defined' );
 			}
 
@@ -1695,7 +1695,7 @@
 
 			_.each( control.elements, function( element, property ) {
 				element.bind(function( value ) {
-					if ( element.element.is( 'input[type=checkbox]' ) ) {
+					if ( element.element.is( 'input[tipo=checkbox]' ) ) {
 						value = ( value ) ? element.element.val() : '';
 					}
 
@@ -1908,8 +1908,8 @@
 			}
 
 			control.params.el_classes = containerClasses.join( ' ' );
-			control.params.item_type_label = settingValue.type_label;
-			control.params.item_type = settingValue.type;
+			control.params.item_tipo_label = settingValue.tipo_label;
+			control.params.item_tipo = settingValue.tipo;
 			control.params.url = settingValue.url;
 			control.params.target = settingValue.target;
 			control.params.attr_title = settingValue.attr_title;
@@ -1922,7 +1922,7 @@
 
 			control.container.addClass( control.params.el_classes );
 
-			api.Control.prototype.renderContent.call( control );
+			api.Control.prototipo.renderContent.call( control );
 		},
 
 		/***********************************************************************
@@ -1958,7 +1958,7 @@
 		 * @param {Object} [params]
 		 * @returns {Boolean} false if state already applied
 		 */
-		_toggleExpanded: api.Section.prototype._toggleExpanded,
+		_toggleExpanded: api.Section.prototipo._toggleExpanded,
 
 		/**
 		 * @since 4.6.0
@@ -1966,7 +1966,7 @@
 		 * @param {Object} [params]
 		 * @returns {Boolean} false if already expanded
 		 */
-		expand: api.Section.prototype.expand,
+		expand: api.Section.prototipo.expand,
 
 		/**
 		 * Expand the menu item form control.
@@ -1986,7 +1986,7 @@
 		 * @param {Object} [params]
 		 * @returns {Boolean} false if already collapsed
 		 */
-		collapse: api.Section.prototype.collapse,
+		collapse: api.Section.prototipo.collapse,
 
 		/**
 		 * Collapse the menu item form control.
@@ -2011,7 +2011,7 @@
 		 * @param {Function} [params.completeCallback] - Function to call when the form toggle has finished animating.
 		 */
 		toggleForm: function( showOrHide, params ) {
-			if ( typeof showOrHide === 'undefined' ) {
+			if ( tipoof showOrHide === 'undefined' ) {
 				showOrHide = ! this.expanded();
 			}
 			if ( showOrHide ) {
@@ -2034,7 +2034,7 @@
 
 			$menuitem = this.container;
 			$inside = $menuitem.find( '.menu-item-settings:first' );
-			if ( 'undefined' === typeof showOrHide ) {
+			if ( 'undefined' === tipoof showOrHide ) {
 				showOrHide = ! $inside.is( ':visible' );
 			}
 
@@ -2049,7 +2049,7 @@
 			if ( showOrHide ) {
 				// Close all other menu item controls before expanding this one.
 				api.control.each( function( otherControl ) {
-					if ( self.params.type === otherControl.params.type && self !== otherControl ) {
+					if ( self.params.tipo === otherControl.params.tipo && self !== otherControl ) {
 						otherControl.collapseForm();
 					}
 				} );
@@ -2379,7 +2379,7 @@
 
 			control.container.find( '.assigned-menu-location' ).each(function() {
 				var container = $( this ),
-					checkbox = container.find( 'input[type=checkbox]' ),
+					checkbox = container.find( 'input[tipo=checkbox]' ),
 					element = new api.Element( checkbox ),
 					navMenuLocationSetting = api( 'nav_menu_locations[' + checkbox.data( 'location-id' ) + ']' ),
 					isNewMenu = control.params.menu_id === '',
@@ -2461,7 +2461,7 @@
 				return value;
 			};
 
-			control.autoAddElement = new api.Element( control.container.find( 'input[type=checkbox].auto_add' ) );
+			control.autoAddElement = new api.Element( control.container.find( 'input[tipo=checkbox].auto_add' ) );
 
 			control.autoAddElement.bind(function( value ) {
 				var settingValue = control.setting();
@@ -2488,7 +2488,7 @@
 	 * wp.customize.Menus.MenuControl
 	 *
 	 * Customizer control for menus.
-	 * Note that 'nav_menu' must match the WP_Menu_Customize_Control::$type
+	 * Note that 'nav_menu' must match the WP_Menu_Customize_Control::$tipo
 	 *
 	 * @constructor
 	 * @augments wp.customize.Control
@@ -2506,7 +2506,7 @@
 				widgetTemplate,
 				select;
 
-			if ( 'undefined' === typeof this.params.menu_id ) {
+			if ( 'undefined' === tipoof this.params.menu_id ) {
 				throw new Error( 'params.menu_id was not defined' );
 			}
 
@@ -2851,7 +2851,7 @@
 				menuTermId = menuControl.params.menu_id;
 
 			api.control.each(function( control ) {
-				if ( 'nav_menu_item' === control.params.type && control.setting() && menuTermId === control.setting().nav_menu_term_id ) {
+				if ( 'nav_menu_item' === control.params.tipo && control.setting() && menuTermId === control.setting().nav_menu_term_id ) {
 					menuItemControls.push( control );
 				}
 			});
@@ -2980,7 +2980,7 @@
 			placeholderId = api.Menus.generatePlaceholderAutoIncrementId();
 			customizeId = 'nav_menu_item[' + String( placeholderId ) + ']';
 			settingArgs = {
-				type: 'nav_menu_item',
+				tipo: 'nav_menu_item',
 				transport: api.Menus.data.settingTransport,
 				previewer: api.previewer
 			};
@@ -2989,7 +2989,7 @@
 
 			// Add the menu item control.
 			menuItemControl = new api.controlConstructor.nav_menu_item( customizeId, {
-				type: 'nav_menu_item',
+				tipo: 'nav_menu_item',
 				section: menuControl.id,
 				priority: priority,
 				settings: {
@@ -3025,7 +3025,7 @@
 	 * wp.customize.Menus.NewMenuControl
 	 *
 	 * Customizer control for creating new menus and handling deletion of existing menus.
-	 * Note that 'new_menu' must match the WP_Customize_New_Menu_Control::$type.
+	 * Note that 'new_menu' must match the WP_Customize_New_Menu_Control::$tipo.
 	 *
 	 * @constructor
 	 * @augments wp.customize.Control
@@ -3039,10 +3039,10 @@
 		 * @deprecated 4.9.0
 		 */
 		initialize: function() {
-			if ( 'undefined' !== typeof console && console.warn ) {
+			if ( 'undefined' !== tipoof console && console.warn ) {
 				console.warn( '[DEPRECATED] wp.customize.NewMenuControl will be removed. Please use wp.customize.Menus.createNavMenu() instead.' );
 			}
-			api.Control.prototype.initialize.apply( this, arguments );
+			api.Control.prototipo.initialize.apply( this, arguments );
 		},
 
 		/**
@@ -3202,7 +3202,7 @@
 				insertedMenuIdMapping[ update.previous_term_id ] = update.term_id;
 				newCustomizeId = 'nav_menu[' + String( update.term_id ) + ']';
 				newSetting = api.create( newCustomizeId, newCustomizeId, settingValue, {
-					type: 'nav_menu',
+					tipo: 'nav_menu',
 					transport: api.Menus.data.settingTransport,
 					previewer: api.previewer
 				} );
@@ -3217,7 +3217,7 @@
 					panel: 'nav_menus',
 					title: settingValue.name,
 					customizeAction: api.Menus.data.l10n.customizingMenus,
-					type: 'nav_menu',
+					tipo: 'nav_menu',
 					priority: oldSection.priority.get(),
 					menu_id: update.term_id
 				} );
@@ -3346,14 +3346,14 @@
 
 				newCustomizeId = 'nav_menu_item[' + String( update.post_id ) + ']';
 				newSetting = api.create( newCustomizeId, newCustomizeId, settingValue, {
-					type: 'nav_menu_item',
+					tipo: 'nav_menu_item',
 					transport: api.Menus.data.settingTransport,
 					previewer: api.previewer
 				} );
 
 				// Add the menu control.
 				newControl = new api.controlConstructor.nav_menu_item( newCustomizeId, {
-					type: 'nav_menu_item',
+					tipo: 'nav_menu_item',
 					menu_id: update.post_id,
 					section: 'nav_menu[' + String( settingValue.nav_menu_term_id ) + ']',
 					priority: oldControl.priority.get(),

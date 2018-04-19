@@ -70,7 +70,7 @@ function eight_degree_homepage_slider_config_cb(){
         $show_pager = esc_attr((get_theme_mod('eight_degree_homepage_slider_pager',0) == "1") ? "true" : "false");
         $show_controls = esc_attr((get_theme_mod('eight_degree_homepage_slider_controls',0) == "1") ? "true" : "false");
         $auto_transition = esc_attr((get_theme_mod('eight_degree_homepage_slider_transition_auto',0) == "1") ? "true" : "false");
-        $slider_transition = esc_attr(get_theme_mod( 'eight_degree_homepage_slider_transition_type','horizontal' ) );
+        $slider_transition = esc_attr(get_theme_mod( 'eight_degree_homepage_slider_transition_tipo','horizontal' ) );
         $slider_speed = get_theme_mod('eight_degree_homepage_slider_transition_speed', '3500');
         $slider_pause = get_theme_mod('eight_degree_homepage_slider_transition_pause', '3500');
     
@@ -143,7 +143,7 @@ add_action('eight_degree_slider','eight_degree_slider_section_cb', 10); //slider
       } else {
         $post_id = $post->ID;
       }
-        $posts_type = get_theme_mod( 'eight_degree_related_type', 'cat' );
+        $posts_tipo = get_theme_mod( 'eight_degree_related_tipo', 'cat' );
         $post_num = get_theme_mod( 'eight_degree_related_post_num', 3 );
 
         // Define related post arguments
@@ -158,7 +158,7 @@ add_action('eight_degree_slider','eight_degree_slider_section_cb', 10); //slider
         );
 
 
-      if ( $posts_type == 'tag' ) {
+      if ( $posts_tipo == 'tag' ) {
         $tags = wp_get_post_tags( $post_id );
         if ( $tags ) {
           $tag_ids = array();
@@ -323,7 +323,7 @@ if( !function_exists('eight_degree_post_header')):
 		</div>
 		<div class="post-category">
 		<?php
-		if ( 'post' === get_post_type() ) {
+		if ( 'post' === get_post_tipo() ) {
             $categories_list = get_the_category_list( esc_html__( ', ', 'eight-degree' ) );
             if ( $categories_list && eight_degree_categorized_blog() ) {
                 printf( '<span class="cat-links">' . esc_html__( '%1$s ', 'eight-degree' ) . '</span>', $categories_list ); // WPCS: XSS OK.
@@ -388,10 +388,10 @@ function eight_degree_breadcrumb_cb() {
             } elseif ( is_year() ) {
                 echo $before . esc_html( get_the_time( 'Y' ) ) . $after;
             } elseif ( is_single() && !is_attachment() ) {
-                if ( get_post_type() != 'post' ) {
-                    $post_type = get_post_type_object( get_post_type() );
-                    $slug = $post_type->rewrite;
-                    echo '<a href="' . esc_url( $homeLink . $slug['slug'] ) . '/">' . esc_html( $post_type->labels->singular_name ) . '</a>';
+                if ( get_post_tipo() != 'post' ) {
+                    $post_tipo = get_post_tipo_object( get_post_tipo() );
+                    $slug = $post_tipo->rewrite;
+                    echo '<a href="' . esc_url( $homeLink . $slug['slug'] ) . '/">' . esc_html( $post_tipo->labels->singular_name ) . '</a>';
                     if ( $showCurrent == 1 )
                         echo ' ' . wp_kses_post( $delimiter ) . ' ' . $before . esc_html( get_the_title() ) . $after;
                 } else {
@@ -404,9 +404,9 @@ function eight_degree_breadcrumb_cb() {
                     if ($showCurrent == 1)
                         echo $before . esc_html( get_the_title() ) . $after;
                 }
-            } elseif (!is_single() && !is_page() && get_post_type() != 'post' && !is_404()) {
-                $post_type = get_post_type_object( get_post_type() );
-                echo $before . esc_html( $post_type->labels->singular_name ) . $after;
+            } elseif (!is_single() && !is_page() && get_post_tipo() != 'post' && !is_404()) {
+                $post_tipo = get_post_tipo_object( get_post_tipo() );
+                echo $before . esc_html( $post_tipo->labels->singular_name ) . $after;
             } elseif ( is_attachment() ) {
                 $parent = get_post( $post->post_parent );
                 $cat = get_the_category( $parent->ID );
@@ -530,7 +530,7 @@ if ( ! function_exists( 'eight_degree_register_required_plugins' ) ) :
             'plugin_needs_higher_version' => __('Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin.', 'eight-degree'), // %1$s = plugin name(s).
             'complete' => __('All plugins installed and activated successfully. %1$s', 'eight-degree'), // %s = dashboard link.
             'contact_admin' => __('Please contact the administrator of this site for help.', 'eight-degree'),
-            'nag_type' => 'updated', // Determines admin notice type - can only be 'updated', 'update-nag' or 'error'.
+            'nag_tipo' => 'updated', // Determines admin notice tipo - can only be 'updated', 'update-nag' or 'error'.
             )
 );
 tgmpa($plugins, $config);

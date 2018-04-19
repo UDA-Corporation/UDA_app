@@ -517,7 +517,7 @@ $document.ready( function() {
 	function makeNoticesDismissible() {
 		$( '.notice.is-dismissible' ).each( function() {
 			var $el = $( this ),
-				$button = $( '<button type="button" class="notice-dismiss"><span class="screen-reader-text"></span></button>' ),
+				$button = $( '<button tipo="button" class="notice-dismiss"><span class="screen-reader-text"></span></button>' ),
 				btnText = commonL10n.dismiss || '';
 
 			// Ensure plain text
@@ -685,7 +685,7 @@ $document.ready( function() {
 		});
 	}
 
-	$('.search-box input[type="search"], .search-box input[type="submit"]').mousedown(function () {
+	$('.search-box input[tipo="search"], .search-box input[tipo="submit"]').mousedown(function () {
 		$('select[name^="action"]').val('-1');
 	});
 
@@ -700,8 +700,8 @@ $document.ready( function() {
 		var button, input, form = $('form.wp-upload-form');
 		if ( ! form.length )
 			return;
-		button = form.find('input[type="submit"]');
-		input = form.find('input[type="file"]');
+		button = form.find('input[tipo="submit"]');
+		input = form.find('input[tipo="file"]');
 
 		function toggleUploadButton() {
 			button.prop('disabled', '' === input.map( function() {
@@ -714,7 +714,7 @@ $document.ready( function() {
 
 	function pinMenu( event ) {
 		var windowPos = $window.scrollTop(),
-			resizing = ! event || event.type !== 'scroll';
+			resizing = ! event || event.tipo !== 'scroll';
 
 		if ( isIOS || isIE8 || $adminmenu.data( 'wp-responsive' ) ) {
 			return;

@@ -1,59 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<liga>
-    <clasificacion>
-        <equipo codEquipo="">
-            <nombre></nombre>
-            <descripcion></descripcion>
-        </equipo>
-        <equipo codEquipo="">
-            <nombre></nombre>
-            <descripcion></descripcion>
-        </equipo>
-        <equipo codEquipo="">
-            <nombre></nombre>
-            <descripcion></descripcion>
-        </equipo>
-        <equipo codEquipo="">
-            <nombre></nombre>
-            <descripcion></descripcion>
-        </equipo>
-        <equipo codEquipo="">
-            <nombre></nombre>
-            <descripcion></descripcion>
-        </equipo>
-        <equipo codEquipo="">
-            <nombre></nombre>
-            <descripcion></descripcion>
-        </equipo>
-        <equipo codEquipo="">
-            <nombre></nombre>
-            <descripcion></descripcion>
-        </equipo>
-        <equipo codEquipo="">
-            <nombre></nombre>
-            <descripcion></descripcion>
-        </equipo>
-    </clasificacion>
-    <jornada codigoJornada="" fechaI="" fechaF="">
-        <equipo codEquipo="">
-            <nombre></nombre>
-            <descripcion></descripcion>
-        </equipo>
-        <equipo codEquipo="">
-            <nombre></nombre>
-            <descripcion></descripcion>
-        </equipo>
-        <resultado></resultado>
-    </jornada>
-    <ultimaJornada codJornada="" fechaI="" fechaF="">>
-        <equipo codEquipo="">
-            <nombre></nombre>
-            <descripcion></descripcion>
-        </equipo>
-        <equipo codEquipo="">
-            <nombre></nombre>
-            <descripcion></descripcion>
-        </equipo>
-        <resultado></resultado>
-    </ultimaJornada>
+<liga xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="BBDD.xsd">
+        <clasificacion>
+            <equipo codEquipo="_44">
+                <nombre></nombre>
+                <puntos></puntos>
+                <puesto></puesto>
+            </equipo>
+            <equipo codEquipo="_43">
+                <nombre></nombre>
+                <puntos></puntos>
+                <puesto></puesto>
+            </equipo>
+        </clasificacion>
+        <jornada codigoJornada="" fechaI="1998-10-22" fechaF="1998-10-22">
+            <partido equipo_local="_44" equipo_visitante="_43">
+                <resultado>1-0</resultado>
+            </partido>
+        </jornada>
 </liga>

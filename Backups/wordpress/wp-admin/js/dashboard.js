@@ -66,12 +66,12 @@ jQuery(document).ready( function($) {
 	quickPressLoad = function() {
 		var act = $('#quickpost-action'), t;
 
-		$( '#quick-press .submit input[type="submit"], #quick-press .submit input[type="reset"]' ).prop( 'disabled' , false );
+		$( '#quick-press .submit input[tipo="submit"], #quick-press .submit input[tipo="reset"]' ).prop( 'disabled' , false );
 
 		t = $('#quick-press').submit( function( e ) {
 			e.preventDefault();
 			$('#dashboard_quick_press #publishing-action .spinner').show();
-			$('#quick-press .submit input[type="submit"], #quick-press .submit input[type="reset"]').prop('disabled', true);
+			$('#quick-press .submit input[tipo="submit"], #quick-press .submit input[tipo="reset"]').prop('disabled', true);
 
 			$.post( t.attr( 'action' ), t.serializeArray(), function( data ) {
 				// Replace the form, and prepend the published post.
@@ -274,7 +274,7 @@ jQuery( function( $ ) {
 				$form         = $( '.community-events-form' ),
 				$target       = $();
 
-			if ( 'object' === typeof action ) {
+			if ( 'object' === tipoof action ) {
 				// The action is the event object: get the clicked element.
 				$target = $( action.target );
 				/*

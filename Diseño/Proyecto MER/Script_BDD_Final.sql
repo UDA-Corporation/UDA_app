@@ -59,12 +59,12 @@ ALTER TABLE Equipo_juega ADD CONSTRAINT Relation_13_PK PRIMARY KEY ( Equipo_cod,
 
 CREATE TABLE Jornadas
   (
-    cod_1    NUMBER NOT NULL ,
+    cod    NUMBER NOT NULL ,
     fechaI   DATE NOT NULL ,
     fechaF   DATE NOT NULL ,
     Liga_cod NUMBER NOT NULL
   ) ;
-ALTER TABLE Jornadas ADD CONSTRAINT Jornadas_PK PRIMARY KEY ( cod_1 ) ;
+ALTER TABLE Jornadas ADD CONSTRAINT Jornadas_PK PRIMARY KEY ( cod ) ;
 
 
 CREATE TABLE Jugador
@@ -81,9 +81,9 @@ CREATE TABLE Jugador
     cp       VARCHAR2 (5) NOT NULL ,
     pais     VARCHAR2 (20) NOT NULL ,
     tlfo     VARCHAR2 (9) NOT NULL ,
-    id NVARCHAR2 (1) NOT NULL ,
     Equipo_cod NUMBER (5) NOT NULL
   ) ;
+  ALTER TABLE Jugador ADD CONSTRAINT Jugador_PK PRIMARY KEY (dni);
 
 
 CREATE TABLE Liga
@@ -100,7 +100,7 @@ CREATE TABLE Partido
     empate         CHAR (1),
     fecha          DATE NOT NULL ,
     resultado      VARCHAR2(4) NOT NULL ,
-    Jornadas_cod_1 NUMBER NOT NULL
+    Jornadas_cod NUMBER NOT NULL
   ) ;
 ALTER TABLE Partido ADD CONSTRAINT Partido_PK PRIMARY KEY ( cod ) ;
 
@@ -143,7 +143,7 @@ ALTER TABLE Jornadas ADD CONSTRAINT Jornadas_Liga_FK FOREIGN KEY ( Liga_cod ) RE
 
 ALTER TABLE Jugador ADD CONSTRAINT Jugador_Equipo_FK FOREIGN KEY ( Equipo_cod ) REFERENCES Equipo ( cod ) ;
 
-ALTER TABLE Partido ADD CONSTRAINT Partido_Jornadas_FK FOREIGN KEY ( Jornadas_cod_1 ) REFERENCES Jornadas ( cod_1 ) ;
+ALTER TABLE Partido ADD CONSTRAINT Partido_Jornadas_FK FOREIGN KEY ( Jornadas_cod ) REFERENCES Jornadas ( cod ) ;
 
 ALTER TABLE Usuario ADD CONSTRAINT Usuario_Persona_FK FOREIGN KEY ( dni ) REFERENCES Persona ( dni ) ;
 

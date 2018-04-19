@@ -45,7 +45,7 @@ if ( ! function_exists( 'eight_degree_entry_footer' ) ) :
  */
 function eight_degree_entry_footer() {
 	// Hide category and tag text for pages.
-	if ( 'post' === get_post_type() ) {
+	if ( 'post' === get_post_tipo() ) {
 		/* translators: used between list items, there is a space after the comma */
 		$categories_list = get_the_category_list( esc_html__( ', ', 'eight-degree' ) );
 		if ( $categories_list && eight_degree_categorized_blog() ) {

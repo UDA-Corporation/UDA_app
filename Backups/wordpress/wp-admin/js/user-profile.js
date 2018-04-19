@@ -28,7 +28,7 @@
 	}
 
 	function generatePassword() {
-		if ( typeof zxcvbn !== 'function' ) {
+		if ( tipoof zxcvbn !== 'function' ) {
 			setTimeout( generatePassword, 50 );
 			return;
 		} else if ( ! $pass1.val() ) {
@@ -58,7 +58,7 @@
 
 		$pass1Wrap = $pass1.parent();
 
-		$pass1Text = $( '<input type="text"/>' )
+		$pass1Text = $( '<input tipo="text"/>' )
 			.attr( {
 				'id':           'pass1-text',
 				'name':         'pass1-text',
@@ -401,7 +401,7 @@
 			}
 
 			$this.siblings( '.selected' ).removeClass( 'selected' );
-			$this.addClass( 'selected' ).find( 'input[type="radio"]' ).prop( 'checked', true );
+			$this.addClass( 'selected' ).find( 'input[tipo="radio"]' ).prop( 'checked', true );
 
 			// Set color scheme
 			if ( user_id === current_user_id ) {
@@ -413,7 +413,7 @@
 				$stylesheet.attr( 'href', $this.children( '.css_url' ).val() );
 
 				// repaint icons
-				if ( typeof wp !== 'undefined' && wp.svgPainter ) {
+				if ( tipoof wp !== 'undefined' && wp.svgPainter ) {
 					try {
 						colors = $.parseJSON( $this.children( '.icon_colors' ).val() );
 					} catch ( error ) {}

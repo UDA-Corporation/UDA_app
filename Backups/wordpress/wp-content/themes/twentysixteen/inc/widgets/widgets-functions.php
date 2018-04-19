@@ -12,11 +12,11 @@ function eight_degree_widgets_updated_field_value($widget_field, $new_field_valu
     extract($widget_field);
 
     // Allow only integers in number fields
-    if ($eight_degree_widgets_field_type == 'number') {
+    if ($eight_degree_widgets_field_tipo == 'number') {
         return absint($new_field_value);
 
         // Allow some tags in textareas
-    } elseif ($eight_degree_widgets_field_type == 'textarea') {
+    } elseif ($eight_degree_widgets_field_tipo == 'textarea') {
         // Check if field array specifed allowed tags
         if (!isset($eight_degree_widgets_allowed_tags)) {
             // If not, fallback to default tags
@@ -25,7 +25,7 @@ function eight_degree_widgets_updated_field_value($widget_field, $new_field_valu
         return strip_tags($new_field_value, $eight_degree_widgets_allowed_tags);
 
         // No allowed tags for all other fields
-    } elseif ($eight_degree_widgets_field_type == 'url') {
+    } elseif ($eight_degree_widgets_field_tipo == 'url') {
         return esc_url_raw($new_field_value);
     } else {
         return strip_tags($new_field_value);
@@ -37,14 +37,14 @@ function eight_degree_widgets_show_widget_field($instance = '', $widget_field = 
 
     extract($widget_field);
 
-    switch ($eight_degree_widgets_field_type) {
+    switch ($eight_degree_widgets_field_tipo) {
 
         // Standard text field
         case 'text' :
             ?>
             <p>
                 <label for="<?php echo esc_attr($instance->get_field_id($eight_degree_widgets_name)); ?>"><?php echo esc_html($eight_degree_widgets_title); ?>:</label>
-                <input class="widefat" id="<?php echo esc_attr($instance->get_field_id($eight_degree_widgets_name)); ?>" name="<?php echo esc_attr($instance->get_field_name($eight_degree_widgets_name)); ?>" type="text" value="<?php echo esc_attr($athm_field_value); ?>" />
+                <input class="widefat" id="<?php echo esc_attr($instance->get_field_id($eight_degree_widgets_name)); ?>" name="<?php echo esc_attr($instance->get_field_name($eight_degree_widgets_name)); ?>" tipo="text" value="<?php echo esc_attr($athm_field_value); ?>" />
 
                 <?php if (isset($eight_degree_widgets_description)) { ?>
                     <br />
@@ -71,7 +71,7 @@ function eight_degree_widgets_show_widget_field($instance = '', $widget_field = 
             ?>
             <p>
                 <label for="<?php echo esc_attr($instance->get_field_id($eight_degree_widgets_name)); ?>"><?php echo esc_html($eight_degree_widgets_title); ?>:</label><br />
-                <input name="<?php echo esc_attr($instance->get_field_name($eight_degree_widgets_name)); ?>" type="number" step="1" min="1" id="<?php echo esc_attr($instance->get_field_id($eight_degree_widgets_name)); ?>" value="<?php echo esc_attr($athm_field_value); ?>" class="small-text" />
+                <input name="<?php echo esc_attr($instance->get_field_name($eight_degree_widgets_name)); ?>" tipo="number" step="1" min="1" id="<?php echo esc_attr($instance->get_field_id($eight_degree_widgets_name)); ?>" value="<?php echo esc_attr($athm_field_value); ?>" class="small-text" />
 
                 <?php if ( isset( $eight_degree_widgets_description ) ) { ?>
                     <br />
@@ -87,7 +87,7 @@ function eight_degree_widgets_show_widget_field($instance = '', $widget_field = 
             <p>
                 <label for="<?php echo esc_attr( $instance->get_field_id( $eight_degree_widgets_name ) ); ?>"><?php echo esc_html( $eight_degree_widgets_title ); ?>:</label><br />
                 <span class="icon-receiver"><i class="<?php echo esc_attr( $athm_field_value ); ?>"></i></span>
-                <input class="hidden-icon-input" name="<?php echo esc_attr( $instance->get_field_name( $eight_degree_widgets_name ) ); ?>" type="hidden" id="<?php echo esc_attr( $instance->get_field_id( $eight_degree_widgets_name ) ); ?>" value="<?php echo esc_attr( $athm_field_value ); ?>" />
+                <input class="hidden-icon-input" name="<?php echo esc_attr( $instance->get_field_name( $eight_degree_widgets_name ) ); ?>" tipo="hidden" id="<?php echo esc_attr( $instance->get_field_id( $eight_degree_widgets_name ) ); ?>" value="<?php echo esc_attr( $athm_field_value ); ?>" />
 
                 <?php if ( isset( $eight_degree_widgets_description ) ) { ?>
                     <br />
