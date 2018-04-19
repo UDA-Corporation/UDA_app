@@ -18,7 +18,7 @@ var passwordStrength;
 			if (password1 != password2 && password2 && password2.length > 0)
 				return 5;
 
-			if ( 'undefined' === typeof window.zxcvbn ) {
+			if ( 'undefined' === tipoof window.zxcvbn ) {
 				// Password strength unknown.
 				return -1;
 			}

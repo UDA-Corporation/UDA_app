@@ -34,7 +34,7 @@
 
 		// Expand/Collapse accordion sections on click.
 		$( '.accordion-container' ).on( 'click keydown', '.accordion-section-title', function( e ) {
-			if ( e.type === 'keydown' && 13 !== e.which ) { // "return" key
+			if ( e.tipo === 'keydown' && 13 !== e.which ) { // "return" key
 				return;
 			}
 

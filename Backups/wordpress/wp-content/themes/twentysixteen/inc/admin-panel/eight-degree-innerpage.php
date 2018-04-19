@@ -33,7 +33,7 @@ $wp_customize->add_panel(
         
         $wp_customize->add_control(
             'eight_degree_innerpage_archive_layout',array(
-                'type' => 'radio',
+                'tipo' => 'radio',
                 'label' => esc_html__( 'Archive Page Layout', 'eight-degree' ),
                 'description' => esc_html__( 'Choose layout for archive pages landing webpage', 'eight-degree' ),
                 'section' => 'eight_degree_innerpage_archive',
@@ -59,7 +59,7 @@ $wp_customize->add_panel(
             'eight_degree_innerpage_archive_post_layout',
             array(
                 'priority'      =>  10,  
-                'type'          =>  'radio',
+                'tipo'          =>  'radio',
                 'label'         =>  esc_html__( 'Post Layout','eight-degree' ),
                 'description'   =>  esc_html__( 'Choose Archive Post Layout','eight-degree' ),
                 'section'       =>  'eight_degree_innerpage_archive',
@@ -84,7 +84,7 @@ $wp_customize->add_panel(
                 'label'         =>  esc_html__( 'Read more text','eight-degree' ),
                 'section'       =>  'eight_degree_innerpage_archive',
                 'setting'       =>  'eight_degree_innerpage_archive_readmore',
-                'type'          =>  'text',  
+                'tipo'          =>  'text',  
                 )                                     
             );
 
@@ -113,7 +113,7 @@ $wp_customize->add_panel(
                 $wp_customize,
                 'eight_degree_innerpage_contact_map',
                 array(
-                    'type' => 'switch',
+                    'tipo' => 'switch',
                     'label' => esc_html__( 'Show Map Location', 'eight-degree' ),
                     'description' => esc_html__( 'Select Yes to show Map Location on contact page.', 'eight-degree' ),
                     'section' => 'eight_degree_innerpage_contact',
@@ -134,7 +134,7 @@ $wp_customize->add_panel(
                 $wp_customize,
                 'eight_degree_innerpage_contact_detail',
                 array(
-                    'type' => 'switch',
+                    'tipo' => 'switch',
                     'label' => esc_html__( 'Show contact details', 'eight-degree' ),
                     'description' => esc_html__( 'Select Yes to show contact details on contact page.', 'eight-degree' ),
                     'section' => 'eight_degree_innerpage_contact',
@@ -155,7 +155,7 @@ $wp_customize->add_panel(
                 $wp_customize,
                 'eight_degree_innerpage_contact_form',
                 array(
-                    'type' => 'switch',
+                    'tipo' => 'switch',
                     'label' => esc_html__( 'Show contact form', 'eight-degree' ),
                     'description' => esc_html__( 'Select Yes to show contact form on contact page.', 'eight-degree' ),
                     'section' => 'eight_degree_innerpage_contact',
