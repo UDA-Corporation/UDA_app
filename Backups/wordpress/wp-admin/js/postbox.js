@@ -18,7 +18,7 @@
  *
  * @namespace postboxes
  *
- * @type {Object}
+ * @tipo {Object}
  */
 var postboxes;
 
@@ -82,7 +82,7 @@ var postboxes;
 			 *
 			 * @since 4.0.0
 			 * @event postboxes#postbox-toggled
-			 * @type {Object}
+			 * @tipo {Object}
 			 */
 			$document.trigger( 'postbox-toggled', p );
 		},
@@ -175,7 +175,7 @@ var postboxes;
 			 *
 			 * @returns {void}
 			 */
-			$('.columns-prefs input[type="radio"]').bind('click.postboxes', function(){
+			$('.columns-prefs input[tipo="radio"]').bind('click.postboxes', function(){
 				var n = parseInt($(this).val(), 10);
 
 				if ( n ) {
@@ -399,7 +399,7 @@ var postboxes;
 		 * @returns {void}
 		 */
 		_pb_change : function() {
-			var check = $( 'label.columns-prefs-1 input[type="radio"]' );
+			var check = $( 'label.columns-prefs-1 input[tipo="radio"]' );
 
 			switch ( window.orientation ) {
 				case 90:

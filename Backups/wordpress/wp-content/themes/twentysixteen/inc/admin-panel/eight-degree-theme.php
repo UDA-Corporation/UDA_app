@@ -36,7 +36,7 @@ $wp_customize->add_panel(
 		$wp_customize->add_control( 
 			'eight_degree_theme_category_featured', 
 			array(
-				'type'	=>	'select',
+				'tipo'	=>	'select',
 				'label'	=> 	__( 'Featured Category', 'eight-degree' ),				
 				'section' => 'eight_degree_theme_category',
 				'choices' => eight_degree_category_lists(),
@@ -57,7 +57,7 @@ $wp_customize->add_panel(
 		$wp_customize->add_control( 
 			'eight_degree_theme_category_slider', 
 			array(
-				'type'	=>	'select',
+				'tipo'	=>	'select',
 				'label'	=> 	__( 'Slider Category', 'eight-degree' ),
 				'section' => 'eight_degree_theme_category',
 				'choices' => eight_degree_category_lists(),
@@ -77,7 +77,7 @@ $wp_customize->add_panel(
 		$wp_customize->add_control( 
 			'eight_degree_theme_category_portfolio', 
 			array(
-				'type'	=>	'select',
+				'tipo'	=>	'select',
 				'label'	=> 	__( 'Portfolio Category', 'eight-degree' ),
 				'section' => 'eight_degree_theme_category',
 				'choices' => eight_degree_category_lists(),
@@ -98,7 +98,7 @@ $wp_customize->add_panel(
 		$wp_customize->add_control( 
 			'eight_degree_theme_category_blog', 
 			array(
-				'type'	=>	'select',
+				'tipo'	=>	'select',
 				'label'	=> 	__( 'Blog Category', 'eight-degree' ),				
 				'section' => 'eight_degree_theme_category',
 				'choices' => eight_degree_category_lists(),
@@ -119,7 +119,7 @@ $wp_customize->add_panel(
 		$wp_customize->add_control( 
 			'eight_degree_theme_category_service', 
 			array(
-				'type'	=>	'select',
+				'tipo'	=>	'select',
 				'label'	=> 	__( 'Service Category', 'eight-degree' ),
 				'section' => 'eight_degree_theme_category',
 				'choices' => eight_degree_category_lists(),
@@ -140,7 +140,7 @@ $wp_customize->add_panel(
 		$wp_customize->add_control( 
 			'eight_degree_theme_category_team', 
 			array(
-				'type'	=>	'select',
+				'tipo'	=>	'select',
 				'label'	=> 	__( 'Team Category', 'eight-degree' ),
 				'section' => 'eight_degree_theme_category',
 				'choices' => eight_degree_category_lists(),
@@ -161,7 +161,7 @@ $wp_customize->add_panel(
 		$wp_customize->add_control( 
 			'eight_degree_theme_category_testimonial', 
 			array(
-				'type'	=>	'select',
+				'tipo'	=>	'select',
 				'label'	=> 	__( 'Testimonial Category', 'eight-degree' ),
 				'section' => 'eight_degree_theme_category',
 				'choices' => eight_degree_category_lists(),
@@ -193,7 +193,7 @@ $wp_customize->add_panel(
 	    $wp_customize->add_control(
 	    	'eight_degree_social_facebook',
 	    	array(
-		        'type' => 'text',
+		        'tipo' => 'text',
 		        'label' => esc_html__( 'Facebook', 'eight-degree' ),
 		        'section' => 'eight_degree_theme_social',
 		        'setting' => 'eight_degree_social_facebook'
@@ -212,7 +212,7 @@ $wp_customize->add_panel(
 	    $wp_customize->add_control(
 	    	'eight_degree_social_twitter',
 	    	array(
-		        'type' => 'text',
+		        'tipo' => 'text',
 		        'label' => esc_html__( 'Twitter', 'eight-degree' ),
 		        'section' => 'eight_degree_theme_social',
 		        'setting' => 'eight_degree_social_twitter'
@@ -231,7 +231,7 @@ $wp_customize->add_panel(
 	    $wp_customize->add_control(
 	    	'eight_degree_social_googleplus',
 	    	array(
-		        'type' => 'text',
+		        'tipo' => 'text',
 		        'label' => esc_html__( 'Google Plus', 'eight-degree' ),
 		        'section' => 'eight_degree_theme_social',
 		        'setting' => 'eight_degree_social_googleplus'
@@ -250,7 +250,7 @@ $wp_customize->add_panel(
 	    $wp_customize->add_control(
 	    	'eight_degree_social_youtube',
 	    	array(
-		        'type' => 'text',
+		        'tipo' => 'text',
 		        'label' => esc_html__( 'YouTube', 'eight-degree' ),
 		        'section' => 'eight_degree_theme_social',
 		        'setting' => 'eight_degree_social_youtube'
@@ -269,7 +269,7 @@ $wp_customize->add_panel(
 	    $wp_customize->add_control(
 	    	'eight_degree_social_pinterest',
 	    	array(
-		        'type' => 'text',
+		        'tipo' => 'text',
 		        'label' => esc_html__( 'Pinterest', 'eight-degree' ),
 		        'section' => 'eight_degree_theme_social',
 		        'setting' => 'eight_degree_social_pinterest'
@@ -288,7 +288,7 @@ $wp_customize->add_panel(
 	    $wp_customize->add_control(
 	    	'eight_degree_social_linkedin',
 	    	array(
-		        'type' => 'text',
+		        'tipo' => 'text',
 		        'label' => esc_html__( 'Linkedin', 'eight-degree' ),
 		        'section' => 'eight_degree_theme_social',
 		        'setting' => 'eight_degree_social_linkedin'
@@ -308,7 +308,7 @@ $wp_customize->add_panel(
 	    $wp_customize->add_control(
 	    	'eight_degree_social_vimeo',
 	    	array(
-		        'type' => 'text',
+		        'tipo' => 'text',
 		        'label' => esc_html__( 'Vimeo', 'eight-degree' ),
 		        'section' => 'eight_degree_theme_social',
 		        'setting' => 'eight_degree_social_vimeo'
@@ -327,7 +327,7 @@ $wp_customize->add_panel(
 	    $wp_customize->add_control(
 	    	'eight_degree_social_instagram',
 	    	array(
-		        'type' => 'text',
+		        'tipo' => 'text',
 		        'label' => esc_html__( 'Instagram', 'eight-degree' ),
 		        'section' => 'eight_degree_theme_social',
 		        'setting' => 'eight_degree_social_instagram'
@@ -346,7 +346,7 @@ $wp_customize->add_panel(
 	    $wp_customize->add_control(
 	    	'eight_degree_social_skype',
 	    	array(
-		        'type' => 'text',
+		        'tipo' => 'text',
 		        'label' => esc_html__( 'Skype', 'eight-degree' ),
 		        'section' => 'eight_degree_theme_social',
 		        'setting' => 'eight_degree_social_skype'
@@ -375,7 +375,7 @@ $wp_customize->add_panel(
 	    $wp_customize->add_control(
 	    	'eight_degree_theme_weblayout_option',
 	    	array(
-		        'type' => 'radio',
+		        'tipo' => 'radio',
 		        'label' => esc_html__( ' Choose WebLayout', 'eight-degree' ),
 		        'description' => esc_html__( 'Choose the Web Layout of your site.', 'eight-degree' ),
 		        'section' => 'eight_degree_theme_weblayout',

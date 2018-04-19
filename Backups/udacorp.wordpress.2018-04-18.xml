@@ -103,7 +103,7 @@
 		<wp:status><![CDATA[trash]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[post]]></wp:post_type>
+		<wp:post_tipo><![CDATA[post]]></wp:post_tipo>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 		<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
@@ -135,7 +135,7 @@
 To get started with moderating, editing, and deleting comments, please visit the Comments screen in the dashboard.
 Commenter avatars come from <a href="https://gravatar.com">Gravatar</a>.]]></wp:comment_content>
 			<wp:comment_approved><![CDATA[post-trashed]]></wp:comment_approved>
-			<wp:comment_type><![CDATA[]]></wp:comment_type>
+			<wp:comment_tipo><![CDATA[]]></wp:comment_tipo>
 			<wp:comment_parent>0</wp:comment_parent>
 			<wp:comment_user_id>0</wp:comment_user_id>
 		</wp:comment>
@@ -180,7 +180,7 @@ UDA Corp., created the 15th of april of 2018, is a start-up focused on web devel
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_tipo><![CDATA[page]]></wp:post_tipo>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
@@ -210,7 +210,7 @@ UDA Corp., created the 15th of april of 2018, is a start-up focused on web devel
 		<wp:status><![CDATA[trash]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[post]]></wp:post_type>
+		<wp:post_tipo><![CDATA[post]]></wp:post_tipo>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 		<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
@@ -246,7 +246,7 @@ UDA Corp., created the 15th of april of 2018, is a start-up focused on web devel
 tu Unai pez pequeño
 tu Alejandro uvuwewe]]></wp:comment_content>
 			<wp:comment_approved><![CDATA[post-trashed]]></wp:comment_approved>
-			<wp:comment_type><![CDATA[]]></wp:comment_type>
+			<wp:comment_tipo><![CDATA[]]></wp:comment_tipo>
 			<wp:comment_parent>0</wp:comment_parent>
 			<wp:comment_user_id>0</wp:comment_user_id>
 			<wp:commentmeta>
@@ -277,7 +277,7 @@ tu Alejandro uvuwewe]]></wp:comment_content>
 		<wp:status><![CDATA[inherit]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_tipo><![CDATA[attachment]]></wp:post_tipo>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:attachment_url><![CDATA[http://10.1.2.1/wp-content/uploads/2018/04/logo_mediano.png]]></wp:attachment_url>
@@ -308,7 +308,7 @@ tu Alejandro uvuwewe]]></wp:comment_content>
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_tipo><![CDATA[page]]></wp:post_tipo>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
@@ -334,7 +334,7 @@ tu Alejandro uvuwewe]]></wp:comment_content>
 		<wp:status><![CDATA[inherit]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_tipo><![CDATA[attachment]]></wp:post_tipo>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:attachment_url><![CDATA[http://10.1.2.1/wp-content/uploads/2018/04/logo_mediano_recortado.png]]></wp:attachment_url>
@@ -365,7 +365,7 @@ tu Alejandro uvuwewe]]></wp:comment_content>
 		<wp:status><![CDATA[inherit]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_tipo><![CDATA[attachment]]></wp:post_tipo>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:attachment_url><![CDATA[http://10.1.2.1/wp-content/uploads/2018/04/logo_u_favicon.png]]></wp:attachment_url>
@@ -396,7 +396,7 @@ tu Alejandro uvuwewe]]></wp:comment_content>
 		<wp:status><![CDATA[private]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_tipo><![CDATA[attachment]]></wp:post_tipo>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:attachment_url><![CDATA[http://10.1.2.1/wp-content/uploads/2018/04/eight-degree.1.0.1.zip]]></wp:attachment_url>
@@ -427,7 +427,7 @@ tu Alejandro uvuwewe]]></wp:comment_content>
 		<wp:status><![CDATA[private]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_tipo><![CDATA[attachment]]></wp:post_tipo>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:attachment_url><![CDATA[http://10.1.2.1/wp-content/uploads/2018/04/eight-degree.1.0.1-1.zip]]></wp:attachment_url>

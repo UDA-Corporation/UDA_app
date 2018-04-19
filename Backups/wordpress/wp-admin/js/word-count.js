@@ -37,7 +37,7 @@
 	 * @param {RegExp} settings.shortcodesRegExp                  Optional. Regular expression to find shortcodes.
 	 * @param {Object} settings.l10n                              Optional. Localization object containing specific
 	 *                                                            configuration for the current localization.
-	 * @param {String} settings.l10n.type                         Optional. Method of finding words to count.
+	 * @param {String} settings.l10n.tipo                         Optional. Method of finding words to count.
 	 * @param {Array}  settings.l10n.shortcodes                   Optional. Array of shortcodes that should be removed
 	 *                                                            from the text.
 	 *
@@ -60,14 +60,14 @@
 
 		shortcodes = this.settings.l10n.shortcodes;
 
-		// If there are any localization shortcodes, add this as type in the settings.
+		// If there are any localization shortcodes, add this as tipo in the settings.
 		if ( shortcodes && shortcodes.length ) {
 			this.settings.shortcodesRegExp = new RegExp( '\\[\\/?(?:' + shortcodes.join( '|' ) + ')[^\\]]*?\\]', 'g' );
 		}
 	}
 
 	// Default settings.
-	WordCounter.prototype.settings = {
+	WordCounter.prototipo.settings = {
 		HTMLRegExp: /<\/?[a-z][^>]*?>/gi,
 		HTMLcommentRegExp: /<!--[\s\S]*?-->/g,
 		spaceRegExp: /&nbsp;|&#160;/gi,
@@ -141,7 +141,7 @@
 	};
 
 	/**
-	 * Counts the number of words (or other specified type) in the specified text.
+	 * Counts the number of words (or other specified tipo) in the specified text.
 	 *
 	 * @summary  Count the number of elements in a text.
 	 *
@@ -149,19 +149,19 @@
 	 * @memberof wp.utils.wordcounter
 	 *
 	 * @param {String}  text Text to count elements in.
-	 * @param {String}  type Optional. Specify type to use.
+	 * @param {String}  tipo Optional. Specify tipo to use.
 	 *
 	 * @return {Number} The number of items counted.
 	 */
-	WordCounter.prototype.count = function( text, type ) {
+	WordCounter.prototipo.count = function( text, tipo ) {
 		var count = 0;
 
-		// Use default type if none was provided.
-		type = type || this.settings.l10n.type;
+		// Use default tipo if none was provided.
+		tipo = tipo || this.settings.l10n.tipo;
 
-		// Sanitize type to one of three possibilities: 'words', 'characters_excluding_spaces' or 'characters_including_spaces'.
-		if ( type !== 'characters_excluding_spaces' && type !== 'characters_including_spaces' ) {
-			type = 'words';
+		// Sanitize tipo to one of three possibilities: 'words', 'characters_excluding_spaces' or 'characters_including_spaces'.
+		if ( tipo !== 'characters_excluding_spaces' && tipo !== 'characters_including_spaces' ) {
+			tipo = 'words';
 		}
 
 		// If we have any text at all.
@@ -182,7 +182,7 @@
 			// Normalize non-breaking space to a normal space.
 			text = text.replace( this.settings.spaceRegExp, ' ' );
 
-			if ( type === 'words' ) {
+			if ( tipo === 'words' ) {
 
 				// Remove HTML Entities.
 				text = text.replace( this.settings.HTMLEntityRegExp, '' );
@@ -201,8 +201,8 @@
 				text = text.replace( this.settings.astralRegExp, 'a' );
 			}
 
-			// Match with the selected type regular expression to count the items.
-			text = text.match( this.settings[ type + 'RegExp' ] );
+			// Match with the selected tipo regular expression to count the items.
+			text = text.match( this.settings[ tipo + 'RegExp' ] );
 
 			// If we have any matches, set the count to the number of items found.
 			if ( text ) {

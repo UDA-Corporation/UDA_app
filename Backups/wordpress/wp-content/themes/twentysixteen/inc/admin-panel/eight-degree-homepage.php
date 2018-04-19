@@ -35,7 +35,7 @@ $wp_customize->add_panel(
                 $wp_customize,
                 'eight_degree_homepage_slider_option',
                 array(
-                    'type' => 'switch',
+                    'tipo' => 'switch',
                     'label' => esc_html__( 'Enable Slider', 'eight-degree' ),
                     'description' => esc_html__( 'Select Yes to show slider on homepage.', 'eight-degree' ),
                     'section' => 'eight_degree_homepage_slider',
@@ -56,7 +56,7 @@ $wp_customize->add_panel(
                 $wp_customize,
                 'eight_degree_homepage_slider_caption',
                 array(
-                    'type' => 'switch',
+                    'tipo' => 'switch',
                     'label' => esc_html__( 'Slider Caption', 'eight-degree' ),
                     'description' => esc_html__( 'Select Yes to show titles and description over Slider', 'eight-degree' ),
                     'section' => 'eight_degree_homepage_slider',
@@ -77,7 +77,7 @@ $wp_customize->add_panel(
                 $wp_customize,
                 'eight_degree_homepage_slider_pager',
                 array(
-                    'type' => 'switch',
+                    'tipo' => 'switch',
                     'label' => esc_html__( 'Slider Pager', 'eight-degree' ),
                     'section' => 'eight_degree_homepage_slider',
                     )
@@ -97,7 +97,7 @@ $wp_customize->add_panel(
                 $wp_customize,
                 'eight_degree_homepage_slider_controls',
                 array(
-                    'type' => 'switch',
+                    'tipo' => 'switch',
                     'label' => esc_html__( 'Slider Controls', 'eight-degree' ),
                     'section' => 'eight_degree_homepage_slider',
                     )
@@ -117,16 +117,16 @@ $wp_customize->add_panel(
                 $wp_customize,
                 'eight_degree_homepage_slider_transition_auto',
                 array(
-                    'type' => 'switch',
+                    'tipo' => 'switch',
                     'label' => esc_html__( 'Auto Transition', 'eight-degree' ),
                     'section' => 'eight_degree_homepage_slider',
                     )
                 )
             );
 
-        //transition type
+        //transition tipo
         $wp_customize->add_setting(
-            'eight_degree_homepage_slider_transition_type', 
+            'eight_degree_homepage_slider_transition_tipo', 
             array(
                 'default' => 'horizontal',
                 'capability' => 'edit_theme_options',
@@ -135,10 +135,10 @@ $wp_customize->add_panel(
             );
 
         $wp_customize->add_control(
-            'eight_degree_homepage_slider_transition_type', 
+            'eight_degree_homepage_slider_transition_tipo', 
             array(
-                'type' => 'select',
-                'label' => esc_html__( 'Transition Type(Slide/Fade)', 'eight-degree' ),
+                'tipo' => 'select',
+                'label' => esc_html__( 'Transition tipo(Slide/Fade)', 'eight-degree' ),
                 'section' => 'eight_degree_homepage_slider',
                 'choices' => array(
                     'fade' => esc_html__( 'Fade', 'eight-degree' ),
@@ -159,7 +159,7 @@ $wp_customize->add_panel(
         $wp_customize->add_control(
             'eight_degree_homepage_slider_transition_speed',
             array(
-                'type' => 'number',
+                'tipo' => 'number',
                 'label' => esc_html__( 'Transition Speed', 'eight-degree' ),
                 'section' => 'eight_degree_homepage_slider',
                 )
@@ -176,7 +176,7 @@ $wp_customize->add_panel(
         $wp_customize->add_control(
             'eight_degree_homepage_slider_transition_pause',
             array(
-                'type' => 'number',
+                'tipo' => 'number',
                 'label' => esc_html__( 'Transition Pause', 'eight-degree' ),
                 'section' => 'eight_degree_homepage_slider',
                 )
@@ -213,7 +213,7 @@ $wp_customize->add_panel(
                     'section'       =>  'eight_degree_homepage_featured',
                     'setting'       =>  'eight_degree_homepage_featured_option',
                     'priority'      =>  10,
-                    'type'          =>  'switch',
+                    'tipo'          =>  'switch',
                     )
                 )                   
             );
@@ -234,7 +234,7 @@ $wp_customize->add_panel(
                 'description' => esc_html__( 'Choose page to display section title and description in Featured section.','eight-degree' ),
                 'section' =>    'eight_degree_homepage_featured',
                 'setting' =>    'eight_degree_homepage_featured_page',
-                'type'    =>    'dropdown-pages',
+                'tipo'    =>    'dropdown-pages',
                 )                                     
             );
 
@@ -254,7 +254,7 @@ $wp_customize->add_panel(
                 'label'         =>  esc_html__( 'Readmore Button','eight-degree' ),
                 'section'       =>  'eight_degree_homepage_featured',
                 'setting'       =>  'eight_degree_homepage_featured_readmore',
-                'type'          =>  'text',  
+                'tipo'          =>  'text',  
                 )                                     
             );
 
@@ -289,7 +289,7 @@ $wp_customize->add_panel(
                     'section'       =>  'eight_degree_homepage_service',
                     'setting'       =>  'eight_degree_homepage_service_option',
                     'priority'      =>  10,
-                    'type'          =>  'switch',
+                    'tipo'          =>  'switch',
                     )
                 )                   
             );
@@ -310,7 +310,7 @@ $wp_customize->add_panel(
                 'description' => esc_html__( 'Choose page to display section title and description in service section.','eight-degree' ),
                 'section' =>    'eight_degree_homepage_service',
                 'setting' =>    'eight_degree_homepage_service_page',
-                'type'    =>    'dropdown-pages',
+                'tipo'    =>    'dropdown-pages',
                 )                                     
             );
 
@@ -330,7 +330,7 @@ $wp_customize->add_panel(
                 'label'         =>  esc_html__( 'Readmore Button','eight-degree' ),
                 'section'       =>  'eight_degree_homepage_service',
                 'setting'       =>  'eight_degree_homepage_service_readmore',
-                'type'          =>  'text',  
+                'tipo'          =>  'text',  
                 )                                     
             );
 
@@ -364,7 +364,7 @@ $wp_customize->add_panel(
                     'section'       =>  'eight_degree_homepage_skill',
                     'setting'       =>  'eight_degree_homepage_skill_option',
                     'priority'      =>  10,
-                    'type'          =>  'switch',
+                    'tipo'          =>  'switch',
                     )
                 )                   
             );
@@ -385,7 +385,7 @@ $wp_customize->add_panel(
                 'description' => esc_html__( 'Enter text to show title of CEO Message in skill section.','eight-degree' ),
                 'section' =>    'eight_degree_homepage_skill',
                 'setting' =>    'eight_degree_homepage_skill_ceo_title',
-                'type'    =>    'text',
+                'tipo'    =>    'text',
                 )                                     
             );
 
@@ -405,7 +405,7 @@ $wp_customize->add_panel(
                 'description' => esc_html__( 'Choose page to display title, message and image of member or CEO in skill section.','eight-degree' ),
                 'section' =>    'eight_degree_homepage_skill',
                 'setting' =>    'eight_degree_homepage_skill_ceo_msg',
-                'type'    =>    'dropdown-pages',
+                'tipo'    =>    'dropdown-pages',
                 )                                     
             );
 
@@ -425,7 +425,7 @@ $wp_customize->add_panel(
                 'description' => esc_html__( 'Choose page to display skill title in skill section.','eight-degree' ),
                 'section' =>    'eight_degree_homepage_skill',
                 'setting' =>    'eight_degree_homepage_skill_page',
-                'type'    =>    'dropdown-pages',
+                'tipo'    =>    'dropdown-pages',
                 )                                     
             );
 
@@ -462,7 +462,7 @@ $wp_customize->add_panel(
                     'section'       =>  'eight_degree_homepage_counter',
                     'setting'       =>  'eight_degree_homepage_counter_option',
                     'priority'      =>  10,
-                    'type'          =>  'switch',
+                    'tipo'          =>  'switch',
                     )
                 )                   
             );
@@ -518,7 +518,7 @@ $wp_customize->add_panel(
                     'section'       =>  'eight_degree_homepage_team',
                     'setting'       =>  'eight_degree_homepage_team_option',
                     'priority'      =>  10,
-                    'type'          =>  'switch',
+                    'tipo'          =>  'switch',
                     )
                 )                   
             );
@@ -539,7 +539,7 @@ $wp_customize->add_panel(
                 'description' => esc_html__( 'Choose page to display section title and description in team section.','eight-degree' ),
                 'section' =>    'eight_degree_homepage_team',
                 'setting' =>    'eight_degree_homepage_team_page',
-                'type'    =>    'dropdown-pages',
+                'tipo'    =>    'dropdown-pages',
                 )                                     
             );
 
@@ -559,7 +559,7 @@ $wp_customize->add_panel(
                 'description' => esc_html__( ' Enter no. of posts to display in team section.','eight-degree' ),
                 'section' =>    'eight_degree_homepage_team',
                 'setting' =>    'eight_degree_homepage_team_post',
-                'type'    =>    'number',
+                'tipo'    =>    'number',
                 )                                     
             );
         
@@ -594,7 +594,7 @@ $wp_customize->add_panel(
                     'section'       =>  'eight_degree_homepage_portfolio',
                     'setting'       =>  'eight_degree_homepage_portfolio_option',
                     'priority'      =>  10,
-                    'type'          =>  'switch',
+                    'tipo'          =>  'switch',
                     )
                 )                   
             );
@@ -615,7 +615,7 @@ $wp_customize->add_panel(
                 'description' => esc_html__( 'Choose page to display section title and description in portfolio section.','eight-degree' ),
                 'section' =>    'eight_degree_homepage_portfolio',
                 'setting' =>    'eight_degree_homepage_portfolio_page',
-                'type'    =>    'dropdown-pages',
+                'tipo'    =>    'dropdown-pages',
                 )                                     
             );
 
@@ -634,7 +634,7 @@ $wp_customize->add_panel(
                 'label'   =>    esc_html__( 'No. of Post','eight-degree' ),
                 'section' =>    'eight_degree_homepage_portfolio',
                 'setting' =>    'eight_degree_homepage_portfolio_post',
-                'type'    =>    'number',         
+                'tipo'    =>    'number',         
                 )                                     
             );
 
@@ -671,7 +671,7 @@ $wp_customize->add_panel(
                     'section'       =>  'eight_degree_homepage_blog',
                     'setting'       =>  'eight_degree_homepage_blog_option',
                     'priority'      =>  10,
-                    'type'          =>  'switch',
+                    'tipo'          =>  'switch',
                     )
                 )                   
             );
@@ -692,7 +692,7 @@ $wp_customize->add_panel(
                 'description' => esc_html__( 'Choose page to display section title and description in blog section.','eight-degree' ),
                 'section' =>    'eight_degree_homepage_blog',
                 'setting' =>    'eight_degree_homepage_blog_page',
-                'type'    =>    'dropdown-pages',
+                'tipo'    =>    'dropdown-pages',
                 )                                     
             );
 
@@ -711,7 +711,7 @@ $wp_customize->add_panel(
                 'label'   =>    esc_html__( 'No. of Post','eight-degree' ),
                 'section' =>    'eight_degree_homepage_blog',
                 'setting' =>    'eight_degree_homepage_blog_post',
-                'type'    =>    'number',         
+                'tipo'    =>    'number',         
                 )                                     
             );
 
@@ -730,7 +730,7 @@ $wp_customize->add_panel(
                 'label'   =>    esc_html__( 'Readmore Button','eight-degree' ),
                 'section' =>    'eight_degree_homepage_blog',
                 'setting' =>    'eight_degree_homepage_blog_readmore',
-                'type'    =>    'text',         
+                'tipo'    =>    'text',         
                 )                                     
             );
 
@@ -765,7 +765,7 @@ $wp_customize->add_panel(
                     'section'       =>  'eight_degree_homepage_cta',
                     'setting'       =>  'eight_degree_homepage_cta_option',
                     'priority'      =>  10,
-                    'type'          =>  'switch',
+                    'tipo'          =>  'switch',
                     )
                 )                   
             );
@@ -786,7 +786,7 @@ $wp_customize->add_panel(
                 'description' => esc_html__( 'Choose page to display section title and description in cta section.','eight-degree' ),
                 'section' =>    'eight_degree_homepage_cta',
                 'setting' =>    'eight_degree_homepage_cta_page',
-                'type'    =>    'dropdown-pages',
+                'tipo'    =>    'dropdown-pages',
                 )                                     
             );
 
@@ -806,7 +806,7 @@ $wp_customize->add_panel(
                 'label'   =>    esc_html__( 'Readmore Button','eight-degree' ),
                 'section' =>    'eight_degree_homepage_cta',
                 'setting' =>    'eight_degree_homepage_cta_readmore',
-                'type'    =>    'text',         
+                'tipo'    =>    'text',         
                 )                                     
             );
 
@@ -825,7 +825,7 @@ $wp_customize->add_panel(
                 'label'   =>    esc_html__( 'Readmore Button Link','eight-degree' ),
                 'section' =>    'eight_degree_homepage_cta',
                 'setting' =>    'eight_degree_homepage_cta_readmore_link',
-                'type'    =>    'text',         
+                'tipo'    =>    'text',         
                 )                                     
             );
         
@@ -860,7 +860,7 @@ $wp_customize->add_panel(
                     'section'       =>  'eight_degree_homepage_testimonial',
                     'setting'       =>  'eight_degree_homepage_testimonial_option',
                     'priority'      =>  10,
-                    'type'          =>  'switch',
+                    'tipo'          =>  'switch',
                     )
                 )                   
             );
@@ -881,7 +881,7 @@ $wp_customize->add_panel(
                 'description' => esc_html__( 'Choose page to display section title and description in testimonial section.','eight-degree' ),
                 'section' =>    'eight_degree_homepage_testimonial',
                 'setting' =>    'eight_degree_homepage_testimonial_page',
-                'type'    =>    'dropdown-pages',
+                'tipo'    =>    'dropdown-pages',
                 )                                     
             );
         
@@ -916,7 +916,7 @@ $wp_customize->add_panel(
                     'section'       =>  'eight_degree_homepage_contact',
                     'setting'       =>  'eight_degree_homepage_contact_option',
                     'priority'      =>  10,
-                    'type'          =>  'switch',
+                    'tipo'          =>  'switch',
                     )
                 )                   
             );
@@ -937,7 +937,7 @@ $wp_customize->add_panel(
                 'description' => esc_html__( 'Choose page to display section title and description in contact section.','eight-degree' ),
                 'section' =>    'eight_degree_homepage_contact',
                 'setting' =>    'eight_degree_homepage_contact_page',
-                'type'    =>    'dropdown-pages',
+                'tipo'    =>    'dropdown-pages',
                 )                                     
             );
 
@@ -957,7 +957,7 @@ $wp_customize->add_panel(
                 'description' => esc_html__( 'Enter Contact Form plugin shortcode to show contact form in contact section.','eight-degree' ),
                 'section' =>    'eight_degree_homepage_contact',
                 'setting' =>    'eight_degree_homepage_contact_shortcode',
-                'type'    =>    'text',
+                'tipo'    =>    'text',
                 )                                     
             );
 
@@ -977,7 +977,7 @@ $wp_customize->add_panel(
                 'description' => esc_html__( 'Enter Phone no. to show in contact section.','eight-degree' ),
                 'section' =>    'eight_degree_homepage_contact',
                 'setting' =>    'eight_degree_homepage_contact_phone',
-                'type'    =>    'text',
+                'tipo'    =>    'text',
                 )                                     
             );
 
@@ -997,6 +997,6 @@ $wp_customize->add_panel(
                 'description' => esc_html__( 'Enter Email adress. to show in contact section.','eight-degree' ),
                 'section' =>    'eight_degree_homepage_contact',
                 'setting' =>    'eight_degree_homepage_contact_email',
-                'type'    =>    'text',
+                'tipo'    =>    'text',
                 )                                     
             );

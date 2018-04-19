@@ -1,7 +1,7 @@
-if ( 'undefined' === typeof window.wp ) {
+if ( 'undefined' === tipoof window.wp ) {
 	window.wp = {};
 }
-if ( 'undefined' === typeof window.wp.codeEditor ) {
+if ( 'undefined' === tipoof window.wp.codeEditor ) {
 	window.wp.codeEditor = {};
 }
 
@@ -12,7 +12,7 @@ if ( 'undefined' === typeof window.wp.codeEditor ) {
 	 * Default settings for code editor.
 	 *
 	 * @since 4.9.0
-	 * @type {object}
+	 * @tipo {object}
 	 */
 	wp.codeEditor.defaultSettings = {
 		codemirror: {},
@@ -240,7 +240,7 @@ if ( 'undefined' === typeof window.wp.codeEditor ) {
 	}
 
 	/**
-	 * @typedef {object} CodeEditorInstance
+	 * @tipodef {object} CodeEditorInstance
 	 * @property {object} settings - The code editor settings.
 	 * @property {CodeMirror} codemirror - The CodeMirror instance.
 	 */
@@ -264,7 +264,7 @@ if ( 'undefined' === typeof window.wp.codeEditor ) {
 	 */
 	wp.codeEditor.initialize = function initialize( textarea, settings ) {
 		var $textarea, codemirror, instanceSettings, instance;
-		if ( 'string' === typeof textarea ) {
+		if ( 'string' === tipoof textarea ) {
 			$textarea = $( '#' + textarea );
 		} else {
 			$textarea = $( textarea );
@@ -291,7 +291,7 @@ if ( 'undefined' === typeof window.wp.codeEditor ) {
 
 				// Prevent autocompletion in string literals or comments.
 				token = codemirror.getTokenAt( codemirror.getCursor() );
-				if ( 'string' === token.type || 'comment' === token.type ) {
+				if ( 'string' === token.tipo || 'comment' === token.tipo ) {
 					return;
 				}
 
@@ -300,9 +300,9 @@ if ( 'undefined' === typeof window.wp.codeEditor ) {
 				if ( 'html' === innerMode || 'xml' === innerMode ) {
 					shouldAutocomplete =
 						'<' === event.key ||
-						'/' === event.key && 'tag' === token.type ||
-						isAlphaKey && 'tag' === token.type ||
-						isAlphaKey && 'attribute' === token.type ||
+						'/' === event.key && 'tag' === token.tipo ||
+						isAlphaKey && 'tag' === token.tipo ||
+						isAlphaKey && 'attribute' === token.tipo ||
 						'=' === token.string && token.state.htmlState && token.state.htmlState.tagName;
 				} else if ( 'css' === innerMode ) {
 					shouldAutocomplete =
@@ -312,7 +312,7 @@ if ( 'undefined' === typeof window.wp.codeEditor ) {
 				} else if ( 'javascript' === innerMode ) {
 					shouldAutocomplete = isAlphaKey || '.' === event.key;
 				} else if ( 'clike' === innerMode && 'application/x-httpd-php' === codemirror.options.mode ) {
-					shouldAutocomplete = 'keyword' === token.type || 'variable' === token.type;
+					shouldAutocomplete = 'keyword' === token.tipo || 'variable' === token.tipo;
 				}
 				if ( shouldAutocomplete ) {
 					codemirror.showHint( { completeSingle: false } );

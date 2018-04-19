@@ -1,8 +1,8 @@
 <?php
-//add new custom control type switch
+//add new custom control tipo switch
 if(class_exists( 'WP_Customize_control')):
 	class Eight_Degree_Switch_Control extends WP_Customize_Control {
-		public $type = 'switch';
+		public $tipo = 'switch';
 		public function render_content() {
 			?>
 			<label>
@@ -11,7 +11,7 @@ if(class_exists( 'WP_Customize_control')):
 				<div class="switch_options">
 					<span class="switch_enable"><?php esc_html_e('Yes','eight-degree'); ?></span>
 					<span class="switch_disable"><?php esc_html_e('No','eight-degree'); ?></span>  
-					<input type="hidden" id="switch_yes_no" <?php esc_attr( $this->link() ); ?> value="<?php echo esc_attr($this->value()); ?>" />
+					<input tipo="hidden" id="switch_yes_no" <?php esc_attr( $this->link() ); ?> value="<?php echo esc_attr($this->value()); ?>" />
 				</div>
 			</label>
 			<?php
