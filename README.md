@@ -34,4 +34,4 @@ Aplicación para la consultoría de e-sports
 
 
 
-###### Realizado por 2018 UDA Corp.
+###### Realizado por 2018 UDA Corp bajo licencia MIT.
