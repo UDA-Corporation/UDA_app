@@ -42,8 +42,8 @@ CREATE TABLE Equipo
     cod        NUMBER (5) NOT NULL ,
     nombre     VARCHAR2 (30) NOT NULL ,
     desripcion VARCHAR2 (100) NOT NULL ,
-    puntos     VARCHAR2(3),
-    puesto     VARCHAR2(2),
+    puntos     VARCHAR2(3) NOT NULL ,
+    puesto     VARCHAR2(2) NOT NULL ,
     Dueno_dni  VARCHAR2 (9) NOT NULL
   ) ;
 ALTER TABLE Equipo ADD CONSTRAINT Equipo_PK PRIMARY KEY ( cod ) ;
@@ -99,7 +99,7 @@ CREATE TABLE Partido
     codGanador     NUMBER (5),
     empate         CHAR (1),
     fecha          DATE NOT NULL ,
-    resultado      VARCHAR2(4),
+    resultado      VARCHAR2(4) NOT NULL ,
     Jornadas_cod_1 NUMBER NOT NULL
   ) ;
 ALTER TABLE Partido ADD CONSTRAINT Partido_PK PRIMARY KEY ( cod ) ;
