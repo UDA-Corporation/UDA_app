@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<liga>
+    <clasificacion>
+        <equipo codEquipo="">
+            <nombre></nombre>
+            <descripcion></descripcion>
+        </equipo>
+        <equipo codEquipo="">
+            <nombre></nombre>
+            <descripcion></descripcion>
+        </equipo>
+        <equipo codEquipo="">
+            <nombre></nombre>
+            <descripcion></descripcion>
+        </equipo>
+        <equipo codEquipo="">
+            <nombre></nombre>
+            <descripcion></descripcion>
+        </equipo>
+        <equipo codEquipo="">
+            <nombre></nombre>
+            <descripcion></descripcion>
+        </equipo>
+        <equipo codEquipo="">
+            <nombre></nombre>
+            <descripcion></descripcion>
+        </equipo>
+        <equipo codEquipo="">
+            <nombre></nombre>
+            <descripcion></descripcion>
+        </equipo>
+        <equipo codEquipo="">
+            <nombre></nombre>
+            <descripcion></descripcion>
+        </equipo>
+    </clasificacion>
+    <jornada codigoJornada="" fechaI="" fechaF="">
+        <equipo codEquipo="">
+            <nombre></nombre>
+            <descripcion></descripcion>
+        </equipo>
+        <equipo codEquipo="">
+            <nombre></nombre>
+            <descripcion></descripcion>
+        </equipo>
+        <resultado></resultado>
+    </jornada>
+    <ultimaJornada codJornada="" fechaI="" fechaF="">>
+        <equipo codEquipo="">
+            <nombre></nombre>
+            <descripcion></descripcion>
+        </equipo>
+        <equipo codEquipo="">
+            <nombre></nombre>
+            <descripcion></descripcion>
+        </equipo>
+        <resultado></resultado>
+    </ultimaJornada>
+</liga>
