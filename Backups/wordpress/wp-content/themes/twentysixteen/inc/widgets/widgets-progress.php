@@ -37,12 +37,12 @@ class eight_degree_Progress_Bar extends WP_Widget {
             'progress_bar_percentage' => array(
                 'eight_degree_widgets_name' => 'progress_bar_percentage',
                 'eight_degree_widgets_title' => esc_html__('Progress Bar Percentage', 'eight-degree'),
-                'eight_degree_widgets_field_type' => 'number',
+                'eight_degree_widgets_field_tipo' => 'number',
             ),
             'progress_bar_title' => array(
                 'eight_degree_widgets_name' => 'progress_bar_title',
                 'eight_degree_widgets_title' => esc_html__('Progress Bar Title', 'eight-degree'),
-                'eight_degree_widgets_field_type' => 'text',
+                'eight_degree_widgets_field_tipo' => 'text',
             )
         );
 

@@ -30,7 +30,7 @@
 					$wp_customize,
 					'eight_degree_header_search_option',
 					array(
-						'type'			=>	'switch',
+						'tipo'			=>	'switch',
 						'label'			=>	esc_html__( 'Show Search', 'eight-degree' ),
 						'description'	=>	esc_html__( 'Select Yes to show search option in Header', 'eight-degree' ),
 						'section'		=>	'eight_degree_header_search',
@@ -80,7 +80,7 @@
 		   			$wp_customize,
 				   	'eight_degree_header_social_option', 
 				   	array(
-				      	'type' => 'switch',
+				      	'tipo' => 'switch',
 				      	'label' => esc_html__( 'Show Social Icons', 'eight-degree' ),
 				      	'description'	=> esc_html__( 'Select Yes to show social icons in header. To add social links, go to Theme Setup -> Social Link Setup and add the links to shown on social links sections.','eight-degree' ),
 				      	'section' => 'eight_degree_header_social',
@@ -111,7 +111,7 @@
 		   	$wp_customize->add_control(
 			   	'eight_degree_header_logo_align', 
 			   	array(
-			      	'type' => 'radio',
+			      	'tipo' => 'radio',
 			      	'label' => esc_html__( 'Logo Alignment', 'eight-degree' ),
 			      	'description'	=> esc_html__(' Choose the option to align the Logo on your header.','eight-degree' ),
 			      	'section' => 'eight_degree_header_logo',

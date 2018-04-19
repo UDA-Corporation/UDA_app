@@ -1,0 +1,23 @@
+<!DOCTYPE liga [
+        <!ELEMENT liga (clasificacion|jornada)*>
+        <!ATTLIST liga
+                xmlns:xsi CDATA #REQUIRED
+                xsi:noNamespaceSchemaLocation CDATA #REQUIRED>
+        <!ELEMENT clasificacion (equipo)*>
+        <!ELEMENT equipo (nombre|puntos|puesto)*>
+        <!ATTLIST equipo
+                codEquipo CDATA #REQUIRED>
+        <!ELEMENT nombre (#PCDATA)>
+        <!ELEMENT puntos (#PCDATA)>
+        <!ELEMENT puesto (#PCDATA)>
+        <!ELEMENT jornada (partido)*>
+        <!ATTLIST jornada
+                codigoJornada CDATA #REQUIRED
+                fechaI CDATA #REQUIRED
+                fechaF CDATA #REQUIRED>
+        <!ELEMENT partido (resultado)*>
+        <!ATTLIST partido
+                equipo_local CDATA #REQUIRED
+                equipo_visitante CDATA #REQUIRED>
+        <!ELEMENT resultado (#PCDATA)>
+        ]>

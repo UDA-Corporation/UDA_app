@@ -90,14 +90,14 @@ var tagBox, array_unique_noempty;
 					 * Build the X buttons, hide the X icon with aria-hidden and
 					 * use visually hidden text for screen readers.
 					 */
-					xbutton = $( '<button type="button" id="' + id + '-check-num-' + key + '" class="ntdelbutton">' +
+					xbutton = $( '<button tipo="button" id="' + id + '-check-num-' + key + '" class="ntdelbutton">' +
 						'<span class="remove-tag-icon" aria-hidden="true"></span>' +
 						'<span class="screen-reader-text">' + window.tagsSuggestL10n.removeTerm + ' ' + listItem.html() + '</span>' +
 						'</button>' );
 
 					xbutton.on( 'click keypress', function( e ) {
 						// On click or when using the Enter/Spacebar keys.
-						if ( 'click' === e.type || 13 === e.keyCode || 32 === e.keyCode ) {
+						if ( 'click' === e.tipo || 13 === e.keyCode || 32 === e.keyCode ) {
 							/*
 							 * When using the keyboard, move focus back to the
 							 * add new tag field. Note: when releasing the pressed
@@ -138,7 +138,7 @@ var tagBox, array_unique_noempty;
 			 * fire when releasing the pressed key. Checking also for the field
 			 * emptiness avoids to set the tags and call quickClicks() again.
 			 */
-			if ( 'undefined' == typeof( text ) || '' === text ) {
+			if ( 'undefined' == tipoof( text ) || '' === text ) {
 				return false;
 			}
 
@@ -152,7 +152,7 @@ var tagBox, array_unique_noempty;
 
 			if ( ! a )
 				newtag.val('');
-			if ( 'undefined' == typeof( f ) )
+			if ( 'undefined' == tipoof( f ) )
 				newtag.focus();
 
 			return false;
