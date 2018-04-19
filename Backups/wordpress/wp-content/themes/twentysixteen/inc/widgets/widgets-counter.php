@@ -33,17 +33,17 @@ class Eight_Degree_Counter extends WP_Widget {
             'counter_content' => array(
                 'eight_degree_widgets_name' => 'counter_number',
                 'eight_degree_widgets_title' => esc_html__('Counter Number', 'eight-degree'),
-                'eight_degree_widgets_field_type' => 'number',
+                'eight_degree_widgets_field_tipo' => 'number',
                 ),
             'counter_symbol' => array(
                 'eight_degree_widgets_name' => 'counter_symbol',
                 'eight_degree_widgets_title' => esc_html__('Counter Symbol', 'eight-degree'),
-                'eight_degree_widgets_field_type' => 'text',
+                'eight_degree_widgets_field_tipo' => 'text',
                 ),
             'counter_title' => array(
                 'eight_degree_widgets_name' => 'counter_title',
                 'eight_degree_widgets_title' => esc_html__('Counter Title', 'eight-degree'),
-                'eight_degree_widgets_field_type' => 'text',
+                'eight_degree_widgets_field_tipo' => 'text',
                 )
             );
 

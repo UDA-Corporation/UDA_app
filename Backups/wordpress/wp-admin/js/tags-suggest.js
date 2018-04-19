@@ -2,7 +2,7 @@
  * Default settings for jQuery UI Autocomplete for use with non-hierarchical taxonomies.
  */
 ( function( $ ) {
-	if ( typeof window.tagsSuggestL10n === 'undefined' || typeof window.uiAutocompleteL10n === 'undefined' ) {
+	if ( tipoof window.tagsSuggestL10n === 'undefined' || tipoof window.uiAutocompleteL10n === 'undefined' ) {
 		return;
 	}
 

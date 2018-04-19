@@ -33,7 +33,7 @@ $wp_customize->add_panel(
                 $wp_customize,
                 'eight_degree_author_option',
                 array(
-                    'type' => 'switch',
+                    'tipo' => 'switch',
                     'label' => esc_html__( 'Enable Author', 'eight-degree' ),
                     'description' => esc_html__( 'Select Yes to show Author of the posts on Single Post Page.(Note: Authors of posts are shown in single page of the blog post only.)', 'eight-degree' ),
                     'section' => 'eight_degree_author',
@@ -52,7 +52,7 @@ $wp_customize->add_panel(
         $wp_customize->add_control(
             'eight_degree_author_title',
             array(
-                'type' => 'text',
+                'tipo' => 'text',
                 'label' => esc_html__( 'Author Title', 'eight-degree' ),
                 'description' => esc_html__( 'Enter text to show the title of Author section in single page.', 'eight-degree' ),
                 'section' => 'eight_degree_author',
@@ -84,7 +84,7 @@ $wp_customize->add_panel(
                 $wp_customize,
                 'eight_degree_related_option',
                 array(
-                    'type' => 'switch',
+                    'tipo' => 'switch',
                     'label' => esc_html__( 'Enable Related', 'eight-degree' ),
                     'description' => esc_html__( 'Select Yes to show Related posts on Single Post Page.', 'eight-degree' ),
                     'section' => 'eight_degree_related',
@@ -103,7 +103,7 @@ $wp_customize->add_panel(
         $wp_customize->add_control(
             'eight_degree_related_title',
             array(
-                'type' => 'text',
+                'tipo' => 'text',
                 'label' => esc_html__( 'Related Post Title', 'eight-degree' ),
                 'description' => esc_html__( 'Enter title to show the title of related post.', 'eight-degree' ),
                 'section' => 'eight_degree_related',
@@ -111,7 +111,7 @@ $wp_customize->add_panel(
             );
 
         $wp_customize->add_setting(
-            'eight_degree_related_type',
+            'eight_degree_related_tipo',
             array(
                 'default' => 'cat',
                 'sanitize_callback' => 'eight_degree_sanitize_related'
@@ -119,11 +119,11 @@ $wp_customize->add_panel(
             );
 
         $wp_customize->add_control(
-            'eight_degree_related_type',
+            'eight_degree_related_tipo',
             array(
-                'type' => 'radio',
-                'label' => esc_html__( 'Related Post Type', 'eight-degree' ),
-                'description' => esc_html__( 'Select the taxonomy type to the post in related post section.', 'eight-degree' ),
+                'tipo' => 'radio',
+                'label' => esc_html__( 'Related Post tipo', 'eight-degree' ),
+                'description' => esc_html__( 'Select the taxonomy tipo to the post in related post section.', 'eight-degree' ),
                 'section' => 'eight_degree_related',
                 'choices'	=> array(
                 		'cat' => esc_html__('Category','eight-degree'),
@@ -143,7 +143,7 @@ $wp_customize->add_panel(
         $wp_customize->add_control(
             'eight_degree_related_post_num',
             array(
-                'type' => 'number',
+                'tipo' => 'number',
                 'label' => esc_html__( 'Related Post Number', 'eight-degree' ),
                 'description' => esc_html__( 'Enter number to show total number of related post.', 'eight-degree' ),
                 'section' => 'eight_degree_related',
