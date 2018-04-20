@@ -6,6 +6,7 @@ echo "
 
 By UDA Corp. under MIT license
 "
+rm ConnectionResults.log
 #Indicamos cual sera el fichero log y le añadimos cabecera
 LOG="ConnectionResults.log"
 echo "
