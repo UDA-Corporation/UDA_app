@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="liga" type="tipo_liga"/>
+    <xs:complexType name="tipo_liga">
+        <xs:sequence>
+            <xs:element name="clasificacion" type="tipo_clasificacion" />
+            <xs:element name="jornada" type="tipo_jornada" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tipo_clasificacion">
+        <xs:sequence>
+            <xs:element name="equipo" type="tipo_equipo" maxOccurs="8"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tipo_jornada">
+        <xs:sequence>
+            <xs:element name="partido" type="tipo_partido"/>
+        </xs:sequence>
+        <xs:attribute name="codigoJornada" type="xs:string" use="required"/>
+        <xs:attribute name="fechaI" type="xs:string" use="required"/>
+        <xs:attribute name="fechaF" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="tipo_partido">
+        <xs:sequence>
+            <xs:element name="resultado" type="tipo_resultado"/>
+        </xs:sequence>
+        <xs:attribute name="equipo_local" type="xs:IDREF" use="required"/>
+        <xs:attribute name="equipo_visitante" type="xs:IDREF" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="tipo_equipo">
+    <xs:sequence>
+        <xs:element name="nombre" type="xs:string"/>
+        <xs:element name="puntos" type="xs:string"/>
+        <xs:element name="puesto" type="xs:string"/>
+    </xs:sequence>
+        <xs:attribute name="codEquipo" type="xs:ID" use="required"/>
+    </xs:complexType>
+    <xs:simpleType name="tipo_resultado">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([0-9]|[0-9]{2})-([0-9]|[0-9]{2})"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tipo_nombre">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
