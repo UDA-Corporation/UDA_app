@@ -30,6 +30,7 @@ Aplicación para la consultoría de e-sports
 ======
 
 ### Team drive con  [toda la documentación](https://docs.google.com/spreadsheets/d/1_2MhafOwp65LQePLwjUlc97uKK25Kxp-BGnyit3nX5c/edit?usp=sharing)
+![Semana 1](https://img.shields.io/badge/Semana-1-blue.svg)
 
 | Links específicos |
 | ------------- |
