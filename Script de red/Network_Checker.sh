@@ -15,10 +15,6 @@ echo "
 
 Result(s) of the test(s)
 " >> $LOG
-#While para introducir cuantos nodos se quiera comprobar
-####RESPUESTA="S"
-####while $RESPUESTA -eq "S"
-####    do
         #Nodo para hacer ping introducirdo por el usuario
         echo "Por favor, introduzca la direccion del nodo a comprobar (Ejemplo: "8.8.8.8")"
         read TARGET
