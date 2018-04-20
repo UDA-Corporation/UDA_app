@@ -29,8 +29,15 @@
 Aplicación para la consultoría de e-sports
 ======
 
-### [Team drive con documentación](https://docs.google.com/spreadsheets/d/1_2MhafOwp65LQePLwjUlc97uKK25Kxp-BGnyit3nX5c/edit?usp=sharing)
+### Team drive con  [toda la documentación](https://docs.google.com/spreadsheets/d/1_2MhafOwp65LQePLwjUlc97uKK25Kxp-BGnyit3nX5c/edit?usp=sharing)
 
+| Links específicos |
+| ------------- |
+| Planificación detallada [link](https://drive.google.com/open?id=1_2MhafOwp65LQePLwjUlc97uKK25Kxp-BGnyit3nX5c) |
+| Documento explicativo del blog [link](https://drive.google.com/open?id=1SttzjdZzzFsaCIyl2GKgd7gY8zkMfoNMLgY9jsvi5PE) |
+| Dirección del blog: [10.1.2.1](https://10.1.2.1) |
+| MER [link](https://drive.google.com/open?id=1OZi7ZL8-vAWY9JuLJnjlcpYZ60HOlj0g) |
+| Casos de uso [link](https://drive.google.com/drive/folders/1VF7uAJGxh_eSb2wDG8RIVdB9CUqk9YqM) |
 
 
 
