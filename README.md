@@ -43,4 +43,4 @@ Aplicación para la consultoría de e-sports
 <enter/>
 <enter/>
 <enter/>
-##### Realizado por UDA Corp. bajo licencia [MIT](https://github.com/Barraguesh/UDA_app/blob/master/LICENSE). 2018.
+### Realizado por UDA Corp. bajo licencia [MIT](https://github.com/Barraguesh/UDA_app/blob/master/LICENSE). 2018.
