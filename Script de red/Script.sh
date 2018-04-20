@@ -2,7 +2,7 @@
 echo "
 ▒█▄░▒█ █▀▀ ▀▀█▀▀ █░░░█ █▀▀█ █▀▀█ █░█ 　 █▀▀ █░░█ █▀▀ █▀▀ █░█ █▀▀ █▀▀█
 ▒█▒█▒█ █▀▀ ░░█░░ █▄█▄█ █░░█ █▄▄▀ █▀▄ 　 █░░ █▀▀█ █▀▀ █░░ █▀▄ █▀▀ █▄▄▀
-▒█░░▀█ ▀▀▀ ░░▀░░ ░▀░▀░ ▀▀▀▀ ▀░▀▀ ▀░▀ 　 ▀▀▀ ▀░░▀ ▀▀▀ ▀▀▀ ▀░▀ ▀▀▀ ▀░▀▀ v0.3 alpha
+▒█░░▀█ ▀▀▀ ░░▀░░ ░▀░▀░ ▀▀▀▀ ▀░▀▀ ▀░▀ 　 ▀▀▀ ▀░░▀ ▀▀▀ ▀▀▀ ▀░▀ ▀▀▀ ▀░▀▀ v1.0
 
 By UDA Corp. under MIT license
 "
@@ -21,44 +21,48 @@ if ping -n -c 4 $TARGET >/dev/null #Ping de 4 paquetes
         #Hay conexion
         echo "Node: $TARGET - $(date +%F\ %T) - Successful" >> $LOG
     else
-        #No hay conexion mostramos el log al usuario y matamos el proceso
+        #No hay conexion mostramos el log al usuario
         echo "Node: $TARGET - $(date +%F\ %T) - Failed - Check status of the node $TARGET!" >> $LOG
         cat ConnectionResults.log
 fi
+#Nodo 2
 if ping -n -c 4 $TARGET2 >/dev/null #Ping de 4 paquetes
     then
         #Hay conexion
         echo "Node: $TARGET2 - $(date +%F\ %T) - Successful" >> $LOG
     else
-        #No hay conexion mostramos el log al usuario y matamos el proceso
+        #No hay conexion mostramos el log al usuario
         echo "Node: $TARGET2 - $(date +%F\ %T) - Failed - Check status of the node $TARGET2!" >> $LOG
         cat ConnectionResults.log
 fi
+#Nodo 3
 if ping -n -c 4 $TARGET3 >/dev/null #Ping de 4 paquetes
     then
         #Hay conexion
         echo "Node: $TARGET3 - $(date +%F\ %T) - Successful" >> $LOG
     else
-        #No hay conexion mostramos el log al usuario y matamos el proceso
+        #No hay conexion mostramos el log al usuario
         echo "Node: $TARGET3 - $(date +%F\ %T) - Failed - Check status of the node $TARGET3!" >> $LOG
         cat ConnectionResults.log
 fi
+#Nodo 4
 if ping -n -c 4 $TARGET4 >/dev/null #Ping de 4 paquetes
     then
         #Hay conexion
         echo "Node: $TARGET4 - $(date +%F\ %T) - Successful" >> $LOG
     else
-        #No hay conexion mostramos el log al usuario y matamos el proceso
+        #No hay conexion mostramos el log al usuario
         echo "Node: $TARGET4 - $(date +%F\ %T) - Failed - Check status of the node $TARGET4!" >> $LOG
         cat ConnectionResults.log
 fi
+#Nodo 5
 if ping -n -c 4 $TARGET5 >/dev/null #Ping de 4 paquetes
     then
         #Hay conexion
         echo "Node: $TARGET5 - $(date +%F\ %T) - Successful" >> $LOG
         echo "" >> $LOG
     else
-        #No hay conexion mostramos el log al usuario y matamos el proceso
+        #No hay conexion mostramos el log al usuario
         echo "Node: $TARGET5 - $(date +%F\ %T) - Failed - Check status of the node $TARGET5!" >> $LOG
         echo "" >> $LOG
         cat ConnectionResults.log
