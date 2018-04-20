@@ -41,4 +41,4 @@ Aplicación para la consultoría de e-sports
 | Modelo relacional [link](https://drive.google.com/open?id=13N-hnxuGg5V-xNkvi3PpLdiNZQDFf_EK3ihcgDv7OOQ) |
 | Dirección del blog: [10.1.2.1](https://10.1.2.1) |
 
-### Realizado por UDA Corp. bajo licencia [MIT](https://github.com/Barraguesh/UDA_app/blob/master/LICENSE). 2018.
+###### Realizado por UDA Corp. bajo licencia [MIT](https://github.com/Barraguesh/UDA_app/blob/master/LICENSE). 2018.
