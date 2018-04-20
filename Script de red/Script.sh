@@ -8,7 +8,7 @@ By UDA Corp. under MIT license
 "
 #Indicamos cual sera el fichero log
 LOG="ConnectionResults.log"
-echo "Los resultados se guardarán en el fichero "ConnectionResults.log""
+echo "The results will be saved in "ConnectionResults.log""
 #Nodos para hacer ping
 TARGET="10.1.1.1"
 TARGET2="10.1.2.1"
@@ -23,7 +23,7 @@ if ping -n -c 4 $TARGET >/dev/null #Ping de 4 paquetes
     else
         #No hay conexion mostramos el log al usuario
         echo "Node: $TARGET - $(date +%F\ %T) - Failed - Check status of the node $TARGET!" >> $LOG
-        cat ConnectionResults.log
+        echo "Error in the connection of node $TARGET, check "ConnectionResults.log" for more details"
 fi
 #Nodo 2
 if ping -n -c 4 $TARGET2 >/dev/null #Ping de 4 paquetes
@@ -33,7 +33,7 @@ if ping -n -c 4 $TARGET2 >/dev/null #Ping de 4 paquetes
     else
         #No hay conexion mostramos el log al usuario
         echo "Node: $TARGET2 - $(date +%F\ %T) - Failed - Check status of the node $TARGET2!" >> $LOG
-        cat ConnectionResults.log
+        echo "Error in the connection of node $TARGET2, check "ConnectionResults.log" for more details"
 fi
 #Nodo 3
 if ping -n -c 4 $TARGET3 >/dev/null #Ping de 4 paquetes
@@ -43,7 +43,7 @@ if ping -n -c 4 $TARGET3 >/dev/null #Ping de 4 paquetes
     else
         #No hay conexion mostramos el log al usuario
         echo "Node: $TARGET3 - $(date +%F\ %T) - Failed - Check status of the node $TARGET3!" >> $LOG
-        cat ConnectionResults.log
+        echo "Error in the connection of node $TARGET3, check "ConnectionResults.log" for more details"
 fi
 #Nodo 4
 if ping -n -c 4 $TARGET4 >/dev/null #Ping de 4 paquetes
@@ -53,7 +53,7 @@ if ping -n -c 4 $TARGET4 >/dev/null #Ping de 4 paquetes
     else
         #No hay conexion mostramos el log al usuario
         echo "Node: $TARGET4 - $(date +%F\ %T) - Failed - Check status of the node $TARGET4!" >> $LOG
-        cat ConnectionResults.log
+        echo "Error in the connection of node $TARGET4, check "ConnectionResults.log" for more details"
 fi
 #Nodo 5
 if ping -n -c 4 $TARGET5 >/dev/null #Ping de 4 paquetes
@@ -65,5 +65,5 @@ if ping -n -c 4 $TARGET5 >/dev/null #Ping de 4 paquetes
         #No hay conexion mostramos el log al usuario
         echo "Node: $TARGET5 - $(date +%F\ %T) - Failed - Check status of the node $TARGET5!" >> $LOG
         echo "" >> $LOG
-        cat ConnectionResults.log
+        echo "Error in the connection of node $TARGET5, check "ConnectionResults.log" for more details"
 fi
