@@ -4,9 +4,6 @@
 <createdTime>2018-04-18 07:29:58 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
-<engineerTo>
-<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
-</engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
 <fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
@@ -21,9 +18,6 @@
 <createdTime>2018-04-18 10:00:31 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
-<engineerTo>
-<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
-</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -35,9 +29,6 @@
 <createdTime>2018-04-18 07:30:10 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
-<engineerTo>
-<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
-</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -49,9 +40,6 @@
 <createdTime>2018-04-18 07:30:15 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
-<engineerTo>
-<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
-</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT020</logicalDatatype>
@@ -63,9 +51,6 @@
 <createdTime>2018-04-18 10:00:31 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
-<engineerTo>
-<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
-</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -77,9 +62,6 @@
 <createdTime>2018-04-18 10:00:31 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
-<engineerTo>
-<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
-</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -91,9 +73,6 @@
 <createdTime>2018-04-18 10:00:31 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
-<engineerTo>
-<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
-</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -105,9 +84,6 @@
 <createdTime>2018-04-18 10:00:31 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
-<engineerTo>
-<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
-</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -119,9 +95,6 @@
 <createdTime>2018-04-18 10:00:31 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
-<engineerTo>
-<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
-</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -133,9 +106,6 @@
 <createdTime>2018-04-18 10:00:31 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
-<engineerTo>
-<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
-</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -147,9 +117,6 @@
 <createdTime>2018-04-18 10:00:31 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
-<engineerTo>
-<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
-</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -161,9 +128,6 @@
 <createdTime>2018-04-18 10:00:31 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
-<engineerTo>
-<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
-</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -175,9 +139,6 @@
 <createdTime>2018-04-18 10:00:31 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
-<engineerTo>
-<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
-</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -189,22 +150,16 @@
 <createdTime>2018-04-18 10:00:31 UTC</createdTime>
 <generatorID>944D82BD-789C-CEB3-6332-35972D5270AE</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
-<engineerTo>
-<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
-</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="cod" id="335404E7-8498-B8FC-E588-F46F8DEDCD3D">
+<Attribute name="cod1" id="D5B23D4B-D425-3ECD-2F00-8DB71241C6D3">
 <createdBy>1gdaw02</createdBy>
-<createdTime>2018-04-18 10:01:14 UTC</createdTime>
-<generatorID>7FA7420A-B8D7-E91C-976A-53FA0EF729D8</generatorID>
+<createdTime>2018-04-20 08:59:00 UTC</createdTime>
+<generatorID>F0371BD6-34B1-EAFC-900E-59C6EB2CF1ED</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
-<engineerTo>
-<item key="C2B73EAE-7301-6DED-B385-92C4DF224B00" value="true"/>
-</engineerTo>
 <referedAttribute>FD9F9D03-FCD2-B775-C9AA-098F8184712A</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
