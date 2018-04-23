@@ -36,11 +36,4 @@ $RECYCLE.BIN/
 
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
-
-#Netbeans IDE
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
+Java/UDA_app/nbproject/private/private.properties
