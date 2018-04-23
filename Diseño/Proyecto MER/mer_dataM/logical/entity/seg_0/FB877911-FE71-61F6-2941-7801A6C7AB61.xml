@@ -46,17 +46,17 @@
 <dataTypeSize>100</dataTypeSize>
 <ownDataTypeParameters>100,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="dni1" id="ADE77BD1-893E-F8C2-408C-4F737D7ABE9A">
-<createdBy>1gdaw02</createdBy>
-<createdTime>2018-04-20 08:59:00 UTC</createdTime>
-<generatorID>F37A5A39-294B-69D6-006D-E5AABCB480D4</generatorID>
+<Attribute name="dni" id="9EFE0CCB-4F9D-0223-FD57-A3ED666DC50A">
+<createdBy>unai-</createdBy>
+<createdTime>2018-04-23 06:42:53 UTC</createdTime>
+<generatorID>CE657EC0-3D1D-750F-01F6-F8575D173007</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
 <referedAttribute>87E01B64-993E-8201-DD0A-97DD19D83584</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>9</dataTypeSize>
-<ownDataTypeParameters>9,,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
