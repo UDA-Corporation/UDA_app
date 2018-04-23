@@ -10,7 +10,7 @@ create or replace trigger maxJugadores
       if cont>5
         then raise_application_error(-20001,'Un equipo no puede tener mas de 6 jugadores');
       end if;  
-  end; 
+  end;  
 create or replace trigger maxSalario
   before insert or update on jugador
   for each row
