@@ -1,5 +1,6 @@
 #Netbeans IDE
-nbproject/private/
+nbproject/private/private.xml
+nbproject/private/private.properties
 build/
 nbbuild/
 dist/
