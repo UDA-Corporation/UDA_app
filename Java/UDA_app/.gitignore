@@ -1,0 +1,8 @@
+#Netbeans IDE
+nbproject/private/private.xml
+nbproject/private/private.properties
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
