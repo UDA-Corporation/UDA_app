@@ -61,4 +61,4 @@ INSERT INTO LIGA VALUES (1);
 INSERT INTO JORNADAS VALUES (1,To_Date('23/04/18','DD/MM/YY'),To_Date('23/05/18','DD/MM/YY'),1);
 
 --Hacemos un partido
-INSERT INTO PARTIDO VALUES (1,'Vitoria-Gasteiz',To_Date('23/04/18','DD/MM/YY'),'0',1);
+INSERT INTO PARTIDO VALUES (1,'Vitoria-Gasteiz',1,0,To_Date('23/04/18','DD/MM/YY'),'0',1);
