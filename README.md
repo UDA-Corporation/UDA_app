@@ -36,9 +36,9 @@ Aplicación para la consultoría de e-sports
 | ------------- |
 | Planificación detallada [link](https://drive.google.com/open?id=1_2MhafOwp65LQePLwjUlc97uKK25Kxp-BGnyit3nX5c) |
 | Documento explicativo del blog [link](https://drive.google.com/open?id=1SttzjdZzzFsaCIyl2GKgd7gY8zkMfoNMLgY9jsvi5PE) |
-| MER [link](https://drive.google.com/open?id=1OZi7ZL8-vAWY9JuLJnjlcpYZ60HOlj0g) |
+| MER [link](https://drive.google.com/open?id=1YQ2_Q1B76B5JAkKyi2qpNAd06gPDKu0a) |
 | Casos de uso [link](https://drive.google.com/drive/folders/1VF7uAJGxh_eSb2wDG8RIVdB9CUqk9YqM) |
-| Modelo relacional [link](https://drive.google.com/open?id=13N-hnxuGg5V-xNkvi3PpLdiNZQDFf_EK3ihcgDv7OOQ) |
+| Modelo relacional [link](https://drive.google.com/open?id=1OZi7ZL8-vAWY9JuLJnjlcpYZ60HOlj0g) |
 | Dirección del blog: [10.1.2.1](https://10.1.2.1) |
 
 ###### Realizado por UDA Corp. bajo licencia [MIT](https://github.com/Barraguesh/UDA_app/blob/master/LICENSE). 2018.
