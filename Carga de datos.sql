@@ -54,11 +54,11 @@ INSERT INTO EQUIPO VALUES (1,'D3STROY','Campeones de 2015. Equipo creado por el 
 INSERT INTO EQUIPO VALUES (2,'FNATICX','Campeones de 2016. Los mas veteranos de la liga.',0,2,'38274230I');
 INSERT INTO EQUIPO VALUES (3,'BIMBA','Aun no han sido campeones pero prometen dar espectaculo.',0,1,'91823490O');
 
---Hacemos un partido
-INSERT INTO PARTIDO VALUES (1,'Vitoria-Gasteiz',To_Date('23/04/18','DD/MM/YY'),'0',1);
+--Creamos la liga
+INSERT INTO LIGA VALUES (1);
 
 --Jornadas
 INSERT INTO JORNADAS VALUES (1,To_Date('23/04/18','DD/MM/YY'),To_Date('23/05/18','DD/MM/YY'),1);
 
---Creamos la liga
-INSERT INTO LIGA VALUES (1);
+--Hacemos un partido
+INSERT INTO PARTIDO VALUES (1,'Vitoria-Gasteiz',To_Date('23/04/18','DD/MM/YY'),'0',1);
