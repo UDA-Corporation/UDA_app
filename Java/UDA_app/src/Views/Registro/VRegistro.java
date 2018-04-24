@@ -16,6 +16,7 @@ public class VRegistro extends javax.swing.JFrame {
      */
     public VRegistro() {
         initComponents();
+        inicializarVentana();
     }
 
     /**
@@ -361,6 +362,11 @@ public class VRegistro extends javax.swing.JFrame {
         );
 
         bAceptar.setText("Aceptar");
+        bAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAceptarActionPerformed(evt);
+            }
+        });
 
         bCancelar.setText("Cancelar");
 
@@ -414,6 +420,27 @@ public class VRegistro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bAceptarActionPerformed
+    
+    public void inicializarVentana(){
+        
+        setLocationRelativeTo(null);
+        lDniError.setVisible(false);
+        lNombreError.setVisible(false);
+        lApellidoError.setVisible(false);
+        lCalleError.setVisible(false);
+        lNroError.setVisible(false);
+        lPisoError.setVisible(false);
+        lCiudadError.setVisible(false);
+        lCpError.setVisible(false);
+        lPaisError.setVisible(false);
+        lTelError.setVisible(false);
+        lUsuarioError.setVisible(false);
+        lPass1Error.setVisible(false);
+        lPass2Error.setVisible(false);
+    }
     /**
      * @param args the command line arguments
      */
