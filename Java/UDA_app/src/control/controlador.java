@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 package control;
-import javax.persistence.Persistence;
 import Modelo.BD.*;
 import Modelo.UML.*;
+
 /**
  *
  * @author unai-
@@ -17,9 +17,14 @@ static ConexionBD conexion;
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here       
-        conexion=new ConexionBD();
-        Liga l=new Liga();
+        // TODO code application logic here  
+        try {
+            conexion=new ConexionBD();
+            Liga l=new Liga();
+            conexion.getLigaBD().create(l);
+        } catch (Exception ex) {
+
+        }
         
     }
     
