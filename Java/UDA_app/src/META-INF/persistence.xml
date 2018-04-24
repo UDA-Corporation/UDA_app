@@ -2,14 +2,14 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="UDA_appPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>Modelo.UML.Dueno</class>
-    <class>Modelo.UML.Jugador</class>
+    <class>Modelo.UML.Partido</class>
     <class>Modelo.UML.Liga</class>
-    <class>Modelo.UML.Equipo</class>
+    <class>Modelo.UML.Jugador</class>
     <class>Modelo.UML.Cuenta</class>
     <class>Modelo.UML.Jornadas</class>
-    <class>Modelo.UML.Partido</class>
+    <class>Modelo.UML.Equipo</class>
     <class>Modelo.UML.Persona</class>
+    <class>Modelo.UML.Dueno</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@SrvOracle:1521:orcl"/>
       <property name="javax.persistence.jdbc.user" value="eqdam02"/>

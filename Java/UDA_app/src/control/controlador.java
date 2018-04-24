@@ -20,11 +20,8 @@ static ConexionBD conexion;
         // TODO code application logic here  
         try {
             conexion=new ConexionBD();
-            Liga l=new Liga();
-            l.setNombre("Unai");
-            conexion.getLigaBD().create(l);
-        } catch (Exception ex) {
-
+        } catch (Exception e) {
+            System.out.println("Conecction problem");
         }
         
     }
