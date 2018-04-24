@@ -28,7 +28,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Liga.findAll", query = "SELECT l FROM Liga l")
-    , @NamedQuery(name = "Liga.findByCod", query = "SELECT l FROM Liga l WHERE l.cod = :cod")})
+    , @NamedQuery(name = "Liga.findByCod", query = "SELECT l FROM Liga l WHERE l.cod = :cod")
+    , @NamedQuery(name = "Liga.findByNombre", query = "SELECT l FROM Liga l WHERE l.nombre = :nombre")})
 public class Liga implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -36,6 +37,9 @@ public class Liga implements Serializable {
     @Basic(optional = false)
     @Column(name = "COD")
     private Integer cod;
+    @Basic(optional = false)
+    @Column(name = "NOMBRE")
+    private String nombre;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "ligaCod")
     private Collection<Jornadas> jornadasCollection;
 
@@ -46,12 +50,25 @@ public class Liga implements Serializable {
         this.cod = cod;
     }
 
+    public Liga(Integer cod, String nombre) {
+        this.cod = cod;
+        this.nombre = nombre;
+    }
+
     public Integer getCod() {
         return cod;
     }
 
     public void setCod(Integer cod) {
         this.cod = cod;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     @XmlTransient

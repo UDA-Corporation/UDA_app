@@ -6,7 +6,7 @@ DROP TABLE LIGA CASCADE CONSTRAINTS;
 DROP TABLE JUGADOR CASCADE CONSTRAINTS;
 DROP TABLE PARTIDO CASCADE CONSTRAINTS;
 DROP TABLE PERSONA CASCADE CONSTRAINTS;
-DROP TABLE USUARIO CASCADE CONSTRAINTS;
+DROP TABLE dueno CASCADE CONSTRAINTS;
 
 CREATE TABLE Persona
   (
@@ -43,7 +43,7 @@ CREATE TABLE Dueno
 
 CREATE TABLE Equipo
   (
-    cod        NUMBER (5) PRIMARY KEY ,
+    cod        NUMBER (5) GENERATED ALWAYS as IDENTITY (START WITH 1 INCREMENT BY 1 MAXVALUE 9999)PRIMARY KEY ,
     nombre     VARCHAR2 (30) NOT NULL ,
     desripcion VARCHAR2 (100) NOT NULL ,
     puntos     VARCHAR2(3) NOT NULL ,
@@ -53,30 +53,31 @@ CREATE TABLE Equipo
   ) ;
 
 
-CREATE TABLE Liga
-  ( cod NUMBER PRIMARY KEY
+CREATE TABLE Liga( 
+  cod NUMBER(5) GENERATED ALWAYS as IDENTITY (START WITH 1 INCREMENT BY 1 MAXVALUE 9999) PRIMARY KEY,
+  nombre varchar2(15)not null
   ) ;
   
   
 CREATE TABLE Jornadas
   (
-    cod    NUMBER PRIMARY KEY ,
+    cod    NUMBER (5) GENERATED ALWAYS as IDENTITY (START WITH 1 INCREMENT BY 1 MAXVALUE 9999) PRIMARY KEY ,
     fechaI   DATE NOT NULL ,
     fechaF   DATE NOT NULL ,
-    Liga_cod NUMBER NOT NULL,
+    Liga_cod NUMBER (5) NOT NULL,
     CONSTRAINT Jornadas_Liga_FK FOREIGN KEY ( Liga_cod ) REFERENCES Liga ( cod )
   ) ;
   
   
 CREATE TABLE Partido
   (
-    cod            NUMBER (5) PRIMARY KEY ,
+    cod            NUMBER (5) GENERATED ALWAYS as IDENTITY (START WITH 1 INCREMENT BY 1 MAXVALUE 9999) PRIMARY KEY ,
     lugar          VARCHAR2 (15) NOT NULL ,
     codGanador     NUMBER (5),
-    empate         CHAR (1),
+    empate         VARCHAR2(1),
     fecha          DATE NOT NULL ,
     resultado      VARCHAR2(4) NOT NULL ,
-    Jornadas_cod NUMBER NOT NULL,
+    Jornadas_cod    NUMBER (5)NOT NULL,
     CONSTRAINT Partido_Jornadas_FK FOREIGN KEY ( Jornadas_cod ) REFERENCES Jornadas ( cod )
   ) ;
   
@@ -95,7 +96,7 @@ CREATE TABLE Jugador
   (
     dni      VARCHAR2 (9) PRIMARY KEY ,
     nickname VARCHAR2 (15) NOT NULL ,
-    sueldo   NUMBER NOT NULL ,
+    sueldo   NUMBER (7) NOT NULL ,
     nombre   VARCHAR2 (15) NOT NULL ,
     apellido VARCHAR2 (20) NOT NULL ,
     calle    VARCHAR2 (40) NOT NULL ,
