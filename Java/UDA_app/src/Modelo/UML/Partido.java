@@ -51,7 +51,7 @@ public class Partido implements Serializable {
     @Column(name = "CODGANADOR")
     private Integer codganador;
     @Column(name = "EMPATE")
-    private Character empate;
+    private String empate;
     @Basic(optional = false)
     @Column(name = "FECHA")
     @Temporal(TemporalType.TIMESTAMP)
@@ -103,11 +103,11 @@ public class Partido implements Serializable {
         this.codganador = codganador;
     }
 
-    public Character getEmpate() {
+    public String getEmpate() {
         return empate;
     }
 
-    public void setEmpate(Character empate) {
+    public void setEmpate(String empate) {
         this.empate = empate;
     }
 
@@ -166,7 +166,7 @@ public class Partido implements Serializable {
 
     @Override
     public String toString() {
-        return "Modelo.BD.Partido[ cod=" + cod + " ]";
+        return "Modelo.UML.Partido[ cod=" + cod + " ]";
     }
     
 }

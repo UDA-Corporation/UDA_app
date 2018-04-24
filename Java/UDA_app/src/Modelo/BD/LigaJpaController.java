@@ -15,7 +15,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import Modelo.UML.Jornadas;
 import Modelo.UML.Liga;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -117,7 +116,7 @@ public class LigaJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                BigDecimal id = liga.getCod();
+                Integer id = liga.getCod();
                 if (findLiga(id) == null) {
                     throw new NonexistentEntityException("The liga with id " + id + " no longer exists.");
                 }
@@ -130,7 +129,7 @@ public class LigaJpaController implements Serializable {
         }
     }
 
-    public void destroy(BigDecimal id) throws IllegalOrphanException, NonexistentEntityException {
+    public void destroy(Integer id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -186,7 +185,7 @@ public class LigaJpaController implements Serializable {
         }
     }
 
-    public Liga findLiga(BigDecimal id) {
+    public Liga findLiga(Integer id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Liga.class, id);

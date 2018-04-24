@@ -100,7 +100,7 @@ public class Cuenta implements Serializable {
 
     @Override
     public String toString() {
-        return "Modelo.BD.Cuenta[ id=" + id + " ]";
+        return "Modelo.UML.Cuenta[ id=" + id + " ]";
     }
     
 }

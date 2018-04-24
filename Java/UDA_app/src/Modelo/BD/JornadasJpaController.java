@@ -16,7 +16,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import Modelo.UML.Liga;
 import Modelo.UML.Partido;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -141,7 +140,7 @@ public class JornadasJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                BigDecimal id = jornadas.getCod();
+                Integer id = jornadas.getCod();
                 if (findJornadas(id) == null) {
                     throw new NonexistentEntityException("The jornadas with id " + id + " no longer exists.");
                 }
@@ -154,7 +153,7 @@ public class JornadasJpaController implements Serializable {
         }
     }
 
-    public void destroy(BigDecimal id) throws IllegalOrphanException, NonexistentEntityException {
+    public void destroy(Integer id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -215,7 +214,7 @@ public class JornadasJpaController implements Serializable {
         }
     }
 
-    public Jornadas findJornadas(BigDecimal id) {
+    public Jornadas findJornadas(Integer id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Jornadas.class, id);

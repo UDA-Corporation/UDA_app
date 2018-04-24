@@ -3,13 +3,13 @@
   <persistence-unit name="UDA_appPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Modelo.UML.Dueno</class>
-    <class>Modelo.UML.Liga</class>
     <class>Modelo.UML.Cuenta</class>
+    <class>Modelo.UML.Equipo</class>
+    <class>Modelo.UML.Jugador</class>
     <class>Modelo.UML.Partido</class>
     <class>Modelo.UML.Jornadas</class>
+    <class>Modelo.UML.Liga</class>
     <class>Modelo.UML.Persona</class>
-    <class>Modelo.UML.Jugador</class>
-    <class>Modelo.UML.Equipo</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@SrvOracle:1521:orcl"/>
       <property name="javax.persistence.jdbc.user" value="eqdam02"/>

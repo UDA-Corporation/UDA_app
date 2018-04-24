@@ -170,7 +170,7 @@ public class Equipo implements Serializable {
 
     @Override
     public String toString() {
-        return "Modelo.BD.Equipo[ cod=" + cod + " ]";
+        return "Modelo.UML.Equipo[ cod=" + cod + " ]";
     }
     
 }

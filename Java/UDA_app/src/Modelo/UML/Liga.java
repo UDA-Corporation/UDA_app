@@ -6,7 +6,6 @@
 package Modelo.UML;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -33,26 +32,25 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Liga implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @Basic(optional = false)
     @Column(name = "COD")
-    private BigDecimal cod;
+    private Integer cod;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "ligaCod")
     private Collection<Jornadas> jornadasCollection;
 
     public Liga() {
     }
 
-    public Liga(BigDecimal cod) {
+    public Liga(Integer cod) {
         this.cod = cod;
     }
 
-    public BigDecimal getCod() {
+    public Integer getCod() {
         return cod;
     }
 
-    public void setCod(BigDecimal cod) {
+    public void setCod(Integer cod) {
         this.cod = cod;
     }
 
@@ -87,7 +85,7 @@ public class Liga implements Serializable {
 
     @Override
     public String toString() {
-        return "Modelo.BD.Liga[ cod=" + cod + " ]";
+        return "Modelo.UML.Liga[ cod=" + cod + " ]";
     }
     
 }

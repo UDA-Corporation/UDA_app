@@ -230,7 +230,7 @@ public class Persona implements Serializable {
 
     @Override
     public String toString() {
-        return "Modelo.BD.Persona[ dni=" + dni + " ]";
+        return "Modelo.UML.Persona[ dni=" + dni + " ]";
     }
     
 }

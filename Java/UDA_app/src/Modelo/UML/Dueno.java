@@ -98,7 +98,7 @@ public class Dueno implements Serializable {
 
     @Override
     public String toString() {
-        return "Modelo.BD.Dueno[ dni=" + dni + " ]";
+        return "Modelo.UML.Dueno[ dni=" + dni + " ]";
     }
     
 }

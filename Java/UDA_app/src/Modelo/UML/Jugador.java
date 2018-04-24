@@ -6,7 +6,6 @@
 package Modelo.UML;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -51,7 +50,7 @@ public class Jugador implements Serializable {
     private String nickname;
     @Basic(optional = false)
     @Column(name = "SUELDO")
-    private BigInteger sueldo;
+    private int sueldo;
     @Basic(optional = false)
     @Column(name = "NOMBRE")
     private String nombre;
@@ -90,7 +89,7 @@ public class Jugador implements Serializable {
         this.dni = dni;
     }
 
-    public Jugador(String dni, String nickname, BigInteger sueldo, String nombre, String apellido, String calle, String nro, String piso, String ciudad, String cp, String pais, String tlfo) {
+    public Jugador(String dni, String nickname, int sueldo, String nombre, String apellido, String calle, String nro, String piso, String ciudad, String cp, String pais, String tlfo) {
         this.dni = dni;
         this.nickname = nickname;
         this.sueldo = sueldo;
@@ -121,11 +120,11 @@ public class Jugador implements Serializable {
         this.nickname = nickname;
     }
 
-    public BigInteger getSueldo() {
+    public int getSueldo() {
         return sueldo;
     }
 
-    public void setSueldo(BigInteger sueldo) {
+    public void setSueldo(int sueldo) {
         this.sueldo = sueldo;
     }
 
@@ -231,7 +230,7 @@ public class Jugador implements Serializable {
 
     @Override
     public String toString() {
-        return "Modelo.BD.Jugador[ dni=" + dni + " ]";
+        return "Modelo.UML.Jugador[ dni=" + dni + " ]";
     }
     
 }

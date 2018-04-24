@@ -6,7 +6,6 @@
 package Modelo.UML;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -40,11 +39,10 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Jornadas implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @Basic(optional = false)
     @Column(name = "COD")
-    private BigDecimal cod;
+    private Integer cod;
     @Basic(optional = false)
     @Column(name = "FECHAI")
     @Temporal(TemporalType.TIMESTAMP)
@@ -62,21 +60,21 @@ public class Jornadas implements Serializable {
     public Jornadas() {
     }
 
-    public Jornadas(BigDecimal cod) {
+    public Jornadas(Integer cod) {
         this.cod = cod;
     }
 
-    public Jornadas(BigDecimal cod, Date fechai, Date fechaf) {
+    public Jornadas(Integer cod, Date fechai, Date fechaf) {
         this.cod = cod;
         this.fechai = fechai;
         this.fechaf = fechaf;
     }
 
-    public BigDecimal getCod() {
+    public Integer getCod() {
         return cod;
     }
 
-    public void setCod(BigDecimal cod) {
+    public void setCod(Integer cod) {
         this.cod = cod;
     }
 
@@ -135,7 +133,7 @@ public class Jornadas implements Serializable {
 
     @Override
     public String toString() {
-        return "Modelo.BD.Jornadas[ cod=" + cod + " ]";
+        return "Modelo.UML.Jornadas[ cod=" + cod + " ]";
     }
     
 }
