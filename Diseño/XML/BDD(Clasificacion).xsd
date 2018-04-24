@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="liga" type="tipo_liga"/>
+    <xs:complexType name="tipo_liga">
+        <xs:sequence>
+            <xs:element type="tipo_clasificacion" name="clasificacion"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tipo_clasificacion">
+        <xs:sequence>
+            <xs:element type="tipo_equipo" name="equipo" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tipo_equipo">
+        <xs:sequence>
+            <xs:element type="xs:string" name="nombre"/>
+            <xs:element type="xs:string" name="puntos"/>
+            <xs:element type="xs:string" name="puesto"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="codEquipo" use="optional"/>
+    </xs:complexType>
+</xs:schema>
