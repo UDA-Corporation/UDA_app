@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Visitante" directorySegmentName="seg_0" id="78023C1B-DBCD-A9D5-C3DE-58B428E74591">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:16:57 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>mer_dataM</ownerDesignName>
+<sourcePk>8B9DF4D5-3048-3612-6626-534F70C0CA29</sourcePk>
+<targetPk>C4FD920E-839D-82E6-A3FF-C2BD0A5B219A</targetPk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>FB877911-FE71-61F6-2941-7801A6C7AB61</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>5BED1335-3503-577C-E514-037BF697341B</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
