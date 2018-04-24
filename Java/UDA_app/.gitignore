@@ -1,5 +1,6 @@
 #Netbeans IDE
-nbproject/private/
+nbproject/private/project.properties
+nbproject/private/project.xml
 nbproject/project.properties
 nbproject/project.xml
 build/
