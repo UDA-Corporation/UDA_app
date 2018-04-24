@@ -2,7 +2,7 @@
 echo "
 ▒█▄░▒█ █▀▀ ▀▀█▀▀ █░░░█ █▀▀█ █▀▀█ █░█ 　 █▀▀ █░░█ █▀▀ █▀▀ █░█ █▀▀ █▀▀█
 ▒█▒█▒█ █▀▀ ░░█░░ █▄█▄█ █░░█ █▄▄▀ █▀▄ 　 █░░ █▀▀█ █▀▀ █░░ █▀▄ █▀▀ █▄▄▀
-▒█░░▀█ ▀▀▀ ░░▀░░ ░▀░▀░ ▀▀▀▀ ▀░▀▀ ▀░▀ 　 ▀▀▀ ▀░░▀ ▀▀▀ ▀▀▀ ▀░▀ ▀▀▀ ▀░▀▀ v1.0
+▒█░░▀█ ▀▀▀ ░░▀░░ ░▀░▀░ ▀▀▀▀ ▀░▀▀ ▀░▀ 　 ▀▀▀ ▀░░▀ ▀▀▀ ▀▀▀ ▀░▀ ▀▀▀ ▀░▀▀ v1.1
 
 By UDA Corp. under MIT license
 "
@@ -15,6 +15,7 @@ TARGET2="10.1.2.1"
 TARGET3="10.1.3.1"
 TARGET4="10.1.11.1"
 TARGET5="10.1.10.1"
+TARGET6="8.8.8.8"
 #Hacemos el ping e indicamos si ha habido conexion o no a cada nodo
 if ping -n -c 4 $TARGET >/dev/null #Ping de 4 paquetes
     then
@@ -66,4 +67,16 @@ if ping -n -c 4 $TARGET5 >/dev/null #Ping de 4 paquetes
         echo "Node: $TARGET5 - $(date +%F\ %T) - Failed - Check status of the node $TARGET5!" >> $LOG
         echo "" >> $LOG
         echo "Error in the connection of node $TARGET5, check "ConnectionResults.log" for more details"
+fi
+#Conexion a internet (Google)
+if ping -n -c 4 $TARGET6 >/dev/null #Ping de 4 paquetes
+    then
+        #Hay conexion
+        echo "Node: $TARGET6 (Google) - $(date +%F\ %T) - Successful" >> $LOG
+        echo "" >> $LOG
+    else
+        #No hay conexion mostramos el log al usuario
+        echo "Node: $TARGET6 (Google) - $(date +%F\ %T) - Failed - Check status of the network!" >> $LOG
+        echo "" >> $LOG
+        echo "Error in the connection to the internet (Google) $TARGET6, check "ConnectionResults.log" for more details"
 fi
