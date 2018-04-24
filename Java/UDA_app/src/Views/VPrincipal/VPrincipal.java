@@ -60,6 +60,11 @@ public class VPrincipal extends javax.swing.JFrame {
                 loginMouseExited(evt);
             }
         });
+        login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginActionPerformed(evt);
+            }
+        });
 
         calendario.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         calendario.setText("Calendario");
@@ -151,6 +156,11 @@ public class VPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         cajaayuda.setText("");
     }//GEN-LAST:event_calendarioMouseExited
+
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+        // TODO add your handling code here:
+        Views.Login.VLogin.
+    }//GEN-LAST:event_loginActionPerformed
 
     /**
      * @param args the command line arguments
