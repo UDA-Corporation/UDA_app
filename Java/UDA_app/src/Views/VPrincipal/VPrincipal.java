@@ -12,7 +12,7 @@ import control.controlador;
  * @author danie
  */
 public class VPrincipal extends javax.swing.JFrame {
-
+    static boolean modoayuda = controlador.modoayuda;
     /**
      * Creates new form VPrincipal
      */
@@ -20,9 +20,10 @@ public class VPrincipal extends javax.swing.JFrame {
         initComponents();
         setVisible(false);
         setLocationRelativeTo(null);
-        cajaayuda.setVisible(false);        
+        cajaayuda.setVisible(false);
+        
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,34 +33,29 @@ public class VPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        calendario = new javax.swing.JButton();
         cajaayuda = new javax.swing.JTextField();
         Ayuda = new javax.swing.JLabel();
-        login = new javax.swing.JButton();
-        calendario = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        HacerLogin = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        MenuOpciones = new javax.swing.JMenu();
+        MenuLogin = new javax.swing.JMenuItem();
+        MenuSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-
-        Ayuda.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        Ayuda.setText("Ayuda (?)");
-        Ayuda.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AyudaMouseClicked(evt);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
-        login.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        login.setText("Login");
-        login.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                loginMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                loginMouseExited(evt);
-            }
-        });
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/logo_mediano_recortado.png"))); // NOI18N
+
+        jButton3.setText("jButton3");
 
         calendario.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         calendario.setText("Calendario");
@@ -72,85 +68,137 @@ public class VPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("jButton3");
+        Ayuda.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        Ayuda.setText("Ayuda (?)");
+        Ayuda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AyudaMouseClicked(evt);
+            }
+        });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/logo_mediano_recortado.png"))); // NOI18N
+        HacerLogin.setForeground(new java.awt.Color(255, 0, 0));
+        HacerLogin.setText("Por favor, inicie sesión. Opciones>>Login.");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cajaayuda, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(230, 230, 230)
+                        .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Ayuda))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(162, 162, 162)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(HacerLogin)
+                            .addComponent(jLabel1))))
+                .addContainerGap(148, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(HacerLogin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(cajaayuda, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(Ayuda)
+                .addContainerGap())
+        );
+
+        MenuOpciones.setText("Opciones");
+
+        MenuLogin.setText("Login");
+        MenuLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuLoginActionPerformed(evt);
+            }
+        });
+        MenuOpciones.add(MenuLogin);
+
+        jMenuBar1.add(MenuOpciones);
+
+        MenuSalir.setText("Salir");
+        MenuSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuSalirActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(MenuSalir);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(Ayuda)
-                .addGap(78, 78, 78)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(109, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cajaayuda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(100, 100, 100))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Ayuda)
-                    .addComponent(jLabel1))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(cajaayuda, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addGap(0, 23, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void AyudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AyudaMouseClicked
-        // TODO add your handling code here:        
-        if (controlador.modoayuda = false) { 
+        //Muestra la caja de ayuda o la oculta si se desactiva la ayuda
+        System.out.println(modoayuda);
+        if (modoayuda == false) { 
             cajaayuda.setVisible(true);
-            control.controlador.modoayuda = true;
+            modoayuda = true;
             Ayuda.setText("Cerrar ayuda");
         }else{
             cajaayuda.setVisible(false);
-            control.controlador.modoayuda = false;
+            modoayuda = false;
             Ayuda.setText("Ayuda (?)");
         }
-        
     }//GEN-LAST:event_AyudaMouseClicked
 
-    private void loginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseEntered
-        // TODO add your handling code here:
-        cajaayuda.setText("Si tienes una cuenta de usuario o administrador puedes iniciar sesion aqui, si deseas crearte una cuenta, tambien puedes");
-    }//GEN-LAST:event_loginMouseEntered
-
-    private void loginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseExited
-        // TODO add your handling code here:
-        cajaayuda.setText("");
-    }//GEN-LAST:event_loginMouseExited
-
     private void calendarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calendarioMouseEntered
-        // TODO add your handling code here:
+        //Ayuda calendario
         cajaayuda.setText("Si deseas ver los futuros partidos o los ya jugados, para consultar el resultado, accede al calendario");
     }//GEN-LAST:event_calendarioMouseEntered
 
     private void calendarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calendarioMouseExited
-        // TODO add your handling code here:
+        //Borra la ayuda de calendario
         cajaayuda.setText("");
     }//GEN-LAST:event_calendarioMouseExited
+
+    private void MenuLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuLoginActionPerformed
+        //Funcion que abre la ventana login
+        control.controlador.toVLogin();
+    }//GEN-LAST:event_MenuLoginActionPerformed
+
+    private void MenuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSalirActionPerformed
+        //Cerrar todo
+        System.exit(0);
+    }//GEN-LAST:event_MenuSalirActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        //Cuando se abre la ventana 
+        
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -189,10 +237,15 @@ public class VPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Ayuda;
+    private javax.swing.JLabel HacerLogin;
+    private javax.swing.JMenuItem MenuLogin;
+    private javax.swing.JMenu MenuOpciones;
+    private javax.swing.JMenu MenuSalir;
     private javax.swing.JTextField cajaayuda;
     private javax.swing.JButton calendario;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton login;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
