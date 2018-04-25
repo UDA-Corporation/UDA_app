@@ -9,6 +9,8 @@ package Views.Login;
  *
  * @author unai-
  */
+import control.controlador;
+
 public class VLogin extends javax.swing.JFrame {
 
     /**
@@ -16,6 +18,7 @@ public class VLogin extends javax.swing.JFrame {
      */
     public VLogin() {
         initComponents();
+        this.setAlwaysOnTop(true);
     }
 
     /**
@@ -35,14 +38,16 @@ public class VLogin extends javax.swing.JFrame {
         bLogin = new javax.swing.JButton();
         tfPass = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lLink = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(76, 217, 102));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/Login/logo_mediano_recortado.png"))); // NOI18N
+
+        tfUsuario.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel2.setFont(new java.awt.Font("MS UI Gothic", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -54,13 +59,20 @@ public class VLogin extends javax.swing.JFrame {
 
         bLogin.setText("Login");
 
+        tfPass.setBackground(new java.awt.Color(255, 255, 204));
+
         jLabel4.setFont(new java.awt.Font("MS UI Gothic", 2, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
         jLabel4.setText("¿No tienes cuenta? Click");
 
-        jLabel5.setFont(new java.awt.Font("MS UI Gothic", 2, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 51, 255));
-        jLabel5.setText("aquí");
+        lLink.setFont(new java.awt.Font("MS UI Gothic", 2, 12)); // NOI18N
+        lLink.setForeground(new java.awt.Color(0, 51, 255));
+        lLink.setText("aquí");
+        lLink.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lLinkMouseClicked(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("MS UI Gothic", 2, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(153, 153, 153));
@@ -85,13 +97,13 @@ public class VLogin extends javax.swing.JFrame {
                             .addComponent(tfUsuario)
                             .addComponent(tfPass, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(bLogin)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel5)))
+                        .addGap(234, 234, 234)
+                        .addComponent(bLogin))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(jLabel4)
+                        .addGap(3, 3, 3)
+                        .addComponent(lLink)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel6)))
                 .addContainerGap(160, Short.MAX_VALUE))
@@ -109,12 +121,12 @@ public class VLogin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(tfPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel5)
+                    .addComponent(lLink)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(bLogin)
                 .addGap(30, 30, 30))
         );
@@ -132,6 +144,10 @@ public class VLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lLinkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lLinkMouseClicked
+        controlador.toVRegistro(this);
+    }//GEN-LAST:event_lLinkMouseClicked
 
     /**
      * @param args the command line arguments
@@ -174,9 +190,9 @@ public class VLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lLink;
     private javax.swing.JPasswordField tfPass;
     private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
