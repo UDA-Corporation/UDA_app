@@ -36,7 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Equipo.findByNombre", query = "SELECT e FROM Equipo e WHERE e.nombre = :nombre")
     , @NamedQuery(name = "Equipo.findByDesripcion", query = "SELECT e FROM Equipo e WHERE e.desripcion = :desripcion")
     , @NamedQuery(name = "Equipo.findByPuntos", query = "SELECT e FROM Equipo e WHERE e.puntos = :puntos")
-    , @NamedQuery(name = "Equipo.findByPuesto", query = "SELECT e FROM Equipo e WHERE e.puesto = :puesto")})
+    , @NamedQuery(name = "Equipo.findByPuesto", query = "SELECT e FROM Equipo e WHERE e.puesto = :puesto")
+    , @NamedQuery(name = "Equipo.findByTipo", query = "SELECT e FROM Equipo e WHERE e.tipo = :tipo")})
 public class Equipo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,6 +57,8 @@ public class Equipo implements Serializable {
     @Basic(optional = false)
     @Column(name = "PUESTO")
     private String puesto;
+    @Column(name = "TIPO")
+    private String tipo;
     @JoinTable(name = "EQUIPO_JUEGA", joinColumns = {
         @JoinColumn(name = "EQUIPO_COD", referencedColumnName = "COD")}, inverseJoinColumns = {
         @JoinColumn(name = "PARTIDO_COD", referencedColumnName = "COD")})
@@ -120,6 +123,14 @@ public class Equipo implements Serializable {
 
     public void setPuesto(String puesto) {
         this.puesto = puesto;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     @XmlTransient
