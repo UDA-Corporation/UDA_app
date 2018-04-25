@@ -56,7 +56,6 @@ public class Partido implements Serializable {
     @Column(name = "FECHA")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
-    @Basic(optional = false)
     @Column(name = "RESULTADO")
     private String resultado;
     @ManyToMany(mappedBy = "partidoCollection")
@@ -72,11 +71,10 @@ public class Partido implements Serializable {
         this.cod = cod;
     }
 
-    public Partido(Integer cod, String lugar, Date fecha, String resultado) {
+    public Partido(Integer cod, String lugar, Date fecha) {
         this.cod = cod;
         this.lugar = lugar;
         this.fecha = fecha;
-        this.resultado = resultado;
     }
 
     public Integer getCod() {

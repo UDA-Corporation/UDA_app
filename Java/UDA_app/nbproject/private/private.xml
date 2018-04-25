@@ -13,14 +13,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/1gdaw02/Documents/GitHub/UDA_app/Java/UDA_app/src/control/controlador.java</file>
+            <file>file:/C:/Users/1gdaw02/Documents/GitHub/UDA_app/Java/UDA_app/src/Modelo/BD/EquipoJpaController.java</file>
             <file>file:/C:/Users/1gdaw02/Documents/GitHub/UDA_app/Java/UDA_app/src/Modelo/UML/Equipo.java</file>
-            <file>file:/C:/Users/1gdaw02/Documents/GitHub/UDA_app/Java/UDA_app/src/Modelo/UML/Liga.java</file>
+            <file>file:/C:/Users/1gdaw02/Documents/GitHub/UDA_app/Java/UDA_app/src/Modelo/BD/PartidoJpaController.java</file>
+            <file>file:/C:/Users/1gdaw02/Documents/GitHub/UDA_app/Java/UDA_app/src/Views/Login/VLogin.java</file>
             <file>file:/C:/Users/1gdaw02/Documents/GitHub/UDA_app/Java/UDA_app/src/META-INF/persistence.xml</file>
-            <file>file:/C:/Users/1gdaw02/Documents/GitHub/UDA_app/Java/UDA_app/src/Modelo/BD/JornadasJpaController.java</file>
             <file>file:/C:/Users/1gdaw02/Documents/GitHub/UDA_app/Java/UDA_app/src/Views/VPrincipal/VPrincipal.java</file>
-            <file>file:/C:/Users/1gdaw02/Documents/GitHub/UDA_app/Java/UDA_app/src/Views/Registro/VRegistro.java</file>
-            <file>file:/C:/Users/1gdaw02/Documents/GitHub/UDA_app/Java/UDA_app/src/Modelo/BD/ConexionBD.java</file>
-            <file>file:/C:/Users/1gdaw02/Documents/GitHub/UDA_app/Java/UDA_app/src/Modelo/BD/CuentaJpaController.java</file>
+            <file>file:/C:/Users/1gdaw02/Documents/GitHub/UDA_app/Java/UDA_app/src/Modelo/BD/LigaJpaController.java</file>
         </group>
     </open-files>
 </project-private>

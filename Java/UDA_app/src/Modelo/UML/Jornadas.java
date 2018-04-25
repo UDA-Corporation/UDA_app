@@ -102,7 +102,9 @@ public class Jornadas implements Serializable {
     public void setPartidoCollection(Collection<Partido> partidoCollection) {
         this.partidoCollection = partidoCollection;
     }
-
+    public void addPartidosCollection(Partido p){
+        this.partidoCollection.add(p);
+    }
     public Liga getLigaCod() {
         return ligaCod;
     }
