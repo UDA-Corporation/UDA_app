@@ -20,7 +20,7 @@ public class VPrincipal extends javax.swing.JFrame {
         initComponents();
         setVisible(false);
         setLocationRelativeTo(null);
-        cajaayuda.setVisible(false);
+        cajaayuda.setVisible(false);        
     }
 
     /**
@@ -119,7 +119,7 @@ public class VPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AyudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AyudaMouseClicked
-        // TODO add your handling code here:
+        // TODO add your handling code here:        
         if (controlador.modoayuda = false) { 
             cajaayuda.setVisible(true);
             control.controlador.modoayuda = true;
