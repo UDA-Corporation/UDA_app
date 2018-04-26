@@ -35,7 +35,8 @@ Aplicación para la consultoría de e-sports
 | Links específicos |
 | ------------- |
 | Planificación detallada [link](https://drive.google.com/open?id=1_2MhafOwp65LQePLwjUlc97uKK25Kxp-BGnyit3nX5c) |
-| Documento explicativo del blog [link](https://drive.google.com/open?id=1SttzjdZzzFsaCIyl2GKgd7gY8zkMfoNMLgY9jsvi5PE) |
+| Documento de implementación del blog [link](https://drive.google.com/a/jesusobrero.org/file/d/1jlFcSAuM2iKqBt94RRrJd7zcYhjM-9f1/view?usp=sharing)
+| Estructura del fichero log [link](https://github.com/Barraguesh/UDA_app/tree/master/Script%20de%20red)
 | MER [link](https://drive.google.com/open?id=1YQ2_Q1B76B5JAkKyi2qpNAd06gPDKu0a) |
 | Casos de uso [link](https://drive.google.com/drive/folders/1VF7uAJGxh_eSb2wDG8RIVdB9CUqk9YqM) |
 | Modelo relacional [link](https://drive.google.com/open?id=1JIn95kinrpX9S90v2eotXRXRoJS-f6sY) |
