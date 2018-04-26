@@ -9,6 +9,7 @@ DROP TABLE PERSONA CASCADE CONSTRAINTS;
 DROP TABLE dueno CASCADE CONSTRAINTS;
 
 
+
 CREATE TABLE Persona
   (
     dni      VARCHAR2 (9) PRIMARY KEY ,
@@ -49,6 +50,7 @@ CREATE TABLE Equipo
     desripcion VARCHAR2 (100) NOT NULL ,
     puntos     VARCHAR2(3) NOT NULL ,
     puesto     VARCHAR2(2) NOT NULL ,
+    tipo       VARCHAR2(10) ,
     Dueno_dni  VARCHAR2 (9) NOT NULL,
     CONSTRAINT Equipo_Dueno_FK FOREIGN KEY ( Dueno_dni ) REFERENCES Dueno ( dni )
   ) ;
@@ -77,7 +79,7 @@ CREATE TABLE Partido
     codGanador     NUMBER (5),
     empate         VARCHAR2(1),
     fecha          DATE NOT NULL ,
-    resultado      VARCHAR2(4) NOT NULL ,
+    resultado      VARCHAR2(4),
     Jornadas_cod    NUMBER (5)NOT NULL,
     CONSTRAINT Partido_Jornadas_FK FOREIGN KEY ( Jornadas_cod ) REFERENCES Jornadas ( cod )
   ) ;
