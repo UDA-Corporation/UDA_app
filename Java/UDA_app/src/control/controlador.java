@@ -56,13 +56,13 @@ static ArrayList <Partido> partidos;
             equipos.add(e8);   
             generarCalendario();
             System.out.println("Done"); 
-//            System.out.println("▒█░▒█ ▒█▀▀▄ ░█▀▀█ \n" +
-//                               "▒█░▒█ ▒█░▒█ ▒█▄▄█ \n" +
-//                               "░▀▄▄▀ ▒█▄▄▀ ▒█░▒█ \n" +
-//                               "\n" +
-//                               "▒█▀▀█ █▀▀█ █▀▀█ █▀▀█ ░ \n" +
-//                               "▒█░░░ █░░█ █▄▄▀ █░░█ ▄ \n" +
-//                               "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v0.2 alpha");
+            System.out.println("▒█░▒█ ▒█▀▀▄ ░█▀▀█ \n" +
+                               "▒█░▒█ ▒█░▒█ ▒█▄▄█ \n" +
+                               "░▀▄▄▀ ▒█▄▄▀ ▒█░▒█ \n" +
+                               "\n" +
+                               "▒█▀▀█ █▀▀█ █▀▀█ █▀▀█ ░ \n" +
+                               "▒█░░░ █░░█ █▄▄▀ █░░█ ▄ \n" +
+                               "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v0.2 alpha");
 //            VPrincipal vp = new VPrincipal();
 //            vp.setVisible(true);
         } catch (Exception e) {
@@ -119,6 +119,7 @@ static ArrayList <Partido> partidos;
             Jornadas j=new Jornadas(codigoJornada(),(Date)finde.get(y),(Date)finde.get(y+1));  
             j.setLigaCod(liga);
             jornadas.add(j);
+            conexion.getJornadaBD().create(j);
             for(int z=0;z<formula/2;z++){                
                 Partido p=null;             
                 if(zig){
@@ -127,7 +128,6 @@ static ArrayList <Partido> partidos;
                         p=new Partido(codigoPartido(), "Espana", j.getFechai());
                         partidos.add(p);
                         j.addPartidosCollection(p);
-                        conexion.getPartidoBD().create(p);
                         zig=false;
                     }
                 }else{
@@ -136,14 +136,12 @@ static ArrayList <Partido> partidos;
                         p=new Partido(codigoPartido(), "Espana", j.getFechaf());
                         partidos.add(p);
                         j.addPartidosCollection(p);
-                        conexion.getPartidoBD().create(p);
                         zig=true;
                     }
                 }
                 p.setJornadasCod(j);
                 conexion.getPartidoBD().create(p);
             }
-            conexion.getJornadaBD().create(j);
         }
         
     }
