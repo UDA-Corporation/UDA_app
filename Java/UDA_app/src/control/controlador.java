@@ -34,37 +34,37 @@ static ArrayList <Partido> partidos;
     public static void main(String[] args) {
         // TODO code application logic here  
         try {
-//            conexion=new ConexionBD();  
-//            equipos=new ArrayList();
-//            jornadas=new ArrayList();
-//            Equipo e=new Equipo(1, "Fnatic", "Fnatic", "Fnatic", "Fnatic");        
-//            Equipo e2=new Equipo(2, "TSM", "Fnatic", "Fnatic", "Fnatic");       
-//            Equipo e3=new Equipo(3, "Team LIquid", "Fnatic", "Fnatic", "Fnatic");
-//            Equipo e4=new Equipo(4, "Origen", "Fnatic", "Fnatic", "Fnatic");
-//            Equipo e5=new Equipo(5, "STK", "Fnatic", "Fnatic", "Fnatic");
-//            Equipo e6=new Equipo(6, "Samsung White", "Fnatic", "Fnatic", "Fnatic");
-//            Equipo e7=new Equipo(7, "UOL", "Fnatic", "Fnatic", "Fnatic");
-//            Equipo e8=new Equipo(8, "SK", "Fnatic", "Fnatic", "Fnatic");
-//        
-//            equipos.add(e);
-//            equipos.add(e2);
-//            equipos.add(e3);
-//            equipos.add(e4);
-//            equipos.add(e5);
-//            equipos.add(e6);
-//            equipos.add(e7);
-//            equipos.add(e8);   
-//            generarCalendario();
-//            System.out.println("Done"); 
-            System.out.println("▒█░▒█ ▒█▀▀▄ ░█▀▀█ \n" +
-                               "▒█░▒█ ▒█░▒█ ▒█▄▄█ \n" +
-                               "░▀▄▄▀ ▒█▄▄▀ ▒█░▒█ \n" +
-                               "\n" +
-                               "▒█▀▀█ █▀▀█ █▀▀█ █▀▀█ ░ \n" +
-                               "▒█░░░ █░░█ █▄▄▀ █░░█ ▄ \n" +
-                               "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v0.2 alpha");
-            VPrincipal vp = new VPrincipal();
-            vp.setVisible(true);
+            conexion=new ConexionBD();  
+            equipos=new ArrayList();
+            jornadas=new ArrayList();
+            Equipo e=new Equipo(1, "Fnatic", "Fnatic", "Fnatic", "Fnatic");        
+            Equipo e2=new Equipo(2, "TSM", "Fnatic", "Fnatic", "Fnatic");       
+            Equipo e3=new Equipo(3, "Team LIquid", "Fnatic", "Fnatic", "Fnatic");
+            Equipo e4=new Equipo(4, "Origen", "Fnatic", "Fnatic", "Fnatic");
+            Equipo e5=new Equipo(5, "STK", "Fnatic", "Fnatic", "Fnatic");
+            Equipo e6=new Equipo(6, "Samsung White", "Fnatic", "Fnatic", "Fnatic");
+            Equipo e7=new Equipo(7, "UOL", "Fnatic", "Fnatic", "Fnatic");
+            Equipo e8=new Equipo(8, "SK", "Fnatic", "Fnatic", "Fnatic");
+        
+            equipos.add(e);
+            equipos.add(e2);
+            equipos.add(e3);
+            equipos.add(e4);
+            equipos.add(e5);
+            equipos.add(e6);
+            equipos.add(e7);
+            equipos.add(e8);   
+            generarCalendario();
+            System.out.println("Done"); 
+//            System.out.println("▒█░▒█ ▒█▀▀▄ ░█▀▀█ \n" +
+//                               "▒█░▒█ ▒█░▒█ ▒█▄▄█ \n" +
+//                               "░▀▄▄▀ ▒█▄▄▀ ▒█░▒█ \n" +
+//                               "\n" +
+//                               "▒█▀▀█ █▀▀█ █▀▀█ █▀▀█ ░ \n" +
+//                               "▒█░░░ █░░█ █▄▄▀ █░░█ ▄ \n" +
+//                               "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v0.2 alpha");
+//            VPrincipal vp = new VPrincipal();
+//            vp.setVisible(true);
         } catch (Exception e) {
             System.out.println("Conecction problem");
         }
@@ -119,7 +119,6 @@ static ArrayList <Partido> partidos;
             Jornadas j=new Jornadas(codigoJornada(),(Date)finde.get(y),(Date)finde.get(y+1));  
             j.setLigaCod(liga);
             jornadas.add(j);
-            conexion.getJornadaBD().create(j);
             for(int z=0;z<formula/2;z++){                
                 Partido p=null;             
                 if(zig){
@@ -128,6 +127,7 @@ static ArrayList <Partido> partidos;
                         p=new Partido(codigoPartido(), "Espana", j.getFechai());
                         partidos.add(p);
                         j.addPartidosCollection(p);
+                        conexion.getPartidoBD().create(p);
                         zig=false;
                     }
                 }else{
@@ -136,12 +136,14 @@ static ArrayList <Partido> partidos;
                         p=new Partido(codigoPartido(), "Espana", j.getFechaf());
                         partidos.add(p);
                         j.addPartidosCollection(p);
+                        conexion.getPartidoBD().create(p);
                         zig=true;
                     }
                 }
                 p.setJornadasCod(j);
                 conexion.getPartidoBD().create(p);
             }
+            conexion.getJornadaBD().create(j);
         }
         
     }
