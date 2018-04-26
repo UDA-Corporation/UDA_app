@@ -12,6 +12,7 @@ import Views.Registro.VRegistro;
 import Views.VPrincipal.VPrincipal;
 import java.awt.Frame;
 import Views.JDError.JDError;
+import java.lang.reflect.Array;
 
 /**
  *
@@ -20,11 +21,12 @@ import Views.JDError.JDError;
 public class controlador {
 static ConexionBD conexion;
 public static boolean modoayuda;
-static final int NROPARTIDOSJORNADA=8;
+static int posicion1;
+static int posicion2;
 static Liga liga;
 static ArrayList finde;
 static ArrayList <Jornadas> jornadas;
-static ArrayList <Equipo> equipos;
+static List <Equipo> equipos;
 static ArrayList <Partido> partidos;
 
 
@@ -36,24 +38,7 @@ static ArrayList <Partido> partidos;
         try {
             conexion=new ConexionBD();  
             equipos=new ArrayList();
-            jornadas=new ArrayList();
-            Equipo e=new Equipo(1, "Fnatic", "Fnatic", "Fnatic", "Fnatic");        
-            Equipo e2=new Equipo(2, "TSM", "Fnatic", "Fnatic", "Fnatic");       
-            Equipo e3=new Equipo(3, "Team LIquid", "Fnatic", "Fnatic", "Fnatic");
-            Equipo e4=new Equipo(4, "Origen", "Fnatic", "Fnatic", "Fnatic");
-            Equipo e5=new Equipo(5, "STK", "Fnatic", "Fnatic", "Fnatic");
-            Equipo e6=new Equipo(6, "Samsung White", "Fnatic", "Fnatic", "Fnatic");
-            Equipo e7=new Equipo(7, "UOL", "Fnatic", "Fnatic", "Fnatic");
-            Equipo e8=new Equipo(8, "SK", "Fnatic", "Fnatic", "Fnatic");
-        
-            equipos.add(e);
-            equipos.add(e2);
-            equipos.add(e3);
-            equipos.add(e4);
-            equipos.add(e5);
-            equipos.add(e6);
-            equipos.add(e7);
-            equipos.add(e8);   
+            jornadas=new ArrayList();            
             generarCalendario();
             System.out.println("Done"); 
             System.out.println("▒█░▒█ ▒█▀▀▄ ░█▀▀█ \n" +
@@ -109,7 +94,9 @@ static ArrayList <Partido> partidos;
         JDError jde = new JDError(ventana, modal, mensaje, mensaje2);
         jde.setVisible(true);
     }    
-    public static void generarCalendario()throws Exception{     
+    public static void generarCalendario()throws Exception{ 
+        equipos=conexion.getEquipoBD().findEquipoEntities();
+        Equipo [][] PartidosEquipo=generarPartidos();
         boolean zig=true;
         int formula=(((equipos.size()-1)*equipos.size())/((equipos.size()-1)*2));
         liga=new Liga(codigoLiga(),"LVP");
@@ -128,6 +115,7 @@ static ArrayList <Partido> partidos;
                         p=new Partido(codigoPartido(), "Espana", j.getFechai());
                         partidos.add(p);
                         j.addPartidosCollection(p);
+                        equipos.get(posicion1);
                         zig=false;
                     }
                 }else{
@@ -159,6 +147,38 @@ static ArrayList <Partido> partidos;
             }
             calendar.add(Calendar.DAY_OF_YEAR, 1);
         }
+    }
+    public static Equipo [][] generarPartidos(){
+        boolean zig=true;
+        boolean stop=false;
+        int x=0,y=0,z=0,t=0;
+        Equipo [][] equiposPartidos=new Equipo [5][2];
+        do{
+            do{
+                stop=false;  
+                do{
+                    do{
+                        if(!equipos.get(x).equals(equipos.get(y))){
+                            if(zig){
+                                equiposPartidos[z][t]=equipos.get(x);
+                                zig=false;
+                                stop=true;       
+                                x++;
+                                y++;
+                            }else{
+                                equiposPartidos[z][t]=equipos.get(y);
+                                zig=true;
+                                stop=true;   
+                                y++;                                
+                            }                            
+                        }else
+                            y++;
+                    }while(y<equipos.size()&stop==false);                                 
+                }while(x<equipos.size()&stop==false);
+                t++;
+            }while(t<equiposPartidos[t].length);
+        }while(z<equiposPartidos.length);
+        return equiposPartidos;
     }
     public static int codigoLiga(){
         return Integer.parseInt(conexion.getLigaBD().autoincrement());

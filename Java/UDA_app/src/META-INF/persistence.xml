@@ -12,9 +12,9 @@
     <class>Modelo.UML.Persona</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@SrvOracle:1521:orcl"/>
-      <property name="javax.persistence.jdbc.user" value="eqdam02"/>
+      <property name="javax.persistence.jdbc.user" value="eqdaw02"/>
       <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
-      <property name="javax.persistence.jdbc.password" value="eqdam02"/>
+      <property name="javax.persistence.jdbc.password" value="eqdaw02"/>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
   </persistence-unit>

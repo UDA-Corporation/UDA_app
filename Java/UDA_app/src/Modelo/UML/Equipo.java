@@ -6,6 +6,7 @@
 package Modelo.UML;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -82,7 +83,8 @@ public class Equipo implements Serializable {
         this.nombre = nombre;
         this.desripcion = desripcion;
         this.puntos = puntos;
-        this.puesto = puesto;
+        this.puesto = puesto;   
+        this.partidoCollection=new ArrayList();
     }
 
     public Integer getCod() {
@@ -142,6 +144,9 @@ public class Equipo implements Serializable {
         this.partidoCollection = partidoCollection;
     }
 
+    public void addPartidoCollection (Partido p){
+        this.partidoCollection.add(p);
+    }
     @XmlTransient
     public Collection<Jugador> getJugadorCollection() {
         return jugadorCollection;
