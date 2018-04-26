@@ -134,6 +134,9 @@ public class Partido implements Serializable {
         this.equipoCollection = equipoCollection;
     }
 
+    public void addEquipoCollection(Equipo e){
+        this.equipoCollection.add(e);
+    }
     public Jornadas getJornadasCod() {
         return jornadasCod;
     }
