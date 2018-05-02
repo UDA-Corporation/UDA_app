@@ -4,6 +4,19 @@
         <equipo codEquipo="" puesto="" puntos=""/>
     </clasificacion>
     <clasificacion>
-        <equipo codEquipo="12" puesto="2" puntos="30"/>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+    </clasificacion>
+    <clasificacion>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
     </clasificacion>
 </liga>
