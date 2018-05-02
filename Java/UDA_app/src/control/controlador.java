@@ -309,12 +309,10 @@ public class controlador {
 
     public static boolean equiposTemp(Equipo e) {
         int x;
-        for (x = 0; x < equiposTemp.size(); x++) {
-            if (equiposTemp.get(x).equals(e)) {
-                return true;
-            }
-        }
-        return false;
+        for (x = 0; x < equiposTemp.size() && !equiposTemp.get(x).equals(e); x++) {}
+            if (x==equiposTemp.size()) 
+                return false;       
+        return true;
     }
 
     public static int codigoLiga() {
