@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<liga xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BDD(Clasificacion).xsd">
+    <clasificacion>
+        <equipo codEquipo="" puesto="" puntos=""/>
+    </clasificacion>
+    <clasificacion>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+    </clasificacion>
+    <clasificacion>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+        <equipo codEquipo="12" puesto="2" puntos="30">Destroy3r</equipo>
+    </clasificacion>
+</liga>

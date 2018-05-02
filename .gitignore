@@ -37,3 +37,13 @@ $RECYCLE.BIN/
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
 Java/UDA_app/nbproject/private/private.properties
+/Parsers/ParserSAX Jornadas/build/
+/Parsers/ParserDOM Jornadas - Copy/bin/build/
+/Parsers/ParserDOM Jornadas - Copy/bin/nbproject/private/
+/Parsers/ParserDOM Jornadas - Copy/nbproject/private/
+/Parsers/ParserDOM Clasificacion/bin/build/
+/Parsers/ParserDOM Clasificacion/bin/nbproject/private/
+/Parsers/ParserDOM Clasificacion/nbproject/private/
+/Parsers/ParserDOM Clasificacion/build/
+/Parsers/ParserDOM Jornadas/build/
+/Parsers/ParserDOM Clasificacion/dist/
