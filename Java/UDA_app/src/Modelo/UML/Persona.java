@@ -6,6 +6,7 @@
 package Modelo.UML;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -207,7 +208,14 @@ public class Persona implements Serializable {
     public void setCuentaCollection(Collection<Cuenta> cuentaCollection) {
         this.cuentaCollection = cuentaCollection;
     }
-
+    
+    public void addCuenta(Cuenta c1){
+        
+        if(cuentaCollection == null)
+            cuentaCollection = new ArrayList();
+        this.cuentaCollection.add(c1);
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
