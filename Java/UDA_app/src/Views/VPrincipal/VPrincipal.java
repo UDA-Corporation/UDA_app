@@ -284,6 +284,11 @@ public class VPrincipal extends javax.swing.JFrame {
         jmRegistrar.add(jSeparator1);
 
         jMenuItem9.setText("Liga");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jmRegistrar.add(jMenuItem9);
         jmRegistrar.add(jSeparator2);
 
@@ -465,6 +470,10 @@ public class VPrincipal extends javax.swing.JFrame {
         controlador.cerrarSesion();
         controlador.toVPrincipal(this);
     }//GEN-LAST:event_jmCsActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        controlador.toJFLiga(this);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
     
     public void inicializarVentana(){
         try

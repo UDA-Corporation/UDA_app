@@ -10,6 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JTextField;
 import Excepciones.*;
+import Modelo.BD.exceptions.PreexistingEntityException;
 import control.controlador;
 import java.awt.Image;
 import java.io.IOException;
@@ -235,6 +236,11 @@ public class VRegistro extends javax.swing.JFrame {
                 tfPass2CaretUpdate(evt);
             }
         });
+        tfPass2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfPass2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -376,6 +382,11 @@ public class VRegistro extends javax.swing.JFrame {
         });
 
         bCancelar.setText("Cancelar");
+        bCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCancelarActionPerformed(evt);
+            }
+        });
 
         jLabel17.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 36)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
@@ -449,7 +460,7 @@ public class VRegistro extends javax.swing.JFrame {
             setErroresColores(tfCiudad, "^([A-Za-z]){0,20}$");
             setErroresColores(tfCp, "^[0-9A-Z]{4,5}$");
             setErroresColores(tfPais, "^([A-Za-z]){0,20}");
-            setErroresColores(tfTel, "^\\+?\\d{1,3}?[- .]?\\(?(?:\\d{2,3})\\)?[- .]?\\d\\d\\d[- .]?\\d\\d\\d\\d$");
+            setErroresColores(tfTel, "^?\\(?(?:\\d{2,3})\\)?[- .]?\\d\\d\\d[- .]?\\d\\d\\d\\d$");
             setErroresColores(tfUsuario, "^[a-z0-9ü][a-z0-9ü_]{3,9}$");
             setErroresColores(tfPass1, "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])([A-Za-z\\d$@$!%*?&]|[^ ]){8,15}$");
             setErroresColores(tfPass2, "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])([A-Za-z\\d$@$!%*?&]|[^ ]){8,15}$");
@@ -462,10 +473,45 @@ public class VRegistro extends javax.swing.JFrame {
             }
             else
                 controlador.JDError(this, true, "La contraseña debe tener más de 8 caracteres", "mayúscula, minúscula, digitos y caracter especial");
+            
+            if(tfDni.getForeground().equals(verde) && tfNombre.getForeground().equals(verde) && tfApellido.getForeground().equals(verde) && tfCalle.getForeground().equals(verde) && tfNro.getForeground().equals(verde) && tfPiso.getForeground().equals(verde)&& tfCiudad.getForeground().equals(verde)&& tfCp.getForeground().equals(verde)&& tfPais.getForeground().equals(verde)&& tfTel.getForeground().equals(verde)&& tfUsuario.getForeground().equals(verde)&& tfPass1.getForeground().equals(verde)&& tfPass2.getForeground().equals(verde))
+            {
+                if(!controlador.registrarUsuario(tfDni.getText(), tfNombre.getText(), tfApellido.getText(), tfCalle.getText(), tfNro.getText(), tfPiso.getText(), tfCiudad.getText(), tfCp.getText(), tfPais.getText(), tfTel.getText(), tfUsuario.getText(), String.valueOf(tfPass1.getPassword()), "usuario"))
+                    throw new registroError();
+                else
+                {
+                    controlador.JDInfo(this, true, "Registro realizado");
+                    controlador.toVLogin(this);
+                }       
+            }
+            else
+                throw new camposIncorrectos();
         }
         catch(contrasenaDiferenteError e){
             tfPass2.setForeground(Color.red);
-            controlador.JDError(this, true, "Repetir contraseña incorrecto");
+            controlador.JDError(this, true, "Las contraseñas no coinciden");
+        }
+        catch(registroError e){
+            controlador.JDError(this, true, "Error, registro no realizado");
+        }
+        catch(camposIncorrectos e){
+            controlador.JDError(this, true, "Error, campos erróneos");
+        }
+        catch(PreexistingEntityException e){
+            if(controlador.tipoE == 1)
+            {
+                tfDni.setForeground(Color.red);
+                controlador.JDError(this, true, "Persona ya registrada con ese DNI");
+            }
+            else
+            {
+                controlador.destroyRegitro(tfDni.getText());
+                tfUsuario.setForeground(Color.red);
+                controlador.JDError(this, true, "Usuario ya existente");
+            }    
+        }
+        catch(Exception e){
+            controlador.JDError(this, true, "Errores...");
         }
         
     }//GEN-LAST:event_bAceptarActionPerformed
@@ -525,6 +571,14 @@ public class VRegistro extends javax.swing.JFrame {
     private void tfPass2CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfPass2CaretUpdate
         coloresDefault(tfPass2);
     }//GEN-LAST:event_tfPass2CaretUpdate
+
+    private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
+        controlador.toVLogin(this);
+    }//GEN-LAST:event_bCancelarActionPerformed
+
+    private void tfPass2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPass2ActionPerformed
+        bAceptar.doClick();
+    }//GEN-LAST:event_tfPass2ActionPerformed
     
     public void coloresDefault(JTextField tf){
         tf.setForeground(Color.black);
