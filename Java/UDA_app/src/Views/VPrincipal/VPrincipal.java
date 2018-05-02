@@ -6,6 +6,9 @@
 package Views.VPrincipal;
 
 import control.controlador;
+import java.awt.Color;
+import java.awt.Image;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,8 +22,9 @@ public class VPrincipal extends javax.swing.JFrame {
      */
     public VPrincipal(){
         initComponents();
+        //Vamos a llamar a una función que oculte las opciones para el administrador y para un usuario loggeado
         inicializarVentana();
-        TextoAyuda.setText(" ");
+        
     }
     
     /**
@@ -33,23 +37,24 @@ public class VPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        HacerLogin = new javax.swing.JLabel();
+        tfMensaje1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        HacerLogin1 = new javax.swing.JLabel();
-        HacerLogin2 = new javax.swing.JLabel();
-        HacerLogin3 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        tfMensaje2 = new javax.swing.JLabel();
+        tfMensaje3 = new javax.swing.JLabel();
+        tfMensaje4 = new javax.swing.JLabel();
         Ayuda = new javax.swing.JLabel();
-        TextoAyuda = new javax.swing.JLabel();
+        TextoAyuda2 = new javax.swing.JLabel();
+        TextoAyuda1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuOpciones = new javax.swing.JMenu();
-        MenuLogin = new javax.swing.JMenuItem();
-        jmCr = new javax.swing.JMenuItem();
+        jmLogin = new javax.swing.JMenuItem();
+        jmCs = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jmHerramientas = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        jmRegistrar = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -59,16 +64,16 @@ public class VPrincipal extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem11 = new javax.swing.JMenuItem();
+        jmModUsu = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
+        jmModDue = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        jmEliminar = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        jmListar = new javax.swing.JMenu();
         jMenuItem17 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenuItem19 = new javax.swing.JMenuItem();
@@ -80,9 +85,10 @@ public class VPrincipal extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenuItem21 = new javax.swing.JMenuItem();
         jmPuntuacion = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
+        jmResultados = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Gestor e-sports");
         setBackground(new java.awt.Color(255, 255, 255));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -92,16 +98,9 @@ public class VPrincipal extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton3.setText("jButton3");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        HacerLogin.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        HacerLogin.setForeground(new java.awt.Color(255, 0, 0));
-        HacerLogin.setText("Por favor, inicie sesión. Opciones>>Login.");
+        tfMensaje1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        tfMensaje1.setForeground(new java.awt.Color(255, 0, 0));
+        tfMensaje1.setText("Por favor, inicie sesión. Opciones>>Login.");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/Logo_grande.png"))); // NOI18N
 
@@ -109,35 +108,59 @@ public class VPrincipal extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Bienvenido/a al gestor de e-sports");
 
-        HacerLogin1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        HacerLogin1.setForeground(new java.awt.Color(255, 0, 0));
-        HacerLogin1.setText("o");
+        tfMensaje2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        tfMensaje2.setForeground(new java.awt.Color(255, 0, 0));
+        tfMensaje2.setText("o");
 
-        HacerLogin2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        HacerLogin2.setForeground(new java.awt.Color(255, 0, 0));
-        HacerLogin2.setText("haz click");
+        tfMensaje3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        tfMensaje3.setForeground(new java.awt.Color(255, 0, 0));
+        tfMensaje3.setText("haz click");
 
-        HacerLogin3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        HacerLogin3.setForeground(new java.awt.Color(0, 0, 255));
-        HacerLogin3.setText("aquí");
-        HacerLogin3.addMouseListener(new java.awt.event.MouseAdapter() {
+        tfMensaje4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        tfMensaje4.setForeground(new java.awt.Color(0, 0, 255));
+        tfMensaje4.setText("aquí");
+        tfMensaje4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                HacerLogin3MouseClicked(evt);
+                tfMensaje4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tfMensaje4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                tfMensaje4MouseExited(evt);
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/Gif.gif"))); // NOI18N
-
         Ayuda.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         Ayuda.setForeground(new java.awt.Color(0, 0, 0));
-        Ayuda.setText("Ayuda (?)");
+        Ayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/b_help.png"))); // NOI18N
+        Ayuda.setText("Ayuda");
         Ayuda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AyudaMouseClicked(evt);
             }
         });
 
-        TextoAyuda.setText("Texto ayuda");
+        TextoAyuda2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        TextoAyuda2.setText("Texto ayuda");
+
+        TextoAyuda1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        TextoAyuda1.setText("Texto ayuda");
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 2, 2, new java.awt.Color(153, 153, 153)));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/Gif.gif"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -147,61 +170,63 @@ public class VPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(308, 308, 308)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(156, 156, 156)
-                                .addComponent(HacerLogin1)
-                                .addGap(184, 184, 184))
-                            .addComponent(HacerLogin)))
+                            .addComponent(Ayuda)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(413, 413, 413)
-                        .addComponent(HacerLogin2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(HacerLogin3))
+                        .addGap(344, 344, 344)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfMensaje1)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addGap(156, 156, 156)
+                                    .addComponent(tfMensaje2)
+                                    .addGap(31, 31, 31))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(105, 105, 105)
+                                    .addComponent(tfMensaje3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(tfMensaje4)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(580, 580, 580)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(239, 239, 239)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Ayuda)))
-                .addContainerGap(88, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(TextoAyuda)
-                    .addComponent(jLabel3))
-                .addGap(194, 194, 194))
+                        .addGap(284, 284, 284)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TextoAyuda2, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TextoAyuda1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(40, 40, 40)
-                .addComponent(HacerLogin)
+                .addComponent(tfMensaje1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(HacerLogin1)
+                .addComponent(tfMensaje2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(HacerLogin3)
-                    .addComponent(HacerLogin2))
-                .addGap(37, 37, 37)
-                .addComponent(jLabel3)
-                .addGap(34, 34, 34)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addComponent(TextoAyuda)
-                .addGap(15, 15, 15)
+                    .addComponent(tfMensaje4)
+                    .addComponent(tfMensaje3))
+                .addGap(70, 70, 70)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(TextoAyuda1)
+                .addGap(18, 18, 18)
+                .addComponent(TextoAyuda2)
+                .addGap(68, 68, 68)
                 .addComponent(Ayuda)
-                .addGap(385, 385, 385))
+                .addGap(8, 8, 8))
         );
 
         MenuOpciones.setText("Opciones");
@@ -214,16 +239,21 @@ public class VPrincipal extends javax.swing.JFrame {
             }
         });
 
-        MenuLogin.setText("Login");
-        MenuLogin.addActionListener(new java.awt.event.ActionListener() {
+        jmLogin.setText("Login");
+        jmLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuLoginActionPerformed(evt);
+                jmLoginActionPerformed(evt);
             }
         });
-        MenuOpciones.add(MenuLogin);
+        MenuOpciones.add(jmLogin);
 
-        jmCr.setText("Cerrar sesión");
-        MenuOpciones.add(jmCr);
+        jmCs.setText("Cerrar sesión");
+        jmCs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCsActionPerformed(evt);
+            }
+        });
+        MenuOpciones.add(jmCs);
 
         jMenuItem2.setText("Salir");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -237,109 +267,109 @@ public class VPrincipal extends javax.swing.JFrame {
 
         jmHerramientas.setText("Herramientas");
 
-        jMenu2.setText("Registrar");
+        jmRegistrar.setText("Registrar");
 
         jMenuItem3.setText("Usuario");
-        jMenu2.add(jMenuItem3);
+        jmRegistrar.add(jMenuItem3);
 
         jMenuItem4.setText("Jugador");
         jMenuItem4.setToolTipText("");
-        jMenu2.add(jMenuItem4);
+        jmRegistrar.add(jMenuItem4);
 
         jMenuItem5.setText("Dueño");
-        jMenu2.add(jMenuItem5);
+        jmRegistrar.add(jMenuItem5);
 
         jMenuItem10.setText("Equipo");
-        jMenu2.add(jMenuItem10);
-        jMenu2.add(jSeparator1);
+        jmRegistrar.add(jMenuItem10);
+        jmRegistrar.add(jSeparator1);
 
         jMenuItem9.setText("Liga");
-        jMenu2.add(jMenuItem9);
-        jMenu2.add(jSeparator2);
+        jmRegistrar.add(jMenuItem9);
+        jmRegistrar.add(jSeparator2);
 
         jMenuItem6.setText("Aministrador");
-        jMenu2.add(jMenuItem6);
+        jmRegistrar.add(jMenuItem6);
 
-        jmHerramientas.add(jMenu2);
+        jmHerramientas.add(jmRegistrar);
 
         jMenu3.setText("Modificar");
 
-        jMenuItem11.setText("Usuario");
-        jMenu3.add(jMenuItem11);
+        jmModUsu.setText("Usuario");
+        jMenu3.add(jmModUsu);
 
         jMenuItem12.setText("Jugador");
         jMenu3.add(jMenuItem12);
 
-        jMenuItem13.setText("Dueño");
-        jMenu3.add(jMenuItem13);
+        jmModDue.setText("Dueño");
+        jMenu3.add(jmModDue);
 
         jMenuItem7.setText("Equipo");
         jMenu3.add(jMenuItem7);
 
         jmHerramientas.add(jMenu3);
 
-        jMenu4.setText("Eliminar");
+        jmEliminar.setText("Eliminar");
 
         jMenuItem8.setText("Usuario");
-        jMenu4.add(jMenuItem8);
+        jmEliminar.add(jMenuItem8);
 
         jMenuItem14.setText("Jugador");
-        jMenu4.add(jMenuItem14);
+        jmEliminar.add(jMenuItem14);
 
         jMenuItem15.setText("Dueño");
-        jMenu4.add(jMenuItem15);
+        jmEliminar.add(jMenuItem15);
 
         jMenuItem16.setText("Equipo");
-        jMenu4.add(jMenuItem16);
+        jmEliminar.add(jMenuItem16);
 
-        jmHerramientas.add(jMenu4);
+        jmHerramientas.add(jmEliminar);
 
-        jMenu5.setText("Listar");
+        jmListar.setText("Listar");
 
         jMenuItem17.setText("Usuarios");
-        jMenu5.add(jMenuItem17);
+        jmListar.add(jMenuItem17);
 
         jMenuItem18.setText("Jugadores");
-        jMenu5.add(jMenuItem18);
+        jmListar.add(jMenuItem18);
 
         jMenuItem19.setText("Dueños");
         jMenuItem19.setToolTipText("");
-        jMenu5.add(jMenuItem19);
+        jmListar.add(jMenuItem19);
 
         jMenuItem20.setText("Equipos");
-        jMenu5.add(jMenuItem20);
-        jMenu5.add(jSeparator4);
+        jmListar.add(jMenuItem20);
+        jmListar.add(jSeparator4);
 
         jMenuItem22.setText("Ligas");
-        jMenu5.add(jMenuItem22);
+        jmListar.add(jMenuItem22);
 
         jMenuItem23.setText("Partidos");
-        jMenu5.add(jMenuItem23);
+        jmListar.add(jMenuItem23);
 
         jMenuItem24.setText("Jornadas");
-        jMenu5.add(jMenuItem24);
-        jMenu5.add(jSeparator3);
+        jmListar.add(jMenuItem24);
+        jmListar.add(jSeparator3);
 
         jMenuItem21.setText("Administradores");
-        jMenu5.add(jMenuItem21);
+        jmListar.add(jMenuItem21);
 
-        jmHerramientas.add(jMenu5);
+        jmHerramientas.add(jmListar);
 
         jMenuBar1.add(jmHerramientas);
 
         jmPuntuacion.setText("Gestión de puntuación");
         jMenuBar1.add(jmPuntuacion);
 
-        jMenu7.setText("Resultados y datos");
-        jMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
+        jmResultados.setText("Resultados y datos");
+        jmResultados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jMenu7MouseEntered(evt);
+                jmResultadosMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jMenu7MouseExited(evt);
+                jmResultadosMouseExited(evt);
             }
         });
-        jMenuBar1.add(jMenu7);
+        jMenuBar1.add(jmResultados);
 
         setJMenuBar(jMenuBar1);
 
@@ -347,55 +377,57 @@ public class VPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 884, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void MenuLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuLoginActionPerformed
+    private void jmLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmLoginActionPerformed
         //Funcion que abre la ventana login
-        control.controlador.toVLogin();
-    }//GEN-LAST:event_MenuLoginActionPerformed
+        control.controlador.toVLogin(this);
+    }//GEN-LAST:event_jmLoginActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         //Cuando se abre la ventana 
         
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        controlador.JDError(this, true, "Error de retraso", "Porque alejandro es tontito");
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void HacerLogin3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HacerLogin3MouseClicked
-        
-    }//GEN-LAST:event_HacerLogin3MouseClicked
+    private void tfMensaje4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfMensaje4MouseClicked
+        controlador.toVLogin(this);
+    }//GEN-LAST:event_tfMensaje4MouseClicked
 
     private void AyudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AyudaMouseClicked
         //Muestra la caja de ayuda o la oculta si se desactiva la ayuda
         if (modoayuda == false) { 
             modoayuda = true;
             Ayuda.setText("Cerrar ayuda");
-            JOptionPane.showMessageDialog(null, "Modo ayuda activado, sitúa el ratón sobre las opciones que quieras saber qué hacen");
+            controlador.JDInfo(this, true, "Modo ayuda activado, sitúa el ratón sobre", "las opciones que quieras saber qué hacen");
         }else{
             modoayuda = false;
-            Ayuda.setText("Ayuda (?)");
+            controlador.JDInfo(this, true, "Modo ayuda desactivado");
+            Ayuda.setText("Ayuda");
         }
         System.out.println("Modo ayuda: " + modoayuda);
     }//GEN-LAST:event_AyudaMouseClicked
 
     private void MenuOpcionesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuOpcionesMouseEntered
         //Ayuda opciones
-        TextoAyuda.setText("Aquí podrás hacer login, cerrar sesión o salir de la app");
+        if(modoayuda)
+        {
+            TextoAyuda1.setText("Aquí podrás hacer login, cerrar sesión o");
+            TextoAyuda2.setText("salir de la app");
+        }    
     }//GEN-LAST:event_MenuOpcionesMouseEntered
 
     private void MenuOpcionesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuOpcionesMouseExited
         //Borra ayuda de opciones
-        TextoAyuda.setText(" ");
+        TextoAyuda1.setText(" ");
+        TextoAyuda2.setText(" ");
     }//GEN-LAST:event_MenuOpcionesMouseExited
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -403,24 +435,105 @@ public class VPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenu7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseEntered
+    private void jmResultadosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmResultadosMouseEntered
         //Ayuda resultados
-        TextoAyuda.setText("Aquí podrás consultar resultados de partidos y ver futuros partidos en detalle");
-    }//GEN-LAST:event_jMenu7MouseEntered
+        if(modoayuda)
+        {
+            TextoAyuda1.setText("Aquí podrás consultar resultados de partidos y ver");
+            TextoAyuda2.setText("futuros partidos en detalle");    
+        }    
+    }//GEN-LAST:event_jmResultadosMouseEntered
 
-    private void jMenu7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseExited
+    private void jmResultadosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmResultadosMouseExited
         //Borra ayuda de resultados
-        TextoAyuda.setText(" ");
-    }//GEN-LAST:event_jMenu7MouseExited
+        TextoAyuda1.setText(" ");
+        TextoAyuda2.setText(" ");
+    }//GEN-LAST:event_jmResultadosMouseExited
+
+    private void tfMensaje4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfMensaje4MouseEntered
+        if(modoayuda)   
+            TextoAyuda1.setText("Haciendo click aquí podras hacer login");
+    }//GEN-LAST:event_tfMensaje4MouseEntered
+
+    private void tfMensaje4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfMensaje4MouseExited
+        TextoAyuda1.setText(" ");
+        
+    }//GEN-LAST:event_tfMensaje4MouseExited
+
+    private void jmCsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCsActionPerformed
+        controlador.JDInfo(this, true, "Se va a cerrar la sesión...");
+        controlador.cerrarSesion();
+        controlador.toVPrincipal(this);
+    }//GEN-LAST:event_jmCsActionPerformed
     
     public void inicializarVentana(){
+        try
+        {
+            TextoAyuda1.setText(" ");
+            TextoAyuda2.setText(" ");
+            setLocationRelativeTo(null);
+            TextoAyuda2.setText(" ");
+            //Esta opción nos va a asignar un favicon a nusetro proyecto
+            Image i = ImageIO.read(getClass().getResource("/Views/VPrincipal/logo_u_favicon.png"));
+            setIconImage(i);
+            
+            if(controlador.usu == null)
+            {
+                jmCs.setVisible(false);
+                jmHerramientas.setVisible(false);
+                jmPuntuacion.setVisible(false);
+                jmResultados.setVisible(false);
+                tfMensaje1.setText("Por favor, inicie sesión. Opciones>>Login.");
+                tfMensaje2.setText("o");
+                tfMensaje1.setForeground(Color.red);
+                tfMensaje2.setForeground(Color.red);
+                tfMensaje3.setText("haz click");
+                tfMensaje4.setText("aquí");
+            }
+            else
+            {
+                switch(controlador.usu.getPersonaDni().getTipoPersona())
+                {
+                    case "admin": 
+                        setInicioSesion();
+                    break;
+                    
+                    case "usuario":
+                        setInicioSesion();
+                        jmHerramientas.setVisible(false);
+                        jmPuntuacion.setVisible(false);
+                    break;
+                
+                    case "dueno":
+                        setInicioSesion();
+                        jmRegistrar.setVisible(false);
+                        jmListar.setVisible(false);
+                        jmEliminar.setVisible(false);
+                        jmModUsu.setVisible(false);
+                        jmModDue.setVisible(false);
+                        jmPuntuacion.setVisible(false);
+                    break;
+                                
+            }
+            }    
+            
+        }
+        catch(Exception e){
+            controlador.JDError(this, true, "Error en ventana principal");
+        }
         
-        setLocationRelativeTo(null);
-        TextoAyuda.setText(" ");
-        jmCr.setVisible(false);
-        jmHerramientas.setVisible(false);
-        jmPuntuacion.setVisible(false);
     }
+    
+    public void setInicioSesion(){
+        tfMensaje1.setText("             Bienvenido/a de nuevo");
+        tfMensaje2.setText(controlador.usu.getPersonaDni().getNombre());
+        tfMensaje1.setForeground(new Color(153,153,153));
+        tfMensaje2.setForeground(new Color(153,153,153));
+        tfMensaje3.setText(" ");
+        tfMensaje4.setText(" ");
+        jmLogin.setVisible(false);
+    }
+    
     
     /**
      * @param args the command line arguments
@@ -459,27 +572,16 @@ public class VPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Ayuda;
-    private javax.swing.JLabel HacerLogin;
-    private javax.swing.JLabel HacerLogin1;
-    private javax.swing.JLabel HacerLogin2;
-    private javax.swing.JLabel HacerLogin3;
-    private javax.swing.JMenuItem MenuLogin;
     private javax.swing.JMenu MenuOpciones;
-    private javax.swing.JLabel TextoAyuda;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel TextoAyuda1;
+    private javax.swing.JLabel TextoAyuda2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
@@ -500,12 +602,24 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
-    private javax.swing.JMenuItem jmCr;
+    private javax.swing.JMenuItem jmCs;
+    private javax.swing.JMenu jmEliminar;
     private javax.swing.JMenu jmHerramientas;
+    private javax.swing.JMenu jmListar;
+    private javax.swing.JMenuItem jmLogin;
+    private javax.swing.JMenuItem jmModDue;
+    private javax.swing.JMenuItem jmModUsu;
     private javax.swing.JMenu jmPuntuacion;
+    private javax.swing.JMenu jmRegistrar;
+    private javax.swing.JMenu jmResultados;
+    private javax.swing.JLabel tfMensaje1;
+    private javax.swing.JLabel tfMensaje2;
+    private javax.swing.JLabel tfMensaje3;
+    private javax.swing.JLabel tfMensaje4;
     // End of variables declaration//GEN-END:variables
 }

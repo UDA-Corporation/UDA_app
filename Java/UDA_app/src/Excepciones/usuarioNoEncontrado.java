@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Views.VPrincipal;
+package Excepciones;
 
 /**
  *
- * @author unai-
+ * @author 1gdaw08
  */
-public class Testeo_guenooo {
-    /*Tupo*/
+public class usuarioNoEncontrado extends Exception{
+    
 }

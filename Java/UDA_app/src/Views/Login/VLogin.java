@@ -10,6 +10,9 @@ package Views.Login;
  * @author unai-
  */
 import control.controlador;
+import java.awt.Image;
+import javax.imageio.ImageIO;
+import Excepciones.*;
 
 public class VLogin extends javax.swing.JFrame {
 
@@ -18,7 +21,10 @@ public class VLogin extends javax.swing.JFrame {
      */
     public VLogin() {
         initComponents();
+        setLocationRelativeTo(null);
+        inicializarVentana();
         this.setAlwaysOnTop(true);
+        
     }
 
     /**
@@ -41,7 +47,13 @@ public class VLogin extends javax.swing.JFrame {
         lLink = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Login");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -58,8 +70,18 @@ public class VLogin extends javax.swing.JFrame {
         jLabel3.setText("Contraseña");
 
         bLogin.setText("Login");
+        bLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLoginActionPerformed(evt);
+            }
+        });
 
         tfPass.setBackground(new java.awt.Color(255, 255, 204));
+        tfPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfPassActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("MS UI Gothic", 2, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
@@ -149,6 +171,48 @@ public class VLogin extends javax.swing.JFrame {
         controlador.toVRegistro(this);
     }//GEN-LAST:event_lLinkMouseClicked
 
+    private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
+        try
+        {
+            System.out.println("1");
+            if(!controlador.findUsuLogin(tfUsuario.getText(), String.valueOf(tfPass.getPassword())))
+            {
+                if(controlador.usu == null)
+                    throw new Exception();
+                
+                throw new Exception();
+            }
+            controlador.toVPrincipal(this);
+            
+        
+        }
+        catch(Exception e){
+            controlador.JDError(this, true, "Error: datos incorrectos");
+        }
+    }//GEN-LAST:event_bLoginActionPerformed
+
+    
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        controlador.toVPrincipal(this);
+    }//GEN-LAST:event_formWindowClosing
+
+    private void tfPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPassActionPerformed
+        bLogin.doClick();
+    }//GEN-LAST:event_tfPassActionPerformed
+    
+    public void inicializarVentana(){
+        try
+        {
+            //Esta opción nos va a asignar un favicon a nusetro proyecto
+            Image i = ImageIO.read(getClass().getResource("/Views/VPrincipal/logo_u_favicon.png"));
+            setIconImage(i);
+        }
+        catch(Exception e){
+            controlador.JDError(this, true, "Error en ventana");
+        }
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
