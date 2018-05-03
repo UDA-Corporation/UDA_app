@@ -25,8 +25,6 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 import org.xml.sax.SAXException;
 
-import parserdom.Clasificacion.*;
-
 public class ParserDOM {
     List equipo;
     List jornadasBD;
@@ -43,6 +41,9 @@ public class ParserDOM {
         cargarDatos();        
     }
     
+    /**
+     * Se encarga de llamar a todos los elementos correspondientes del DOM
+     */
     public void ejecutar() {
         System.out.println("Comenzando consulta a la BBDD");
         //Volcamos el fichero xml en memoria como arbol de DOM
@@ -53,7 +54,10 @@ public class ParserDOM {
         escribirFicheroXML();
         System.out.println("Fichero actualizado correctamente");
     }
-
+    
+    /**
+     * Se encarga de editar el fichero XML
+     */
     private void escribirFicheroXML() {
 
         try {
@@ -72,15 +76,28 @@ public class ParserDOM {
         }
     }
     
-private void crearArbolDOM() {
+    /**
+     * Se encarga de crear los elementos, su contenido y sus atributos del XML
+     */
+    private void crearArbolDOM() {
 
         //Cogemos la referencia al elemento raiz liga
         Element raiz = dom.getDocumentElement();
         //ELIMINAR CLASIFICACION
-        Node eliminar = raiz.getFirstChild();
-        raiz.removeChild(eliminar);
+      
         
         
+        
+        
+        
+        //Node eliminar = (Node) raiz.getElementsByTagName("clasificacion");
+        //raiz.removeChild(eliminar);
+        
+        
+        
+        
+        
+
         //DOM y los agregamos a la raiz
         Iterator it = equipo.iterator();
         Element clasificacionEle = crearElementoClasificacion();
@@ -94,13 +111,20 @@ private void crearArbolDOM() {
 
     }
     
-    //Creamos clasificacion sin atributos como contenedor de elementos
+    /**
+     * Se encarga de crear el elemento clasificacion sin atributos como contenedor de elementos
+     * @return devuelve el elemento clasificación creado
+     */
     private Element crearElementoClasificacion(){
         Element clasificacionEle = dom.createElement("clasificacion");
         return clasificacionEle;
     }
     
-    //Creamos el elemento equipo con sus atributos y texto
+    /**
+     * Se encarga de crear el elemento equipo con sus atributos y texto
+     * @param e le pasa el objeto e
+     * @return devuelve el elemento equipo con todos sus atributos y texto
+     */
     private Element crearElementoEquipo(Equipo e){
         //Crear elemento equipo dentro de clasificacion
         Element equipoEle = dom.createElement("equipo");
@@ -108,29 +132,17 @@ private void crearArbolDOM() {
         Text nombre = dom.createTextNode(e.getNombre());
         equipoEle.appendChild(nombre);
         //Atributo codigo de equipo
-        getAtributo(equipoEle, "codEquipo", "codigoequipo");
         equipoEle.setAttribute("codEquipo", e.getCodigoEquipo());
         //Atributo puntos
-        getAtributo(equipoEle, "puntos", "puntos");
         equipoEle.setAttribute("puntos", e.getPuntos()); 
         //Atributo puesto
-        getAtributo(equipoEle, "puesto", "puesto");
         equipoEle.setAttribute("puesto", e.getPuesto()); 
         return equipoEle;
     }
     
-    //Localizamos el atributo del elemento
-    private String getAtributo(Element empEl, String etiqueta, String att) {
-        String atributo = "";
-        NodeList nl = empEl.getElementsByTagName(etiqueta);
-        if (nl != null && nl.getLength() > 0) {
-            Element el = (Element) nl.item(0);
-            atributo = el.getAttribute(att);
-        }
-
-        return atributo;
-    }
-
+    /**
+     * Se encarga de parsear el fichero XML con DOM
+     */
     private void parsearFicheroXML() {
         //Creamos el DocumentBuilderFactory
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -152,21 +164,24 @@ private void crearArbolDOM() {
         }
     }
     
+    /**
+     * Función que carga en el Array los objetos Equipo
+     */
     private void cargarDatos() {
         equipo.add(new Equipo("12","30","2","Destroy3r"));
-        equipo.add(new Equipo("12","30","2","Destroy3r"));
-        equipo.add(new Equipo("12","30","2","Destroy3r"));
-        equipo.add(new Equipo("12","30","2","Destroy3r"));
-        equipo.add(new Equipo("12","30","2","Destroy3r"));
-        equipo.add(new Equipo("12","30","2","Destroy3r"));
+        equipo.add(new Equipo("12","30","2","Test2"));
+        equipo.add(new Equipo("12","30","2","Test3"));
+        equipo.add(new Equipo("12","30","2","Test4"));
+        equipo.add(new Equipo("12","30","2","Test5"));
+        equipo.add(new Equipo("12","30","2","Test6"));
     }
     
     public static void main(String args[]) {
 
-        //create an instance
+        //Crea una nueva instancia
         ParserDOM datos = new ParserDOM();
 
-        //run the example
+        //Ejecutar el parser
         datos.ejecutar();
     }
     
