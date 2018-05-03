@@ -208,7 +208,7 @@ public class LigaJpaController implements Serializable {
     }
     public String autoincrement(){
         try{
-            String jpql="select max(cod) from partido";
+            String jpql="select max(cod) from liga";
             Query cons=this.getEntityManager().createNativeQuery(jpql);
             List lista = cons.getResultList();  
             String cod=lista.get(0).toString();

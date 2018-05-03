@@ -49,18 +49,18 @@
                 <Property name="text" type="java.lang.String" value="Registrar"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+                <MenuItem class="javax.swing.JMenuItem" name="jmCUsuario">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Usuario"/>
                   </Properties>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+                <MenuItem class="javax.swing.JMenuItem" name="jmCJugador">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Jugador"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+                <MenuItem class="javax.swing.JMenuItem" name="jmCDueno">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Due&#xf1;o"/>
                   </Properties>
