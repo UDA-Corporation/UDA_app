@@ -266,19 +266,7 @@ public class controlador {
         for (int x = 0; x < PartidosEquipo.length && finished == false; x++) {
             found = false;
             for (int y = 0; y < PartidosEquipo[y].length & found == false; y++) {
-                if (first) {
-                    equiposP.add(PartidosEquipo[x][y]);
-                    equiposTemp.add(PartidosEquipo[x][y]);
-                    PartidosEquipo[x][y] = null;
-                    if (y == PartidosEquipo[y].length - 1) {
-                        partidos.get(contador).setEquipoCollection(equiposP);
-                        conexion.getPartidoBD().edit(partidos.get(contador));
-                        contador++;
-                        contacuatro++;
-                        contaTotal++;
-                        first = false;
-                    }
-                } else if (!equiposTemp(PartidosEquipo[x][y]) && !equiposTemp(PartidosEquipo[x][y + 1]) && PartidosEquipo[x][y] != null && PartidosEquipo[x][y + 1] != null) {
+                if (!equiposTemp(PartidosEquipo[x][y]) && !equiposTemp(PartidosEquipo[x][y + 1]) && PartidosEquipo[x][y] != null && PartidosEquipo[x][y + 1] != null) {
                     equiposP = new ArrayList();
                     for (int g = 0; g < PartidosEquipo[y].length; g++) {
                         equiposP.add(PartidosEquipo[x][g]);

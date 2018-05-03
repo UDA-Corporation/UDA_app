@@ -55,9 +55,9 @@ public class VPrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jmHerramientas = new javax.swing.JMenu();
         jmRegistrar = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        jmCUsuario = new javax.swing.JMenuItem();
+        jmCJugador = new javax.swing.JMenuItem();
+        jmCDueno = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem9 = new javax.swing.JMenuItem();
@@ -269,15 +269,15 @@ public class VPrincipal extends javax.swing.JFrame {
 
         jmRegistrar.setText("Registrar");
 
-        jMenuItem3.setText("Usuario");
-        jmRegistrar.add(jMenuItem3);
+        jmCUsuario.setText("Usuario");
+        jmRegistrar.add(jmCUsuario);
 
-        jMenuItem4.setText("Jugador");
-        jMenuItem4.setToolTipText("");
-        jmRegistrar.add(jMenuItem4);
+        jmCJugador.setText("Jugador");
+        jmCJugador.setToolTipText("");
+        jmRegistrar.add(jmCJugador);
 
-        jMenuItem5.setText("Dueño");
-        jmRegistrar.add(jMenuItem5);
+        jmCDueno.setText("Dueño");
+        jmRegistrar.add(jmCDueno);
 
         jMenuItem10.setText("Equipo");
         jmRegistrar.add(jMenuItem10);
@@ -603,9 +603,6 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem23;
     private javax.swing.JMenuItem jMenuItem24;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
@@ -616,6 +613,9 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JMenuItem jmCDueno;
+    private javax.swing.JMenuItem jmCJugador;
+    private javax.swing.JMenuItem jmCUsuario;
     private javax.swing.JMenuItem jmCs;
     private javax.swing.JMenu jmEliminar;
     private javax.swing.JMenu jmHerramientas;
