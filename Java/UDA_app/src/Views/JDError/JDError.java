@@ -24,6 +24,7 @@ public class JDError extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         lTexto1.setText(mensaje);
+        tfFocus.requestFocus();
     }
     
     public JDError (java.awt.Frame ventana, boolean modal, String mensaje, String mensaje2){
@@ -32,6 +33,7 @@ public class JDError extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         lTexto1.setText(mensaje);
         lTexto2.setText(mensaje2);
+        tfFocus.requestFocus();
     }
 
     /**
@@ -48,6 +50,7 @@ public class JDError extends javax.swing.JDialog {
         lTexto1 = new javax.swing.JLabel();
         lTexto2 = new javax.swing.JLabel();
         bAceptar = new javax.swing.JButton();
+        tfFocus = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Error!");
@@ -63,11 +66,19 @@ public class JDError extends javax.swing.JDialog {
         lTexto2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         lTexto2.setForeground(new java.awt.Color(0, 0, 0));
         lTexto2.setToolTipText("");
+        lTexto2.setRequestFocusEnabled(false);
 
         bAceptar.setText("Aceptar");
+        bAceptar.setRequestFocusEnabled(false);
         bAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAceptarActionPerformed(evt);
+            }
+        });
+
+        tfFocus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfFocusActionPerformed(evt);
             }
         });
 
@@ -78,29 +89,36 @@ public class JDError extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(245, 245, 245)
                 .addComponent(bAceptar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tfFocus, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(138, 138, 138))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lTexto1, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
+                    .addComponent(lTexto1, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
                     .addComponent(lTexto2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(lTexto1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lTexto2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(bAceptar)
-                .addGap(25, 25, 25))
+                        .addComponent(lTexto2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(bAceptar)
+                        .addGap(25, 25, 25))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(tfFocus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -120,6 +138,10 @@ public class JDError extends javax.swing.JDialog {
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         this.dispose();
     }//GEN-LAST:event_bAceptarActionPerformed
+
+    private void tfFocusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfFocusActionPerformed
+        bAceptar.doClick();
+    }//GEN-LAST:event_tfFocusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,5 +191,6 @@ public class JDError extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lTexto1;
     private javax.swing.JLabel lTexto2;
+    private javax.swing.JTextField tfFocus;
     // End of variables declaration//GEN-END:variables
 }
