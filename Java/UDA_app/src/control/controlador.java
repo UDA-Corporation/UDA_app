@@ -82,9 +82,9 @@ public class controlador {
         vp.setVisible(true);
     }
 
-    public static void toVRegistro(Frame ventana) {
+    public static void toVRegistro(Frame ventana, int tipo, String titulo, int tipoventana) {
         ventana.dispose();
-        VRegistro vr = new VRegistro();
+        VRegistro vr = new VRegistro(tipo, titulo, tipoventana);
         vr.setVisible(true);
     }
 
@@ -133,7 +133,19 @@ public class controlador {
 
     public static void cerrarSesion() {
         usu = null;
-
+    }
+    
+    public static boolean findNickname(String nick){
+        boolean encontrado = false;
+        List <Jugador> j = conexion.getJugadorBD().findJugadorEntities();
+        int x;
+        for(x = 0; x<j.size()&&!j.get(x).getNickname().equals(nick); x++){}
+            if(x!=j.size())
+                encontrado = true;
+            
+        return encontrado;
+                
+            
     }
 
     public static boolean registrarUsuario(String dni, String nombre, String apellido, String calle, String numero, String piso, String ciudad, String cp, String pais, String tel, String usuario, String pass, String tipo_persona) throws Exception {
@@ -151,6 +163,15 @@ public class controlador {
         conexion.getCuentaBD().create(c1);
         correcto = true;
         return correcto;
+    }
+    
+    public static boolean registrarJugador(String dni, String nickname, String sueldo, String nombre, String apellido, String calle, String numero, String piso, String ciudad, String cp, String pais, String tel) throws Exception{
+        
+        Jugador j1 = new Jugador(dni, nickname, Integer.parseInt(sueldo), nombre, apellido, calle, numero, piso, ciudad, cp, pais, tel);
+        tipoE = 1;
+        conexion.getJugadorBD().create(j1);
+        
+        return true;
     }
 
     public static void destroyRegitro(String dni) {

@@ -168,7 +168,7 @@ public class VLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lLinkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lLinkMouseClicked
-        controlador.toVRegistro(this);
+        controlador.toVRegistro(this, 1, "Nuevo Usuario", 2);
     }//GEN-LAST:event_lLinkMouseClicked
 
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
