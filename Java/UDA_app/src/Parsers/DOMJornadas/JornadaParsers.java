@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package parserdom;
+package Parsers.DOMJornadas;
 
-public class Jornada {
+public class JornadaParsers {
     private String codigoJornada;
     private String fechaInicio;
     private String fechaFinal;
 
-    public Jornada(String codigoJornada, String fechaInicio, String fechaFinal) {
+    public JornadaParsers(String codigoJornada, String fechaInicio, String fechaFinal) {
         this.codigoJornada = codigoJornada;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;

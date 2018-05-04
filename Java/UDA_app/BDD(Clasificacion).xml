@@ -8,4 +8,14 @@
         <equipo codEquipo="12" puesto="2" puntos="30">Test5</equipo>
         <equipo codEquipo="12" puesto="2" puntos="30">Test6</equipo>
     </clasificacion>
+    <clasificacion>
+        <equipo codEquipo="1" puesto="3" puntos="0">D3STROY</equipo>
+        <equipo codEquipo="2" puesto="2" puntos="0">FNATICX</equipo>
+        <equipo codEquipo="3" puesto="1" puntos="0">BIMBA</equipo>
+        <equipo codEquipo="4" puesto="3" puntos="0">UOL</equipo>
+        <equipo codEquipo="5" puesto="2" puntos="0">Team Liquid</equipo>
+        <equipo codEquipo="6" puesto="1" puntos="0">Renegades</equipo>
+        <equipo codEquipo="7" puesto="3" puntos="0">Cloud9</equipo>
+        <equipo codEquipo="8" puesto="2" puntos="0">Origen</equipo>
+    </clasificacion>
 </liga>

@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package parserdom;
+package Parsers.DOMJornadas;
 
 /**
  *
  * @author danie
  */
-public class Partido {
+public class PartidoParsers {
     private String equipo1;
     private String equipo2;
     private String resultado;
 
-    public Partido(String equipo1, String equipo2, String resultado) {
+    public PartidoParsers(String equipo1, String equipo2, String resultado) {
         this.equipo1 = equipo1;
         this.equipo2 = equipo2;
         this.resultado = resultado;

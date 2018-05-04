@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package parserdom;
+package Parsers.DOMJornadas;
 
 import com.sun.org.apache.xml.internal.serialize.OutputFormat;
 import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
@@ -24,31 +24,49 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 import org.xml.sax.SAXException;
 
+import Modelo.BD.*;
+import Modelo.UML.*;
+import org.eclipse.persistence.indirection.IndirectList;
+
 public class ParserDOM {
-    List jornadas;
-    List partidos;
-    List partidosBD;
-    List jornadasBD;
+    ConexionBD conexion;
+    //Parser
+    List <JornadaParsers> jornadas;
+    List <PartidoParsers> partidos;
+    List <Equipo> equipos;
+    //BDD
+    List <Jornadas> jornadasBD;
+    List <Partido> partidosBD;
+    List <Equipo> equiposBD;
     Document dom;
     
     //Constructor
     ParserDOM(){
-    
         jornadas = new ArrayList();
-        //jornadasBD = conexion.getJornadaBD().findJornadasEntities();
-        partidos = new ArrayList();
-        /*partidosBD = conexion.getPartidoBD().findPartidoEntities();
-        for (int i = 0; i < ; i++) {
-            
-        }*/
-        partidos.add(new Partido("1","2","10-20"));
-        partidos.add(new Partido("3","4","30-20"));
-        partidos.add(new Partido("3","4","30-20"));
-        partidos.add(new Partido("3","4","30-20"));
-        partidos.add(new Partido("3","4","30-20"));
-        partidos.add(new Partido("3","4","30-20"));
-        partidos.add(new Partido("3","4","30-20"));
-        partidos.add(new Partido("3","4","30-20"));
+        
+        conexion = new ConexionBD();       
+        jornadasBD = conexion.getJornadaBD().findJornadasEntities();
+        
+        partidosBD = (List) conexion.getPartidoBD().findPartidoEntities();
+        
+        for (Partido p : partidosBD){
+            System.out.println("");
+        }
+        
+        for (Jornadas j : jornadasBD) {
+            jornadas.add(new JornadaParsers(Integer.toString(j.getCod()), j.getFechai().toString(), j.getFechaf().toString()));
+            partidosBD = (ArrayList) j.getPartidoCollection();                        
+            for (int x=0;x<partidosBD.size();x++){                 
+            }
+        }
+        partidos.add(new PartidoParsers("1","2","10-20"));
+        partidos.add(new PartidoParsers("3","4","30-20"));
+        partidos.add(new PartidoParsers("3","4","30-20"));
+        partidos.add(new PartidoParsers("3","4","30-20"));
+        partidos.add(new PartidoParsers("3","4","30-20"));
+        partidos.add(new PartidoParsers("3","4","30-20"));
+        partidos.add(new PartidoParsers("3","4","30-20"));
+        partidos.add(new PartidoParsers("3","4","30-20"));
         cargarDatos();
         
     }
@@ -86,17 +104,24 @@ private void crearArbolDOM() {
 
         //Cogemos la referencia al elemento raiz liga
         Element raizLiga = dom.getDocumentElement();
-        //Recorremos los contactos del arrayList y los convertimos en elementos
+        //ELIMINAR CONTENIDO ANTERIOR
+        
+        
+        
+        
+        
+        
+        
         //DOM y los agregamos a la raiz <agenda>
         Iterator it = jornadas.iterator();
         Iterator it2 = partidos.iterator();
         while(it.hasNext()) {
-            Jornada j = (Jornada) it.next();
+            JornadaParsers j = (JornadaParsers) it.next();
             //Obtenemos la información
             Element jornadaEle = crearElementoJornada(j);
             raizLiga.appendChild(jornadaEle);
             for (int i = 0;i<4;i++){
-                Partido p = (Partido) it2.next();
+                PartidoParsers p = (PartidoParsers) it2.next();
                 Element partidoEle = crearElementoPartido(p);
                 jornadaEle.appendChild(partidoEle);
             }
@@ -104,7 +129,7 @@ private void crearArbolDOM() {
 
     }
     
-    private Element crearElementoJornada(Jornada j){
+    private Element crearElementoJornada(JornadaParsers j){
         Element jornadaEle = dom.createElement("jornada");
         //Atributo codigo jornada
         getAtributo(jornadaEle, "codigoJornada", "codigo");
@@ -118,7 +143,7 @@ private void crearArbolDOM() {
         return jornadaEle;
     }
     
-    private Element crearElementoPartido(Partido p) {
+    private Element crearElementoPartido(PartidoParsers p) {
         //Crear elemento partido dentro de jornada
         Element partidoEle = dom.createElement("partido");
         //Atributo equipo 1
@@ -169,8 +194,8 @@ private void crearArbolDOM() {
     }
     
     private void cargarDatos() {
-        jornadas.add(new Jornada("1","10-10-2018","20-11-2018"));
-        jornadas.add(new Jornada("2","10-10-2018","20-11-2018"));
+        jornadas.add(new JornadaParsers("1","10-10-2018","20-11-2018"));
+        jornadas.add(new JornadaParsers("2","10-10-2018","20-11-2018"));
     }
     
     public static void main(String args[]) {
