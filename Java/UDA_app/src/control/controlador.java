@@ -6,17 +6,16 @@
 package control;
 
 import Modelo.BD.*;
-import Modelo.BD.exceptions.PreexistingEntityException;
 import Modelo.UML.*;
 import java.util.*;
-import Views.Login.VLogin;
-import Views.Registro.VRegistro;
+import Views.VLogin.VLogin;
+import Views.VRegistro.VRegistro;
 import Views.VPrincipal.VPrincipal;
 import java.awt.Frame;
 import Views.JDError.JDError;
 import Views.JDInfo.JDInfo;
-import Views.JFLiga.VLiga;
-import static java.awt.SystemColor.window;
+import Views.VLiga.VLiga;
+import Views.VEquipo.VEquipo;
 
 /**
  *
@@ -54,7 +53,7 @@ public class controlador {
                              + "\n"
                              + "▒█▀▀█ █▀▀█ █▀▀█ █▀▀█ ░ \n"
                              + "▒█░░░ █░░█ █▄▄▀ █░░█ ▄ \n"
-                             + "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v0.5 alpha");
+                             + "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v0.6 alpha");
             VPrincipal vp = new VPrincipal();
             vp.setVisible(true);
         } catch (Exception e) {
@@ -86,6 +85,12 @@ public class controlador {
         ventana.dispose();
         VRegistro vr = new VRegistro(tipo, titulo, tipoventana);
         vr.setVisible(true);
+    }
+    
+    public static void toVEquipo(Frame ventana){
+        ventana.dispose();
+        VEquipo ve = new VEquipo();
+        ve.setVisible(true);
     }
 
     public static void JDError(Frame ventana, boolean modal, String mensaje) {
@@ -128,7 +133,6 @@ public class controlador {
             usu = c;
         }
         return login;
-
     }
 
     public static void cerrarSesion() {

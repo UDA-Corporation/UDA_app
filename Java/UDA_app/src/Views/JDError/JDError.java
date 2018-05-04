@@ -5,6 +5,10 @@
  */
 package Views.JDError;
 
+import control.controlador;
+import java.awt.Image;
+import javax.imageio.ImageIO;
+
 /**
  *
  * @author 1gdaw08
@@ -17,6 +21,7 @@ public class JDError extends javax.swing.JDialog {
     public JDError(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setFavicon();
     }
     
     public JDError (java.awt.Frame ventana, boolean modal, String mensaje){
@@ -34,6 +39,19 @@ public class JDError extends javax.swing.JDialog {
         lTexto1.setText(mensaje);
         lTexto2.setText(mensaje2);
         tfFocus.requestFocus();
+    }
+    
+    public void setFavicon(){
+        try
+        {
+            //Esta opción nos va a asignar un favicon a nusetro proyecto
+            Image i = ImageIO.read(getClass().getResource("/Views/recursos/logo_u_favicon.png"));
+            setIconImage(i);
+        }
+        catch(Exception e){
+            
+        }
+        
     }
 
     /**

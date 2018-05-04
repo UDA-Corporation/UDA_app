@@ -102,7 +102,7 @@ public class VPrincipal extends javax.swing.JFrame {
         tfMensaje1.setForeground(new java.awt.Color(255, 0, 0));
         tfMensaje1.setText("Por favor, inicie sesión. Opciones>>Login.");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/Logo_grande.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/recursos/Logo_grande.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -287,9 +287,19 @@ public class VPrincipal extends javax.swing.JFrame {
         jmRegistrar.add(jmCJugador);
 
         jmCDueno.setText("Dueño");
+        jmCDueno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCDuenoActionPerformed(evt);
+            }
+        });
         jmRegistrar.add(jmCDueno);
 
         jmCEquipo.setText("Equipo");
+        jmCEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCEquipoActionPerformed(evt);
+            }
+        });
         jmRegistrar.add(jmCEquipo);
         jmRegistrar.add(jSeparator1);
 
@@ -492,6 +502,14 @@ public class VPrincipal extends javax.swing.JFrame {
     private void jmCJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCJugadorActionPerformed
         controlador.toVRegistro(this, 2, "Nuevo Jugador", 1);
     }//GEN-LAST:event_jmCJugadorActionPerformed
+
+    private void jmCDuenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCDuenoActionPerformed
+        controlador.toVRegistro(this, 1, "Nuevo Dueño", 1);
+    }//GEN-LAST:event_jmCDuenoActionPerformed
+
+    private void jmCEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCEquipoActionPerformed
+        controlador.toVEquipo(this);
+    }//GEN-LAST:event_jmCEquipoActionPerformed
     
     public void inicializarVentana(){
         try
@@ -501,7 +519,7 @@ public class VPrincipal extends javax.swing.JFrame {
             setLocationRelativeTo(null);
             TextoAyuda2.setText(" ");
             //Esta opción nos va a asignar un favicon a nusetro proyecto
-            Image i = ImageIO.read(getClass().getResource("/Views/VPrincipal/logo_u_favicon.png"));
+            Image i = ImageIO.read(getClass().getResource("/Views/recursos/logo_u_favicon.png"));
             setIconImage(i);
             
             if(controlador.usu == null)

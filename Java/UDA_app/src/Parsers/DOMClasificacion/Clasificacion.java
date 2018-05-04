@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Excepciones;
+package Parsers.DOMClasificacion;
 
 /**
  *
- * @author 1gdaw08
+ * @author danie
  */
-public class contrasenaLoginError extends Exception{
-    
+public class Clasificacion {
+    private String vacio;
+    public Clasificacion(){
+        
+    }
 }
