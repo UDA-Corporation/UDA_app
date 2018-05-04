@@ -1,8 +1,32 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<liga xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BDD(Jornadas).xsd">
-        <jornada codigoJornada="" fechaI="1998-10-22" fechaF="1998-10-22">
-            <partido equipo_local="_44" equipo_visitante="_43">
-                <resultado>1-0</resultado>
-            </partido>
-        </jornada>
+<?xml version="1.0" encoding="UTF-8"?>
+<liga>
+    <jornada codigoJornada="11111111111111111111111111111111"
+        fechaFinal="20-11-2018" fechaInicio="10-10-2018">
+        <partido equipo1="1" equipo2="2">
+            <resultado>10-20</resultado>
+        </partido>
+        <partido equipo1="3" equipo2="4">
+            <resultado>30-20</resultado>
+        </partido>
+        <partido equipo1="3" equipo2="4">
+            <resultado>30-20</resultado>
+        </partido>
+        <partido equipo1="3" equipo2="4">
+            <resultado>30-20</resultado>
+        </partido>
+    </jornada>
+    <jornada codigoJornada="2" fechaFinal="20-11-2018" fechaInicio="10-10-2018">
+        <partido equipo1="3" equipo2="4">
+            <resultado>30-20</resultado>
+        </partido>
+        <partido equipo1="3" equipo2="4">
+            <resultado>30-20</resultado>
+        </partido>
+        <partido equipo1="3" equipo2="4">
+            <resultado>30-20</resultado>
+        </partido>
+        <partido equipo1="3" equipo2="4">
+            <resultado>30-20</resultado>
+        </partido>
+    </jornada>
 </liga>
