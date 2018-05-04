@@ -4,11 +4,13 @@
 <createdTime>2018-04-23 11:25:57 UTC</createdTime>
 <generatorID>F0371BD6-34B1-EAFC-900E-59C6EB2CF1ED</generatorID>
 <ownerDesignName>mer_dataM</ownerDesignName>
+<referredTableLongName>Equipo</referredTableLongName>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>2EF3577E-89F2-AF20-8CBA-47F3F5B192F7</referredTableID>
 <keyObject>41D861E2-7461-172C-4DAB-5A9E3DF82128</keyObject>
 <referredKeyID>41D861E2-7461-172C-4DAB-5A9E3DF82128</referredKeyID>
-<mandatory>true</mandatory>
+<mandatory>false</mandatory>
+<refColNames>cod</refColNames>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
