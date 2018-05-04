@@ -172,7 +172,6 @@ public class VLogin extends javax.swing.JFrame {
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
         try
         {
-            System.out.println("1");
             if(!controlador.findUsuLogin(tfUsuario.getText(), String.valueOf(tfPass.getPassword())))
             {
                 if(controlador.usu == null)

@@ -16,6 +16,7 @@ import Views.JDError.JDError;
 import Views.JDInfo.JDInfo;
 import Views.VLiga.VLiga;
 import Views.VEquipo.VEquipo;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -29,6 +30,7 @@ public class controlador {
     static Liga liga;
     static ArrayList finde;
     static ArrayList<Jornadas> jornadas;
+    static List<Equipo> equiposBD;
     static List<Equipo> equipos;
     static List<Partido> partidos;
     static Equipo[][] PartidosEquipo;
@@ -184,11 +186,33 @@ public class controlador {
         } catch (Exception e) {
 
         }
-
+    }
+    
+    public static void setDuenos(javax.swing.JComboBox cb) throws Exception{
+        
+        List <Dueno> d = conexion.getDuenoBD().findDuenoEntities();
+        
+        for(Dueno du : d)
+            cb.addItem(du.getPersona().getNombre());
     }
 
+    public static DefaultListModel<String> llenarLista(javax.swing.JList lista){
+        equiposBD = conexion.getEquipoBD().findEquipoEntities();
+        DefaultListModel<String> model = new DefaultListModel();
+        for(Equipo e : equiposBD)
+            model.addElement(e.getNombre());
+        return model;
+    }
+
+    public static void indices(int [] indices,String nombre,Calendar calendar)throws Exception{
+        equiposBD=conexion.getEquipoBD().findEquipoEntities();
+        equipos=new ArrayList();
+        for(int x=0;x<indices.length;x++)
+            equipos.add(equiposBD.get(x));
+        generarLiga(nombre, calendar);
+    }
+    
     public static void generarLiga(String nombre, Calendar fecha) throws Exception {
-        equipos = conexion.getEquipoBD().findEquipoEntities();
         formula = (((equipos.size() - 1) * equipos.size()) / ((equipos.size() - 1) * 2));
         PartidosEquipo = generarPartidos();
         boolean zig = true;
