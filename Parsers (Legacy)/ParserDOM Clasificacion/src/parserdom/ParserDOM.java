@@ -17,6 +17,12 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -43,16 +49,35 @@ public class ParserDOM {
     /**
      * Se encarga de llamar a todos los elementos correspondientes del DOM
      */
-    public void ejecutar() {
+    public void ejecutar() throws TransformerConfigurationException, ParserConfigurationException, TransformerException {
         System.out.println("Comenzando consulta a la BBDD");
+        crearFicheroXML();
         //Volcamos el fichero xml en memoria como arbol de DOM
         parsearFicheroXML();
         //Creamos los elementos y los agregamos al arbol de DOM
         crearArbolDOM();
         //Escribimos el arbol DOM en el fichero XML
+           
         escribirFicheroXML();
         System.out.println("Fichero actualizado correctamente");
     }
+    
+    private void crearFicheroXML() throws TransformerConfigurationException, ParserConfigurationException, TransformerException {
+        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+        //Creamos la raiz
+        Document XMLdoc = docBuilder.newDocument();
+        Element rootEle = XMLdoc.createElement("liga");
+        XMLdoc.appendChild(rootEle);
+        rootEle.setTextContent(" ");
+        //Creamos el documento
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        DOMSource source = new DOMSource(XMLdoc);
+        StreamResult result = new StreamResult(new File("BDD(Clasificacion).xml"));
+        transformer.transform(source, result);
+    } 
     
     /**
      * Se encarga de editar el fichero XML
@@ -66,7 +91,7 @@ public class ParserDOM {
 
             //to generate a file output use fileoutputstream instead of system.out
             XMLSerializer serializer = new XMLSerializer(
-                    new FileOutputStream(new File("BDD(Clasificacion).xml")), format);
+            new FileOutputStream(new File("BDD(Clasificacion).xml")), format);
 
             serializer.serialize(dom);
 
@@ -167,7 +192,7 @@ public class ParserDOM {
      * Función que carga en el Array los objetos Equipo
      */
     private void cargarDatos() {
-        equipo.add(new Equipo("12","30","2","Destroy3r"));
+        equipo.add(new Equipo("12","30","2","Desttttttttttttttttttttttttttttttttttttroy3r"));
         equipo.add(new Equipo("12","30","2","Test2"));
         equipo.add(new Equipo("12","30","2","Test3"));
         equipo.add(new Equipo("12","30","2","Test4"));
@@ -175,7 +200,7 @@ public class ParserDOM {
         equipo.add(new Equipo("12","30","2","Test6"));
     }
     
-    public static void main(String args[]) {
+    public static void main(String args[]) throws TransformerConfigurationException, ParserConfigurationException, TransformerException {
 
         //Crea una nueva instancia
         ParserDOM datos = new ParserDOM();
