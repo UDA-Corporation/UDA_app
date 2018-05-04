@@ -79,7 +79,7 @@
 </OView>
 <OView class="oracle.dbtools.crest.swingui.TVNote" oid="B5E7FAD3-F5E0-C8ED-ED04-D30BFA217A4E" otype="Note" vid="1B5E49D4-5BDC-114B-1D99-D19CF9799621">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="549" y="220" width="67" height="40"/>
+<bounds x="550" y="232" width="67" height="40"/>
 <comment>Juega</comment>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="CB34BC7B-15A6-E4CD-909B-CFBCF4B5120E" otype="Entity" vid="35E71C17-F9C3-88EA-7383-C4BAE6FA6A4C">
@@ -96,14 +96,6 @@
 </OView>
 </objectViews>
 <connectors>
-<Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="0B5F9D7C-9243-56CF-77B7-C6C361E32ACB" otype="Relation" vid_source="E1904600-5A62-6620-2CAC-9EA0B9D74CC9" vid_target="B361E0F1-8FA1-B6A3-8F65-C3C03609FB9B">
-<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<lineWidth>1</lineWidth>
-<points>
-<point x="548" y="296"/>
-<point x="621" y="296"/>
-</points>
-</Connector>
 <Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="16DAD3A9-AEEF-3109-6A62-96D9D4AE714E" otype="Relation" vid_source="35E71C17-F9C3-88EA-7383-C4BAE6FA6A4C" vid_target="B361E0F1-8FA1-B6A3-8F65-C3C03609FB9B">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <backgroundColor>-16777216</backgroundColor>
@@ -145,6 +137,15 @@
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <backgroundColor>-65536</backgroundColor>
 <lineWidth>1</lineWidth>
+</Connector>
+<Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="C4963D57-A7EE-69C6-F066-9156B7796F15" otype="Relation" vid_source="E1904600-5A62-6620-2CAC-9EA0B9D74CC9" vid_target="B361E0F1-8FA1-B6A3-8F65-C3C03609FB9B">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<points>
+<point x="548" y="356"/>
+<point x="621" y="356"/>
+</points>
 </Connector>
 <Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="CE657EC0-3D1D-750F-01F6-F8575D173007" otype="Relation" vid_source="B9D8ED7F-51A7-8890-B744-1A0B036D9F0F" vid_target="E1904600-5A62-6620-2CAC-9EA0B9D74CC9">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
