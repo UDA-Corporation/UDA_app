@@ -7,6 +7,8 @@ package Views.VEquipo;
 
 import control.controlador;
 import java.awt.Color;
+import java.awt.Image;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -22,6 +24,7 @@ public class VEquipo extends javax.swing.JFrame {
     
     public VEquipo() {
         initComponents();
+        inicializarVentana();
     }
 
     /**
@@ -64,11 +67,6 @@ public class VEquipo extends javax.swing.JFrame {
         lTitulo.setText("Nuevo Equipo");
 
         tfNombre.setBackground(new java.awt.Color(255, 255, 204));
-        tfNombre.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                tfNombreCaretUpdate(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -114,7 +112,7 @@ public class VEquipo extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(72, 72, 72)
                 .addComponent(lTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 51, Short.MAX_VALUE))
+                .addGap(0, 68, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -167,7 +165,7 @@ public class VEquipo extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lMax, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbDueno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -182,58 +180,65 @@ public class VEquipo extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 17, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 25, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfNombreCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfNombreCaretUpdate
-        
-    }//GEN-LAST:event_tfNombreCaretUpdate
-
     private void taDescCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_taDescCaretUpdate
-        int contador;
+        int contador, cont=0;
         contador = taDesc.getText().length();
         if(contador != countTemp)
         {
-            contador = countTemp;
+            
             
            if(contador>countTemp)
            {
-               contador = contador - countTemp;
-               max = max - contador;
+               cont = contador - countTemp;
+               max = max - cont;
            }     
            else
            {
-               contador = contador - countTemp;
-               max = max + contador;
-           }  
-           contador = 0;
+               cont = countTemp - contador;
+               max = max + cont;
+           }
+           countTemp=contador;
            if(max<10)
                lMax.setForeground(Color.red);
+           else
+               lMax.setForeground(new Color(102,102,102));
            String letras = "" + max;
            lMax.setText(letras);
-           
         }    
         
         
     }//GEN-LAST:event_taDescCaretUpdate
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        max = 0;
+        max = 100;
         countTemp = 0;
         controlador.toVPrincipal(this);
     }//GEN-LAST:event_formWindowClosing
-
+    
+    public void inicializarVentana(){
+        try
+        {
+            Image i = ImageIO.read(getClass().getResource("/Views/recursos/logo_u_favicon.png"));
+            setIconImage(i);
+            setLocationRelativeTo(null);
+            cbDueno.addItem("-- Seleccione Dueño --");
+            controlador.setDuenos(cbDueno);
+        }
+        catch(Exception e){
+            controlador.JDError(this, true, "Error inicio ventana");
+        }   
+    }
+    
     /**
      * @param args the command line arguments
      */
