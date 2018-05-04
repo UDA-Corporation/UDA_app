@@ -713,7 +713,10 @@ public class VRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_tfPass2CaretUpdate
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-        controlador.toVLogin(this);
+        if(tipoventana == 1)
+            controlador.toVPrincipal(this);
+        else
+            controlador.toVLogin(this);
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void tfPass2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPass2ActionPerformed
