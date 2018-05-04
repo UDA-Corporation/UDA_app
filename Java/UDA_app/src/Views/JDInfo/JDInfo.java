@@ -21,6 +21,7 @@ public class JDInfo extends javax.swing.JDialog {
     public JDInfo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setFavicon();
     }
     
     public JDInfo (java.awt.Frame ventana, boolean modal, String mensaje){
@@ -162,7 +163,19 @@ public class JDInfo extends javax.swing.JDialog {
     private void tfFocusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfFocusActionPerformed
         bAceptar.doClick();
     }//GEN-LAST:event_tfFocusActionPerformed
-
+    
+    public void setFavicon(){
+        try
+        {
+            //Esta opción nos va a asignar un favicon a nusetro proyecto
+            Image i = ImageIO.read(getClass().getResource("/Views/recursos/logo_u_favicon.png"));
+            setIconImage(i);
+        }
+        catch(Exception e){
+            
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

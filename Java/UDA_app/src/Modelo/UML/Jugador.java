@@ -79,7 +79,7 @@ public class Jugador implements Serializable {
     @Column(name = "TLFO")
     private String tlfo;
     @JoinColumn(name = "EQUIPO_COD", referencedColumnName = "COD")
-    @ManyToOne(optional = true)
+    @ManyToOne(optional = false)
     private Equipo equipoCod;
 
     public Jugador() {

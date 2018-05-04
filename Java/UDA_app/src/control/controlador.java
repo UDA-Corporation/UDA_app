@@ -6,17 +6,16 @@
 package control;
 
 import Modelo.BD.*;
-import Modelo.BD.exceptions.PreexistingEntityException;
 import Modelo.UML.*;
 import java.util.*;
-import Views.Login.VLogin;
-import Views.Registro.VRegistro;
+import Views.VLogin.VLogin;
+import Views.VRegistro.VRegistro;
 import Views.VPrincipal.VPrincipal;
 import java.awt.Frame;
 import Views.JDError.JDError;
 import Views.JDInfo.JDInfo;
-import Views.JFLiga.VLiga;
-import static java.awt.SystemColor.window;
+import Views.VLiga.VLiga;
+import Views.VEquipo.VEquipo;
 
 /**
  *
@@ -54,7 +53,7 @@ public class controlador {
                              + "\n"
                              + "▒█▀▀█ █▀▀█ █▀▀█ █▀▀█ ░ \n"
                              + "▒█░░░ █░░█ █▄▄▀ █░░█ ▄ \n"
-                             + "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v0.5 alpha");
+                             + "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v0.6 alpha");
             VPrincipal vp = new VPrincipal();
             vp.setVisible(true);
         } catch (Exception e) {
@@ -82,10 +81,16 @@ public class controlador {
         vp.setVisible(true);
     }
 
-    public static void toVRegistro(Frame ventana) {
+    public static void toVRegistro(Frame ventana, int tipo, String titulo, int tipoventana) {
         ventana.dispose();
-        VRegistro vr = new VRegistro();
+        VRegistro vr = new VRegistro(tipo, titulo, tipoventana);
         vr.setVisible(true);
+    }
+    
+    public static void toVEquipo(Frame ventana){
+        ventana.dispose();
+        VEquipo ve = new VEquipo();
+        ve.setVisible(true);
     }
 
     public static void JDError(Frame ventana, boolean modal, String mensaje) {
@@ -128,12 +133,23 @@ public class controlador {
             usu = c;
         }
         return login;
-
     }
 
     public static void cerrarSesion() {
         usu = null;
-
+    }
+    
+    public static boolean findNickname(String nick){
+        boolean encontrado = false;
+        List <Jugador> j = conexion.getJugadorBD().findJugadorEntities();
+        int x;
+        for(x = 0; x<j.size()&&!j.get(x).getNickname().equals(nick); x++){}
+            if(x!=j.size())
+                encontrado = true;
+            
+        return encontrado;
+                
+            
     }
 
     public static boolean registrarUsuario(String dni, String nombre, String apellido, String calle, String numero, String piso, String ciudad, String cp, String pais, String tel, String usuario, String pass, String tipo_persona) throws Exception {
@@ -151,6 +167,15 @@ public class controlador {
         conexion.getCuentaBD().create(c1);
         correcto = true;
         return correcto;
+    }
+    
+    public static boolean registrarJugador(String dni, String nickname, String sueldo, String nombre, String apellido, String calle, String numero, String piso, String ciudad, String cp, String pais, String tel) throws Exception{
+        
+        Jugador j1 = new Jugador(dni, nickname, Integer.parseInt(sueldo), nombre, apellido, calle, numero, piso, ciudad, cp, pais, tel);
+        tipoE = 1;
+        conexion.getJugadorBD().create(j1);
+        
+        return true;
     }
 
     public static void destroyRegitro(String dni) {

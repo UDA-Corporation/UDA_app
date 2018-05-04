@@ -58,11 +58,11 @@ public class VPrincipal extends javax.swing.JFrame {
         jmCUsuario = new javax.swing.JMenuItem();
         jmCJugador = new javax.swing.JMenuItem();
         jmCDueno = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        jmCEquipo = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        jmCLiga = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        jmCAdmin = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jmModUsu = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
@@ -102,7 +102,7 @@ public class VPrincipal extends javax.swing.JFrame {
         tfMensaje1.setForeground(new java.awt.Color(255, 0, 0));
         tfMensaje1.setText("Por favor, inicie sesión. Opciones>>Login.");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/Logo_grande.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/recursos/Logo_grande.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -270,30 +270,50 @@ public class VPrincipal extends javax.swing.JFrame {
         jmRegistrar.setText("Registrar");
 
         jmCUsuario.setText("Usuario");
+        jmCUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCUsuarioActionPerformed(evt);
+            }
+        });
         jmRegistrar.add(jmCUsuario);
 
         jmCJugador.setText("Jugador");
         jmCJugador.setToolTipText("");
+        jmCJugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCJugadorActionPerformed(evt);
+            }
+        });
         jmRegistrar.add(jmCJugador);
 
         jmCDueno.setText("Dueño");
-        jmRegistrar.add(jmCDueno);
-
-        jMenuItem10.setText("Equipo");
-        jmRegistrar.add(jMenuItem10);
-        jmRegistrar.add(jSeparator1);
-
-        jMenuItem9.setText("Liga");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+        jmCDueno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
+                jmCDuenoActionPerformed(evt);
             }
         });
-        jmRegistrar.add(jMenuItem9);
+        jmRegistrar.add(jmCDueno);
+
+        jmCEquipo.setText("Equipo");
+        jmCEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCEquipoActionPerformed(evt);
+            }
+        });
+        jmRegistrar.add(jmCEquipo);
+        jmRegistrar.add(jSeparator1);
+
+        jmCLiga.setText("Liga");
+        jmCLiga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCLigaActionPerformed(evt);
+            }
+        });
+        jmRegistrar.add(jmCLiga);
         jmRegistrar.add(jSeparator2);
 
-        jMenuItem6.setText("Aministrador");
-        jmRegistrar.add(jMenuItem6);
+        jmCAdmin.setText("Aministrador");
+        jmRegistrar.add(jmCAdmin);
 
         jmHerramientas.add(jmRegistrar);
 
@@ -471,9 +491,25 @@ public class VPrincipal extends javax.swing.JFrame {
         controlador.toVPrincipal(this);
     }//GEN-LAST:event_jmCsActionPerformed
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+    private void jmCLigaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCLigaActionPerformed
         controlador.toJFLiga(this);
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
+    }//GEN-LAST:event_jmCLigaActionPerformed
+
+    private void jmCUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCUsuarioActionPerformed
+       controlador.toVRegistro(this, 1, "Nuevo Usuario", 1);
+    }//GEN-LAST:event_jmCUsuarioActionPerformed
+
+    private void jmCJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCJugadorActionPerformed
+        controlador.toVRegistro(this, 2, "Nuevo Jugador", 1);
+    }//GEN-LAST:event_jmCJugadorActionPerformed
+
+    private void jmCDuenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCDuenoActionPerformed
+        controlador.toVRegistro(this, 1, "Nuevo Dueño", 1);
+    }//GEN-LAST:event_jmCDuenoActionPerformed
+
+    private void jmCEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCEquipoActionPerformed
+        controlador.toVEquipo(this);
+    }//GEN-LAST:event_jmCEquipoActionPerformed
     
     public void inicializarVentana(){
         try
@@ -483,7 +519,7 @@ public class VPrincipal extends javax.swing.JFrame {
             setLocationRelativeTo(null);
             TextoAyuda2.setText(" ");
             //Esta opción nos va a asignar un favicon a nusetro proyecto
-            Image i = ImageIO.read(getClass().getResource("/Views/VPrincipal/logo_u_favicon.png"));
+            Image i = ImageIO.read(getClass().getResource("/Views/recursos/logo_u_favicon.png"));
             setIconImage(i);
             
             if(controlador.usu == null)
@@ -589,7 +625,6 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
@@ -603,18 +638,19 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem23;
     private javax.swing.JMenuItem jMenuItem24;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JMenuItem jmCAdmin;
     private javax.swing.JMenuItem jmCDueno;
+    private javax.swing.JMenuItem jmCEquipo;
     private javax.swing.JMenuItem jmCJugador;
+    private javax.swing.JMenuItem jmCLiga;
     private javax.swing.JMenuItem jmCUsuario;
     private javax.swing.JMenuItem jmCs;
     private javax.swing.JMenu jmEliminar;
