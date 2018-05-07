@@ -17,6 +17,12 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -53,8 +59,9 @@ public class ParserDOM {
         
     }
     
-    public void ejecutar() {
+    public void ejecutar() throws ParserConfigurationException, TransformerException {
         System.out.println("Comenzando consulta");
+        crearFicheroXML();
         //Volcamos el fichero xml en memoria como arbol de DOM
         parsearFicheroXML();
         //Creamos los elementos y los agregamos al arbol de DOM
@@ -64,6 +71,23 @@ public class ParserDOM {
         System.out.println("Fichero actualizado correctamente");
     }
 
+    private void crearFicheroXML() throws TransformerConfigurationException, ParserConfigurationException, TransformerException {
+        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+        //Creamos la raiz
+        Document XMLdoc = docBuilder.newDocument();
+        Element rootEle = XMLdoc.createElement("liga");
+        XMLdoc.appendChild(rootEle);
+        rootEle.setTextContent(" ");
+        //Creamos el documento
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        DOMSource source = new DOMSource(XMLdoc);
+        StreamResult result = new StreamResult(new File("BDD(Jornadas).xml"));
+        transformer.transform(source, result);
+    } 
+    
     private void escribirFicheroXML() {
 
         try {
@@ -169,11 +193,11 @@ private void crearArbolDOM() {
     }
     
     private void cargarDatos() {
-        jornadas.add(new Jornada("1","10-10-2018","20-11-2018"));
+        jornadas.add(new Jornada("11111111111111111111111111111111","10-10-2018","20-11-2018"));
         jornadas.add(new Jornada("2","10-10-2018","20-11-2018"));
     }
     
-    public static void main(String args[]) {
+    public static void main(String args[]) throws ParserConfigurationException, TransformerException {
 
         //create an instance
         ParserDOM datos = new ParserDOM();
