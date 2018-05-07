@@ -27,6 +27,8 @@ import org.xml.sax.SAXException;
 
 import Modelo.BD.*;
 import Modelo.UML.Equipo;
+import java.util.Calendar;
+import java.util.Date;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -38,6 +40,9 @@ public class ParserDOM {
     List <EquipoParsers> equipoParsers;
     Document dom;
     ConexionBD conexion;
+    Date fecha = new Date();
+    Calendar c = Calendar.getInstance();
+    
     
     //Constructor
     ParserDOM(){
@@ -75,6 +80,9 @@ public class ParserDOM {
         Element rootEle = XMLdoc.createElement("liga");
         XMLdoc.appendChild(rootEle);
         rootEle.setTextContent(" ");
+        c.setTime(new Date());
+        c.add(Calendar.DATE, 1);
+        rootEle.setAttribute("fechaExpiracion", c.getTime().toString());
         //Creamos el documento
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
@@ -112,22 +120,6 @@ public class ParserDOM {
         //Cogemos la referencia al elemento raiz liga
         try{
         Element raiz = dom.getDocumentElement();
-        
-        //ELIMINAR CLASIFICACION
-      
-        
-        
-        
-        
-        
-        //Node eliminar = (Node) raiz.getElementsByTagName("clasificacion");
-        //raiz.removeChild(eliminar);
-        
-        
-        
-        
-        
-
         //DOM y los agregamos a la raiz
         Iterator it = equipoParsers.iterator();
         Element clasificacionEle = crearElementoClasificacion();
