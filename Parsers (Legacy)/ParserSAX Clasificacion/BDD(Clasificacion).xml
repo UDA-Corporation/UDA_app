@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<liga>
+    <clasificacion>
+        <equipo codEquipo="1" puesto="8" puntos="0">D3STROY</equipo>
+        <equipo codEquipo="2" puesto="0" puntos="0">FNATICX</equipo>
+        <equipo codEquipo="3" puesto="0" puntos="0">BIMBA</equipo>
+        <equipo codEquipo="4" puesto="0" puntos="0">UOL</equipo>
+        <equipo codEquipo="5" puesto="0" puntos="0">Team Liquid</equipo>
+        <equipo codEquipo="6" puesto="0" puntos="0">Renegades</equipo>
+        <equipo codEquipo="7" puesto="0" puntos="0">Cloud9</equipo>
+        <equipo codEquipo="8" puesto="0" puntos="0">Origen</equipo>
+    </clasificacion>
+</liga>

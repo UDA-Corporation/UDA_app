@@ -17,6 +17,14 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="Nombre" id="F6A388A7-3478-D506-4647-AEABA3932713">
+<createdBy>danie</createdBy>
+<createdTime>2018-05-07 08:03:54 UTC</createdTime>
+<ownerDesignName>mer_dataM</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="5ED27B7A-7C27-17D8-0185-0A2867372AD8" name="Liga_PK">

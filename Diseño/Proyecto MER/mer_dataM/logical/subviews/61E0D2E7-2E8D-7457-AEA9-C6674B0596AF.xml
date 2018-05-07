@@ -34,7 +34,7 @@
 </OView>
 <OView class="oracle.dbtools.crest.swingui.TVNote" oid="3C78D5BE-B3A0-D838-1CFF-FD59011BFACC" otype="Note" vid="6190E4A6-4FFD-A52D-FE3F-894F90F4BF3F">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="308" y="311" width="53" height="27"/>
+<bounds x="321" y="291" width="53" height="27"/>
 <comment>Tiene</comment>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.TVNote" oid="3E7D79D4-80C8-DFCD-BA17-9F108050A81E" otype="Note" vid="0E2C1916-FBE5-9B1D-D715-D512B9052322">
@@ -65,21 +65,16 @@
 </OView>
 <OView class="oracle.dbtools.crest.swingui.TVNote" oid="85B707E7-C664-4F87-BE3E-C6D6EC34B981" otype="Note" vid="2AB1DDCF-6588-BCF0-0A9B-20C5B0A73AD3">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="549" y="441" width="74" height="40"/>
+<bounds x="551" y="421" width="74" height="40"/>
 <comment>Propietario</comment>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="912EC703-B4F0-B062-7F7A-097D828893B1" otype="Entity" vid="B9D8ED7F-51A7-8890-B744-1A0B036D9F0F">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <bounds x="91" y="304" width="196" height="45"/>
 </OView>
-<OView class="oracle.dbtools.crest.swingui.TVNote" oid="B4F6FE96-1CD2-BD56-D7BD-9FEBA24B7993" otype="Note" vid="0616E0CA-1E7F-ACCB-7CD5-EAFA9185F7E4">
-<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="1085" y="335" width="95" height="1"/>
-<comment>Haga clic dos veces para &lt;br/&gt;editar el texto.</comment>
-</OView>
 <OView class="oracle.dbtools.crest.swingui.TVNote" oid="B5E7FAD3-F5E0-C8ED-ED04-D30BFA217A4E" otype="Note" vid="1B5E49D4-5BDC-114B-1D99-D19CF9799621">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="550" y="232" width="67" height="40"/>
+<bounds x="550" y="300" width="67" height="40"/>
 <comment>Juega</comment>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="CB34BC7B-15A6-E4CD-909B-CFBCF4B5120E" otype="Entity" vid="35E71C17-F9C3-88EA-7383-C4BAE6FA6A4C">
