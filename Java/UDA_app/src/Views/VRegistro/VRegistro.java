@@ -613,7 +613,7 @@ public class VRegistro extends javax.swing.JFrame {
             controlador.JDError(this, true, "Nickname en uso");
         }
         catch(Exception e){
-            controlador.JDError(this, true, "Errores...");
+            controlador.JDError(this, true, "Errores..."+e.getMessage()+e.getClass());
         }
         
     }//GEN-LAST:event_bAceptarActionPerformed
