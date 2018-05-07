@@ -1,14 +1,14 @@
---Insertamos las personas
-INSERT INTO PERSONA VALUES ('53981435S','Daniel', 'Barragues','Julian de Apraiz','18','6C','Vitoria-Gasteiz','01012','España','674563897');
-INSERT INTO PERSONA VALUES ('90878656R','Unai', 'Puelles','Avenida Gasteiz','38','4I','Vitoria-Gasteiz','01008','España','634298463');
-INSERT INTO PERSONA VALUES ('62346572H','Alejandro', 'Diaz de Otalora','Cercas Bajas','4','1C','Vitoria-Gasteiz','01003','España','623142984');
+--Insertamos las personas y asignamos su tipo (admin o usuario)
+INSERT INTO PERSONA VALUES ('53981435S','Daniel', 'Barragues','Julian de Apraiz','18','6C','Vitoria-Gasteiz','01012','España','674563897','Admin');
+INSERT INTO PERSONA VALUES ('90878656R','Unai', 'Puelles','Avenida Gasteiz','38','4I','Vitoria-Gasteiz','01008','España','634298463','Admin');
+INSERT INTO PERSONA VALUES ('62346572H','Alejandro', 'Diaz de Otalora','Cercas Bajas','4','1C','Vitoria-Gasteiz','01003','España','623142984','Admin');
 
-INSERT INTO PERSONA VALUES ('34576287U','Paco', 'Ortiz','Juntas Generales','34','6C','Vitoria-Gasteiz','01012','España','784938237');
-INSERT INTO PERSONA VALUES ('38274230I','Manuel', 'Santidrian','Dato','14','8I','Vitoria-Gasteiz','01010','España','765438234');
-INSERT INTO PERSONA VALUES ('91823490O','Zuriñe', 'Arriba','Basoa','25','4C','Vitoria-Gasteiz','01009','España','653987675');
+INSERT INTO PERSONA VALUES ('34576287U','Paco', 'Ortiz','Juntas Generales','34','6C','Vitoria-Gasteiz','01012','España','784938237','Dueno');
+INSERT INTO PERSONA VALUES ('38274230I','Manuel', 'Santidrian','Dato','14','8I','Vitoria-Gasteiz','01010','España','765438234','Dueno');
+INSERT INTO PERSONA VALUES ('91823490O','Zuriñe', 'Arriba','Basoa','25','4C','Vitoria-Gasteiz','01009','España','653987675','Dueno');
 
-INSERT INTO PERSONA VALUES ('12367487H','Marta', 'Santiago','Venezuela','24','6C','Vitoria-Gasteiz','01012','España','678549803');
-INSERT INTO PERSONA VALUES ('90898776D','Sara', 'Martinez','Colombia','24','6C','Vitoria-Gasteiz','01012','España','645734543');
+INSERT INTO PERSONA VALUES ('12367487H','Marta', 'Santiago','Venezuela','24','6C','Vitoria-Gasteiz','01012','España','678549803','Usuario');
+INSERT INTO PERSONA VALUES ('90898776D','Sara', 'Martinez','Colombia','24','6C','Vitoria-Gasteiz','01012','España','645734543','Usuario');
 
 --Creamos los equipos
 INSERT INTO EQUIPO VALUES (1,'D3STROY','Campeones de 2015. Equipo creado por el mejor ADC de toda la liga',0,3,'34576287U');
@@ -32,17 +32,10 @@ INSERT INTO JUGADOR VALUES ('01928376K','AlfoXX',1800,'Alfonso', 'Figaro','Juder
 INSERT INTO JUGADOR VALUES ('62817267P','P3DRX',1900,'Pedro', 'Diaz','Santo Tomas','34','10D','Madrid','45034','España','654777657',3);
 INSERT INTO JUGADOR VALUES ('27261283S','SUDOSU',2000,'Mikel', 'Alday','General Alava','54','4I','Madrid','45098','España','678554345',3);
 
---Clasificamos cada persona por tipos
-INSERT INTO ADMIN VALUES ('53981435S');
-INSERT INTO ADMIN VALUES ('90878656R');
-INSERT INTO ADMIN VALUES ('62346572H');
-
+--Insertamos los dueños en la tabla
 INSERT INTO DUENO VALUES ('34576287U');
 INSERT INTO DUENO VALUES ('38274230I');
 INSERT INTO DUENO VALUES ('91823490O');
-
-INSERT INTO USUARIO VALUES ('12367487H');
-INSERT INTO USUARIO VALUES ('90898776D');
 
 --Creamos las cuentas
 INSERT INTO CUENTA VALUES ('Barraguesh','12345Abcde','53981435S');
@@ -55,9 +48,9 @@ INSERT INTO CUENTA VALUES ('Destroll3r','12345Abcde','12367487H');
 INSERT INTO CUENTA VALUES ('KingBronx','12345Abcde','90898776D');
 
 --Creamos la liga
-INSERT INTO LIGA VALUES (1);
+INSERT INTO LIGA VALUES (1,'Alucinante');
 
---Jornadas
+--Creamos una jornada
 INSERT INTO JORNADAS VALUES (1,To_Date('23/04/18','DD/MM/YY'),To_Date('23/05/18','DD/MM/YY'),1);
 
 --Hacemos un partido

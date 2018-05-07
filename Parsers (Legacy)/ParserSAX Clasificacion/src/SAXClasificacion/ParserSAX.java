@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package parsersax;
+package SAXClasificacion;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,17 +21,17 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class ParserSAX extends DefaultHandler {
 
-    List myNews;
+    List equiposClasificacion;
     
     private int contTitle = 0;
     
     private String tempVal;
-
+    
     //to maintain context
-    private Noticia tempNew;
+    private Equipos equipo;
 
     public ParserSAX() {
-        myNews = new ArrayList();
+        equiposClasificacion = new ArrayList();
     }
 
     public void runExample() {
@@ -41,16 +41,16 @@ public class ParserSAX extends DefaultHandler {
 
     private void parseDocument() {
 
-		//get a factory
+        //Get a factory
         SAXParserFactory spf = SAXParserFactory.newInstance();
 
         try {
 
-            //get a new instance of parser
+            //Get a new instance of parser
             SAXParser sp = spf.newSAXParser();
 
-            //parse the file and also register this class for call backs
-            sp.parse("noticia.xml", this);
+            //Parse the file and also register this class for call backs
+            sp.parse("BDD(Clasificacion).xml", this);
 
         } catch (SAXException se) {
             se.printStackTrace();
@@ -62,13 +62,13 @@ public class ParserSAX extends DefaultHandler {
     }
 
     /**
-     * Iterate through the list and print the contents
+     * Iteramos la lista e imprimimos el contenido
      */
     private void printData() {
 
-        System.out.println("Número de noticias '" + myNews.size() + "'.");
-
-        Iterator it = myNews.iterator();
+        System.out.println("Número de equipos '" + equiposClasificacion.size() + "'.");
+        //Reutilizable para imprimir los equipos
+        Iterator it = equiposClasificacion.iterator();
         while (it.hasNext()) {
             System.out.println(it.next().toString());
         }
@@ -78,10 +78,22 @@ public class ParserSAX extends DefaultHandler {
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         //reseteamos la variable temporal
         tempVal = "";
-        if (qName.equalsIgnoreCase("item")) {
-            //instanciamos una nueva Noticia
-            tempNew = new Noticia();
-            //si tuviera atributos obtendríamos su información en este punto.            
+        if (qName.equalsIgnoreCase("equipo")) {
+            //instanciamos un nuevo Equipo
+            equipo = new Equipos();
+            //si tuviera atributos obtendríamos su información en este punto.        
+            equipo.setCodEquipo(attributes.getValue("codEquipo"));
+            equipo.setPuntos(attributes.getValue("puntos"));
+            equipo.setPuesto(attributes.getValue("puesto"));
+        }
+    }
+    
+    public void endElement(String uri, String localName, String qName) throws SAXException {
+
+        if (qName.equalsIgnoreCase("equipo")) {
+            //la noticia ya está totalmente construida y la agregamos a la lista
+            equiposClasificacion.add(equipo);
+            equipo.setNombre(tempVal);
         }
     }
 
@@ -89,40 +101,10 @@ public class ParserSAX extends DefaultHandler {
         tempVal = new String(ch, start, length);
     }
 
-    public void endElement(String uri, String localName, String qName) throws SAXException {
-
-        if (qName.equalsIgnoreCase("item")) {
-            //la noticia ya está totalmente construida y la agregamos a la lista
-            myNews.add(tempNew);
-
-        } else if (qName.equalsIgnoreCase("title")) {
-            if (contTitle < 2)
-                    contTitle++;
-            else{
-                tempNew.setTitle(tempVal);
-                contTitle++;
-            }
-        } else if (qName.equalsIgnoreCase("link")) {
-            if (contTitle > 2)
-                tempNew.setLink(tempVal);
-        } else if (qName.equalsIgnoreCase("pubDate")) {
-                tempNew.setPubDate(tempVal);
-        } else if (qName.equalsIgnoreCase("guid")) {
-                tempNew.setGuid(tempVal);
-        } else if (qName.equalsIgnoreCase("creator")) {
-                tempNew.setCreator(tempVal);
-        } else if (qName.equalsIgnoreCase("date")) {
-                tempNew.setDate(tempVal);
-        } else if (qName.equalsIgnoreCase("source")) {
-                tempNew.setSource(tempVal);
-        }
-
-    }
-
     public static void main(String[] args) {
 
-        System.out.println("Parseando Noticias Con SAX");
-        System.out.println("--------------------------");
+        System.out.println("Comenzando lectura del XML con SAX");
+        System.out.println("----------------------------------");
 
         ParserSAX spe = new ParserSAX();
         spe.runExample();
