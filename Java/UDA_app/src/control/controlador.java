@@ -156,19 +156,27 @@ public class controlador {
 
     public static boolean registrarUsuario(String dni, String nombre, String apellido, String calle, String numero, String piso, String ciudad, String cp, String pais, String tel, String usuario, String pass, String tipo_persona) throws Exception {
         boolean correcto;
-
+        
         Persona u1 = new Persona(dni, nombre, apellido, calle, numero, piso, ciudad, cp, pais, tipo_persona, tel);
-
+        
         Cuenta c1 = new Cuenta(usuario, pass);
         c1.setPersonaDni(u1);
         tipoE = 1;
         conexion.getPersonaBD().create(u1);
-
+        
+        if(tipo_persona.equals("dueno"))
+            addDueno(dni);
+        
         tipoE = 2;
         u1.addCuenta(c1);
         conexion.getCuentaBD().create(c1);
         correcto = true;
         return correcto;
+    }
+    
+    public static void addDueno(String dni) throws Exception{
+        Dueno d = new Dueno(dni);
+        conexion.getDuenoBD().create(d);
     }
     
     public static boolean registrarJugador(String dni, String nickname, String sueldo, String nombre, String apellido, String calle, String numero, String piso, String ciudad, String cp, String pais, String tel) throws Exception{
@@ -188,12 +196,29 @@ public class controlador {
         }
     }
     
-    public static void setDuenos(javax.swing.JComboBox cb) throws Exception{
+    public static boolean llenarDuenos(javax.swing.JComboBox cb) throws Exception{
         
         List <Dueno> d = conexion.getDuenoBD().findDuenoEntities();
         
-        for(Dueno du : d)
-            cb.addItem(du.getPersona().getNombre());
+        if(d == null)
+            return false;
+        else
+        {
+            for(Dueno du : d)
+                cb.addItem(du.getPersona().getNombre());
+            return true;
+        }
+        
+    }
+    
+    public static DefaultListModel<String> llenarJugadores(javax.swing.JList lista){
+         
+        List <Jugador> j = conexion.getJugadorBD().findJugadorEntities();
+        DefaultListModel<String> model = new DefaultListModel();
+        for(Jugador ju: j)
+            if(ju.getEquipoCod() == null)
+                model.addElement(ju.getNombre()+" "+ju.getApellido());
+        return model;
     }
 
     public static DefaultListModel<String> llenarLista(javax.swing.JList lista){
