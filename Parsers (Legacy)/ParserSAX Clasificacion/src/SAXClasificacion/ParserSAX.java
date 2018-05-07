@@ -22,9 +22,7 @@ import org.xml.sax.helpers.DefaultHandler;
 public class ParserSAX extends DefaultHandler {
 
     List equiposClasificacion;
-    
-    private int contTitle = 0;
-    
+        
     private String tempVal;
     
     //to maintain context

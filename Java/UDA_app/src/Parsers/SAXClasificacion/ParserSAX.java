@@ -1,7 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Unai Puelles
+ * @author Daniel Barragues
+ * @author Alejandro Diaz de Otalora
+ * @version %G%
+ * @since 0.1 alpha
  */
 package Parsers.SAXClasificacion;
 
@@ -25,18 +27,24 @@ public class ParserSAX extends DefaultHandler {
         
     private String tempVal;
     
-    //to maintain context
+    //To maintain context
     private Equipos equipo;
 
     public ParserSAX() {
         equiposClasificacion = new ArrayList();
     }
-
-    public void runExample() {
+    
+    /**
+     * Ejecuta el SAX
+     */
+    public void run() {
         parseDocument();
         printData();
     }
-
+    
+    /**
+     * Parsea el documento creando una factoria SAX y le indicamos la ruta y nombre del documento a leer
+     */
     private void parseDocument() {
 
         //Get a factory
@@ -64,7 +72,7 @@ public class ParserSAX extends DefaultHandler {
      */
     private void printData() {
 
-        System.out.println("Número de equipos '" + equiposClasificacion.size() + "'.");
+        System.out.println("Número de equipos '" + equiposClasificacion.size());
         //Reutilizable para imprimir los equipos
         Iterator it = equiposClasificacion.iterator();
         while (it.hasNext()) {
@@ -72,8 +80,15 @@ public class ParserSAX extends DefaultHandler {
         }
     }
 
-    //Controladores de Eventos
-    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+    /**
+     * Controlador de eventos. Se encarga de buscar los elementos equipo y una vez los localiza crea un objeto equipo y guarda los datos del elemento en el objeto.
+     * @param uri 
+     * @param localName 
+     * @param qName 
+     * @param attributes 
+     * @throws SAXException 
+     */
+    public void startElement(String uri, String localName, String qName, Attributes attributes)  {
         //reseteamos la variable temporal
         tempVal = "";
         if (qName.equalsIgnoreCase("equipo")) {
@@ -86,6 +101,13 @@ public class ParserSAX extends DefaultHandler {
         }
     }
     
+    /**
+     * Se encarga de recorrer los elementos equipo y agregarlo a la lista
+     * @param uri La URI Namespace o el String vacio si no la tiene
+     * @param localName El nombre local o el string vacío si el proceso del Namespace no se esta ejecutando
+     * @param qName El "qualified name" o el String vacio si no esta disponible
+     * @throws SAXException Cualquier excepcion de SAX
+     */
     public void endElement(String uri, String localName, String qName) throws SAXException {
 
         if (qName.equalsIgnoreCase("equipo")) {
@@ -94,7 +116,14 @@ public class ParserSAX extends DefaultHandler {
             equipo.setNombre(tempVal);
         }
     }
-
+    
+    /**
+     * Recibe notificaciones de los caracteres dentro de un elemento
+     * @param ch Los caracteres.
+     * @param start La posicion de inicio del array de caracteres
+     * @param length El numero de caracteres a usar del array de caracteres
+     * @throws SAXException Cualquier excepcion de SAX
+     */
     public void characters(char[] ch, int start, int length) throws SAXException {
         tempVal = new String(ch, start, length);
     }
@@ -105,7 +134,7 @@ public class ParserSAX extends DefaultHandler {
         System.out.println("----------------------------------");
 
         ParserSAX spe = new ParserSAX();
-        spe.runExample();
+        spe.run();
     }
 
 }

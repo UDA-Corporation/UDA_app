@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -34,6 +35,7 @@ import org.xml.sax.SAXException;
 public class ParserDOM {
     List equipo;
     Document dom;
+    Date date = new Date();
     
     //Constructor
     ParserDOM(){
