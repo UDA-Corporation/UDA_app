@@ -83,7 +83,7 @@
 </OView>
 <OView class="oracle.dbtools.crest.swingui.TVNote" oid="AD5C00AC-2407-58B4-F437-4FE63F667E1C" otype="Note" vid="9FF289E5-59A5-9ABF-6664-18DE7BE9B338">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="54" y="450" width="187" height="60"/>
+<bounds x="49" y="459" width="187" height="60"/>
 <comment>Restricciones:&lt;br/&gt;Maximo 6 jugadores&lt;br/&gt;Maximo 200.000€ de presupuesto</comment>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="B18A33CC-2006-C777-179C-F51F7C2F4D3A" otype="Table" vid="010242D4-C9C4-8F63-1EAC-B67C99EB7A3C">
@@ -92,7 +92,7 @@
 </OView>
 <OView class="oracle.dbtools.crest.swingui.TVNote" oid="C211BA11-3606-1B4F-D5CB-F6394997B5F7" otype="Note" vid="FCA61B0D-89A2-9E98-8204-A15C80AFF4E9">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="115" y="283" width="59" height="27"/>
+<bounds x="115" y="274" width="59" height="27"/>
 <comment>Es</comment>
 </OView>
 </objectViews>
