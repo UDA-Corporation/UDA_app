@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package SAXClasificacion;
+package Parsers.SAXClasificacion;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,9 +22,7 @@ import org.xml.sax.helpers.DefaultHandler;
 public class ParserSAX extends DefaultHandler {
 
     List equiposClasificacion;
-    
-    private int contTitle = 0;
-    
+        
     private String tempVal;
     
     //to maintain context

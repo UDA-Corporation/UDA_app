@@ -106,6 +106,11 @@ public class VEquipo extends javax.swing.JFrame {
         jLabel6.setText("Selección de dueño");
 
         bAceptar.setText("Aceptar");
+        bAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAceptarActionPerformed(evt);
+            }
+        });
 
         bCancelar.setText("Cancelar");
 
@@ -244,6 +249,10 @@ public class VEquipo extends javax.swing.JFrame {
         countTemp = 0;
         controlador.toVPrincipal(this);
     }//GEN-LAST:event_formWindowClosing
+
+    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
+        
+    }//GEN-LAST:event_bAceptarActionPerformed
     
     public void inicializarVentana(){
         try
