@@ -27,6 +27,7 @@ import org.xml.sax.SAXException;
 
 import Modelo.BD.*;
 import Modelo.UML.Equipo;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import javax.xml.transform.Transformer;
@@ -45,7 +46,7 @@ public class ParserDOM {
     
     
     //Constructor
-    ParserDOM(){
+    public ParserDOM(){
     
         conexion = new ConexionBD();
         equipos = conexion.getEquipoBD().findEquipoEntities();        
@@ -89,7 +90,10 @@ public class ParserDOM {
         rootEle.setTextContent(" ");
         c.setTime(new Date());
         c.add(Calendar.DATE, 1);
-        rootEle.setAttribute("fechaExpiracion", c.getTime().toString());
+        Date fecha = new Date();
+        fecha = c.getTime();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        rootEle.setAttribute("fechaExpiracion", formatter.format(fecha));
         //Creamos el documento
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
@@ -197,11 +201,11 @@ public class ParserDOM {
     
     public static void main(String args[]) throws ParserConfigurationException, TransformerException {
 
-        //Crea una nueva instancia
-        ParserDOM datos = new ParserDOM();
+        //Creamos una nueva instancia
+        ParserDOM ClasificacionDOM = new ParserDOM();
 
-        //Ejecutar el parser
-        datos.ejecutar();
+        //Ejecutamos el parser
+        ClasificacionDOM.ejecutar();
     }
     
 }

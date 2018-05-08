@@ -7,14 +7,22 @@
  */
 package Parsers.SAXClasificacion;
 
+import Parsers.DOMClasificacion.*;
+import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import javax.xml.transform.TransformerException;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -26,6 +34,7 @@ public class ParserSAX extends DefaultHandler {
     List equiposClasificacion;
         
     private String tempVal;
+    Date fecha = new Date();
     
     //To maintain context
     private Equipos equipo;
@@ -37,7 +46,7 @@ public class ParserSAX extends DefaultHandler {
     /**
      * Ejecuta el SAX
      */
-    public void run() {
+    public void ejecutar() {
         parseDocument();
         printData();
     }
@@ -82,28 +91,45 @@ public class ParserSAX extends DefaultHandler {
 
     /**
      * Controlador de eventos. Se encarga de buscar los elementos equipo y una vez los localiza crea un objeto equipo y guarda los datos del elemento en el objeto.
-     * @param uri 
-     * @param localName 
-     * @param qName 
-     * @param attributes 
-     * @throws SAXException 
+     * @param uri El nombre del elemento a buscar (Namespaced URI)
+     * @param localName El nombre local o el string vacío si el proceso del Namespace no se esta ejecutando
+     * @param qName El "qualified name" o el String vacio si no esta disponible
+     * @param attributes Los atributos presentes en el elemento
      */
     public void startElement(String uri, String localName, String qName, Attributes attributes)  {
         //reseteamos la variable temporal
         tempVal = "";
-        if (qName.equalsIgnoreCase("equipo")) {
-            //instanciamos un nuevo Equipo
-            equipo = new Equipos();
-            //si tuviera atributos obtendríamos su información en este punto.        
-            equipo.setCodEquipo(attributes.getValue("codEquipo"));
-            equipo.setPuntos(attributes.getValue("puntos"));
-            equipo.setPuesto(attributes.getValue("puesto"));
+        try {
+            if (qName.equalsIgnoreCase("liga")){
+                //Comprobamos si el documento está expirado
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+                Date fechaEx = formatter.parse(attributes.getValue("fechaExpiracion"));
+                System.out.println("Fecha de expiracion: " + fechaEx);
+                if (fecha.after(fechaEx)){
+                    System.out.println("Documento expirado, actualizando...");
+                    ParserDOM ClasificacionDOM = new ParserDOM();
+                    ClasificacionDOM.ejecutar();
+                }
+            } else if (qName.equalsIgnoreCase("equipo")) {
+                //instanciamos un nuevo Equipo
+                equipo = new Equipos();
+                //si tuviera atributos obtendríamos su información en este punto.        
+                equipo.setCodEquipo(attributes.getValue("codEquipo"));
+                equipo.setPuntos(attributes.getValue("puntos"));
+                equipo.setPuesto(attributes.getValue("puesto"));
+        } 
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(ParserSAX.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (TransformerException ex) {
+            Logger.getLogger(ParserSAX.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(ParserSAX.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
     /**
      * Se encarga de recorrer los elementos equipo y agregarlo a la lista
-     * @param uri La URI Namespace o el String vacio si no la tiene
+     * @param uri El nombre del elemento a buscar (Namespaced URI)
      * @param localName El nombre local o el string vacío si el proceso del Namespace no se esta ejecutando
      * @param qName El "qualified name" o el String vacio si no esta disponible
      * @throws SAXException Cualquier excepcion de SAX
@@ -130,11 +156,25 @@ public class ParserSAX extends DefaultHandler {
 
     public static void main(String[] args) {
 
-        System.out.println("Comenzando lectura del XML con SAX");
-        System.out.println("----------------------------------");
+        System.out.println("Comenzando lectura del XML");
+        System.out.println("--------------------------");
 
-        ParserSAX spe = new ParserSAX();
-        spe.run();
+        ParserSAX ClasificacionSAX = new ParserSAX();
+        ClasificacionSAX.ejecutar();
+        
+        
+        /*Para ejecutar el SAX o el DOM comprobamos si existe el archivo XML
+        File xml = new File("BDD(Clasificacion).xml");
+        if(xml.exists() && !xml.isDirectory()) { 
+            ParserSAX ClasificacionSAX = new ParserSAX();
+            ClasificacionSAX.ejecutar();
+        } else {
+            ParserDOM ClasificacionDOM = new ParserDOM();
+            ClasificacionDOM.ejecutar();
+            ParserSAX ClasificacionSAX = new ParserSAX();
+            ClasificacionSAX.ejecutar();
+        } 
+        */
     }
 
 }
