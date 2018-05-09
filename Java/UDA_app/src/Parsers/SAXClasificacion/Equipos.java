@@ -54,19 +54,19 @@ public class Equipos {
     public void setPuntos(String puntos) {
         this.puntos = puntos;
     }
-    
+/*   
         public String toString() {
         StringBuffer sb = new StringBuffer();
         sb.append("Nombre: " + getNombre());
-        sb.append(", ");
+        sb.append(" ---- ");
         sb.append("Codigo de equipo: " + getCodEquipo());
-        sb.append(", ");
+        sb.append(" ---- ");
         sb.append("Puntos: " + getPuntos());
-        sb.append(", ");
+        sb.append(" ---- ");
         sb.append("Puesto: " + getPuesto());
         sb.append(".");
 
         return sb.toString();
-    }
+    }*/
     
 }
