@@ -154,7 +154,9 @@ public class Equipo implements Serializable {
     }
     
     public void addPuntos(int addPuntos){
-        puntos += addPuntos;
+        int temp = Integer.parseInt(puntos);
+        temp += addPuntos;
+        puntos=Integer.toString(temp);
     }
 
     public Dueno getDuenoDni() {
