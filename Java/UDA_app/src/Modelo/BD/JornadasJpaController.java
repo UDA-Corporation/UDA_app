@@ -248,6 +248,9 @@ public class JornadasJpaController implements Serializable {
             return "1";
         }           
     }
+    public void finByLiga(Liga l){
+        
+    }
     public List <Jornadas> findByName(){
         EntityManager em = getEntityManager();
         Query cons = em.createNamedQuery("Liga.findByNombre");        
