@@ -6,8 +6,11 @@
 package Parsers.DOMJornadas;
 
 /**
- *
- * @author danie
+ * @author Unai Puelles
+ * @author Daniel Barragues
+ * @author Alejandro Diaz de Otalora
+ * @version %G%
+ * @since 0.1 alpha
  */
 public class PartidoParsers {
     private String equipo1;

@@ -1,7 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Unai Puelles
+ * @author Daniel Barragues
+ * @author Alejandro Diaz de Otalora
+ * @version %G%
+ * @since 0.1 alpha
  */
 package Parsers.DOMClasificacion;
 
@@ -20,13 +22,12 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 import org.xml.sax.SAXException;
 
 import Modelo.BD.*;
 import Modelo.UML.Equipo;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import javax.xml.transform.Transformer;
@@ -35,17 +36,17 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 public class ParserDOM {
+    ConexionBD conexion;
     List <Equipo> equipos;
     List <EquipoParsers> equipoParsers;
     Document dom;
-    ConexionBD conexion;
-    Date fecha = new Date();
     Calendar c = Calendar.getInstance();
     
     
     //Constructor
-    ParserDOM(){
+    public ParserDOM(){
     
         conexion = new ConexionBD();
         equipos = conexion.getEquipoBD().findEquipoEntities();        
@@ -57,6 +58,8 @@ public class ParserDOM {
     
     /**
      * Se encarga de llamar a todos los elementos correspondientes del DOM
+     * @throws ParserConfigurationException Excepcion en la configuracion del parser
+     * @throws TransformerException Excepcion en la creacion del fichero XML
      */
     public void ejecutar() throws ParserConfigurationException, TransformerException {
         System.out.println("Comenzando consulta a la BBDD");
@@ -71,10 +74,15 @@ public class ParserDOM {
         System.out.println("Fichero actualizado correctamente");
     }
     
+    /**
+     * Crea el fichero XML con una raiz liga
+     * @throws TransformerConfigurationException Excepcion en la creacion del fichero XML
+     * @throws ParserConfigurationException Excepcion en la configuracion del parser
+     * @throws TransformerException Excepcion en la creacion del fichero XML
+     */
     private void crearFicheroXML() throws TransformerConfigurationException, ParserConfigurationException, TransformerException {
         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-
         //Creamos la raiz
         Document XMLdoc = docBuilder.newDocument();
         Element rootEle = XMLdoc.createElement("liga");
@@ -82,7 +90,10 @@ public class ParserDOM {
         rootEle.setTextContent(" ");
         c.setTime(new Date());
         c.add(Calendar.DATE, 1);
-        rootEle.setAttribute("fechaExpiracion", c.getTime().toString());
+        Date fecha = new Date();
+        fecha = c.getTime();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        rootEle.setAttribute("fechaExpiracion", formatter.format(fecha));
         //Creamos el documento
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
@@ -188,17 +199,13 @@ public class ParserDOM {
         }
     }
     
-    /**
-     * Función que carga en el Array los objetos EquipoParsers
-     */
-    
     public static void main(String args[]) throws ParserConfigurationException, TransformerException {
 
-        //Crea una nueva instancia
-        ParserDOM datos = new ParserDOM();
+        //Creamos una nueva instancia
+        ParserDOM ClasificacionDOM = new ParserDOM();
 
-        //Ejecutar el parser
-        datos.ejecutar();
+        //Ejecutamos el parser
+        ClasificacionDOM.ejecutar();
     }
     
 }

@@ -1,14 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Unai Puelles
+ * @author Daniel Barragues
+ * @author Alejandro Diaz de Otalora
+ * @version %G%
+ * @since 0.1 alpha
  */
 package Parsers.DOMClasificacion;
 
-/**
- *
- * @author danie
- */
 public class Clasificacion {
     private String vacio;
     public Clasificacion(){
