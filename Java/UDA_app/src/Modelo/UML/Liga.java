@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Liga.findByNombre", query = "SELECT l FROM Liga l WHERE l.nombre = :nombre")})
 public class Liga implements Serializable {
 
+    public static final String findName = "Liga.findByNombre";
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)

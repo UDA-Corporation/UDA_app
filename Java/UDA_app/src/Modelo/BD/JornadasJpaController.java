@@ -18,6 +18,7 @@ import Modelo.UML.Liga;
 import Modelo.UML.Partido;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -246,5 +247,15 @@ public class JornadasJpaController implements Serializable {
         }catch(Exception e){
             return "1";
         }           
+    }
+    public List <Jornadas> findByName(){
+        EntityManager em = getEntityManager();
+        Query cons = em.createNamedQuery("Liga.findByNombre");        
+        return cons.getResultList();
+    }
+    public Jornadas findByDate(Date date){
+        Query cons = this.getEntityManager().createNamedQuery(Jornadas.findByDate);  
+        cons.setParameter("fechai", date);
+        return (Jornadas) cons.getResultList().get(0);
     }
 }

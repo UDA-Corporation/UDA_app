@@ -621,14 +621,14 @@ public class VRegistro extends javax.swing.JFrame {
     public void validarCampos() throws Exception{
         
             setErroresColores(tfDni, "^(([A-Z]\\d{8})|(\\d{8}[A-Z]))$");
-            setErroresColores(tfNombre, "^([A-Za-z]([ ][A-Za-z])*){0,15}$");
-            setErroresColores(tfApellido, "^([A-Za-z]([ ][A-Za-z])*){0,20}$");
-            setErroresColores(tfCalle, "^([A-Za-z]([ ][A-Za-z])*){0,40}$");
-            setErroresColores(tfNro, "^[0-9]{0,3}$");
-            setErroresColores(tfPiso, "^[0-9]{0,3}$");
-            setErroresColores(tfCiudad, "^([A-Za-z]){0,20}$");
+            setErroresColores(tfNombre, "^([A-Za-z]([ ][A-Za-z])*){2,15}$");
+            setErroresColores(tfApellido, "^([A-Za-z]([ ][A-Za-z])*){2,20}$");
+            setErroresColores(tfCalle, "^([A-Za-z]([ ][A-Za-z])*){3,40}$");
+            setErroresColores(tfNro, "^[0-9]{1,3}$");
+            setErroresColores(tfPiso, "^[0-9]{1,3}$");
+            setErroresColores(tfCiudad, "^([A-Za-z]){2,20}$");
             setErroresColores(tfCp, "^[0-9A-Z]{4,5}$");
-            setErroresColores(tfPais, "^([A-Za-z]){0,20}");
+            setErroresColores(tfPais, "^([A-Za-z]){3,20}");
             setErroresColores(tfTel, "^?\\(?(?:\\d{2,3})\\)?[- .]?\\d\\d\\d[- .]?\\d\\d\\d\\d$");
             
             if(tipo == 1)
