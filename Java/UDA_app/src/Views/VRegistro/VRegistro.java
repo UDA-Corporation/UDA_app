@@ -549,7 +549,10 @@ public class VRegistro extends javax.swing.JFrame {
                         if(lTitulo.getText().equals("Nuevo Dueño"))
                             tipo_persona = "dueno";
                         else
-                            tipo_persona = "usuario";
+                            if(lTitulo.getText().equals("Nuevo Usuario"))
+                                tipo_persona = "usuario";
+                            else
+                                tipo_persona = "admin";
                         
                         if(!controlador.registrarUsuario(tfDni.getText(), tfNombre.getText(), tfApellido.getText(), tfCalle.getText(), tfNro.getText(), tfPiso.getText(), tfCiudad.getText(), tfCp.getText(), tfPais.getText(), tfTel.getText(), tfUsuario.getText(), String.valueOf(tfPass1.getPassword()), tipo_persona))
                             throw new registroError();

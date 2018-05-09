@@ -1,9 +1,9 @@
 --Insertamos las personas y asignamos su tipo (admin o usuario)
 /*Administradores*/
-INSERT INTO PERSONA VALUES ('53981435S','Daniel','Barragues','Julian de Apraiz','18','6C','Vitoria-Gasteiz','01012','Espana','Admin','674563897');
-INSERT INTO PERSONA VALUES ('90878656R','Unai','Puelles','Avenida Gasteiz','38','4I','Vitoria-Gasteiz','01008','Espana','Admin','634298463');
-INSERT INTO PERSONA VALUES ('62346572H','Alejandro','Diaz de Otalora','Cercas Bajas','4','1C','Vitoria-Gasteiz','01003','Espana','Admin','623142984');
-INSERT INTO PERSONA VALUES ('00000000A','Admin Master',' ',' ',' ',' ',' ','0000',' ','Admin',' ');
+INSERT INTO PERSONA VALUES ('53981435S','Daniel','Barragues','Julian de Apraiz','18','6C','Vitoria-Gasteiz','01012','Espana','admin','674563897');
+INSERT INTO PERSONA VALUES ('90878656R','Unai','Puelles','Avenida Gasteiz','38','4I','Vitoria-Gasteiz','01008','Espana','admin','634298463');
+INSERT INTO PERSONA VALUES ('62346572H','Alejandro','Diaz de Otalora','Cercas Bajas','4','1C','Vitoria-Gasteiz','01003','Espana','admin','623142984');
+INSERT INTO PERSONA VALUES ('00000000A','Admin Master',' ',' ',' ',' ',' ','0000',' ','admin',' ');
 
 /*Duenos*/
 INSERT INTO PERSONA(dni, nombre, apellido, calle, nro, piso, ciudad, cp, pais, tlfo) VALUES ('34576287U','Paco','Ortiz','Juntas Generales','34','6C','Vitoria-Gasteiz','01012','España','784938237');
@@ -17,8 +17,8 @@ INSERT INTO PERSONA(dni, nombre, apellido, calle, nro, piso, ciudad, cp, pais, t
 INSERT INTO PERSONA(dni, nombre, apellido, calle, nro, piso, ciudad, cp, pais, tlfo) VALUES ('78567456A','Antonia', 'Lopez', 'Avenida Los Huetos', '8','4I','Bilbao','08020','España','671262342');
 
 /*Usuarios*/
-INSERT INTO PERSONA VALUES ('12367487H','Marta', 'Santiago','Venezuela','24','6C','Vitoria-Gasteiz','01012','España','Usuario','678549803');
-INSERT INTO PERSONA VALUES ('90898776D','Sara', 'Martinez','Colombia','24','6C','Vitoria-Gasteiz','01012','España','Usuario','645734543');
+INSERT INTO PERSONA VALUES ('12367487H','Marta', 'Santiago','Venezuela','24','6C','Vitoria-Gasteiz','01012','España','usuario','678549803');
+INSERT INTO PERSONA VALUES ('90898776D','Sara', 'Martinez','Colombia','24','6C','Vitoria-Gasteiz','01012','España','usuario','645734543');
 
 
 --Insertamos los duenos en la tabla
@@ -48,14 +48,14 @@ INSERT INTO CUENTA VALUES ('Destroll3r','12345Abcde','12367487H');
 INSERT INTO CUENTA VALUES ('KingBronx','12345Abcde','90898776D');
 
 --Creamos los equipos
-INSERT INTO EQUIPO VALUES (1,'D3STROY','Campeones de 2015. Equipo creado por el mejor ADC de toda la liga',1,3,'34576287U');
-INSERT INTO EQUIPO VALUES (2,'FNATICX','Campeones de 2016. Los mas veteranos de la liga.',2,0,'38274230I');
-INSERT INTO EQUIPO VALUES (3,'BIMBA','Aun no han sido campeones pero prometen dar espectaculo.',3,0,'91823490O');
-INSERT INTO EQUIPO VALUES (4,'sERDOn','Invatibles durante 5 años en counter strike',4,0,'56345632Y');
-INSERT INTO EQUIPO VALUES (5,'HalWay','Nuevos en el juego pero con promesas jovenes',5,0,'52437265I');
-INSERT INTO EQUIPO VALUES (6,'uGAnD','Estilo y skill juntas',6,0,'67456938W');
-INSERT INTO EQUIPO VALUES (7,'xAMAZINGx','Promesas en el campo de batallas',7,0,'87653149P');
-INSERT INTO EQUIPO VALUES (8,'tHeamazonX','Nuevos, pero con corazon',8,0,'78567456A');
+INSERT INTO EQUIPO VALUES (1,'D3STROY','Campeones de 2015. Equipo creado por el mejor ADC de toda la liga',0,0,'34576287U');
+INSERT INTO EQUIPO VALUES (2,'FNATICX','Campeones de 2016. Los mas veteranos de la liga.',0,0,'38274230I');
+INSERT INTO EQUIPO VALUES (3,'BIMBA','Aun no han sido campeones pero prometen dar espectaculo.',0,0,'91823490O');
+INSERT INTO EQUIPO VALUES (4,'sERDOn','Invatibles durante 5 años en counter strike',0,0,'56345632Y');
+INSERT INTO EQUIPO VALUES (5,'HalWay','Nuevos en el juego pero con promesas jovenes',0,0,'52437265I');
+INSERT INTO EQUIPO VALUES (6,'uGAnD','Estilo y skill juntas',0,0,'67456938W');
+INSERT INTO EQUIPO VALUES (7,'xAMAZINGx','Promesas en el campo de batallas',0,0,'87653149P');
+INSERT INTO EQUIPO VALUES (8,'tHeamazonX','Nuevos, pero con corazon',0,0,'78567456A');
 
 --Insertamos los jugadores
 INSERT INTO JUGADOR VALUES ('53465723E','Gam3r',2000,'Javier', 'Andoniz','Cuba','24','5D','Vitoria-Gasteiz','01567','España','690123485',1);

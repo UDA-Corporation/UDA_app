@@ -8,6 +8,7 @@ import control.controlador;
 import java.awt.Image;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import Excepciones.ResultadoPartido;
 /**
  *
  * @author 1gdaw02
@@ -218,23 +219,53 @@ static boolean yes = false;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(validar()){
-            if(Integer.parseInt(tfe1.getText())>Integer.parseInt(tfe2.getText()))
-                controlador.resultado(tfe1.getText(), null);
-            else
-                if(Integer.parseInt(tfe2.getText())>Integer.parseInt(tfe1.getText()))
-                    controlador.resultado(null, tfe2.getText());
-                else
-                    if(Integer.parseInt(tfe2.getText())==Integer.parseInt(tfe1.getText()))
-                        controlador.resultado(tfe1.getText(), tfe2.getText());
-        }               
+        try{
+            String resultado;
+            if(validar()){
+                if(Integer.parseInt(tfe1.getText())>Integer.parseInt(tfe2.getText())){
+                    controlador.resultado(le1.getText(), null);
+                    resultado=tfe1.getText()+"-"+tfe2.getText();
+                    controlador.resultadoPartido(le1.getText(), resultado, false);
+                }else
+                    if(Integer.parseInt(tfe2.getText())>Integer.parseInt(tfe1.getText())){
+                        controlador.resultado(null, le2.getText());
+                        resultado=tfe1.getText()+"-"+tfe2.getText();
+                        controlador.resultadoPartido(le2.getText(), resultado, false);
+                    }else
+                        if(Integer.parseInt(tfe2.getText())==Integer.parseInt(tfe1.getText())){
+                            controlador.resultado(le1.getText(), le2.getText());
+                            resultado=tfe1.getText()+"-"+tfe2.getText();
+                            controlador.resultadoPartido(null, resultado, true);
+                        }
+                }
+            controlador.JDInfo(this, true, "Resultado introducido correctamente");
+            limpiar();
+        }catch (ResultadoPartido e){
+            controlador.JDError(this, true, "Ese partido ya ha sido modificado");
+            limpiar();
+        }
+        catch (Exception e){
+            System.out.println("Problemas puntuacion");
+        }         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public void limpiar(){
+        tfe1.setText("");
+        tfe2.setText("");
+    }
     public boolean validar(){
-        if(cbLiga.getSelectedIndex()!=0&&cbJornadas.getSelectedIndex()!=0&&cbPartidos.getSelectedIndex()!=0)
+        if(cbLiga.getSelectedIndex()==0&&cbJornadas.getSelectedIndex()==0&&cbPartidos.getSelectedIndex()==0)
+            return false;        
+        if(!digito(tfe1.getText()))
             return false;
-        for (int c=0;c<tfe1.getText().length();c++)
-            if(!Character.isDigit(c))
+        else 
+            if(!digito(tfe2.getText()))
+                return false;
+        return true;
+    }
+    public boolean digito(String e){
+        for (int c=0;c<e.length();c++)
+            if(!Character.isDigit(e.charAt(c)))
                 return false;
         return true;
     }

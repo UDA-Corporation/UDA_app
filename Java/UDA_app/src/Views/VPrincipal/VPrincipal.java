@@ -86,13 +86,15 @@ public class VPrincipal extends javax.swing.JFrame {
         jMenuItem21 = new javax.swing.JMenuItem();
         jmPuntuacion = new javax.swing.JMenu();
         jmResultados = new javax.swing.JMenu();
+        jmClasificacion = new javax.swing.JMenuItem();
+        jmJornadas = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Gestor e-sports");
         setBackground(new java.awt.Color(255, 255, 255));
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
 
@@ -313,6 +315,11 @@ public class VPrincipal extends javax.swing.JFrame {
         jmRegistrar.add(jSeparator2);
 
         jmCAdmin.setText("Aministrador");
+        jmCAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCAdminActionPerformed(evt);
+            }
+        });
         jmRegistrar.add(jmCAdmin);
 
         jmHerramientas.add(jmRegistrar);
@@ -399,6 +406,18 @@ public class VPrincipal extends javax.swing.JFrame {
                 jmResultadosMouseExited(evt);
             }
         });
+
+        jmClasificacion.setText("Clasificación");
+        jmClasificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmClasificacionActionPerformed(evt);
+            }
+        });
+        jmResultados.add(jmClasificacion);
+
+        jmJornadas.setText("Jornadas");
+        jmResultados.add(jmJornadas);
+
         jMenuBar1.add(jmResultados);
 
         setJMenuBar(jMenuBar1);
@@ -421,11 +440,6 @@ public class VPrincipal extends javax.swing.JFrame {
         //Funcion que abre la ventana login
         control.controlador.toVLogin(this);
     }//GEN-LAST:event_jmLoginActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        //Cuando se abre la ventana 
-        
-    }//GEN-LAST:event_formWindowOpened
 
     private void tfMensaje4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfMensaje4MouseClicked
         controlador.toVLogin(this);
@@ -462,6 +476,7 @@ public class VPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         //Cerrar todo
+        controlador.JDInfo(this, true, "Cerrando sesión...");
         System.exit(0);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -520,6 +535,20 @@ public class VPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         controlador.toVPuntos(this);
     }//GEN-LAST:event_jmPuntuacionMouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        if(controlador.usu!=null)
+            controlador.JDInfo(this, true, "Cerrando sesión...");
+        controlador.exit();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void jmClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmClasificacionActionPerformed
+        controlador.toVClasificacion(this);
+    }//GEN-LAST:event_jmClasificacionActionPerformed
+
+    private void jmCAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCAdminActionPerformed
+        controlador.toVRegistro(this, 2, "Nuevo Admin", 1);
+    }//GEN-LAST:event_jmCAdminActionPerformed
     
     public void inicializarVentana(){
         try
@@ -559,7 +588,7 @@ public class VPrincipal extends javax.swing.JFrame {
                         jmPuntuacion.setVisible(false);
                     break;
                 
-                    case "dueno":
+                    default:
                         setInicioSesion();
                         jmRegistrar.setVisible(false);
                         jmListar.setVisible(false);
@@ -662,9 +691,11 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmCJugador;
     private javax.swing.JMenuItem jmCLiga;
     private javax.swing.JMenuItem jmCUsuario;
+    private javax.swing.JMenuItem jmClasificacion;
     private javax.swing.JMenuItem jmCs;
     private javax.swing.JMenu jmEliminar;
     private javax.swing.JMenu jmHerramientas;
+    private javax.swing.JMenuItem jmJornadas;
     private javax.swing.JMenu jmListar;
     private javax.swing.JMenuItem jmLogin;
     private javax.swing.JMenuItem jmModDue;

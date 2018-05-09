@@ -123,6 +123,11 @@ public class VEquipo extends javax.swing.JFrame {
         });
 
         bCancelar.setText("Cancelar");
+        bCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCancelarActionPerformed(evt);
+            }
+        });
 
         listaJugadores.setBackground(new java.awt.Color(255, 255, 204));
         jScrollPane2.setViewportView(listaJugadores);
@@ -304,6 +309,10 @@ public class VEquipo extends javax.swing.JFrame {
         tfNombre.setForeground(Color.black);
         tfNombre.setBackground(new Color(255,255,204));
     }//GEN-LAST:event_tfNombreCaretUpdate
+
+    private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
+        controlador.toVPrincipal(this);
+    }//GEN-LAST:event_bCancelarActionPerformed
     
     public void inicializarVentana(){
         try

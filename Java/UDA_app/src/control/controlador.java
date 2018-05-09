@@ -14,11 +14,13 @@ import Views.VPrincipal.VPrincipal;
 import java.awt.Frame;
 import Views.JDError.JDError;
 import Views.JDInfo.JDInfo;
+import Views.VClasificacion.VClasificacion;
 import Views.VLiga.VLiga;
 import Views.VEquipo.VEquipo;
 import javax.swing.DefaultListModel;
 import Views.VPuntos.VPuntos;
 import java.text.SimpleDateFormat;
+import Excepciones.ResultadoPartido;
 
 /**
  *
@@ -108,6 +110,24 @@ public class controlador {
         VEquipo ve = new VEquipo();
         ve.setVisible(true);
     }
+    
+    public static void toJFLiga(Frame ventana) {
+        ventana.dispose();
+        VLiga v = new VLiga();
+        v.setVisible(true);
+    }
+
+    public static void toVPuntos(javax.swing.JFrame ventana) {
+        ventana.setVisible(false);
+        VPuntos vpunt = new VPuntos();
+        vpunt.setVisible(true);
+    }
+    
+    public static void toVClasificacion(Frame ventana) {
+        ventana.dispose();
+        VClasificacion vc = new VClasificacion();
+        vc.setVisible(true);
+    }
 
     public static void JDError(Frame ventana, boolean modal, String mensaje) {
 
@@ -131,18 +151,6 @@ public class controlador {
 
         JDInfo jde = new JDInfo(ventana, modal, mensaje, mensaje2);
         jde.setVisible(true);
-    }
-
-    public static void toJFLiga(Frame ventana) {
-        ventana.dispose();
-        VLiga v = new VLiga();
-        v.setVisible(true);
-    }
-
-    public static void toVPuntos(javax.swing.JFrame ventana) {
-        ventana.setVisible(false);
-        VPuntos vpunt = new VPuntos();
-        vpunt.setVisible(true);
     }
 
     public static boolean findUsuLogin(String usuario, String pass) {
@@ -394,27 +402,49 @@ public class controlador {
     public static String le2(){
         return equiposTemp.get(1).getNombre();
     }
-    public static void resultado(String e1, String e2){
-        if(e1==null)
-            add(e2,false);
+    
+    public static void resultado(String e1, String e2)throws Exception{
+        if(partidoBD.getResultado()!=null)
+            throw new ResultadoPartido();
         else
-            if(e2==null)
-                add(e1,false);
+            if(e1==null)
+                add(e2,false);
             else
-                if(e1!=null&&e2!=null)
-                    add(e1,true);
-                    
+                if(e2==null)
+                    add(e1,false);
+                else
+                    if(e1!=null&&e2!=null)
+                        add(e1,true);
+                
     }
-    public static void add(String aSumar,boolean both){      
+    
+    public static void resultadoPartido(String ganador, String resultado, boolean empate)throws Exception{       
+        for (Equipo e : partidoBD.getEquipoCollection())
+            if(e.getNombre().equals(ganador)){
+                if(!empate){
+                partidoBD.setCodganador(e.getCod());
+                partidoBD.setEmpate(null);
+                partidoBD.setResultado(resultado);
+            }else{
+                partidoBD.setEmpate("s");
+                partidoBD.setResultado(resultado);
+            }       
+        }
+        conexion.getPartidoBD().edit(partidoBD);
+    }
+    
+    public static void add(String aSumar,boolean both)throws Exception{      
         for (Equipo e : equiposTemp){
             if(!both){
                 if(e.getNombre().equals(aSumar)){
                     e.addPuntos(PUNTOSWIN);
+                    conexion.getEquipoBD().edit(e);
                 }
             }else{
                 e.addPuntos(PUNTOSDRAW);
+                conexion.getEquipoBD().edit(e);
             }
-        }           
+        }     
     }
     
     public static boolean partidosReps(Partido p, ArrayList<Partido> ps) {
@@ -588,6 +618,10 @@ public class controlador {
 
     public static int codigoPartido() {
         return Integer.parseInt(conexion.getPartidoBD().autoincrement());
+    }
+    
+    public static void exit(){
+        System.exit(0);
     }
     
 }
