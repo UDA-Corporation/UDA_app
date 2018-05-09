@@ -276,11 +276,15 @@ public class VEquipo extends javax.swing.JFrame {
             if(max<0)
                 throw new caracteresExcedidos();
             
-            if(cbDueno.getSelectedIndex() == 1)
+            if(cbDueno.getSelectedIndex() == 0)
                 throw new duenoVacio();
             
-            if(controlador.altaEquipo(tfNombre.getText(), taDesc.getText(), (String)cbDueno.getSelectedItem(), listaJugadores.getSelectedIndices()))
+            if(controlador.altaEquipo(tfNombre.getText(), taDesc.getText(), cbDueno.getSelectedIndex(), listaJugadores.getSelectedIndices()))
+            {
                 controlador.JDInfo(this, true, "Equipo generado corréctamente");
+                controlador.toVPrincipal(this);
+            }
+            
         }
         catch (exceptionErroresColores e){            
             setColorException(e.getTextField(), e.getCaso());
@@ -290,6 +294,9 @@ public class VEquipo extends javax.swing.JFrame {
         }
         catch(duenoVacio e){
             controlador.JDError(this, true, "Seleccione un dueño");
+        }
+        catch(Exception e){
+            controlador.JDError(this, true, "Equipo no registrado: "+e.getClass());
         }
     }//GEN-LAST:event_bAceptarActionPerformed
 
@@ -320,7 +327,7 @@ public class VEquipo extends javax.swing.JFrame {
             
             if(!error.isEmpty())
             {
-                controlador.JDError(this, true, "No hay "+error+" registrado/s, para crear", "un equipo son necesario/s");
+                controlador.JDError(this, true, "No hay "+error+" registrados, para crear", "un equipo son necesarios");
                 controlador.toVPrincipal(this);
             }
         }

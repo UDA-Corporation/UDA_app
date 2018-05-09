@@ -6,6 +6,7 @@
 package Modelo.UML;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -36,8 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Equipo.findByNombre", query = "SELECT e FROM Equipo e WHERE e.nombre = :nombre")
     , @NamedQuery(name = "Equipo.findByDesripcion", query = "SELECT e FROM Equipo e WHERE e.desripcion = :desripcion")
     , @NamedQuery(name = "Equipo.findByPuntos", query = "SELECT e FROM Equipo e WHERE e.puntos = :puntos")
-    , @NamedQuery(name = "Equipo.findByPuesto", query = "SELECT e FROM Equipo e WHERE e.puesto = :puesto")
-    , @NamedQuery(name = "Equipo.findByTipo", query = "SELECT e FROM Equipo e WHERE e.tipo = :tipo")})
+    , @NamedQuery(name = "Equipo.findByPuesto", query = "SELECT e FROM Equipo e WHERE e.puesto = :puesto")})
 public class Equipo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,14 +51,12 @@ public class Equipo implements Serializable {
     @Basic(optional = false)
     @Column(name = "DESRIPCION")
     private String desripcion;
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "PUNTOS")
     private String puntos;
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "PUESTO")
     private String puesto;
-    @Column(name = "TIPO")
-    private String tipo;
     @JoinTable(name = "EQUIPO_JUEGA", joinColumns = {
         @JoinColumn(name = "EQUIPO_COD", referencedColumnName = "COD")}, inverseJoinColumns = {
         @JoinColumn(name = "PARTIDO_COD", referencedColumnName = "COD")})
@@ -83,6 +81,12 @@ public class Equipo implements Serializable {
         this.desripcion = desripcion;
         this.puntos = puntos;
         this.puesto = puesto;
+    }
+    
+    public Equipo(Integer cod, String nombre, String desripcion) {
+        this.cod = cod;
+        this.nombre = nombre;
+        this.desripcion = desripcion;
     }
 
     public Integer getCod() {
@@ -125,14 +129,6 @@ public class Equipo implements Serializable {
         this.puesto = puesto;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
     @XmlTransient
     public Collection<Partido> getPartidoCollection() {
         return partidoCollection;
@@ -149,6 +145,16 @@ public class Equipo implements Serializable {
 
     public void setJugadorCollection(Collection<Jugador> jugadorCollection) {
         this.jugadorCollection = jugadorCollection;
+    }
+    
+    public void addJugador(Jugador j1){
+        if(jugadorCollection == null)
+            jugadorCollection = new ArrayList();
+        this.jugadorCollection.add(j1);
+    }
+    
+    public void addPuntos(int addPuntos){
+        puntos += addPuntos;
     }
 
     public Dueno getDuenoDni() {

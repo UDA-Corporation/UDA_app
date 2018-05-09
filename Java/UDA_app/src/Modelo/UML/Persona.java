@@ -72,7 +72,7 @@ public class Persona implements Serializable {
     @Basic(optional = false)
     @Column(name = "PAIS")
     private String pais;
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "TIPO_PERSONA")
     private String tipoPersona;
     @Basic(optional = false)

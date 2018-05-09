@@ -276,4 +276,17 @@ public class EquipoJpaController implements Serializable {
         }
     }
     
+    public String autoincrement(){
+        try{
+            String jpql="select max(cod) from equipo";
+            Query cons=this.getEntityManager().createNativeQuery(jpql);
+            List lista = cons.getResultList();  
+            String cod=lista.get(0).toString();
+            cod=Integer.toString(Integer.parseInt(cod)+1);
+            return cod;
+        }catch(Exception e){
+            return "1";
+        }           
+    }
+    
 }

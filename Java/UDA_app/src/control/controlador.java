@@ -48,6 +48,10 @@ public class controlador {
     static Partido partidoBD;
     static Date date;
     static List<Liga> ligasBD;
+    static List<Dueno> duenos;
+    static SimpleDateFormat fmt;
+    static final int PUNTOSWIN=3;
+    static final int PUNTOSDRAW=1;
 
     /**
      * @param args the command line arguments
@@ -58,12 +62,12 @@ public class controlador {
             inicializar();
 
             System.out.println("▒█░▒█ ▒█▀▀▄ ░█▀▀█ \n"
-                    + "▒█░▒█ ▒█░▒█ ▒█▄▄█ \n"
-                    + "░▀▄▄▀ ▒█▄▄▀ ▒█░▒█ \n"
-                    + "\n"
-                    + "▒█▀▀█ █▀▀█ █▀▀█ █▀▀█ ░ \n"
-                    + "▒█░░░ █░░█ █▄▄▀ █░░█ ▄ \n"
-                    + "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v0.6 alpha");
+                             + "▒█░▒█ ▒█░▒█ ▒█▄▄█ \n"
+                             + "░▀▄▄▀ ▒█▄▄▀ ▒█░▒█ \n"
+                             + "\n"
+                             + "▒█▀▀█ █▀▀█ █▀▀█ █▀▀█ ░ \n"
+                             + "▒█░░░ █░░█ █▄▄▀ █░░█ ▄ \n"
+                             + "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v0.7 alpha");
             VPrincipal vp = new VPrincipal();
             vp.setVisible(true);
         } catch (Exception e) {
@@ -78,6 +82,7 @@ public class controlador {
         partidos = new ArrayList();
         equiposP = new ArrayList();
         date = new Date();
+        fmt = new SimpleDateFormat("dd/MM/yyyy");
     }
 
     public static void toVLogin(Frame ventana) {
@@ -172,7 +177,9 @@ public class controlador {
 
     public static boolean registrarUsuario(String dni, String nombre, String apellido, String calle, String numero, String piso, String ciudad, String cp, String pais, String tel, String usuario, String pass, String tipo_persona) throws Exception {
         boolean correcto;
-
+        
+        if(tipo_persona.equals("dueno"))
+            tipo_persona=null;
         Persona u1 = new Persona(dni, nombre, apellido, calle, numero, piso, ciudad, cp, pais, tipo_persona, tel);
 
         Cuenta c1 = new Cuenta(usuario, pass);
@@ -180,7 +187,7 @@ public class controlador {
         tipoE = 1;
         conexion.getPersonaBD().create(u1);
 
-        if (tipo_persona.equals("dueno")) {
+        if (tipo_persona == null) {
             addDueno(dni);
         }
 
@@ -215,22 +222,22 @@ public class controlador {
 
     public static boolean llenarDuenos(javax.swing.JComboBox cb) throws Exception {
 
-        List<Dueno> d = conexion.getDuenoBD().findDuenoEntities();
+        duenos = conexion.getDuenoBD().findDuenoEntities();
 
-        if (d == null) {
+        if (duenos == null) {
             return false;
         } else {
-            for (Dueno du : d) {
+            for (Dueno du : duenos) {
                 cb.addItem(du.getPersona().getNombre());
             }
             return true;
         }
 
     }
-
+    
     public static DefaultListModel<String> llenarJugadores(javax.swing.JList lista) {
 
-        jugadores = conexion.getJugadorBD().findJugadorEntities();
+        jugadores = (List) conexion.getJugadorBD().findJugadorEntities();
         DefaultListModel<String> model = new DefaultListModel();
         for (Jugador ju : jugadores) {
             if (ju.getEquipoCod() == null) {
@@ -240,18 +247,30 @@ public class controlador {
         return model;
     }
 
-    public static boolean altaEquipo(String nombre, String desc, String dueno, int[] indices) {
+    public static boolean altaEquipo(String nombre, String desc, int dueno, int[] indices) throws Exception{
 
-        //ME HE QUEDADO AQUI (Unai)
-        return false;
+        Equipo e1 = new Equipo(Integer.parseInt(conexion.getEquipoBD().autoincrement()), nombre, desc);
+        
+        if(indices.length!=0)
+        {
+            for(int x = 0; x<indices.length; x++)
+                e1.addJugador(jugadores.get(indices[x]));
+        }    
+        
+        e1.setDuenoDni(duenos.get(dueno));
+        
+        conexion.getEquipoBD().create(e1);
+        jugadores = null;
+        duenos = null;
+        return true;
     }
 
     public static DefaultListModel<String> llenarLista(javax.swing.JList lista) {
         equiposBD = conexion.getEquipoBD().findEquipoEntities();
         DefaultListModel<String> model = new DefaultListModel();
-        for (Equipo e : equiposBD) {
+        equiposBD.forEach((e) -> {
             model.addElement(e.getNombre());
-        }
+        });
         return model;
     }
 
@@ -288,6 +307,14 @@ public class controlador {
             }
         }
     }
+    
+    public static Jornadas buscarJornada(Date date){
+        for (Jornadas j : ligaBD.getJornadasCollection()){
+            if(j.getFechai().equals(date))
+                return j;
+        }        
+        return null;
+    }
 
     public static boolean jornadasReps(Jornadas j, ArrayList<Jornadas> js) {
         int x;
@@ -300,14 +327,13 @@ public class controlador {
     }
 
     public static void llenarPartidos(String fecha, javax.swing.JComboBox cbPartidos) throws Exception {
-        String cadena = "";
-        Date test = toDate(fecha);
-        jornadaBD = conexion.getJornadaBD().findByDate(test);
+        String cadena;        
+        jornadaBD = buscarJornada(toDate(fecha));
         ArrayList<Partido> partidosTemp = new ArrayList();
         boolean finish = false;
         int min, done = 0;
         Partido pMin = null;
-        for (int x = 1; finish != true; x++) {
+        for (int x = 0; finish != true; x++) {
             min = 100;
             cadena = "";
             for (Partido p : jornadaBD.getPartidoCollection()) {
@@ -346,12 +372,51 @@ public class controlador {
         return fmt.parse(cadena);
     }
 
-    public static String date(Date fecha) {
-        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        String fechaS = df.format(fecha);
+    public static String date(Date fecha) {      
+        String fechaS = fmt.format(fecha);
         return fechaS;
     }
-
+    
+    public static void llenarTfPartido(int indice){
+        equiposTemp = new ArrayList();
+        int x=0;
+        for (Partido p : jornadaBD.getPartidoCollection()){
+            x++;
+            if(x == indice)
+                partidoBD = p;
+        }
+        for (Equipo e : partidoBD.getEquipoCollection()) 
+            equiposTemp.add(e);
+    }
+    public static String le1(){
+        return equiposTemp.get(0).getNombre();
+    }
+    public static String le2(){
+        return equiposTemp.get(1).getNombre();
+    }
+    public static void resultado(String e1, String e2){
+        if(e1==null)
+            add(e2,false);
+        else
+            if(e2==null)
+                add(e1,false);
+            else
+                if(e1!=null&&e2!=null)
+                    add(e1,true);
+                    
+    }
+    public static void add(String aSumar,boolean both){      
+        for (Equipo e : equiposTemp){
+            if(!both){
+                if(e.getNombre().equals(aSumar)){
+                    e.addPuntos(PUNTOSWIN);
+                }
+            }else{
+                e.addPuntos(PUNTOSDRAW);
+            }
+        }           
+    }
+    
     public static boolean partidosReps(Partido p, ArrayList<Partido> ps) {
         int x;
         for (x = 0; x < ps.size() && !p.equals(ps.get(x)); x++) {
@@ -451,14 +516,15 @@ public class controlador {
         return equiposPartidos;
     }
 
-    public static void buscarFinesDeSemana(Calendar calendar) {
-        finde = new ArrayList();
+    public static void buscarFinesDeSemana(Calendar calendar) throws Exception{
+        finde = new ArrayList();        
         int x = 0;
         while (x != (equipos.size() - 1) * 8) {
             switch (calendar.get(Calendar.DAY_OF_WEEK)) {
                 case Calendar.SATURDAY:
-                case Calendar.SUNDAY:
-                    finde.add(calendar.getTime());
+                case Calendar.SUNDAY:                    
+                    String formatted = fmt.format(calendar.getTime());                   
+                    finde.add(fmt.parse(formatted));
                     x++;
                     break;
             }
@@ -523,5 +589,5 @@ public class controlador {
     public static int codigoPartido() {
         return Integer.parseInt(conexion.getPartidoBD().autoincrement());
     }
-
+    
 }
