@@ -1,7 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Unai Puelles
+ * @author Daniel Barragues
+ * @author Alejandro Diaz de Otalora
+ * @version %G%
+ * @since 0.1 alpha
  */
 package Parsers.DOMJornadas;
 
@@ -26,10 +28,19 @@ import org.xml.sax.SAXException;
 
 import Modelo.BD.*;
 import Modelo.UML.*;
+import java.util.Calendar;
+import java.util.Date;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import org.eclipse.persistence.indirection.IndirectList;
 
 public class ParserDOM {
     ConexionBD conexion;
+    Calendar c = Calendar.getInstance();
     //Parser
     List <JornadaParsers> jornadas;
     List <PartidoParsers> partidos;
@@ -71,8 +82,10 @@ public class ParserDOM {
         
     }
     
-    public void ejecutar() {
+    public void ejecutar() throws ParserConfigurationException, TransformerException {
         System.out.println("Comenzando consulta");
+        //Creamos el fichero XML
+        crearFicheroXML();
         //Volcamos el fichero xml en memoria como arbol de DOM
         parsearFicheroXML();
         //Creamos los elementos y los agregamos al arbol de DOM
@@ -81,6 +94,25 @@ public class ParserDOM {
         escribirFicheroXML();
         System.out.println("Fichero actualizado correctamente");
     }
+    
+    private void crearFicheroXML() throws TransformerConfigurationException, ParserConfigurationException, TransformerException {
+        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+        //Creamos la raiz
+        Document XMLdoc = docBuilder.newDocument();
+        Element rootEle = XMLdoc.createElement("liga");
+        XMLdoc.appendChild(rootEle);
+        rootEle.setTextContent(" ");
+        c.setTime(new Date());
+        c.add(Calendar.DATE, 1);
+        rootEle.setAttribute("fechaExpiracion", c.getTime().toString());
+        //Creamos el documento
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        DOMSource source = new DOMSource(XMLdoc);
+        StreamResult result = new StreamResult(new File("BDD(Jornadas).xml"));
+        transformer.transform(source, result);
+    } 
 
     private void escribirFicheroXML() {
 
@@ -100,18 +132,10 @@ public class ParserDOM {
         }
     }
     
-private void crearArbolDOM() {
+    private void crearArbolDOM() {
 
         //Cogemos la referencia al elemento raiz liga
         Element raizLiga = dom.getDocumentElement();
-        //ELIMINAR CONTENIDO ANTERIOR
-        
-        
-        
-        
-        
-        
-        
         //DOM y los agregamos a la raiz <agenda>
         Iterator it = jornadas.iterator();
         Iterator it2 = partidos.iterator();
@@ -198,7 +222,7 @@ private void crearArbolDOM() {
         jornadas.add(new JornadaParsers("2","10-10-2018","20-11-2018"));
     }
     
-    public static void main(String args[]) {
+    public static void main(String args[]) throws ParserConfigurationException, TransformerException {
 
         //create an instance
         ParserDOM datos = new ParserDOM();
