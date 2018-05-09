@@ -5,10 +5,14 @@
  */
 package Views.VEquipo;
 
+import Excepciones.*;
 import control.controlador;
 import java.awt.Color;
 import java.awt.Image;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
+import javax.swing.JTextField;
 
 /**
  * 
@@ -72,6 +76,11 @@ public class VEquipo extends javax.swing.JFrame {
         lTitulo.setText("Nuevo Equipo");
 
         tfNombre.setBackground(new java.awt.Color(255, 255, 204));
+        tfNombre.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                tfNombreCaretUpdate(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -100,6 +109,7 @@ public class VEquipo extends javax.swing.JFrame {
         lMax.setText("100");
 
         cbDueno.setBackground(new java.awt.Color(255, 255, 204));
+        cbDueno.setMaximumRowCount(999);
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
@@ -251,8 +261,42 @@ public class VEquipo extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-        
+        try
+        {
+            if (tfNombre.getText().isEmpty())
+                throw new exceptionErroresColores(tfNombre, 1);
+            else
+                tfNombre.setBackground(new Color(255,255,204));
+            
+            if (!validar(tfNombre.getText(), "^([A-Za-z]([ ][A-Za-z])*){2,15}$"))
+                throw new exceptionErroresColores(tfNombre, 2);
+            else
+                tfNombre.setForeground(new Color(46,184,46));
+            
+            if(max<0)
+                throw new caracteresExcedidos();
+            
+            if(cbDueno.getSelectedIndex() == 1)
+                throw new duenoVacio();
+            
+            if(controlador.altaEquipo(tfNombre.getText(), taDesc.getText(), (String)cbDueno.getSelectedItem(), listaJugadores.getSelectedIndices()))
+                controlador.JDInfo(this, true, "Equipo generado corréctamente");
+        }
+        catch (exceptionErroresColores e){            
+            setColorException(e.getTextField(), e.getCaso());
+        }
+        catch(caracteresExcedidos e){
+            controlador.JDError(this, true, "Número de caracteres excedido en", "la descripción");
+        }
+        catch(duenoVacio e){
+            controlador.JDError(this, true, "Seleccione un dueño");
+        }
     }//GEN-LAST:event_bAceptarActionPerformed
+
+    private void tfNombreCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfNombreCaretUpdate
+        tfNombre.setForeground(Color.black);
+        tfNombre.setBackground(new Color(255,255,204));
+    }//GEN-LAST:event_tfNombreCaretUpdate
     
     public void inicializarVentana(){
         try
@@ -283,6 +327,26 @@ public class VEquipo extends javax.swing.JFrame {
         catch(Exception e){
             controlador.JDError(this, true, "Error inicio ventana");
         }   
+    }
+    
+    public void setColorException(JTextField tf, int caso){
+        Color rojo = new Color(255,77,77);
+        if (caso == 1)
+        {
+            tf.setBackground(rojo);
+            tf.setForeground(Color.black);
+        }
+        else
+            tf.setForeground(rojo);
+    }  
+    
+    public boolean validar(String cadena, String patt){
+        boolean match = false;
+        Pattern pat = Pattern.compile(patt);
+        Matcher mat = pat.matcher(cadena);
+        if (mat.matches()) 
+            match = true;
+        return match;
     }
     
     /**

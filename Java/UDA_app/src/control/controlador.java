@@ -17,6 +17,8 @@ import Views.JDInfo.JDInfo;
 import Views.VLiga.VLiga;
 import Views.VEquipo.VEquipo;
 import javax.swing.DefaultListModel;
+import Views.VPuntos.VPuntos;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -32,6 +34,7 @@ public class controlador {
     static ArrayList<Jornadas> jornadas;
     static List<Equipo> equiposBD;
     static List<Equipo> equipos;
+    static List<Jugador> jugadores;
     static List<Partido> partidos;
     static Equipo[][] PartidosEquipo;
     static List equiposP;
@@ -40,6 +43,11 @@ public class controlador {
     public static int tipoE;
     static int formula;
     static ArrayList<Equipo> equiposTemp;
+    static Liga ligaBD;
+    static Jornadas jornadaBD;
+    static Partido partidoBD;
+    static Date date;
+    static List<Liga> ligasBD;
 
     /**
      * @param args the command line arguments
@@ -50,12 +58,12 @@ public class controlador {
             inicializar();
 
             System.out.println("▒█░▒█ ▒█▀▀▄ ░█▀▀█ \n"
-                             + "▒█░▒█ ▒█░▒█ ▒█▄▄█ \n"
-                             + "░▀▄▄▀ ▒█▄▄▀ ▒█░▒█ \n"
-                             + "\n"
-                             + "▒█▀▀█ █▀▀█ █▀▀█ █▀▀█ ░ \n"
-                             + "▒█░░░ █░░█ █▄▄▀ █░░█ ▄ \n"
-                             + "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v0.6 alpha");
+                    + "▒█░▒█ ▒█░▒█ ▒█▄▄█ \n"
+                    + "░▀▄▄▀ ▒█▄▄▀ ▒█░▒█ \n"
+                    + "\n"
+                    + "▒█▀▀█ █▀▀█ █▀▀█ █▀▀█ ░ \n"
+                    + "▒█░░░ █░░█ █▄▄▀ █░░█ ▄ \n"
+                    + "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v0.6 alpha");
             VPrincipal vp = new VPrincipal();
             vp.setVisible(true);
         } catch (Exception e) {
@@ -64,13 +72,14 @@ public class controlador {
 
     }
 
-    public static void inicializar(){
+    public static void inicializar() {
         conexion = new ConexionBD();
         jornadas = new ArrayList();
         partidos = new ArrayList();
         equiposP = new ArrayList();
+        date = new Date();
     }
-    
+
     public static void toVLogin(Frame ventana) {
         ventana.dispose();
         VLogin vl = new VLogin();
@@ -88,8 +97,8 @@ public class controlador {
         VRegistro vr = new VRegistro(tipo, titulo, tipoventana);
         vr.setVisible(true);
     }
-    
-    public static void toVEquipo(Frame ventana){
+
+    public static void toVEquipo(Frame ventana) {
         ventana.dispose();
         VEquipo ve = new VEquipo();
         ve.setVisible(true);
@@ -118,11 +127,17 @@ public class controlador {
         JDInfo jde = new JDInfo(ventana, modal, mensaje, mensaje2);
         jde.setVisible(true);
     }
-    
-    public static void toJFLiga(Frame ventana){
+
+    public static void toJFLiga(Frame ventana) {
         ventana.dispose();
         VLiga v = new VLiga();
         v.setVisible(true);
+    }
+
+    public static void toVPuntos(javax.swing.JFrame ventana) {
+        ventana.setVisible(false);
+        VPuntos vpunt = new VPuntos();
+        vpunt.setVisible(true);
     }
 
     public static boolean findUsuLogin(String usuario, String pass) {
@@ -140,51 +155,53 @@ public class controlador {
     public static void cerrarSesion() {
         usu = null;
     }
-    
-    public static boolean findNickname(String nick){
+
+    public static boolean findNickname(String nick) {
         boolean encontrado = false;
-        List <Jugador> j = conexion.getJugadorBD().findJugadorEntities();
+        List<Jugador> j = conexion.getJugadorBD().findJugadorEntities();
         int x;
-        for(x = 0; x<j.size()&&!j.get(x).getNickname().equals(nick); x++){}
-            if(x!=j.size())
-                encontrado = true;
-            
+        for (x = 0; x < j.size() && !j.get(x).getNickname().equals(nick); x++) {
+        }
+        if (x != j.size()) {
+            encontrado = true;
+        }
+
         return encontrado;
-                
-            
+
     }
 
     public static boolean registrarUsuario(String dni, String nombre, String apellido, String calle, String numero, String piso, String ciudad, String cp, String pais, String tel, String usuario, String pass, String tipo_persona) throws Exception {
         boolean correcto;
-        
+
         Persona u1 = new Persona(dni, nombre, apellido, calle, numero, piso, ciudad, cp, pais, tipo_persona, tel);
-        
+
         Cuenta c1 = new Cuenta(usuario, pass);
         c1.setPersonaDni(u1);
         tipoE = 1;
         conexion.getPersonaBD().create(u1);
-        
-        if(tipo_persona.equals("dueno"))
+
+        if (tipo_persona.equals("dueno")) {
             addDueno(dni);
-        
+        }
+
         tipoE = 2;
         u1.addCuenta(c1);
         conexion.getCuentaBD().create(c1);
         correcto = true;
         return correcto;
     }
-    
-    public static void addDueno(String dni) throws Exception{
+
+    public static void addDueno(String dni) throws Exception {
         Dueno d = new Dueno(dni);
         conexion.getDuenoBD().create(d);
     }
-    
-    public static boolean registrarJugador(String dni, String nickname, String sueldo, String nombre, String apellido, String calle, String numero, String piso, String ciudad, String cp, String pais, String tel) throws Exception{
-        
+
+    public static boolean registrarJugador(String dni, String nickname, String sueldo, String nombre, String apellido, String calle, String numero, String piso, String ciudad, String cp, String pais, String tel) throws Exception {
+
         Jugador j1 = new Jugador(dni, nickname, Integer.parseInt(sueldo), nombre, apellido, calle, numero, piso, ciudad, cp, pais, tel);
         tipoE = 1;
         conexion.getJugadorBD().create(j1);
-        
+
         return true;
     }
 
@@ -195,48 +212,164 @@ public class controlador {
 
         }
     }
-    
-    public static boolean llenarDuenos(javax.swing.JComboBox cb) throws Exception{
-        
-        List <Dueno> d = conexion.getDuenoBD().findDuenoEntities();
-        
-        if(d == null)
+
+    public static boolean llenarDuenos(javax.swing.JComboBox cb) throws Exception {
+
+        List<Dueno> d = conexion.getDuenoBD().findDuenoEntities();
+
+        if (d == null) {
             return false;
-        else
-        {
-            for(Dueno du : d)
+        } else {
+            for (Dueno du : d) {
                 cb.addItem(du.getPersona().getNombre());
+            }
             return true;
         }
-        
+
     }
-    
-    public static DefaultListModel<String> llenarJugadores(javax.swing.JList lista){
-         
-        List <Jugador> j = conexion.getJugadorBD().findJugadorEntities();
+
+    public static DefaultListModel<String> llenarJugadores(javax.swing.JList lista) {
+
+        jugadores = conexion.getJugadorBD().findJugadorEntities();
         DefaultListModel<String> model = new DefaultListModel();
-        for(Jugador ju: j)
-            if(ju.getEquipoCod() == null)
-                model.addElement(ju.getNombre()+" "+ju.getApellido());
+        for (Jugador ju : jugadores) {
+            if (ju.getEquipoCod() == null) {
+                model.addElement(ju.getNombre() + " " + ju.getApellido());
+            }
+        }
         return model;
     }
 
-    public static DefaultListModel<String> llenarLista(javax.swing.JList lista){
+    public static boolean altaEquipo(String nombre, String desc, String dueno, int[] indices) {
+
+        //ME HE QUEDADO AQUI (Unai)
+        return false;
+    }
+
+    public static DefaultListModel<String> llenarLista(javax.swing.JList lista) {
         equiposBD = conexion.getEquipoBD().findEquipoEntities();
         DefaultListModel<String> model = new DefaultListModel();
-        for(Equipo e : equiposBD)
+        for (Equipo e : equiposBD) {
             model.addElement(e.getNombre());
+        }
         return model;
     }
 
-    public static void indices(int [] indices,String nombre,Calendar calendar)throws Exception{
-        equiposBD=conexion.getEquipoBD().findEquipoEntities();
-        equipos=new ArrayList();
-        for(int x=0;x<indices.length;x++)
+    public static void llenarLiga(javax.swing.JComboBox cb) {
+        for (Liga l : conexion.getLigaBD().findLigaEntities()) {
+            cb.addItem(l.getNombre());
+        }
+    }
+
+    public static void llenarJornadas(String liga, javax.swing.JComboBox cbJornadas) {
+        ligaBD = conexion.getLigaBD().findByName(liga);
+        boolean finish = false;
+        String cadena = "";
+        ArrayList<Jornadas> jornadasTemp = new ArrayList();
+        int min, done = 0;
+        Jornadas jMin = null;
+        for (int x = 1; finish != true; x++) {
+            min = 100;
+            for (Jornadas j : ligaBD.getJornadasCollection()) {
+                if (j.getCod() < min && !jornadasReps(j, jornadasTemp)) {
+                    min = j.getCod();
+                    jMin = j;
+                }
+            }
+            if (x == ligaBD.getJornadasCollection().size()) {
+                finish = true;
+            } else {
+                if (jMin.getFechaf().before(date)) {
+                    jornadasTemp.add(jMin);
+                    cadena = date(jMin.getFechai()) + " " + date(jMin.getFechaf());
+                    cbJornadas.addItem(cadena);
+                }
+
+            }
+        }
+    }
+
+    public static boolean jornadasReps(Jornadas j, ArrayList<Jornadas> js) {
+        int x;
+        for (x = 0; x < js.size() && !j.equals(js.get(x)); x++) {
+        }
+        if (x == js.size()) {
+            return false;
+        }
+        return true;
+    }
+
+    public static void llenarPartidos(String fecha, javax.swing.JComboBox cbPartidos) throws Exception {
+        String cadena = "";
+        Date test = toDate(fecha);
+        jornadaBD = conexion.getJornadaBD().findByDate(test);
+        ArrayList<Partido> partidosTemp = new ArrayList();
+        boolean finish = false;
+        int min, done = 0;
+        Partido pMin = null;
+        for (int x = 1; finish != true; x++) {
+            min = 100;
+            cadena = "";
+            for (Partido p : jornadaBD.getPartidoCollection()) {
+                if (p.getCod() < min && !partidosReps(p, partidosTemp)) {
+                    min = p.getCod();
+                    pMin = p;
+                }
+            }
+            if (x == jornadaBD.getPartidoCollection().size()) {
+                finish = true;
+            } else {
+                if (pMin.getFecha().before(date)) {
+                    partidosTemp.add(pMin);
+                    partidoBD = conexion.getPartidoBD().findPartido(pMin.getCod());
+                    for (Equipo e : partidoBD.getEquipoCollection()) {
+                        cadena += e.getNombre() + " ";
+                    }
+                    cbPartidos.addItem(cadena);
+                }
+            }
+        }
+    }
+
+    public static Date toDate(String fecha) throws Exception {
+        String cadena = "";
+        int cont = 0;
+        for (int x = 0; x < fecha.length() && cont < 8; x++) {//Aqui
+            if (Character.isDigit(fecha.charAt(x))) {
+                cadena += fecha.charAt(x);
+                cont++;
+            } else if (fecha.charAt(x) == '/') {
+                cadena += fecha.charAt(x);
+            }
+        }
+        SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+        return fmt.parse(cadena);
+    }
+
+    public static String date(Date fecha) {
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        String fechaS = df.format(fecha);
+        return fechaS;
+    }
+
+    public static boolean partidosReps(Partido p, ArrayList<Partido> ps) {
+        int x;
+        for (x = 0; x < ps.size() && !p.equals(ps.get(x)); x++) {
+        }
+        if (x == ps.size()) {
+            return false;
+        }
+        return true;
+    }
+
+    public static void indices(int[] indices, String nombre, Calendar calendar) throws Exception {
+        equipos = new ArrayList();
+        for (int x = 0; x < indices.length; x++) {
             equipos.add(equiposBD.get(x));
+        }
         generarLiga(nombre, calendar);
     }
-    
+
     public static void generarLiga(String nombre, Calendar fecha) throws Exception {
         formula = (((equipos.size() - 1) * equipos.size()) / ((equipos.size() - 1) * 2));
         PartidosEquipo = generarPartidos();
@@ -276,7 +409,7 @@ public class controlador {
         System.out.println("");
 
     }
-    
+
     public static Equipo[][] generarPartidos() {
         boolean zig = true;
         boolean stop = false;
@@ -317,7 +450,7 @@ public class controlador {
         } while (z < equiposPartidos.length);
         return equiposPartidos;
     }
-    
+
     public static void buscarFinesDeSemana(Calendar calendar) {
         finde = new ArrayList();
         int x = 0;
@@ -371,9 +504,11 @@ public class controlador {
 
     public static boolean equiposTemp(Equipo e) {
         int x;
-        for (x = 0; x < equiposTemp.size() && !equiposTemp.get(x).equals(e); x++) {}
-            if (x==equiposTemp.size()) 
-                return false;       
+        for (x = 0; x < equiposTemp.size() && !equiposTemp.get(x).equals(e); x++) {
+        }
+        if (x == equiposTemp.size()) {
+            return false;
+        }
         return true;
     }
 

@@ -383,6 +383,11 @@ public class VPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jmHerramientas);
 
         jmPuntuacion.setText("Gestión de puntuación");
+        jmPuntuacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmPuntuacionMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jmPuntuacion);
 
         jmResultados.setText("Resultados y datos");
@@ -510,6 +515,11 @@ public class VPrincipal extends javax.swing.JFrame {
     private void jmCEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCEquipoActionPerformed
         controlador.toVEquipo(this);
     }//GEN-LAST:event_jmCEquipoActionPerformed
+
+    private void jmPuntuacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmPuntuacionMouseClicked
+        // TODO add your handling code here:
+        controlador.toVPuntos(this);
+    }//GEN-LAST:event_jmPuntuacionMouseClicked
     
     public void inicializarVentana(){
         try
