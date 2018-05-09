@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<liga fechaExpiracion="10-May-2018">
+<liga fechaExpiracion="10-may-2018">
     <clasificacion>
-        <equipo codEquipo="1" puesto="8" puntos="0">D3STROY</equipo>
+        <equipo codEquipo="1" puesto="3" puntos="3">JAJAJAJAJAJJ</equipo>
         <equipo codEquipo="2" puesto="0" puntos="0">FNATICX</equipo>
         <equipo codEquipo="3" puesto="0" puntos="0">BIMBA</equipo>
-        <equipo codEquipo="4" puesto="0" puntos="0">UOL</equipo>
-        <equipo codEquipo="5" puesto="0" puntos="0">Team Liquid</equipo>
-        <equipo codEquipo="6" puesto="0" puntos="0">Renegades</equipo>
-        <equipo codEquipo="7" puesto="0" puntos="0">Cloud9</equipo>
-        <equipo codEquipo="8" puesto="0" puntos="0">Origen</equipo>
+        <equipo codEquipo="4" puesto="0" puntos="0">sERDOn</equipo>
+        <equipo codEquipo="5" puesto="0" puntos="0">HalWay</equipo>
+        <equipo codEquipo="6" puesto="0" puntos="0">uGAnD</equipo>
+        <equipo codEquipo="7" puesto="0" puntos="0">xAMAZINGx</equipo>
+        <equipo codEquipo="8" puesto="0" puntos="0">tHeamazonX</equipo>
+        <equipo codEquipo="9" puesto="" puntos="0">PruebaE</equipo>
     </clasificacion>
 </liga>
