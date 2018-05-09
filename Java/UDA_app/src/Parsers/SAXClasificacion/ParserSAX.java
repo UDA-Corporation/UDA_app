@@ -8,14 +8,10 @@
 package Parsers.SAXClasificacion;
 
 import Parsers.DOMClasificacion.*;
-import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,9 +33,6 @@ public class ParserSAX extends DefaultHandler {
         
     private String tempVal;
     Date fecha = new Date();
-    
-    //To maintain context
-    private Equipos equipo;
     
     /**
      * Ejecuta el SAX
