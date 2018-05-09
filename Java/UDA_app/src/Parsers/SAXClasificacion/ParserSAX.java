@@ -31,24 +31,21 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class ParserSAX extends DefaultHandler {
 
-    List equiposClasificacion;
+    public static Object[] Equipos = new Object[32];
+    int x = 1;
+    int y = 0;
         
     private String tempVal;
     Date fecha = new Date();
     
     //To maintain context
     private Equipos equipo;
-
-    public ParserSAX() {
-        equiposClasificacion = new ArrayList();
-    }
     
     /**
      * Ejecuta el SAX
      */
     public void ejecutar() {
         parseDocument();
-        printData();
     }
     
     /**
@@ -75,10 +72,8 @@ public class ParserSAX extends DefaultHandler {
             ie.printStackTrace();
         }
     }
-
-    /**
-     * Iteramos la lista e imprimimos el contenido
-     */
+    
+    /* Usar si se necesita comprobar por consola el contenido
     private void printData() {
 
         System.out.println("Número de equipos '" + equiposClasificacion.size());
@@ -88,7 +83,8 @@ public class ParserSAX extends DefaultHandler {
             System.out.println(it.next().toString());
         }
     }
-
+    */
+    
     /**
      * Controlador de eventos. Se encarga de buscar los elementos equipo y una vez los localiza crea un objeto equipo y guarda los datos del elemento en el objeto.
      * @param uri El nombre del elemento a buscar (Namespaced URI)
@@ -112,11 +108,14 @@ public class ParserSAX extends DefaultHandler {
                 }
             } else if (qName.equalsIgnoreCase("equipo")) {
                 //instanciamos un nuevo Equipo
-                equipo = new Equipos();
-                //si tuviera atributos obtendríamos su información en este punto.        
-                equipo.setCodEquipo(attributes.getValue("codEquipo"));
-                equipo.setPuntos(attributes.getValue("puntos"));
-                equipo.setPuesto(attributes.getValue("puesto"));
+                //equipo = new Equipos();
+                //Si tuviera atributos obtendríamos su información en este punto.        
+                Equipos[x] = attributes.getValue("codEquipo");
+                x++;
+                Equipos[x] = attributes.getValue("puntos");
+                x++;
+                Equipos[x] = attributes.getValue("puesto");
+                x = x + 2;
         } 
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(ParserSAX.class.getName()).log(Level.SEVERE, null, ex);
@@ -137,9 +136,9 @@ public class ParserSAX extends DefaultHandler {
     public void endElement(String uri, String localName, String qName) throws SAXException {
 
         if (qName.equalsIgnoreCase("equipo")) {
-            //la noticia ya está totalmente construida y la agregamos a la lista
-            equiposClasificacion.add(equipo);
-            equipo.setNombre(tempVal);
+            //La clasificación ya está totalmente construida y la agregamos a la lista
+            Equipos[y] =tempVal;
+            y = y + 4;
         }
     }
     
@@ -155,26 +154,11 @@ public class ParserSAX extends DefaultHandler {
     }
 
     public static void main(String[] args) {
-
         System.out.println("Comenzando lectura del XML");
         System.out.println("--------------------------");
 
         ParserSAX ClasificacionSAX = new ParserSAX();
         ClasificacionSAX.ejecutar();
-        
-        
-        /*Para ejecutar el SAX o el DOM comprobamos si existe el archivo XML
-        File xml = new File("BDD(Clasificacion).xml");
-        if(xml.exists() && !xml.isDirectory()) { 
-            ParserSAX ClasificacionSAX = new ParserSAX();
-            ClasificacionSAX.ejecutar();
-        } else {
-            ParserDOM ClasificacionDOM = new ParserDOM();
-            ClasificacionDOM.ejecutar();
-            ParserSAX ClasificacionSAX = new ParserSAX();
-            ClasificacionSAX.ejecutar();
-        } 
-        */
     }
 
 }
