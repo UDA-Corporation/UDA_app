@@ -176,11 +176,7 @@ public class VClasificacion extends javax.swing.JFrame {
             try {
                 ParserDOM ClasificacionDOM = new ParserDOM();
                 ClasificacionDOM.ejecutar();
-                ParserSAX ClasificacionSAX = new ParserSAX();
-                ClasificacionSAX.ejecutar();
-            } catch (ParserConfigurationException ex) {
-                Logger.getLogger(VClasificacion.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (TransformerException ex) {
+            } catch (ParserConfigurationException | TransformerException ex) {
                 Logger.getLogger(VClasificacion.class.getName()).log(Level.SEVERE, null, ex);
             }
         } 
@@ -191,7 +187,7 @@ public class VClasificacion extends javax.swing.JFrame {
             x = x + 4;
             Object[] row = new Object[4];
             row = Arrays.copyOfRange(Parsers.SAXClasificacion.ParserSAX.Equipos,i,x);
-            i = i + 3;
+            i += 3;
             model.addRow(row);
             Arrays.fill(row,null);
         } 

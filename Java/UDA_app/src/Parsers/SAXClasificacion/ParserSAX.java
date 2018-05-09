@@ -86,7 +86,7 @@ public class ParserSAX extends DefaultHandler {
      * @param attributes Los atributos presentes en el elemento
      */
     public void startElement(String uri, String localName, String qName, Attributes attributes)  {
-        //reseteamos la variable temporal
+        //Reseteamos la variable temporal
         tempVal = "";
         try {
             if (qName.equalsIgnoreCase("liga")){
@@ -98,6 +98,7 @@ public class ParserSAX extends DefaultHandler {
                     System.out.println("Documento expirado, actualizando...");
                     ParserDOM ClasificacionDOM = new ParserDOM();
                     ClasificacionDOM.ejecutar();
+                    return; //El SAX actual tiene el documento antiguo, el DOM se encargará de crear otro SAX que lea el nuevo, salimos de este SAX
                 }
             } else if (qName.equalsIgnoreCase("equipo")) {
                 //instanciamos un nuevo Equipo
@@ -108,7 +109,7 @@ public class ParserSAX extends DefaultHandler {
                 Equipos[x] = attributes.getValue("puntos");
                 x++;
                 Equipos[x] = attributes.getValue("puesto");
-                x = x + 2;
+                x += 2;
         } 
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(ParserSAX.class.getName()).log(Level.SEVERE, null, ex);
@@ -131,7 +132,7 @@ public class ParserSAX extends DefaultHandler {
         if (qName.equalsIgnoreCase("equipo")) {
             //La clasificación ya está totalmente construida y la agregamos a la lista
             Equipos[y] =tempVal;
-            y = y + 4;
+            y += 4;
         }
     }
     
