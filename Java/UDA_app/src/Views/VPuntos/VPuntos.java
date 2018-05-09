@@ -5,6 +5,9 @@
  */
 package Views.VPuntos;
 import control.controlador;
+import java.awt.Image;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 /**
  *
  * @author 1gdaw02
@@ -17,6 +20,7 @@ static boolean yes = false;
     public VPuntos() {
         yes = false;
         initComponents();
+        initIcon();
         setLocationRelativeTo(null);
         cbLiga.addItem("-- Seleccione una liga --");
         controlador.llenarLiga(cbLiga);
@@ -37,6 +41,13 @@ static boolean yes = false;
         cbLiga = new javax.swing.JComboBox<>();
         cbJornadas = new javax.swing.JComboBox<>();
         cbPartidos = new javax.swing.JComboBox<>();
+        tfe2 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        tfe1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        le1 = new javax.swing.JLabel();
+        le2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,23 +72,70 @@ static boolean yes = false;
         });
 
         cbPartidos.setEnabled(false);
+        cbPartidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbPartidosActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("-");
+
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Resultado");
+
+        le1.setForeground(new java.awt.Color(0, 0, 0));
+        le1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        le2.setForeground(new java.awt.Color(0, 0, 0));
+        le2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        jButton1.setText("Aceptar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(cbLiga, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
-                .addComponent(cbJornadas, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(cbLiga, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
+                        .addComponent(cbJornadas, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(le2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfe2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(cbPartidos, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(335, 335, 335)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(252, 252, 252)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(le1, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                            .addComponent(tfe1))
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(324, 324, 324)
+                        .addComponent(jButton1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,7 +147,20 @@ static boolean yes = false;
                     .addComponent(cbPartidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbLiga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbJornadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfe2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfe1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(le1)
+                    .addComponent(le2))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(50, 50, 50))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -134,6 +205,47 @@ static boolean yes = false;
         }
     }//GEN-LAST:event_cbJornadasActionPerformed
 
+    private void cbPartidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPartidosActionPerformed
+        // TODO add your handling code here:
+        if(yes){
+            yes = false;           
+            controlador.llenarTfPartido(cbPartidos.getSelectedIndex());           
+            le1.setText(controlador.le1());
+            le2.setText(controlador.le2());            
+            yes = true;
+        }
+    }//GEN-LAST:event_cbPartidosActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if(validar()){
+            if(Integer.parseInt(tfe1.getText())>Integer.parseInt(tfe2.getText()))
+                controlador.resultado(tfe1.getText(), null);
+            else
+                if(Integer.parseInt(tfe2.getText())>Integer.parseInt(tfe1.getText()))
+                    controlador.resultado(null, tfe2.getText());
+                else
+                    if(Integer.parseInt(tfe2.getText())==Integer.parseInt(tfe1.getText()))
+                        controlador.resultado(tfe1.getText(), tfe2.getText());
+        }               
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public boolean validar(){
+        if(cbLiga.getSelectedIndex()!=0&&cbJornadas.getSelectedIndex()!=0&&cbPartidos.getSelectedIndex()!=0)
+            return false;
+        for (int c=0;c<tfe1.getText().length();c++)
+            if(!Character.isDigit(c))
+                return false;
+        return true;
+    }
+    public void initIcon(){
+        try{
+            Image i = ImageIO.read(getClass().getResource("/Views/recursos/logo_u_favicon.png"));
+            setIconImage(i);
+        }catch (IOException e){
+            System.out.println("Problemas con el icono");
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -173,7 +285,14 @@ static boolean yes = false;
     private javax.swing.JComboBox<String> cbJornadas;
     private javax.swing.JComboBox<String> cbLiga;
     private javax.swing.JComboBox<String> cbPartidos;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel le1;
+    private javax.swing.JLabel le2;
+    private javax.swing.JTextField tfe1;
+    private javax.swing.JTextField tfe2;
     // End of variables declaration//GEN-END:variables
 }

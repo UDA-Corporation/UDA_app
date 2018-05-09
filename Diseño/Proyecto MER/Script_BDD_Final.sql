@@ -21,7 +21,7 @@ CREATE TABLE Persona
     ciudad   VARCHAR2 (20) NOT NULL ,
     cp       VARCHAR2 (5) NOT NULL ,
     pais     VARCHAR2 (20) NOT NULL ,
-	tipo_persona varchar(10) NOT NULL,
+	tipo_persona varchar(10),
     tlfo     VARCHAR2 (9) NOT NULL 
   ) ;
   
@@ -48,9 +48,8 @@ CREATE TABLE Equipo
     cod        NUMBER (5) PRIMARY KEY ,
     nombre     VARCHAR2 (30) NOT NULL ,
     desripcion VARCHAR2 (100) NOT NULL ,
-    puntos     VARCHAR2(3) NOT NULL ,
-    puesto     VARCHAR2(2) NOT NULL ,
-    tipo       VARCHAR2(10) ,
+    puntos     VARCHAR2(3),
+    puesto     VARCHAR2(2),
     Dueno_dni  VARCHAR2 (9) NOT NULL,
     CONSTRAINT Equipo_Dueno_FK FOREIGN KEY ( Dueno_dni ) REFERENCES Dueno ( dni )
   ) ;
@@ -109,6 +108,6 @@ CREATE TABLE Jugador
     cp       VARCHAR2 (5) NOT NULL ,
     pais     VARCHAR2 (20) NOT NULL ,
     tlfo     VARCHAR2 (9) NOT NULL ,
-    Equipo_cod NUMBER (5) NOT NULL,
+    Equipo_cod NUMBER (5),
     CONSTRAINT Jugador_Equipo_FK FOREIGN KEY ( Equipo_cod ) REFERENCES Equipo ( cod )
   ) ;
