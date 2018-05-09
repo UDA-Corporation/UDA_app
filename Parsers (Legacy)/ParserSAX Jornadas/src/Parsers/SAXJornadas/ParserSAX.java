@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package parsersax;
+package Parsers.SAXJornadas;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import org.xml.sax.SAXException;
 
 import org.xml.sax.helpers.DefaultHandler;
 
-public class parsersax extends DefaultHandler {
+public class ParserSAX extends DefaultHandler {
 
     List datosnuevos;
         
@@ -28,7 +28,7 @@ public class parsersax extends DefaultHandler {
     //to maintain context
     private Jornada tempNew;
 
-    public parsersax() {
+    public ParserSAX() {
         datosnuevos = new ArrayList();
     }
 
@@ -94,7 +94,7 @@ public class parsersax extends DefaultHandler {
 
     public static void main(String[] args) {
 
-        parsersax spe = new parsersax();
+        ParserSAX spe = new ParserSAX();
         spe.run();
     }
 
