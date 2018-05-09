@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Jornadas.findByFechaf", query = "SELECT j FROM Jornadas j WHERE j.fechaf = :fechaf")})
 public class Jornadas implements Serializable {
 
+    public static final String findByDate = "Jornadas.findByFechai";
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)

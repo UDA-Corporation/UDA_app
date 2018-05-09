@@ -213,6 +213,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de puntuaci&#xf3;n"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmPuntuacionMouseClicked"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jmResultados">
           <Properties>

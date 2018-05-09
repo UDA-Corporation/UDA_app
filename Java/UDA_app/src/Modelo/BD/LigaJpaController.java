@@ -218,4 +218,10 @@ public class LigaJpaController implements Serializable {
             return "1";
         }           
     }
+    public Liga findByName(String name){       
+            Query consulta = this.getEntityManager().createNamedQuery(Liga.findName);
+            consulta.setParameter("nombre", name);
+            List<Liga> lista = consulta.getResultList(); 
+            return lista.get(0);    
+    }
 }
