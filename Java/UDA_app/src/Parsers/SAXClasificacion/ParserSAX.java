@@ -8,14 +8,10 @@
 package Parsers.SAXClasificacion;
 
 import Parsers.DOMClasificacion.*;
-import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,9 +33,6 @@ public class ParserSAX extends DefaultHandler {
         
     private String tempVal;
     Date fecha = new Date();
-    
-    //To maintain context
-    private Equipos equipo;
     
     /**
      * Ejecuta el SAX
@@ -93,7 +86,7 @@ public class ParserSAX extends DefaultHandler {
      * @param attributes Los atributos presentes en el elemento
      */
     public void startElement(String uri, String localName, String qName, Attributes attributes)  {
-        //reseteamos la variable temporal
+        //Reseteamos la variable temporal
         tempVal = "";
         try {
             if (qName.equalsIgnoreCase("liga")){
@@ -105,6 +98,7 @@ public class ParserSAX extends DefaultHandler {
                     System.out.println("Documento expirado, actualizando...");
                     ParserDOM ClasificacionDOM = new ParserDOM();
                     ClasificacionDOM.ejecutar();
+                    return; //El SAX actual tiene el documento antiguo, el DOM se encargará de crear otro SAX que lea el nuevo, salimos de este SAX
                 }
             } else if (qName.equalsIgnoreCase("equipo")) {
                 //instanciamos un nuevo Equipo
@@ -115,7 +109,7 @@ public class ParserSAX extends DefaultHandler {
                 Equipos[x] = attributes.getValue("puntos");
                 x++;
                 Equipos[x] = attributes.getValue("puesto");
-                x = x + 2;
+                x += 2;
         } 
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(ParserSAX.class.getName()).log(Level.SEVERE, null, ex);
@@ -138,7 +132,7 @@ public class ParserSAX extends DefaultHandler {
         if (qName.equalsIgnoreCase("equipo")) {
             //La clasificación ya está totalmente construida y la agregamos a la lista
             Equipos[y] =tempVal;
-            y = y + 4;
+            y += 4;
         }
     }
     

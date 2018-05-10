@@ -27,8 +27,16 @@ import org.xml.sax.SAXException;
 
 import Modelo.BD.*;
 import Modelo.UML.Equipo;
+import Parsers.SAXClasificacion.ParserSAX;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import static java.util.Calendar.FRIDAY;
+import static java.util.Calendar.MONDAY;
+import static java.util.Calendar.SATURDAY;
+import static java.util.Calendar.SUNDAY;
+import static java.util.Calendar.THURSDAY;
+import static java.util.Calendar.TUESDAY;
+import static java.util.Calendar.WEDNESDAY;
 import java.util.Date;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
@@ -72,6 +80,8 @@ public class ParserDOM {
         //Escribimos el arbol DOM en el fichero XML
         escribirFicheroXML();
         System.out.println("Fichero actualizado correctamente");
+        ParserSAX ClasificacionSAX = new ParserSAX();
+        ClasificacionSAX.ejecutar();
     }
     
     /**
@@ -89,7 +99,29 @@ public class ParserDOM {
         XMLdoc.appendChild(rootEle);
         rootEle.setTextContent(" ");
         c.setTime(new Date());
-        c.add(Calendar.DATE, 1);
+        switch (c.DAY_OF_WEEK){
+            case MONDAY:
+                c.add(Calendar.DATE, 7);
+            break;
+            case TUESDAY:
+                c.add(Calendar.DATE, 6);
+            break;
+            case WEDNESDAY:
+                c.add(Calendar.DATE, 5);
+            break;
+            case THURSDAY:
+                c.add(Calendar.DATE, 4);
+            break;
+            case FRIDAY:
+                c.add(Calendar.DATE, 3);
+            break;
+            case SATURDAY:
+                c.add(Calendar.DATE, 2);
+            break;
+            case SUNDAY:
+                c.add(Calendar.DATE, 1);
+            break;
+        }
         Date fecha = new Date();
         fecha = c.getTime();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");

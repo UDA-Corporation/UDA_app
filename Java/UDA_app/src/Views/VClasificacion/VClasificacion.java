@@ -1,33 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Unai Puelles
+ * @author Daniel Barragues
+ * @author Alejandro Diaz de Otalora
+ * @version %G%
+ * @since 0.7 alpha
  */
 package Views.VClasificacion;
 
 import Parsers.DOMClasificacion.ParserDOM;
 import Parsers.SAXClasificacion.ParserSAX;
 import control.controlador;
-import static java.awt.SystemColor.window;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultRowSorter;
-import javax.swing.RowSorter;
-import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
-/**
- *
- * @author danie
- */
 public class VClasificacion extends javax.swing.JFrame {
     int x = 0;
     /**
@@ -51,11 +41,11 @@ public class VClasificacion extends javax.swing.JFrame {
         jProgressBar1 = new javax.swing.JProgressBar();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Table = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         Salir = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -71,10 +61,7 @@ public class VClasificacion extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Consulta clasificacion");
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/recursos/Logo_grande.png"))); // NOI18N
 
         Table.setAutoCreateRowSorter(true);
         Table.setBackground(new java.awt.Color(255, 255, 204));
@@ -120,6 +107,8 @@ public class VClasificacion extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/recursos/Logo_grande.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -129,35 +118,35 @@ public class VClasificacion extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel3)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
+                        .addGap(110, 110, 110)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(416, 416, 416)
+                        .addGap(412, 412, 412)
                         .addComponent(Salir)))
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3)))
-                .addGap(61, 61, 61)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2)))
+                .addGap(75, 75, 75)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(Salir)
-                .addGap(27, 27, 27))
+                .addGap(47, 47, 47))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,26 +162,12 @@ public class VClasificacion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        ConsultaXML();
-        /*
-        public static void toVClasificacion(Frame ventana) {
-            ventana.dispose();
-            VClasificacion vc = new VClasificacion();
-            vc.setVisible(true);
-        }*/
-    }//GEN-LAST:event_formWindowOpened
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        controlador.toVPrincipal(this);
-    }//GEN-LAST:event_formWindowClosing
-
-    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-        controlador.toVPrincipal(this);
-    }//GEN-LAST:event_SalirActionPerformed
     
-    private void ConsultaXML() {
+    /**
+     * Consulta el fichero XML apoyandose en los SAX o DOM dependiendo si el fichero existe o no
+     * @param evt El evento ocurrido en la ventana
+     */
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         File xml = new File("BDD(Clasificacion).xml");
         if(xml.exists() && !xml.isDirectory()) { 
             ParserSAX ClasificacionSAX = new ParserSAX();
@@ -201,15 +176,10 @@ public class VClasificacion extends javax.swing.JFrame {
             try {
                 ParserDOM ClasificacionDOM = new ParserDOM();
                 ClasificacionDOM.ejecutar();
-                ParserSAX ClasificacionSAX = new ParserSAX();
-                ClasificacionSAX.ejecutar();
-            } catch (ParserConfigurationException ex) {
-                Logger.getLogger(VClasificacion.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (TransformerException ex) {
+            } catch (ParserConfigurationException | TransformerException ex) {
                 Logger.getLogger(VClasificacion.class.getName()).log(Level.SEVERE, null, ex);
             }
         } 
-        //NumeroEquipos.setText("Numero de equipos en la liga: " + equiposClasificacion.size());
         Object[] columns = {"Nombre","Codigo equipo","Puntos","Puesto"};
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(columns);
@@ -217,13 +187,29 @@ public class VClasificacion extends javax.swing.JFrame {
             x = x + 4;
             Object[] row = new Object[4];
             row = Arrays.copyOfRange(Parsers.SAXClasificacion.ParserSAX.Equipos,i,x);
-            i = i + 3;
+            i += 3;
             model.addRow(row);
             Arrays.fill(row,null);
         } 
         Table.setModel(model);
         Table.getRowSorter().toggleSortOrder(3);
-    }
+    }//GEN-LAST:event_formWindowOpened
+
+    /**
+     * Cuando se cierra desde la "X" de la ventana llama a la ventana principal
+     * @param evt El evento ocurrido en la ventana
+     */
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        controlador.toVPrincipal(this);
+    }//GEN-LAST:event_formWindowClosing
+    
+    /**
+     * Cuando se pulsa el boton "salir" llama a la ventana principal
+     * @param evt El evento ocurrido en la ventana
+     */
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        controlador.toVPrincipal(this);
+    }//GEN-LAST:event_SalirActionPerformed
     
     /**
      * @param args the command line arguments
