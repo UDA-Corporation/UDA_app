@@ -99,27 +99,28 @@ public class ParserDOM {
         XMLdoc.appendChild(rootEle);
         rootEle.setTextContent(" ");
         c.setTime(new Date());
+        System.out.println("Test" + c.DAY_OF_WEEK);
         switch (c.DAY_OF_WEEK){
             case MONDAY:
-                c.add(Calendar.DATE, 7);
+                c.add(Calendar.DATE, 8);
             break;
             case TUESDAY:
-                c.add(Calendar.DATE, 6);
+                c.add(Calendar.DATE, 7);
             break;
             case WEDNESDAY:
-                c.add(Calendar.DATE, 5);
+                c.add(Calendar.DATE, 6);
             break;
             case THURSDAY:
-                c.add(Calendar.DATE, 4);
+                c.add(Calendar.DATE, 5);
             break;
             case FRIDAY:
-                c.add(Calendar.DATE, 3);
+                c.add(Calendar.DATE, 4);
             break;
             case SATURDAY:
-                c.add(Calendar.DATE, 2);
+                c.add(Calendar.DATE, 3);
             break;
             case SUNDAY:
-                c.add(Calendar.DATE, 1);
+                c.add(Calendar.DATE, 2);
             break;
         }
         Date fecha = new Date();
