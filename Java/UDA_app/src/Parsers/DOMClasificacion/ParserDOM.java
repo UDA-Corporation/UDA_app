@@ -31,13 +31,6 @@ import Parsers.SAXClasificacion.ParserSAX;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import static java.util.Calendar.FRIDAY;
-import static java.util.Calendar.MONDAY;
-import static java.util.Calendar.SATURDAY;
-import static java.util.Calendar.SUNDAY;
-import static java.util.Calendar.THURSDAY;
-import static java.util.Calendar.TUESDAY;
-import static java.util.Calendar.WEDNESDAY;
 import java.util.Date;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
@@ -187,7 +180,6 @@ public class ParserDOM {
             clasificacionEle.appendChild(equipoEle);
         }
         }catch(Exception e){
-            System.out.println("");
         }
     }
     

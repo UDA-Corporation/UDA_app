@@ -102,8 +102,6 @@ public class ParserSAX extends DefaultHandler {
                     expirado = true; //El SAX actual tiene el documento antiguo, el DOM se encargará de crear otro SAX que lea el nuevo, salimos de este SAX
                 }
             } else if (qName.equalsIgnoreCase("equipo")) {
-                //instanciamos un nuevo Equipo
-                //equipo = new Equipos();
                 //Si tuviera atributos obtendríamos su información en este punto.        
                 Equipos[x] = attributes.getValue("codEquipo");
                 x++;
@@ -148,13 +146,7 @@ public class ParserSAX extends DefaultHandler {
         tempVal = new String(ch, start, length);
     }
 
-    public static void main(String[] args) {
-        System.out.println("Comenzando lectura del XML");
-        System.out.println("--------------------------");
-
-        ParserSAX ClasificacionSAX = new ParserSAX();
-        ClasificacionSAX.ejecutar();
-        
+    public static void main(String[] args) {        
     }
 
 }

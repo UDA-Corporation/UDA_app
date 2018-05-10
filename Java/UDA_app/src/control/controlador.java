@@ -14,7 +14,7 @@ import Views.VPrincipal.VPrincipal;
 import java.awt.Frame;
 import Views.JDError.JDError;
 import Views.JDInfo.JDInfo;
-import Views.VClasificacion.VClasificacion;
+import Views.ResultadosyDatos.VClasificacion;
 import Views.VLiga.VLiga;
 import Views.VEquipo.VEquipo;
 import javax.swing.DefaultListModel;
