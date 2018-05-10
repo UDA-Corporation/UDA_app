@@ -28,6 +28,7 @@ import org.xml.sax.SAXException;
 import Modelo.BD.*;
 import Modelo.UML.Equipo;
 import Parsers.SAXClasificacion.ParserSAX;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import static java.util.Calendar.FRIDAY;
@@ -80,8 +81,10 @@ public class ParserDOM {
         //Escribimos el arbol DOM en el fichero XML
         escribirFicheroXML();
         System.out.println("Fichero actualizado correctamente");
-        ParserSAX ClasificacionSAX = new ParserSAX();
-        ClasificacionSAX.ejecutar();
+        if (ParserSAX.expirado = false){
+            ParserSAX ClasificacionSAX = new ParserSAX();
+            ClasificacionSAX.ejecutar();
+        }
     }
     
     /**
@@ -98,29 +101,38 @@ public class ParserDOM {
         Element rootEle = XMLdoc.createElement("liga");
         XMLdoc.appendChild(rootEle);
         rootEle.setTextContent(" ");
-        c.setTime(new Date());
-        System.out.println("Test" + c.DAY_OF_WEEK);
-        switch (c.DAY_OF_WEEK){
-            case MONDAY:
-                c.add(Calendar.DATE, 8);
-            break;
-            case TUESDAY:
+        DateFormat format = new SimpleDateFormat("EEEE");
+        String fecha2 = format.format(new Date());
+        switch (fecha2){
+            case "monday":
+            case "lunes":
                 c.add(Calendar.DATE, 7);
             break;
-            case WEDNESDAY:
+            case "tuesday":
+            case "martes":
                 c.add(Calendar.DATE, 6);
             break;
-            case THURSDAY:
+            case "wednesday":
+            case "miercoles":
+            case "miércoles":
                 c.add(Calendar.DATE, 5);
             break;
-            case FRIDAY:
+            case "thursday":
+            case "jueves":
                 c.add(Calendar.DATE, 4);
             break;
-            case SATURDAY:
+            case "friday":
+            case "viernes":
                 c.add(Calendar.DATE, 3);
             break;
-            case SUNDAY:
+            case "saturday":
+            case "sabado":
+            case "sábado":
                 c.add(Calendar.DATE, 2);
+            break;
+            case "sunday":
+            case "domingo":
+                c.add(Calendar.DATE, 1);
             break;
         }
         Date fecha = new Date();

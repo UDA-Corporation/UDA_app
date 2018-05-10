@@ -179,7 +179,11 @@ public class VClasificacion extends javax.swing.JFrame {
             } catch (ParserConfigurationException | TransformerException ex) {
                 Logger.getLogger(VClasificacion.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } 
+        }
+        if (ParserSAX.expirado = true){
+            ParserSAX ClasificacionSAXexpiradoXML = new ParserSAX();
+            ClasificacionSAXexpiradoXML.ejecutar();
+        }
         Object[] columns = {"Nombre","Codigo equipo","Puntos","Puesto"};
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(columns);

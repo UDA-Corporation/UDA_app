@@ -30,6 +30,7 @@ public class ParserSAX extends DefaultHandler {
     public static Object[] Equipos = new Object[32];
     int x = 1;
     int y = 0;
+    public static boolean expirado = false;
         
     private String tempVal;
     Date fecha = new Date();
@@ -98,7 +99,7 @@ public class ParserSAX extends DefaultHandler {
                     System.out.println("Documento expirado, actualizando...");
                     ParserDOM ClasificacionDOM = new ParserDOM();
                     ClasificacionDOM.ejecutar();
-                    return; //El SAX actual tiene el documento antiguo, el DOM se encargará de crear otro SAX que lea el nuevo, salimos de este SAX
+                    expirado = true; //El SAX actual tiene el documento antiguo, el DOM se encargará de crear otro SAX que lea el nuevo, salimos de este SAX
                 }
             } else if (qName.equalsIgnoreCase("equipo")) {
                 //instanciamos un nuevo Equipo
@@ -153,6 +154,7 @@ public class ParserSAX extends DefaultHandler {
 
         ParserSAX ClasificacionSAX = new ParserSAX();
         ClasificacionSAX.ejecutar();
+        
     }
 
 }
