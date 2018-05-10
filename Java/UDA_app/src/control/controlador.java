@@ -21,6 +21,8 @@ import javax.swing.DefaultListModel;
 import Views.VPuntos.VPuntos;
 import java.text.SimpleDateFormat;
 import Excepciones.ResultadoPartido;
+import java.io.IOException;
+import java.net.MalformedURLException;
 
 /**
  *
@@ -58,7 +60,7 @@ public class controlador {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MalformedURLException, NullPointerException, IOException {
         // TODO code application logic here  
         try {
             inicializar();
