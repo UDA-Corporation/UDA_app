@@ -8,7 +8,8 @@ import control.controlador;
 import java.awt.Image;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import Excepciones.ResultadoPartido;
+import Excepciones.ResultadoFMT;
+import Excepciones.selection;
 /**
  *
  * @author 1gdaw02
@@ -23,6 +24,7 @@ static boolean yes = false;
         initComponents();
         initIcon();
         setLocationRelativeTo(null);
+        goEnableRes(false);
         cbLiga.addItem("-- Seleccione una liga --");
         controlador.llenarLiga(cbLiga);
         yes = true;
@@ -180,7 +182,7 @@ static boolean yes = false;
 
     private void cbLigaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLigaActionPerformed
         // TODO add your handling code here:
-        if(yes){
+        if(yes&&cbLiga.getSelectedIndex()!=0){
             yes = false;
             cbJornadas.removeAllItems();
             cbJornadas.addItem("-- Seleccione una jornada --");
@@ -193,12 +195,9 @@ static boolean yes = false;
     private void cbJornadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbJornadasActionPerformed
         // TODO add your handling code here:
         try{
-            if(yes){
+            if(yes&&cbJornadas.getSelectedIndex()!=0){
                 yes = false;
-                cbPartidos.removeAllItems();
-                cbPartidos.addItem("-- Seleccione un partido --");
-                cbPartidos.setEnabled(true);
-                controlador.llenarPartidos((String)cbJornadas.getSelectedItem(),cbPartidos);
+                rellenarPartidos(false);                
                 yes = true;
             }
         }catch (Exception e){
@@ -208,11 +207,12 @@ static boolean yes = false;
 
     private void cbPartidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPartidosActionPerformed
         // TODO add your handling code here:
-        if(yes){
+        if(yes&&cbPartidos.getSelectedIndex()!=0){
             yes = false;           
-            controlador.llenarTfPartido(cbPartidos.getSelectedIndex());           
+            controlador.StringEquipos((String)cbPartidos.getSelectedItem());           
             le1.setText(controlador.le1());
-            le2.setText(controlador.le2());            
+            le2.setText(controlador.le2());
+            goEnableRes(true);
             yes = true;
         }
     }//GEN-LAST:event_cbPartidosActionPerformed
@@ -237,27 +237,53 @@ static boolean yes = false;
                             resultado=tfe1.getText()+"-"+tfe2.getText();
                             controlador.resultadoPartido(null, resultado, true);
                         }
-                }
+                
+                }                  
             controlador.JDInfo(this, true, "Resultado introducido correctamente");
+            yes=false;
+            rellenarPartidos(true);          
             limpiar();
-        }catch (ResultadoPartido e){
-            controlador.JDError(this, true, "Ese partido ya ha sido modificado");
-            limpiar();
-        }
-        catch (Exception e){
+            yes=true;
+        }catch(selection e){
+            controlador.JDError(this, true, "Debes seleccionar una liga un equipo y un patido");
+        }catch(ResultadoFMT e){
+            controlador.JDError(this, true, "Introduce el resultado en un formato correcto");
+        }catch (Exception e){
             System.out.println("Problemas puntuacion");
+            e.printStackTrace();
         }         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public void goEnableRes(boolean enabled){
+        tfe1.setEnabled(enabled);
+        tfe2.setEnabled(enabled);
+    }
+    public void rellenarPartidos(boolean a)throws Exception{
+        goEnableRes(false);
+        cbPartidos.removeAllItems();
+        cbPartidos.addItem("-- Seleccione un partido --");
+        if(!a){
+            controlador.llenarPartidos((String)cbJornadas.getSelectedItem(),cbPartidos);
+            cbPartidos.setEnabled(true);
+        }else{
+            controlador.REllenarPartidos(cbPartidos);
+            if(cbPartidos.getModel().getSize()==1){
+                cbJornadas.removeAllItems();
+                cbJornadas.addItem("-- Seleccione una jornada --");
+                controlador.REllenarJornadas(null, cbJornadas);
+            }
+                
+        }
+    }
     public void limpiar(){
         tfe1.setText("");
         tfe2.setText("");
     }
-    public boolean validar(){
+    public boolean validar()throws Exception{
         if(cbLiga.getSelectedIndex()==0&&cbJornadas.getSelectedIndex()==0&&cbPartidos.getSelectedIndex()==0)
-            return false;        
+            throw new selection(); 
         if(!digito(tfe1.getText()))
-            return false;
+            throw new ResultadoFMT();
         else 
             if(!digito(tfe2.getText()))
                 return false;

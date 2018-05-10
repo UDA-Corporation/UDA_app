@@ -20,6 +20,7 @@ public class VPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VPrincipal
      */
+    //Set de iconos https://www.iconfinder.com/iconsets/customicondesign-mini-deepcolour-png
     public VPrincipal(){
         initComponents();
         //Vamos a llamar a una función que oculte las opciones para el administrador y para un usuario loggeado
@@ -257,6 +258,7 @@ public class VPrincipal extends javax.swing.JFrame {
         });
         MenuOpciones.add(jmCs);
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/exit_icon.png"))); // NOI18N
         jMenuItem2.setText("Salir");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,6 +269,7 @@ public class VPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(MenuOpciones);
 
+        jmHerramientas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/herramientas_icon.png"))); // NOI18N
         jmHerramientas.setText("Herramientas");
 
         jmRegistrar.setText("Registrar");
@@ -324,9 +327,15 @@ public class VPrincipal extends javax.swing.JFrame {
 
         jmHerramientas.add(jmRegistrar);
 
+        jMenu3.setBorder(null);
         jMenu3.setText("Modificar");
 
         jmModUsu.setText("Usuario");
+        jmModUsu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmModUsuActionPerformed(evt);
+            }
+        });
         jMenu3.add(jmModUsu);
 
         jMenuItem12.setText("Jugador");
@@ -549,6 +558,10 @@ public class VPrincipal extends javax.swing.JFrame {
     private void jmCAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCAdminActionPerformed
         controlador.toVRegistro(this, 2, "Nuevo Admin", 1);
     }//GEN-LAST:event_jmCAdminActionPerformed
+
+    private void jmModUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmModUsuActionPerformed
+        controlador.toVRegistro(this, 3, "Modificar Usuario", 1);
+    }//GEN-LAST:event_jmModUsuActionPerformed
     
     public void inicializarVentana(){
         try
