@@ -44,6 +44,7 @@ public class controlador {
     static List equiposP;
     static int posicion1;
     public static Cuenta usu;
+    public static Persona persTemp;
     public static int tipoE;
     static int formula;
     static ArrayList<Equipo> equiposTemp;
@@ -56,6 +57,7 @@ public class controlador {
     static SimpleDateFormat fmt;
     static final int PUNTOSWIN=3;
     static final int PUNTOSDRAW=1;
+    static Collection <Equipo> CollectionEquiposTemp;
 
     /**
      * @param args the command line arguments
@@ -184,6 +186,12 @@ public class controlador {
         return encontrado;
 
     }
+    
+    public static boolean findByDni(String dni) throws Exception{
+        
+        persTemp = conexion.getPersonaBD().findPersona(dni);
+        return true;
+    }
 
     public static boolean registrarUsuario(String dni, String nombre, String apellido, String calle, String numero, String piso, String ciudad, String cp, String pais, String tel, String usuario, String pass, String tipo_persona) throws Exception {
         boolean correcto;
@@ -221,8 +229,8 @@ public class controlador {
 
         return true;
     }
-
-    public static void destroyRegitro(String dni) {
+    
+    public static void destroyRegistro(String dni) {
         try {
             conexion.getPersonaBD().destroy(dni);
         } catch (Exception e) {
@@ -289,9 +297,14 @@ public class controlador {
             cb.addItem(l.getNombre());
         }
     }
-
+    
+    public static void REllenarJornadas(String liga, javax.swing.JComboBox cbJornadas){
+        llenarJornadas(null, cbJornadas);
+    }
+    
     public static void llenarJornadas(String liga, javax.swing.JComboBox cbJornadas) {
-        ligaBD = conexion.getLigaBD().findByName(liga);
+        if(liga!=null)
+            ligaBD = conexion.getLigaBD().findByName(liga);
         boolean finish = false;
         String cadena = "";
         ArrayList<Jornadas> jornadasTemp = new ArrayList();
@@ -311,7 +324,8 @@ public class controlador {
                 if (jMin.getFechaf().before(date)) {
                     jornadasTemp.add(jMin);
                     cadena = date(jMin.getFechai()) + " " + date(jMin.getFechaf());
-                    cbJornadas.addItem(cadena);
+                    if(!partidosCompletos(jMin))
+                        cbJornadas.addItem(cadena);
                 }
 
             }
@@ -336,12 +350,14 @@ public class controlador {
         return true;
     }
 
+    
     public static void llenarPartidos(String fecha, javax.swing.JComboBox cbPartidos) throws Exception {
-        String cadena;        
-        jornadaBD = buscarJornada(toDate(fecha));
+        String cadena;    
+        if(fecha!=null)
+            jornadaBD = buscarJornada(toDate(fecha));
         ArrayList<Partido> partidosTemp = new ArrayList();
         boolean finish = false;
-        int min, done = 0;
+        int min;
         Partido pMin = null;
         for (int x = 0; finish != true; x++) {
             min = 100;
@@ -361,10 +377,21 @@ public class controlador {
                     for (Equipo e : partidoBD.getEquipoCollection()) {
                         cadena += e.getNombre() + " ";
                     }
-                    cbPartidos.addItem(cadena);
+                    if(partidoBD.getResultado()==null)
+                        cbPartidos.addItem(cadena);
                 }
             }
         }
+    }
+    
+    public static boolean partidosCompletos(Jornadas j){
+        int cont=0;
+        for (Partido p : j.getPartidoCollection())
+            if(p.getResultado()!=null)
+                cont++;      
+        if(cont==4)
+            return true;
+        return false;
     }
 
     public static Date toDate(String fecha) throws Exception {
@@ -434,6 +461,34 @@ public class controlador {
         }
         conexion.getPartidoBD().edit(partidoBD);
     }
+    
+    public static void StringEquipos(String Sequipo){
+        if(Sequipo==null)
+            Sequipo="catch";
+        CollectionEquiposTemp = new ArrayList ();
+        System.out.println(Sequipo);
+        String cadena = "";
+        boolean finish = false;        
+        for (int x=0;x<Sequipo.length()&&finish==false;x++)
+            if(Character.isAlphabetic(Sequipo.charAt(x))||Character.isDigit(Sequipo.charAt(x)))
+                cadena+=Sequipo.charAt(x);
+            else
+                if(Sequipo.charAt(x)==' ')
+                    finish = true;
+        for (Partido p : jornadaBD.getPartidoCollection())
+            for (Equipo e : p.getEquipoCollection())
+                if(e.getNombre().equalsIgnoreCase(cadena)){
+                    CollectionEquiposTemp = p.getEquipoCollection();
+                    partidoBD=p;
+                }
+        equiposTemp = new ArrayList(CollectionEquiposTemp);
+    }
+    
+    public static void REllenarPartidos(javax.swing.JComboBox cbPartidos)throws Exception{
+        llenarPartidos(null,cbPartidos);
+    }
+    
+    
     
     public static void add(String aSumar,boolean both)throws Exception{      
         for (Equipo e : equiposTemp){

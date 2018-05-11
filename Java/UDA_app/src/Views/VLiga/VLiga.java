@@ -47,7 +47,12 @@ public class VLiga extends javax.swing.JFrame {
         lEquipos = new javax.swing.JList<>();
         jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -167,6 +172,10 @@ public class VLiga extends javax.swing.JFrame {
             controlador.JDError(this, true, "Errores varios");
         }
     }//GEN-LAST:event_bAceptarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        controlador.toVPrincipal(this);
+    }//GEN-LAST:event_formWindowClosing
     
     public void setFavicon(){
         try
