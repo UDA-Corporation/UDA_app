@@ -199,6 +199,18 @@ public class Persona implements Serializable {
     public void setDueno(Dueno dueno) {
         this.dueno = dueno;
     }
+    
+    public void setUpdate(String nombre, String apellido, String calle, String nro, String piso, String ciudad, String cp, String pais, String tlfo){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.calle = calle;
+        this.nro = nro;
+        this.piso = piso;
+        this.ciudad = ciudad;
+        this.cp = cp;
+        this.pais = pais;
+        this.tlfo = tlfo;
+    }
 
     @XmlTransient
     public Collection<Cuenta> getCuentaCollection() {
