@@ -1,0 +1,83 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2BC57F25-F799-F38B-5DC5-D6899553DC7B" name="Jornadas">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>CB34BC7B-15A6-E4CD-909B-CFBCF4B5120E</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="cod_1" id="ADE37049-9A28-9503-7279-09D9537D33D6">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>40E6ACC7-1D90-6193-559D-C30738DF1D24</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fechaI" id="6C3EF02B-351C-FACF-0F23-DC66763239EE">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>B7308CDC-ECEA-14B8-891E-B91E7F5F456B</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fechaF" id="AF690787-EA0F-49A6-A2B0-E15DEA92E40A">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>E1654D5A-C8CA-C26B-CCD4-B3B34102AD4A</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Liga_cod" id="2670DEDC-CD7B-5D55-511B-83B448BB2526">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>1F2CD720-AFDF-91BE-BF3E-5457B4E66EBB</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="00D32EE3-0A93-B6B4-B1F1-32959E88B177" referredColumn="816AC048-526A-D860-7072-7956727F4F77"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1D42E141-37B7-B742-D76A-6F6608DBCF38" name="Jornadas_PK">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>3FCC8A98-2C9E-C3EC-3064-7FAE8596DDB1</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ADE37049-9A28-9503-7279-09D9537D33D6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FECFD23A-9C04-EABE-32D7-FDF384ABF6A0" name="Jornadas_Liga_FK">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>3A169C7C-C013-41B3-F969-98F5F8D3E8F0</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2670DEDC-CD7B-5D55-511B-83B448BB2526"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

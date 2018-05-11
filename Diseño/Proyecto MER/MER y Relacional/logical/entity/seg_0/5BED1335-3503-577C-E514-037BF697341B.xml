@@ -1,0 +1,102 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="5BED1335-3503-577C-E514-037BF697341B" name="Partido">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-18 07:31:02 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<engineerTo>
+<item key="766031D3-3F97-28BC-6645-D7BA274B5E77" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="cod" id="9281A659-1912-7142-7D56-AAE56F1820C4">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-18 07:31:31 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<engineerTo>
+<item key="766031D3-3F97-28BC-6645-D7BA274B5E77" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="lugar" id="8411E7A9-88FE-3466-074C-9A3F8289FA4C">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-18 07:31:35 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<engineerTo>
+<item key="766031D3-3F97-28BC-6645-D7BA274B5E77" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha" id="59C1E7EB-F41C-DDAD-98BB-280D929CA6EF">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-18 07:32:04 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<engineerTo>
+<item key="766031D3-3F97-28BC-6645-D7BA274B5E77" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cod_1" id="6DB92877-2847-FF16-E480-5D9A3F89D520">
+<createdBy>unai-</createdBy>
+<createdTime>2018-04-23 06:42:53 UTC</createdTime>
+<generatorID>16DAD3A9-AEEF-3109-6A62-96D9D4AE714E</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<engineerTo>
+<item key="766031D3-3F97-28BC-6645-D7BA274B5E77" value="true"/>
+</engineerTo>
+<referedAttribute>40E6ACC7-1D90-6193-559D-C30738DF1D24</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="resultado" id="0020CC01-7BFC-D729-5EAF-6BEB666DEF3F">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:16:18 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<engineerTo>
+<item key="766031D3-3F97-28BC-6645-D7BA274B5E77" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="C4FD920E-839D-82E6-A3FF-C2BD0A5B219A" name="Partido PK">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-18 07:31:34 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<engineerTo>
+<item key="766031D3-3F97-28BC-6645-D7BA274B5E77" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>9281A659-1912-7142-7D56-AAE56F1820C4</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

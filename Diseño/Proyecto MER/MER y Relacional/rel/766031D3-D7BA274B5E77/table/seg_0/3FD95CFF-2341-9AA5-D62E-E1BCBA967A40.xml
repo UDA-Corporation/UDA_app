@@ -1,0 +1,43 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3FD95CFF-2341-9AA5-D62E-E1BCBA967A40" name="Liga">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>303A7C7E-51E7-FEEF-CB16-CBB9272505D5</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="cod" id="816AC048-526A-D860-7072-7956727F4F77">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>55257E5D-228E-0746-121A-797FA9E3AB3F</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nombre" id="F6A388A7-3478-D506-4647-AEABA3932713">
+<createdBy>danie</createdBy>
+<createdTime>2018-05-07 08:03:54 UTC</createdTime>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5ED27B7A-7C27-17D8-0185-0A2867372AD8" name="Liga_PK">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>67D24314-201C-25AC-302E-B401FB8AF901</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="816AC048-526A-D860-7072-7956727F4F77"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,82 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3202019C-5F15-206C-388D-58688258B7A6" name="Equipo_juega">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<ordsAlias>visitante</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Equipo_cod" id="2EB6987C-D52F-7FF7-3BD0-9A16BBE46034">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7EE30746-D4DF-A351-942F-04FAEC1A4783" referredColumn="54D3AF95-A683-B547-38AE-E09F32305A1F"/>
+</associations>
+</Column>
+<Column name="Partido_cod" id="EF1F7606-FB21-68D4-F37C-9D08D60C6A49">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B47E59CA-3991-D558-3EA1-72B6D30380D9" referredColumn="35EEEA09-442B-2CE3-17FD-804491215F00"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="75A3BB57-8DF9-0B6A-A592-EBE444E01DAF" name="Visitante_PK">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2EB6987C-D52F-7FF7-3BD0-9A16BBE46034"/>
+<colUsage columnID="EF1F7606-FB21-68D4-F37C-9D08D60C6A49"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="694A96C8-1520-1289-87A1-B54F11D6D0F6" name="FK_ASS_11">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>0B5F9D7C-9243-56CF-77B7-C6C361E32ACB</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2EB6987C-D52F-7FF7-3BD0-9A16BBE46034"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="822A73D8-1CBA-E99F-94C8-907BD8C037FA" name="FK_ASS_12">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>0B5F9D7C-9243-56CF-77B7-C6C361E32ACB</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EF1F7606-FB21-68D4-F37C-9D08D60C6A49"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
