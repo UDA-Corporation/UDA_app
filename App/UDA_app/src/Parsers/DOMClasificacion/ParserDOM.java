@@ -27,7 +27,7 @@ import org.xml.sax.SAXException;
 
 import Modelo.BD.*;
 import Modelo.UML.Equipo;
-import Parsers.SAXClasificacion.ParserSAX;
+import Parsers.SAX.ParserSAXClasificacion;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -74,8 +74,8 @@ public class ParserDOM {
         //Escribimos el arbol DOM en el fichero XML
         escribirFicheroXML();
         System.out.println("Fichero actualizado correctamente");
-        if (ParserSAX.expirado = false){
-            ParserSAX ClasificacionSAX = new ParserSAX();
+        if (ParserSAXClasificacion.Clasificacionexpirado == false){
+            ParserSAXClasificacion ClasificacionSAX = new ParserSAXClasificacion();
             ClasificacionSAX.ejecutar();
         }
     }
