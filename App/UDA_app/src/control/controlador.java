@@ -45,6 +45,7 @@ public class controlador {
     static int posicion1;
     public static Cuenta usu;
     public static Persona persTemp;
+    public static Jugador jugTemp;
     public static int tipoE;
     static int formula;
     static ArrayList<Equipo> equiposTemp;
@@ -187,10 +188,12 @@ public class controlador {
 
     }
     
-    public static boolean findByDni(String dni) throws Exception{
-        
+    public static void findPerByDni(String dni) throws Exception{
         persTemp = conexion.getPersonaBD().findPersona(dni);
-        return true;
+    }
+    
+    public static void findJugByDni(String dni) throws Exception{
+        jugTemp = conexion.getJugadorBD().findJugador(dni);
     }
 
     public static boolean registrarUsuario(String dni, String nombre, String apellido, String calle, String numero, String piso, String ciudad, String cp, String pais, String tel, String usuario, String pass, String tipo_persona) throws Exception {
@@ -228,6 +231,16 @@ public class controlador {
         conexion.getJugadorBD().create(j1);
 
         return true;
+    }
+    
+    public static void updatePersona() throws Exception{
+        conexion.getPersonaBD().edit(persTemp);
+        persTemp = null;
+    }
+    
+    public static void updateJugador() throws Exception{
+        conexion.getJugadorBD().edit(jugTemp);
+        jugTemp = null;
     }
     
     public static void destroyRegistro(String dni) {
@@ -296,6 +309,37 @@ public class controlador {
         for (Liga l : conexion.getLigaBD().findLigaEntities()) {
             cb.addItem(l.getNombre());
         }
+    }
+    
+    public static void recalcularClasificacion()throws Exception{
+        equipos = conexion.getEquipoBD().findEquipoEntities();
+        equiposTemp = new ArrayList();
+        boolean finish = false;
+        int max;
+        Equipo eMax = null;
+        for (int x = equipos.size();finish!=true; x--) {
+            max = 100;
+            for (Equipo e : equipos){
+                if(Integer.parseInt(e.getPuntos())<=max&&!equiposReps(e)){
+                    max = Integer.parseInt(e.getPuntos());
+                    eMax=e;
+                }
+            }
+            if(x!=0){
+                eMax.setPuesto(Integer.toString(x));
+                conexion.getEquipoBD().edit(eMax);
+                equiposTemp.add(eMax);
+            }
+            else
+                finish = true;              
+        }
+    }
+    public static boolean equiposReps(Equipo e){
+        int x;
+        for (x = 0; x < equiposTemp.size()&&!equiposTemp.get(x).equals(e); x++) {}
+        if(x==equiposTemp.size())
+            return false;
+        return true;
     }
     
     public static void REllenarJornadas(String liga, javax.swing.JComboBox cbJornadas){
@@ -523,6 +567,8 @@ public class controlador {
     }
 
     public static void generarLiga(String nombre, Calendar fecha) throws Exception {
+        equipos = new ArrayList();
+        equipos = conexion.getEquipoBD().findEquipoEntities();
         formula = (((equipos.size() - 1) * equipos.size()) / ((equipos.size() - 1) * 2));
         PartidosEquipo = generarPartidos();
         boolean zig = true;

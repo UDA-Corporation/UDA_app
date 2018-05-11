@@ -339,6 +339,11 @@ public class VPrincipal extends javax.swing.JFrame {
         jMenu3.add(jmModUsu);
 
         jMenuItem12.setText("Jugador");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem12);
 
         jmModDue.setText("Dueño");
@@ -556,12 +561,16 @@ public class VPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmClasificacionActionPerformed
 
     private void jmCAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCAdminActionPerformed
-        controlador.toVRegistro(this, 2, "Nuevo Admin", 1);
+        controlador.toVRegistro(this, 1, "Nuevo Admin", 1);
     }//GEN-LAST:event_jmCAdminActionPerformed
 
     private void jmModUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmModUsuActionPerformed
         controlador.toVRegistro(this, 3, "Modificar Usuario", 1);
     }//GEN-LAST:event_jmModUsuActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        controlador.toVRegistro(this, 4, "Modificar Jugador", 1);
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
     
     public void inicializarVentana(){
         try

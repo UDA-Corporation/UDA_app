@@ -29,6 +29,7 @@ import org.xml.sax.SAXException;
 import Modelo.BD.*;
 import Modelo.UML.*;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
@@ -36,7 +37,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import org.eclipse.persistence.indirection.IndirectList;
+import java.util.ArrayList;
 
 public class ParserDOM {
     ConexionBD conexion;
@@ -44,42 +45,37 @@ public class ParserDOM {
     //Parser
     List <JornadaParsers> jornadas;
     List <PartidoParsers> partidos;
-    List <Equipo> equipos;
     //BDD
     List <Jornadas> jornadasBD;
-    List <Partido> partidosBD;
-    List <Equipo> equiposBD;
+    Collection <Partido> CollectionpartidosBD;
+    ArrayList <Partido> partidosBD;
+    Collection <Equipo> CollectionequiposBD;
+    ArrayList <Equipo> equiposBD;
     Document dom;
     
     //Constructor
     ParserDOM(){
-        jornadas = new ArrayList();
-        
+        PartidoParsers p;
+        jornadas = new ArrayList();  
+        partidos = new ArrayList();
         conexion = new ConexionBD();       
         jornadasBD = conexion.getJornadaBD().findJornadasEntities();
-        
-        partidosBD = (List) conexion.getPartidoBD().findPartidoEntities();
-        
-        for (Partido p : partidosBD){
-            System.out.println("");
-        }
-        
         for (Jornadas j : jornadasBD) {
             jornadas.add(new JornadaParsers(Integer.toString(j.getCod()), j.getFechai().toString(), j.getFechaf().toString()));
-            partidosBD = (ArrayList) j.getPartidoCollection();                        
-            for (int x=0;x<partidosBD.size();x++){                 
+            CollectionpartidosBD = j.getPartidoCollection();   
+            partidosBD = new ArrayList(CollectionpartidosBD);
+            for (Partido par : partidosBD){
+                p = new PartidoParsers();
+                p.setResultado(par.getResultado());
+                partidos.add(p);
+                CollectionequiposBD = par.getEquipoCollection();
+                equiposBD = new ArrayList (CollectionequiposBD);
+                for (Equipo e : equiposBD){
+                   p.setEquipo1(equiposBD.get(0).getNombre());
+                   p.setEquipo2(equiposBD.get(1).getNombre());
+                }
             }
-        }
-        partidos.add(new PartidoParsers("1","2","10-20"));
-        partidos.add(new PartidoParsers("3","4","30-20"));
-        partidos.add(new PartidoParsers("3","4","30-20"));
-        partidos.add(new PartidoParsers("3","4","30-20"));
-        partidos.add(new PartidoParsers("3","4","30-20"));
-        partidos.add(new PartidoParsers("3","4","30-20"));
-        partidos.add(new PartidoParsers("3","4","30-20"));
-        partidos.add(new PartidoParsers("3","4","30-20"));
-        cargarDatos();
-        
+        }              
     }
     
     public void ejecutar() throws ParserConfigurationException, TransformerException {
@@ -133,7 +129,6 @@ public class ParserDOM {
     }
     
     private void crearArbolDOM() {
-
         //Cogemos la referencia al elemento raiz liga
         Element raizLiga = dom.getDocumentElement();
         //DOM y los agregamos a la raiz <agenda>
@@ -215,11 +210,6 @@ public class ParserDOM {
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
-    }
-    
-    private void cargarDatos() {
-        jornadas.add(new JornadaParsers("1","10-10-2018","20-11-2018"));
-        jornadas.add(new JornadaParsers("2","10-10-2018","20-11-2018"));
     }
     
     public static void main(String args[]) throws ParserConfigurationException, TransformerException {

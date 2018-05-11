@@ -17,6 +17,8 @@ public class PartidoParsers {
     private String equipo2;
     private String resultado;
 
+    
+    public PartidoParsers(){}
     public PartidoParsers(String equipo1, String equipo2, String resultado) {
         this.equipo1 = equipo1;
         this.equipo2 = equipo2;
