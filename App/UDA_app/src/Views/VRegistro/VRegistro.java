@@ -378,56 +378,59 @@ public class VRegistro extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tfDni, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
-                    .addComponent(tfApellido)
-                    .addComponent(tfNro)
-                    .addComponent(tfCiudad)
-                    .addComponent(tfPais))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(bLupa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(tfTel, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(tfCp))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(tfPiso))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(tfNombre))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(tfCalle))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(100, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jpJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(91, 91, 91))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfDni, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                            .addComponent(tfApellido)
+                            .addComponent(tfNro)
+                            .addComponent(tfCiudad)
+                            .addComponent(tfPais))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(bLupa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(tfTel, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(tfCp))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(tfPiso))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(tfNombre))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(tfCalle)))))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(jpCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -467,9 +470,9 @@ public class VRegistro extends javax.swing.JFrame {
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(bLupa))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jpCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(28, 28, 28)
                 .addComponent(jpJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13))
         );
@@ -548,7 +551,7 @@ public class VRegistro extends javax.swing.JFrame {
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         
         try
-        {  
+        {
             //Llamaremos a esta función para validar todos los text fields y asignarle un color si es correcto o erróneo
             validarCampos();
             
@@ -586,17 +589,36 @@ public class VRegistro extends javax.swing.JFrame {
                 }
                 else
                 {
-                    if(controlador.findNickname(tfNickname.getText()))
-                        throw new nicknameEnUso();
-                    if(!tfSueldo.getForeground().equals(verde))
-                        throw new camposIncorrectos();
-                    if(!controlador.registrarJugador(tfDni.getText(),tfNickname.getText(), tfSueldo.getText(), tfNombre.getText(), tfApellido.getText(), tfCalle.getText(), tfNro.getText(), tfPiso.getText(), tfCiudad.getText(), tfCp.getText(), tfPais.getText(), tfTel.getText()))
-                            throw new registroError();
-                        else
-                        {
-                            controlador.JDInfo(this, true, "Registro realizado");
+                    switch(tipo)
+                    {
+                        case 2 :
+                            if(!tfSueldo.getForeground().equals(verde))
+                                throw new camposIncorrectos();
+                            if(controlador.findNickname(tfNickname.getText()))
+                                throw new nicknameEnUso();
+                            if(!controlador.registrarJugador(tfDni.getText(),tfNickname.getText(), tfSueldo.getText(), tfNombre.getText(), tfApellido.getText(), tfCalle.getText(), tfNro.getText(), tfPiso.getText(), tfCiudad.getText(), tfCp.getText(), tfPais.getText(), tfTel.getText()))
+                                throw new registroError();
+                            else
+                            {
+                                controlador.JDInfo(this, true, "Registro realizado");
+                                controlador.toVPrincipal(this);
+                            }
+                        break;
+                        case 3: 
+                            controlador.persTemp.setUpdate(tfNombre.getText(), tfApellido.getText(), tfCalle.getText(), tfNro.getText(), tfPiso.getText(), tfCiudad.getText(), tfCp.getText(), tfPais.getText(), tfTel.getText());
+                            controlador.updatePersona();
+                            controlador.JDInfo(this, true, "Modificación realizada corréctamente");
                             controlador.toVPrincipal(this);
-                        }
+                        break;
+                        
+                        case 4:
+                            if(!tfSueldo.getForeground().equals(verde))
+                                throw new camposIncorrectos();
+                            controlador.jugTemp.setUpdate(Integer.parseInt(tfSueldo.getText()), tfNombre.getText(), tfApellido.getText(), tfCalle.getText(), tfNro.getText(), tfPiso.getText(), tfCiudad.getText(), tfCp.getText(), tfPais.getText(), tfTel.getText());
+                            controlador.updateJugador();
+                            controlador.JDInfo(this, true, "Modificación realizada corréctamente");
+                            controlador.toVPrincipal(this);
+                    }    
                 }    
                        
             }
@@ -761,13 +783,22 @@ public class VRegistro extends javax.swing.JFrame {
             
             if(tfDni.getForeground().equals(new Color(46,184,46)))
             {
-                if(controlador.findByDni(tfDni.getText()))
+                switch(tipo)
                 {
-                    if(controlador.persTemp == null)
-                        throw new dniNoEncontrado();
-                    else
-                        setTfStartUp(false, true);  
-                }      
+                    case 3:
+                        controlador.findPerByDni(tfDni.getText());
+                    break;
+                    
+                    case 4:
+                        controlador.findPerByDni(tfDni.getText());
+                    break;
+                        
+                }
+                if(controlador.persTemp == null)
+                    throw new dniNoEncontrado();
+                else
+                    setTfStartUp(false, true);
+                  
             }
             else
                 throw new camposIncorrectos();
@@ -797,25 +828,30 @@ public class VRegistro extends javax.swing.JFrame {
     public void inicializarVentana(String mensaje) {
         
         setLocationRelativeTo(null);
-        
-        
-        if(tipo == 2)
+        lTitulo.setText(mensaje);
+        bLupa.setVisible(false);
+        switch(tipo)
         {
-            jpCuenta.setVisible(false);
-            lTitulo.setText(mensaje);
-        }
-        else
-        {
-            jpJugador.setVisible(false);
-            lTitulo.setText(mensaje);
-            if(tipo == 3)
-            {
-                setTfStartUp(true, false);
+            case 1:
+                jpJugador.setVisible(false);
+            break;
+            
+            case 2:
                 jpCuenta.setVisible(false);
-            }    
-        }
-        if(tipo <=2)
-            bLupa.setVisible(false);
+            break;
+            
+            case 3:
+                bLupa.setVisible(true);
+                jpCuenta.setVisible(false);
+                jpJugador.setVisible(false);
+                setTfStartUp(true, false);
+            break;
+            
+            case 4:
+                bLupa.setVisible(true);
+                jpCuenta.setVisible(false);
+            break;
+        }    
         try
         {
             //Esta opción nos va a asignar un favicon a nusetro proyecto
@@ -830,6 +866,7 @@ public class VRegistro extends javax.swing.JFrame {
     
     public void setTfStartUp(boolean a, boolean b){
         tfDni.setEnabled(a);
+        bAceptar.setEnabled(b);
         tfNombre.setEnabled(b);
         tfApellido.setEnabled(b);
         tfCalle.setEnabled(b);
@@ -851,6 +888,8 @@ public class VRegistro extends javax.swing.JFrame {
             tfCp.setText(controlador.persTemp.getCp());
             tfPais.setText(controlador.persTemp.getPais());
             tfTel.setText(controlador.persTemp.getTlfo());
+            tfNickname.setText(controlador.jugTemp.getNickname());
+            tfSueldo.setText(""+controlador.jugTemp.getSueldo());
         }    
         
     }

@@ -207,6 +207,19 @@ public class Jugador implements Serializable {
     public void setEquipoCod(Equipo equipoCod) {
         this.equipoCod = equipoCod;
     }
+    
+    public void setUpdate(int sueldo, String nombre, String apellido, String calle, String nro, String piso, String ciudad, String cp, String pais, String tlfo){
+        this.sueldo = sueldo;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.calle = calle;
+        this.nro = nro;
+        this.piso = piso;
+        this.ciudad = ciudad;
+        this.cp = cp;
+        this.pais = pais;
+        this.tlfo = tlfo; 
+    }
 
     @Override
     public int hashCode() {

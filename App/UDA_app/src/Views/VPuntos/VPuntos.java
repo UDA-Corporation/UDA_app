@@ -236,10 +236,10 @@ static boolean yes = false;
                             controlador.resultado(le1.getText(), le2.getText());
                             resultado=tfe1.getText()+"-"+tfe2.getText();
                             controlador.resultadoPartido(null, resultado, true);
-                        }
-                
+                        }                
                 }                  
             controlador.JDInfo(this, true, "Resultado introducido correctamente");
+            controlador.recalcularClasificacion();
             yes=false;
             rellenarPartidos(true);          
             limpiar();
