@@ -5,7 +5,7 @@
  * @version %G%
  * @since 0.7 alpha
  */
-package Views.VClasificacion;
+package Views.ResultadosyDatos;
 
 import Parsers.DOMClasificacion.ParserDOM;
 import Parsers.SAXClasificacion.ParserSAX;
@@ -39,6 +39,8 @@ public class VClasificacion extends javax.swing.JFrame {
     private void initComponents() {
 
         jProgressBar1 = new javax.swing.JProgressBar();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -46,6 +48,10 @@ public class VClasificacion extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         Salir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -61,6 +67,7 @@ public class VClasificacion extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
         jLabel1.setText("Consulta clasificacion");
 
         Table.setAutoCreateRowSorter(true);
@@ -133,15 +140,13 @@ public class VClasificacion extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)))
+                    .addComponent(jLabel2))
                 .addGap(75, 75, 75)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
@@ -179,7 +184,11 @@ public class VClasificacion extends javax.swing.JFrame {
             } catch (ParserConfigurationException | TransformerException ex) {
                 Logger.getLogger(VClasificacion.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } 
+        }
+        if (ParserSAX.expirado){
+            ParserSAX ClasificacionSAXexpiradoXML = new ParserSAX();
+            ClasificacionSAXexpiradoXML.ejecutar();
+        }
         Object[] columns = {"Nombre","Codigo equipo","Puntos","Puesto"};
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(columns);
@@ -255,5 +264,7 @@ public class VClasificacion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

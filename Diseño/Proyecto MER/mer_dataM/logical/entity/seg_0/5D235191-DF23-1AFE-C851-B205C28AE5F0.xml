@@ -142,6 +142,17 @@
 <dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="Tipo persona" id="E4D77B7F-FE50-44F4-AE51-C9B383E70BF8">
+<createdBy>danie</createdBy>
+<createdTime>2018-05-10 09:40:07 UTC</createdTime>
+<ownerDesignName>mer_dataM</ownerDesignName>
+<engineerTo>
+<item key="766031D3-3F97-28BC-6645-D7BA274B5E77" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="tlfo" id="3F83E477-6ACD-52AD-66AB-5200C0525CA3">
 <createdBy>1gdaw02</createdBy>
 <createdTime>2018-04-18 07:28:27 UTC</createdTime>
@@ -169,7 +180,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
 <dataTypeSize>15</dataTypeSize>
-<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
