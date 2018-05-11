@@ -12,7 +12,6 @@ import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -28,6 +27,10 @@ import org.xml.sax.SAXException;
 
 import Modelo.BD.*;
 import Modelo.UML.*;
+import Parsers.SAX.ParserSAXJornadas;
+import static Parsers.SAX.ParserSAXJornadas.Jornadasexpirado;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
@@ -42,6 +45,7 @@ import java.util.ArrayList;
 public class ParserDOM {
     ConexionBD conexion;
     Calendar c = Calendar.getInstance();
+    Calendar c1 = Calendar.getInstance();
     //Parser
     List <JornadaParsers> jornadas;
     List <PartidoParsers> partidos;
@@ -52,16 +56,17 @@ public class ParserDOM {
     Collection <Equipo> CollectionequiposBD;
     ArrayList <Equipo> equiposBD;
     Document dom;
+    SimpleDateFormat formatter;
     
     //Constructor
-    ParserDOM(){
+    public ParserDOM(){
         PartidoParsers p;
         jornadas = new ArrayList();  
         partidos = new ArrayList();
         conexion = new ConexionBD();       
         jornadasBD = conexion.getJornadaBD().findJornadasEntities();
         for (Jornadas j : jornadasBD) {
-            jornadas.add(new JornadaParsers(Integer.toString(j.getCod()), j.getFechai().toString(), j.getFechaf().toString()));
+            jornadas.add(new JornadaParsers(Integer.toString(j.getCod()), formatter.format(j.getFechai()), formatter.format(j.getFechaf())));
             CollectionpartidosBD = j.getPartidoCollection();   
             partidosBD = new ArrayList(CollectionpartidosBD);
             for (Partido par : partidosBD){
@@ -70,10 +75,8 @@ public class ParserDOM {
                 partidos.add(p);
                 CollectionequiposBD = par.getEquipoCollection();
                 equiposBD = new ArrayList (CollectionequiposBD);
-                for (Equipo e : equiposBD){
-                   p.setEquipo1(equiposBD.get(0).getNombre());
-                   p.setEquipo2(equiposBD.get(1).getNombre());
-                }
+                p.setEquipo1(equiposBD.get(0).getNombre());
+                p.setEquipo2(equiposBD.get(1).getNombre());
             }
         }              
     }
@@ -89,6 +92,10 @@ public class ParserDOM {
         //Escribimos el arbol DOM en el fichero XML
         escribirFicheroXML();
         System.out.println("Fichero actualizado correctamente");
+        if (Jornadasexpirado == false){
+            ParserSAXJornadas JornadasSAX = new ParserSAXJornadas();
+            JornadasSAX.ejecutar();
+        }
     }
     
     private void crearFicheroXML() throws TransformerConfigurationException, ParserConfigurationException, TransformerException {
@@ -96,12 +103,47 @@ public class ParserDOM {
         DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
         //Creamos la raiz
         Document XMLdoc = docBuilder.newDocument();
-        Element rootEle = XMLdoc.createElement("liga");
-        XMLdoc.appendChild(rootEle);
-        rootEle.setTextContent(" ");
-        c.setTime(new Date());
-        c.add(Calendar.DATE, 1);
-        rootEle.setAttribute("fechaExpiracion", c.getTime().toString());
+        Element raizLiga = XMLdoc.createElement("liga");
+        XMLdoc.appendChild(raizLiga);
+        raizLiga.setTextContent(" ");
+        DateFormat format = new SimpleDateFormat("EEEE");
+        String fecha2 = format.format(new Date());
+        switch (fecha2){
+            case "monday":
+            case "lunes":
+                c.add(Calendar.DATE, 7);
+            break;
+            case "tuesday":
+            case "martes":
+                c.add(Calendar.DATE, 6);
+            break;
+            case "wednesday":
+            case "miercoles":
+            case "miércoles":
+                c.add(Calendar.DATE, 5);
+            break;
+            case "thursday":
+            case "jueves":
+                c.add(Calendar.DATE, 4);
+            break;
+            case "friday":
+            case "viernes":
+                c.add(Calendar.DATE, 3);
+            break;
+            case "saturday":
+            case "sabado":
+            case "sábado":
+                c.add(Calendar.DATE, 2);
+            break;
+            case "sunday":
+            case "domingo":
+                c.add(Calendar.DATE, 1);
+            break;
+        }
+        Date fecha = new Date();
+        fecha = c.getTime();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        raizLiga.setAttribute("fechaExpiracion", formatter.format(fecha));
         //Creamos el documento
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
@@ -210,15 +252,5 @@ public class ParserDOM {
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
-    }
-    
-    public static void main(String args[]) throws ParserConfigurationException, TransformerException {
-
-        //create an instance
-        ParserDOM datos = new ParserDOM();
-
-        //run the example
-        datos.ejecutar();
-    }
-    
+    }   
 }

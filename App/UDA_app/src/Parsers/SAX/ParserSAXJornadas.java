@@ -96,8 +96,8 @@ public class ParserSAXJornadas extends DefaultHandler {
                 System.out.println("Fecha de expiracion: " + fechaEx);
                 if (fecha.after(fechaEx)){
                     System.out.println("Documento expirado, actualizando...");
-                    ParserDOM ClasificacionDOM = new ParserDOM();
-                    ClasificacionDOM.ejecutar();
+                    Parsers.DOMJornadas.ParserDOM JornadasDOM = new Parsers.DOMJornadas.ParserDOM();
+                    JornadasDOM.ejecutar();
                     Jornadasexpirado = true; //El SAX actual tiene el documento antiguo, el DOM se encargará de crear otro SAX que lea el nuevo, salimos de este SAX
                 }
             } else if (qName.equalsIgnoreCase("jornada")) {
