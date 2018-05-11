@@ -8,7 +8,7 @@
 package Views.ResultadosyDatos;
 
 import Parsers.DOMClasificacion.ParserDOM;
-import Parsers.SAXClasificacion.ParserSAX;
+import Parsers.SAX.ParserSAXClasificacion;
 import control.controlador;
 import java.io.File;
 import java.util.Arrays;
@@ -120,22 +120,22 @@ public class VClasificacion extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 142, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(128, 128, 128))
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(412, 412, 412)
-                        .addComponent(Salir)))
-                .addContainerGap(160, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Salir)
+                .addGap(440, 440, 440))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,11 +147,11 @@ public class VClasificacion extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3))
                     .addComponent(jLabel2))
-                .addGap(75, 75, 75)
+                .addGap(73, 73, 73)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGap(53, 53, 53)
                 .addComponent(Salir)
-                .addGap(47, 47, 47))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -175,7 +175,7 @@ public class VClasificacion extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         File xml = new File("BDD(Clasificacion).xml");
         if(xml.exists() && !xml.isDirectory()) { 
-            ParserSAX ClasificacionSAX = new ParserSAX();
+            ParserSAXClasificacion ClasificacionSAX = new ParserSAXClasificacion();
             ClasificacionSAX.ejecutar();
         } else {
             try {
@@ -185,8 +185,8 @@ public class VClasificacion extends javax.swing.JFrame {
                 Logger.getLogger(VClasificacion.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        if (ParserSAX.expirado){
-            ParserSAX ClasificacionSAXexpiradoXML = new ParserSAX();
+        if (ParserSAXClasificacion.Clasificacionexpirado){
+            ParserSAXClasificacion ClasificacionSAXexpiradoXML = new ParserSAXClasificacion();
             ClasificacionSAXexpiradoXML.ejecutar();
         }
         Object[] columns = {"Nombre","Codigo equipo","Puntos","Puesto"};
@@ -195,7 +195,7 @@ public class VClasificacion extends javax.swing.JFrame {
         for (int i = 0; i < 32; i++) {
             x = x + 4;
             Object[] row = new Object[4];
-            row = Arrays.copyOfRange(Parsers.SAXClasificacion.ParserSAX.Equipos,i,x);
+            row = Arrays.copyOfRange(Parsers.SAX.ParserSAXClasificacion.Equipos,i,x);
             i += 3;
             model.addRow(row);
             Arrays.fill(row,null);
