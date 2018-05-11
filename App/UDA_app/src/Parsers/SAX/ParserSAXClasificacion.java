@@ -3,9 +3,9 @@
  * @author Daniel Barragues
  * @author Alejandro Diaz de Otalora
  * @version %G%
- * @since 0.1 alpha
+ * @since 0.4 alpha
  */
-package Parsers.SAXClasificacion;
+package Parsers.SAX;
 
 import Parsers.DOMClasificacion.*;
 import java.io.IOException;
@@ -25,12 +25,12 @@ import org.xml.sax.SAXException;
 
 import org.xml.sax.helpers.DefaultHandler;
 
-public class ParserSAX extends DefaultHandler {
+public class ParserSAXClasificacion extends DefaultHandler {
 
     public static Object[] Equipos = new Object[32];
     int x = 1;
     int y = 0;
-    public static boolean expirado = false;
+    public static boolean Clasificacionexpirado = false;
         
     private String tempVal;
     Date fecha = new Date();
@@ -99,7 +99,7 @@ public class ParserSAX extends DefaultHandler {
                     System.out.println("Documento expirado, actualizando...");
                     ParserDOM ClasificacionDOM = new ParserDOM();
                     ClasificacionDOM.ejecutar();
-                    expirado = true; //El SAX actual tiene el documento antiguo, el DOM se encargará de crear otro SAX que lea el nuevo, salimos de este SAX
+                    Clasificacionexpirado = true; //El SAX actual tiene el documento antiguo, el DOM se encargará de crear otro SAX que lea el nuevo, salimos de este SAX
                 }
             } else if (qName.equalsIgnoreCase("equipo")) {
                 //Si tuviera atributos obtendríamos su información en este punto.        
@@ -111,11 +111,11 @@ public class ParserSAX extends DefaultHandler {
                 x += 2;
         } 
         } catch (ParserConfigurationException ex) {
-            Logger.getLogger(ParserSAX.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ParserSAXClasificacion.class.getName()).log(Level.SEVERE, null, ex);
         } catch (TransformerException ex) {
-            Logger.getLogger(ParserSAX.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ParserSAXClasificacion.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
-            Logger.getLogger(ParserSAX.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ParserSAXClasificacion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -145,8 +145,4 @@ public class ParserSAX extends DefaultHandler {
     public void characters(char[] ch, int start, int length) throws SAXException {
         tempVal = new String(ch, start, length);
     }
-
-    public static void main(String[] args) {        
-    }
-
 }
