@@ -116,18 +116,6 @@
 <ownDataTypeParameters>20,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="tlfo" id="824A6F34-BBCA-0CA1-7A10-60718EC169F1">
-<createdBy>1gdaw02</createdBy>
-<createdTime>2018-04-23 11:25:57 UTC</createdTime>
-<generatorID>3F83E477-6ACD-52AD-66AB-5200C0525CA3</generatorID>
-<ownerDesignName>mer_dataM</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>9</dataTypeSize>
-<ownDataTypeParameters>9,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="tipo_persona" id="99A25CDF-C807-9591-B120-0B4B8A3EB52B">
 <createdBy>1gdaw02</createdBy>
 <createdTime>2018-04-23 11:31:08 UTC</createdTime>
@@ -139,6 +127,18 @@
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>10</dataTypeSize>
 <ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tlfo" id="824A6F34-BBCA-0CA1-7A10-60718EC169F1">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>3F83E477-6ACD-52AD-66AB-5200C0525CA3</generatorID>
+<ownerDesignName>mer_dataM</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>9</dataTypeSize>
+<ownDataTypeParameters>9,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
