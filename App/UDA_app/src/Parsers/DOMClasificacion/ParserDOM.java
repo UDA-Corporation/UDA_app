@@ -234,15 +234,5 @@ public class ParserDOM {
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
-    }
-    
-    public static void main(String args[]) throws ParserConfigurationException, TransformerException {
-
-        //Creamos una nueva instancia
-        ParserDOM ClasificacionDOM = new ParserDOM();
-
-        //Ejecutamos el parser
-        ClasificacionDOM.ejecutar();
-    }
-    
+    } 
 }

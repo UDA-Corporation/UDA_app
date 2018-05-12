@@ -5,7 +5,6 @@
  */
 package Views.ResultadosyDatos;
 
-import Modelo.UML.Jornadas;
 import Parsers.DOMJornadas.ParserDOM;
 import Parsers.SAX.ParserSAXJornadas;
 import control.controlador;
@@ -84,10 +83,10 @@ public class VJornadas extends javax.swing.JFrame {
         Table.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {"Recopilando datos...", "Recopilando datos...", "Recopilando datos..."},
+                {"Recopilando datos...", "Recopilando datos...", "Recopilando datos..."},
+                {"Recopilando datos...", "Recopilando datos...", "Recopilando datos..."},
+                {"Recopilando datos...", "Recopilando datos...", "Recopilando datos..."}
             },
             new String [] {
                 "Equipo 1", "Equipo 2", "Resultado"
@@ -101,6 +100,8 @@ public class VJornadas extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        Table.setPreferredSize(new java.awt.Dimension(300, 200));
+        Table.setRowHeight(25);
         jScrollPane1.setViewportView(Table);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
@@ -175,11 +176,12 @@ public class VJornadas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(SelectorJornada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(SelectorJornada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(Salir)
                 .addGap(27, 27, 27))
         );
@@ -199,17 +201,17 @@ public class VJornadas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        File xml = new File("BDD(Clasificacion).xml");
+        File xml = new File("BDD(Jornadas).xml");
         if(xml.exists() && !xml.isDirectory()) { 
             ParserSAXJornadas JornadasSAX = new ParserSAXJornadas();
             JornadasSAX.ejecutar();
         } else {
             try {
-                Parsers.DOMClasificacion.ParserDOM JornadasDOM = new Parsers.DOMClasificacion.ParserDOM();
+                ParserDOM JornadasDOM = new ParserDOM();
                 JornadasDOM.ejecutar();
             } catch (ParserConfigurationException | TransformerException ex) {
-                Logger.getLogger(VClasificacion.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                Logger.getLogger(VJornadas.class.getName()).log(Level.SEVERE, null, ex);
+            } 
         }
         if (ParserSAXJornadas.Jornadasexpirado){
             ParserSAXJornadas JornadasSAX = new ParserSAXJornadas();
@@ -248,11 +250,11 @@ public class VJornadas extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        /* Set the Nimbus look and feel 
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+         
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -268,7 +270,7 @@ public class VJornadas extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(VJornadas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(VJornadas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }*/
         //</editor-fold>
 
         /* Create and display the form */
