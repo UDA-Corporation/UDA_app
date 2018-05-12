@@ -79,7 +79,7 @@ public class ParserSAXJornadas extends DefaultHandler {
     */
     
     /**
-     * Controlador de eventos. Se encarga de buscar los elementos equipo y una vez los localiza crea un objeto equipo y guarda los datos del elemento en el objeto.
+     * Controlador de eventos. Se encarga de buscar los elementos jornada y partido, una vez los localiza crea un array guarda los datos de los elementos en el array
      * @param uri El nombre del elemento a buscar (Namespaced URI)
      * @param localName El nombre local o el string vacío si el proceso del Namespace no se esta ejecutando
      * @param qName El "qualified name" o el String vacio si no esta disponible
@@ -127,7 +127,7 @@ public class ParserSAXJornadas extends DefaultHandler {
     }
     
     /**
-     * Se encarga de recorrer los elementos equipo y agregarlo a la lista
+     * Se encarga de recorrer los elementos resultados y agrega el texto del elemento al array
      * @param uri El nombre del elemento a buscar (Namespaced URI)
      * @param localName El nombre local o el string vacío si el proceso del Namespace no se esta ejecutando
      * @param qName El "qualified name" o el String vacio si no esta disponible
