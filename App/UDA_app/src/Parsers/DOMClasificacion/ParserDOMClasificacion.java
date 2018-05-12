@@ -39,7 +39,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-public class ParserDOM {
+public class ParserDOMClasificacion {
     ConexionBD conexion;
     List <Equipo> equipos;
     List <EquipoParsers> equipoParsers;
@@ -48,7 +48,7 @@ public class ParserDOM {
     
     
     //Constructor
-    public ParserDOM(){
+    public ParserDOMClasificacion(){
     
         conexion = new ConexionBD();
         equipos = conexion.getEquipoBD().findEquipoEntities();        

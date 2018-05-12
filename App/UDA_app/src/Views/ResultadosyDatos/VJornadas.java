@@ -5,7 +5,7 @@
  */
 package Views.ResultadosyDatos;
 
-import Parsers.DOMJornadas.ParserDOM;
+import Parsers.DOMJornadas.ParserDOMJornadas;
 import Parsers.SAX.ParserSAXJornadas;
 import control.controlador;
 import java.io.File;
@@ -207,7 +207,7 @@ public class VJornadas extends javax.swing.JFrame {
             JornadasSAX.ejecutar();
         } else {
             try {
-                ParserDOM JornadasDOM = new ParserDOM();
+                ParserDOMJornadas JornadasDOM = new ParserDOMJornadas();
                 JornadasDOM.ejecutar();
             } catch (ParserConfigurationException | TransformerException ex) {
                 Logger.getLogger(VJornadas.class.getName()).log(Level.SEVERE, null, ex);

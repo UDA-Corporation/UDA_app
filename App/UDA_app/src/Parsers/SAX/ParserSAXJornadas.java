@@ -7,7 +7,7 @@
  */
 package Parsers.SAX;
 
-import Parsers.DOMClasificacion.*;
+import Parsers.DOMJornadas.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -95,10 +95,10 @@ public class ParserSAXJornadas extends DefaultHandler {
                 Date fechaEx = formatter.parse(attributes.getValue("fechaExpiracion"));
                 System.out.println("Fecha de expiracion: " + fechaEx);
                 if (fecha.after(fechaEx)){
-                    System.out.println("Documento expirado, actualizando...");
-                    Parsers.DOMJornadas.ParserDOM JornadasDOM = new Parsers.DOMJornadas.ParserDOM();
-                    JornadasDOM.ejecutar();
                     Jornadasexpirado = true; //El SAX actual tiene el documento antiguo, el DOM se encargará de crear otro SAX que lea el nuevo, salimos de este SAX
+                    System.out.println("Documento expirado, actualizando...");
+                    ParserDOMJornadas JornadasDOM = new ParserDOMJornadas();
+                    JornadasDOM.ejecutar();
                 }
             } else if (qName.equalsIgnoreCase("jornada")) {
                 //Si tuviera atributos obtendríamos su información en este punto.        

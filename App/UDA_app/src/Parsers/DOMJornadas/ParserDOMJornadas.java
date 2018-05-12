@@ -42,7 +42,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.util.ArrayList;
 
-public class ParserDOM {
+public class ParserDOMJornadas {
     ConexionBD conexion;
     Calendar c = Calendar.getInstance();
     Calendar c1 = Calendar.getInstance();
@@ -59,11 +59,11 @@ public class ParserDOM {
     SimpleDateFormat formatter;
     
     //Constructor
-    public ParserDOM(){
+    public ParserDOMJornadas(){
         PartidoParsers p;
         jornadas = new ArrayList();  
         partidos = new ArrayList();
-        conexion = new ConexionBD();       
+        /*conexion = new ConexionBD();       
         jornadasBD = conexion.getJornadaBD().findJornadasEntities();
         for (Jornadas j : jornadasBD) {
             jornadas.add(new JornadaParsers(Integer.toString(j.getCod()), formatter.format(j.getFechai()), formatter.format(j.getFechaf())));
@@ -78,7 +78,18 @@ public class ParserDOM {
                 p.setEquipo1(equiposBD.get(0).getNombre());
                 p.setEquipo2(equiposBD.get(1).getNombre());
             }
-        }              
+        }*/
+        //Para pruebas de consulta sin conexion a la BDD
+        partidos.add(new PartidoParsers("1","2","10-20"));
+        partidos.add(new PartidoParsers("3","4","30-20"));
+        partidos.add(new PartidoParsers("3","4","30-20"));
+        partidos.add(new PartidoParsers("3","4","30-20"));
+        partidos.add(new PartidoParsers("3","4","30-20"));
+        partidos.add(new PartidoParsers("3","4","30-20"));
+        partidos.add(new PartidoParsers("3","4","30-20"));
+        partidos.add(new PartidoParsers("3","4","30-20"));
+        jornadas.add(new JornadaParsers("11111111111111111111111111111111","10-10-2018","20-11-2018"));
+        jornadas.add(new JornadaParsers("2","10-10-2018","20-11-2018"));
     }
     
     public void ejecutar() throws ParserConfigurationException, TransformerException {
@@ -108,7 +119,7 @@ public class ParserDOM {
         raizLiga.setTextContent(" ");
         DateFormat format = new SimpleDateFormat("EEEE");
         String fecha2 = format.format(new Date());
-        switch (fecha2){
+        switch (fecha2.toLowerCase()){
             case "monday":
             case "lunes":
                 c.add(Calendar.DATE, 7);
