@@ -7,7 +7,7 @@
  */
 package Views.ResultadosyDatos;
 
-import Parsers.DOMClasificacion.ParserDOM;
+import Parsers.DOMClasificacion.ParserDOMClasificacion;
 import Parsers.SAX.ParserSAXClasificacion;
 import control.controlador;
 import java.io.File;
@@ -179,7 +179,7 @@ public class VClasificacion extends javax.swing.JFrame {
             ClasificacionSAX.ejecutar();
         } else {
             try {
-                ParserDOM ClasificacionDOM = new ParserDOM();
+                ParserDOMClasificacion ClasificacionDOM = new ParserDOMClasificacion();
                 ClasificacionDOM.ejecutar();
             } catch (ParserConfigurationException | TransformerException ex) {
                 Logger.getLogger(VClasificacion.class.getName()).log(Level.SEVERE, null, ex);

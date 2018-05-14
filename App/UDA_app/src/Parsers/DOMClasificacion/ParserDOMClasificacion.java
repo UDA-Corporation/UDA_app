@@ -39,7 +39,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-public class ParserDOM {
+public class ParserDOMClasificacion {
     ConexionBD conexion;
     List <Equipo> equipos;
     List <EquipoParsers> equipoParsers;
@@ -48,7 +48,7 @@ public class ParserDOM {
     
     
     //Constructor
-    public ParserDOM(){
+    public ParserDOMClasificacion(){
     
         conexion = new ConexionBD();
         equipos = conexion.getEquipoBD().findEquipoEntities();        
@@ -234,15 +234,5 @@ public class ParserDOM {
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
-    }
-    
-    public static void main(String args[]) throws ParserConfigurationException, TransformerException {
-
-        //Creamos una nueva instancia
-        ParserDOM ClasificacionDOM = new ParserDOM();
-
-        //Ejecutamos el parser
-        ClasificacionDOM.ejecutar();
-    }
-    
+    } 
 }

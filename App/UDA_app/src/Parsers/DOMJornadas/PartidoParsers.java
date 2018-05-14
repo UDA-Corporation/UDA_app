@@ -1,10 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Parsers.DOMJornadas;
-
 /**
  * @author Unai Puelles
  * @author Daniel Barragues
@@ -12,6 +5,8 @@ package Parsers.DOMJornadas;
  * @version %G%
  * @since 0.1 alpha
  */
+package Parsers.DOMJornadas;
+
 public class PartidoParsers {
     private String equipo1;
     private String equipo2;
