@@ -7,13 +7,16 @@
  */
 package Views.ResultadosyDatos;
 
-import Parsers.DOMClasificacion.ParserDOM;
+import Parsers.DOMClasificacion.ParserDOMClasificacion;
 import Parsers.SAX.ParserSAXClasificacion;
 import control.controlador;
+import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -23,10 +26,13 @@ public class VClasificacion extends javax.swing.JFrame {
     /**
      * Creates new form VClasificacion
      */
-    public VClasificacion() {
+    public VClasificacion() throws IOException {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(false);
+        //Esta opción nos va a asignar un favicon a nusetro proyecto
+        Image i = ImageIO.read(getClass().getResource("/Views/recursos/logo_u_favicon.png"));
+        setIconImage(i);
     }
 
     /**
@@ -179,7 +185,7 @@ public class VClasificacion extends javax.swing.JFrame {
             ClasificacionSAX.ejecutar();
         } else {
             try {
-                ParserDOM ClasificacionDOM = new ParserDOM();
+                ParserDOMClasificacion ClasificacionDOM = new ParserDOMClasificacion();
                 ClasificacionDOM.ejecutar();
             } catch (ParserConfigurationException | TransformerException ex) {
                 Logger.getLogger(VClasificacion.class.getName()).log(Level.SEVERE, null, ex);
@@ -250,7 +256,11 @@ public class VClasificacion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VClasificacion().setVisible(true);
+                try {
+                    new VClasificacion().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(VClasificacion.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

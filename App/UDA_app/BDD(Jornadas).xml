@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<liga fechaExpiracion="Sat May 12 12:23:21 CEST 2018">
-    <jornada codigoJornada="1"
-        fechaFinal="Sun Apr 08 00:00:00 CEST 2018" fechaInicio="Sat Apr 07 00:00:00 CEST 2018">
+<liga fechaExpiracion="14-may-2018">
+    <jornada codigoJornada="1" fechaFinal="08-abr-2018" fechaInicio="07-abr-2018">
         <partido equipo1="D3STROY" equipo2="FNATICX">
             <resultado>1-0</resultado>
         </partido>
@@ -15,23 +14,21 @@
             <resultado>1-0</resultado>
         </partido>
     </jornada>
-    <jornada codigoJornada="2"
-        fechaFinal="Sun Apr 15 00:00:00 CEST 2018" fechaInicio="Sat Apr 14 00:00:00 CEST 2018">
+    <jornada codigoJornada="2" fechaFinal="15-abr-2018" fechaInicio="14-abr-2018">
         <partido equipo1="D3STROY" equipo2="BIMBA">
             <resultado>1-2</resultado>
         </partido>
         <partido equipo1="FNATICX" equipo2="sERDOn">
-            <resultado/>
+            <resultado>1-2</resultado>
         </partido>
         <partido equipo1="HalWay" equipo2="xAMAZINGx">
-            <resultado/>
+            <resultado>1-2</resultado>
         </partido>
         <partido equipo1="uGAnD" equipo2="tHeamazonX">
-            <resultado/>
+            <resultado>1-2</resultado>
         </partido>
     </jornada>
-    <jornada codigoJornada="3"
-        fechaFinal="Sun Apr 22 00:00:00 CEST 2018" fechaInicio="Sat Apr 21 00:00:00 CEST 2018">
+    <jornada codigoJornada="3" fechaFinal="22-abr-2018" fechaInicio="21-abr-2018">
         <partido equipo1="D3STROY" equipo2="sERDOn">
             <resultado>3-2</resultado>
         </partido>
@@ -45,8 +42,7 @@
             <resultado/>
         </partido>
     </jornada>
-    <jornada codigoJornada="4"
-        fechaFinal="Sun Apr 29 00:00:00 CEST 2018" fechaInicio="Sat Apr 28 00:00:00 CEST 2018">
+    <jornada codigoJornada="4" fechaFinal="29-abr-2018" fechaInicio="28-abr-2018">
         <partido equipo1="D3STROY" equipo2="HalWay">
             <resultado>4-3</resultado>
         </partido>
@@ -60,8 +56,7 @@
             <resultado/>
         </partido>
     </jornada>
-    <jornada codigoJornada="5"
-        fechaFinal="Sun May 06 00:00:00 CEST 2018" fechaInicio="Sat May 05 00:00:00 CEST 2018">
+    <jornada codigoJornada="5" fechaFinal="06-may-2018" fechaInicio="05-may-2018">
         <partido equipo1="D3STROY" equipo2="uGAnD">
             <resultado/>
         </partido>
@@ -75,8 +70,7 @@
             <resultado/>
         </partido>
     </jornada>
-    <jornada codigoJornada="6"
-        fechaFinal="Sun May 13 00:00:00 CEST 2018" fechaInicio="Sat May 12 00:00:00 CEST 2018">
+    <jornada codigoJornada="6" fechaFinal="13-may-2018" fechaInicio="12-may-2018">
         <partido equipo1="D3STROY" equipo2="xAMAZINGx">
             <resultado/>
         </partido>
@@ -90,8 +84,7 @@
             <resultado/>
         </partido>
     </jornada>
-    <jornada codigoJornada="7"
-        fechaFinal="Sun May 20 00:00:00 CEST 2018" fechaInicio="Sat May 19 00:00:00 CEST 2018">
+    <jornada codigoJornada="7" fechaFinal="20-may-2018" fechaInicio="19-may-2018">
         <partido equipo1="D3STROY" equipo2="tHeamazonX">
             <resultado/>
         </partido>
@@ -105,8 +98,7 @@
             <resultado/>
         </partido>
     </jornada>
-    <jornada codigoJornada="8"
-        fechaFinal="Sun May 27 00:00:00 CEST 2018" fechaInicio="Sat May 26 00:00:00 CEST 2018">
+    <jornada codigoJornada="8" fechaFinal="27-may-2018" fechaInicio="26-may-2018">
         <partido equipo1="D3STROY" equipo2="FNATICX">
             <resultado/>
         </partido>
@@ -120,8 +112,7 @@
             <resultado/>
         </partido>
     </jornada>
-    <jornada codigoJornada="9"
-        fechaFinal="Sun Jun 03 00:00:00 CEST 2018" fechaInicio="Sat Jun 02 00:00:00 CEST 2018">
+    <jornada codigoJornada="9" fechaFinal="03-jun-2018" fechaInicio="02-jun-2018">
         <partido equipo1="D3STROY" equipo2="BIMBA">
             <resultado/>
         </partido>
@@ -135,8 +126,7 @@
             <resultado/>
         </partido>
     </jornada>
-    <jornada codigoJornada="10"
-        fechaFinal="Sun Jun 10 00:00:00 CEST 2018" fechaInicio="Sat Jun 09 00:00:00 CEST 2018">
+    <jornada codigoJornada="10" fechaFinal="10-jun-2018" fechaInicio="09-jun-2018">
         <partido equipo1="FNATICX" equipo2="BIMBA">
             <resultado/>
         </partido>
@@ -150,8 +140,7 @@
             <resultado/>
         </partido>
     </jornada>
-    <jornada codigoJornada="11"
-        fechaFinal="Sun Jun 17 00:00:00 CEST 2018" fechaInicio="Sat Jun 16 00:00:00 CEST 2018">
+    <jornada codigoJornada="11" fechaFinal="17-jun-2018" fechaInicio="16-jun-2018">
         <partido equipo1="D3STROY" equipo2="HalWay">
             <resultado/>
         </partido>
@@ -165,8 +154,7 @@
             <resultado/>
         </partido>
     </jornada>
-    <jornada codigoJornada="12"
-        fechaFinal="Sun Jun 24 00:00:00 CEST 2018" fechaInicio="Sat Jun 23 00:00:00 CEST 2018">
+    <jornada codigoJornada="12" fechaFinal="24-jun-2018" fechaInicio="23-jun-2018">
         <partido equipo1="FNATICX" equipo2="HalWay">
             <resultado/>
         </partido>
@@ -180,8 +168,7 @@
             <resultado/>
         </partido>
     </jornada>
-    <jornada codigoJornada="13"
-        fechaFinal="Sun Jul 01 00:00:00 CEST 2018" fechaInicio="Sat Jun 30 00:00:00 CEST 2018">
+    <jornada codigoJornada="13" fechaFinal="01-jul-2018" fechaInicio="30-jun-2018">
         <partido equipo1="BIMBA" equipo2="HalWay">
             <resultado/>
         </partido>
@@ -195,8 +182,7 @@
             <resultado/>
         </partido>
     </jornada>
-    <jornada codigoJornada="14"
-        fechaFinal="Sun Jul 08 00:00:00 CEST 2018" fechaInicio="Sat Jul 07 00:00:00 CEST 2018">
+    <jornada codigoJornada="14" fechaFinal="08-jul-2018" fechaInicio="07-jul-2018">
         <partido equipo1="sERDOn" equipo2="HalWay">
             <resultado/>
         </partido>
