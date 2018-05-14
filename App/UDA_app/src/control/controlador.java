@@ -23,6 +23,7 @@ import java.text.SimpleDateFormat;
 import Excepciones.ResultadoPartido;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import Views.ResultadosyDatos.VJornadas;
 
 /**
  *
@@ -46,6 +47,7 @@ public class controlador {
     public static Cuenta usu;
     public static Persona persTemp;
     public static Jugador jugTemp;
+    public static Dueno dueTemp;
     public static int tipoE;
     static int formula;
     static ArrayList<Equipo> equiposTemp;
@@ -110,9 +112,9 @@ public class controlador {
         vr.setVisible(true);
     }
 
-    public static void toVEquipo(Frame ventana) {
+    public static void toVEquipo(Frame ventana, int tipo) {
         ventana.dispose();
-        VEquipo ve = new VEquipo();
+        VEquipo ve = new VEquipo(tipo);
         ve.setVisible(true);
     }
     
@@ -132,6 +134,12 @@ public class controlador {
         ventana.dispose();
         VClasificacion vc = new VClasificacion();
         vc.setVisible(true);
+    }
+    
+    public static void toVJornadas(Frame ventana) {
+        ventana.dispose();
+        VJornadas vj = new VJornadas();
+        vj.setVisible(true);
     }
 
     public static void JDError(Frame ventana, boolean modal, String mensaje) {
@@ -190,10 +198,16 @@ public class controlador {
     
     public static void findPerByDni(String dni) throws Exception{
         persTemp = conexion.getPersonaBD().findPersona(dni);
+        if(!persTemp.getTipoPersona().equals("usuario"))
+            persTemp = null;
     }
     
     public static void findJugByDni(String dni) throws Exception{
         jugTemp = conexion.getJugadorBD().findJugador(dni);
+    }
+    
+    public static void findDueByDni(String dni) throws Exception{
+        dueTemp = conexion.getDuenoBD().findDueno(dni);
     }
 
     public static boolean registrarUsuario(String dni, String nombre, String apellido, String calle, String numero, String piso, String ciudad, String cp, String pais, String tel, String usuario, String pass, String tipo_persona) throws Exception {
@@ -241,6 +255,11 @@ public class controlador {
     public static void updateJugador() throws Exception{
         conexion.getJugadorBD().edit(jugTemp);
         jugTemp = null;
+    }
+    
+    public static void updateDueno() throws Exception{
+        conexion.getPersonaBD().edit(dueTemp.getPersona());
+        dueTemp = null;
     }
     
     public static void destroyRegistro(String dni) {

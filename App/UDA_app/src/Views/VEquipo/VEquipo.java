@@ -25,11 +25,17 @@ public class VEquipo extends javax.swing.JFrame {
     /**
      * Creates new form VEquipo
      */
-    private static int max = 100;
-    private static int countTemp;
+    private static int max = 100, countTemp, tipo;
+    
     
     public VEquipo() {
         initComponents();
+        inicializarVentana();
+    }
+    
+    public VEquipo(int tipo){
+        initComponents();
+        this.tipo = tipo;
         inicializarVentana();
     }
 
@@ -321,28 +327,43 @@ public class VEquipo extends javax.swing.JFrame {
             Image i = ImageIO.read(getClass().getResource("/Views/recursos/logo_u_favicon.png"));
             setIconImage(i);
             setLocationRelativeTo(null);
-            cbDueno.addItem("-- Seleccione Dueño --");
-            if(!controlador.llenarDuenos(cbDueno))
-                error = "dueños";
-            listaJugadores.setModel(controlador.llenarJugadores(listaJugadores));
-            if(listaJugadores.getModel().getSize() == 0)
+            if(tipo == 1)
             {
-                if(error.isEmpty())
-                    error = "jugadores";
-                else
-                    error = "ni jugadores";
-            }    
+                cbDueno.addItem("-- Seleccione Dueño --");
+                if(!controlador.llenarDuenos(cbDueno))
+                    error = "dueños";
+                listaJugadores.setModel(controlador.llenarJugadores(listaJugadores));
+                if(listaJugadores.getModel().getSize() == 0)
+                {
+                    if(error.isEmpty())
+                        error = "jugadores";
+                    else
+                        error = "ni jugadores";
+                }    
                 
             
-            if(!error.isEmpty())
-            {
-                controlador.JDError(this, true, "No hay "+error+" registrados, para crear", "un equipo son necesarios");
-                controlador.toVPrincipal(this);
+                if(!error.isEmpty())
+                {
+                    controlador.JDError(this, true, "No hay "+error+" registrados, para crear", "un equipo son necesarios");
+                    controlador.toVPrincipal(this);
+                }
             }
+            else
+            {
+                setTfStartUp(true, false);
+            }    
+            
         }
         catch(Exception e){
             controlador.JDError(this, true, "Error inicio ventana");
         }   
+    }
+    
+    public void setTfStartUp(boolean a, boolean b){
+        tfNombre.setEnabled(a);
+        taDesc.setEnabled(b);
+        cbDueno.setEnabled(b);
+        listaJugadores.setEnabled(b);
     }
     
     public void setColorException(JTextField tf, int caso){

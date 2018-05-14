@@ -601,14 +601,19 @@ public class VRegistro extends javax.swing.JFrame {
                             else
                             {
                                 controlador.JDInfo(this, true, "Registro realizado");
-                                controlador.toVPrincipal(this);
                             }
                         break;
-                        case 3: 
-                            controlador.persTemp.setUpdate(tfNombre.getText(), tfApellido.getText(), tfCalle.getText(), tfNro.getText(), tfPiso.getText(), tfCiudad.getText(), tfCp.getText(), tfPais.getText(), tfTel.getText());
-                            controlador.updatePersona();
-                            controlador.JDInfo(this, true, "Modificación realizada corréctamente");
-                            controlador.toVPrincipal(this);
+                        case 3:
+                            if(lTitulo.getText().equals("Modificación Usuario"))
+                            {
+                                controlador.persTemp.setUpdate(tfNombre.getText(), tfApellido.getText(), tfCalle.getText(), tfNro.getText(), tfPiso.getText(), tfCiudad.getText(), tfCp.getText(), tfPais.getText(), tfTel.getText());
+                                controlador.updatePersona();
+                            }
+                            else
+                            {
+                                controlador.dueTemp.getPersona().setUpdate(tfNombre.getText(), tfApellido.getText(), tfCalle.getText(), tfNro.getText(), tfPiso.getText(), tfCiudad.getText(), tfCp.getText(), tfPais.getText(), tfTel.getText());
+                                controlador.updateDueno();
+                            }    
                         break;
                         
                         case 4:
@@ -616,9 +621,11 @@ public class VRegistro extends javax.swing.JFrame {
                                 throw new camposIncorrectos();
                             controlador.jugTemp.setUpdate(Integer.parseInt(tfSueldo.getText()), tfNombre.getText(), tfApellido.getText(), tfCalle.getText(), tfNro.getText(), tfPiso.getText(), tfCiudad.getText(), tfCp.getText(), tfPais.getText(), tfTel.getText());
                             controlador.updateJugador();
-                            controlador.JDInfo(this, true, "Modificación realizada corréctamente");
-                            controlador.toVPrincipal(this);
-                    }    
+                            
+                    }
+                    if(tipo>2)
+                        controlador.JDInfo(this, true, "Modificación realizada corréctamente");
+                    controlador.toVPrincipal(this);
                 }    
                        
             }
@@ -787,17 +794,24 @@ public class VRegistro extends javax.swing.JFrame {
                 {
                     case 3:
                         controlador.findPerByDni(tfDni.getText());
+                        if(controlador.persTemp == null)
+                            throw new dniNoEncontrado();
                     break;
                     
                     case 4:
-                        controlador.findPerByDni(tfDni.getText());
+                        controlador.findJugByDni(tfDni.getText());
+                        if(controlador.jugTemp == null)
+                            throw new dniNoEncontrado();
                     break;
-                        
+                    
+                    case 5:
+                        controlador.findDueByDni(tfDni.getText());
+                        if(controlador.dueTemp == null)
+                            throw new dniNoEncontrado();
+                        controlador.persTemp = controlador.dueTemp.getPersona();
+                        tipo = 3;
                 }
-                if(controlador.persTemp == null)
-                    throw new dniNoEncontrado();
-                else
-                    setTfStartUp(false, true);
+                setTfStartUp(false, true);
                   
             }
             else
@@ -826,10 +840,16 @@ public class VRegistro extends javax.swing.JFrame {
     }
     
     public void inicializarVentana(String mensaje) {
-        
+        boolean cambio = false;
         setLocationRelativeTo(null);
         lTitulo.setText(mensaje);
         bLupa.setVisible(false);
+        if(tipo == 5)
+        {
+            cambio = true;
+            tipo = 3;
+        }    
+        
         switch(tipo)
         {
             case 1:
@@ -845,11 +865,15 @@ public class VRegistro extends javax.swing.JFrame {
                 jpCuenta.setVisible(false);
                 jpJugador.setVisible(false);
                 setTfStartUp(true, false);
+                if(cambio)
+                    tipo = 5;
             break;
             
             case 4:
                 bLupa.setVisible(true);
                 jpCuenta.setVisible(false);
+                tfNickname.setEnabled(false);
+                setTfStartUp(true, false);
             break;
         }    
         try
@@ -876,20 +900,37 @@ public class VRegistro extends javax.swing.JFrame {
         tfCp.setEnabled(b);
         tfPais.setEnabled(b);
         tfTel.setEnabled(b);
+        if(tipo == 4)
+            tfSueldo.setEnabled(b);
         
         if(b == true)
         {
-            tfNombre.setText(controlador.persTemp.getNombre());
-            tfApellido.setText(controlador.persTemp.getApellido());
-            tfCalle.setText(controlador.persTemp.getCalle());
-            tfNro.setText(controlador.persTemp.getNro());
-            tfPiso.setText(controlador.persTemp.getPiso());
-            tfCiudad.setText(controlador.persTemp.getCiudad());
-            tfCp.setText(controlador.persTemp.getCp());
-            tfPais.setText(controlador.persTemp.getPais());
-            tfTel.setText(controlador.persTemp.getTlfo());
-            tfNickname.setText(controlador.jugTemp.getNickname());
-            tfSueldo.setText(""+controlador.jugTemp.getSueldo());
+            if(tipo == 4)
+            {
+                tfNickname.setText(controlador.jugTemp.getNickname());
+                tfSueldo.setText(""+controlador.jugTemp.getSueldo());
+                tfNombre.setText(controlador.jugTemp.getNombre());
+                tfApellido.setText(controlador.jugTemp.getApellido());
+                tfCalle.setText(controlador.jugTemp.getCalle());
+                tfNro.setText(controlador.jugTemp.getNro());
+                tfPiso.setText(controlador.jugTemp.getPiso());
+                tfCiudad.setText(controlador.jugTemp.getCiudad());
+                tfCp.setText(controlador.jugTemp.getCp());
+                tfPais.setText(controlador.jugTemp.getPais());
+                tfTel.setText(controlador.jugTemp.getTlfo());
+            }
+            else
+            {
+                tfNombre.setText(controlador.persTemp.getNombre());
+                tfApellido.setText(controlador.persTemp.getApellido());
+                tfCalle.setText(controlador.persTemp.getCalle());
+                tfNro.setText(controlador.persTemp.getNro());
+                tfPiso.setText(controlador.persTemp.getPiso());
+                tfCiudad.setText(controlador.persTemp.getCiudad());
+                tfCp.setText(controlador.persTemp.getCp());
+                tfPais.setText(controlador.persTemp.getPais());
+                tfTel.setText(controlador.persTemp.getTlfo());
+            }    
         }    
         
     }
