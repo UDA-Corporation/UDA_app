@@ -289,4 +289,11 @@ public class EquipoJpaController implements Serializable {
         }           
     }
     
+    public Equipo findByName(String name){       
+            Query consulta = this.getEntityManager().createNamedQuery(Equipo.findName);
+            consulta.setParameter("nombre", name);
+            List<Equipo> lista = consulta.getResultList(); 
+            return lista.get(0);   
+    }
+    
 }

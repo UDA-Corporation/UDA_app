@@ -24,21 +24,15 @@ public class JDInfo extends javax.swing.JDialog {
         setFavicon();
     }
     
+    public JDInfo(javax.swing.JDialog d, boolean modal, String mensaje){
+        super(d, modal);
+        initComponents();
+        start(mensaje);
+    }
     public JDInfo (java.awt.Frame ventana, boolean modal, String mensaje){
         super(ventana, modal);
         initComponents();
-        setLocationRelativeTo(null);
-        try
-        {
-            //Esta opción nos va a asignar un favicon a nusetro proyecto
-            Image i = ImageIO.read(getClass().getResource("/Views/VPrincipal/logo_u_favicon.png"));
-            setIconImage(i);
-        }
-        catch(Exception e){
-            
-        }
-        lTexto1.setText(mensaje);
-        tfFocus.requestFocus();
+        start(mensaje);
     }
     
     public JDInfo (java.awt.Frame ventana, boolean modal, String mensaje, String mensaje2){
@@ -164,6 +158,20 @@ public class JDInfo extends javax.swing.JDialog {
         bAceptar.doClick();
     }//GEN-LAST:event_tfFocusActionPerformed
     
+    public void start(String mensaje){
+        setLocationRelativeTo(null);
+        try
+        {
+            //Esta opción nos va a asignar un favicon a nusetro proyecto
+            Image i = ImageIO.read(getClass().getResource("/Views/VPrincipal/logo_u_favicon.png"));
+            setIconImage(i);
+        }
+        catch(Exception e){
+            
+        }
+        lTexto1.setText(mensaje);
+        tfFocus.requestFocus();
+    }
     public void setFavicon(){
         try
         {

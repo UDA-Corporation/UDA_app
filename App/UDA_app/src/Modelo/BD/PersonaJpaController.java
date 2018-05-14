@@ -249,5 +249,10 @@ public class PersonaJpaController implements Serializable {
             em.close();
         }
     }
-    
+    public List <Persona> findByTipo(String tipo){        
+        Query consulta = this.getEntityManager().createNamedQuery(Persona.findTipo);
+        consulta.setParameter("tipoPersona", tipo);
+        List<Persona> lista = consulta.getResultList(); 
+        return lista;
+    }
 }
