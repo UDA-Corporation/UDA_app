@@ -56,7 +56,7 @@ public class ParserDOMJornadas {
     Collection <Equipo> CollectionequiposBD;
     ArrayList <Equipo> equiposBD;
     Document dom;
-    SimpleDateFormat formatter;
+    DateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
     
     //Constructor
     public ParserDOMJornadas(){
@@ -78,18 +78,7 @@ public class ParserDOMJornadas {
                 p.setEquipo1(equiposBD.get(0).getNombre());
                 p.setEquipo2(equiposBD.get(1).getNombre());
             }
-        }/*
-        //Para pruebas de consulta sin conexion a la BDD
-        partidos.add(new PartidoParsers("1","2","10-20"));
-        partidos.add(new PartidoParsers("3","4","30-20"));
-        partidos.add(new PartidoParsers("3","4","30-20"));
-        partidos.add(new PartidoParsers("3","4","30-20"));
-        partidos.add(new PartidoParsers("3","4","30-20"));
-        partidos.add(new PartidoParsers("3","4","30-20"));
-        partidos.add(new PartidoParsers("3","4","30-20"));
-        partidos.add(new PartidoParsers("3","4","30-20"));
-        jornadas.add(new JornadaParsers("11111111111111111111111111111111","10-10-2018","20-11-2018"));
-        jornadas.add(new JornadaParsers("2","10-10-2018","20-11-2018"));*/
+        }
     }
     
     /**
@@ -225,13 +214,10 @@ public class ParserDOMJornadas {
     private Element crearElementoJornada(JornadaParsers j){
         Element jornadaEle = dom.createElement("jornada");
         //Atributo codigo jornada
-        //getAtributo(jornadaEle, "codigoJornada", "codigo");
         jornadaEle.setAttribute("codigoJornada", j.getcodigoJornada());
         //Atributo fecha inicio
-        //getAtributo(jornadaEle, "fechaInicio", "fechaI");
         jornadaEle.setAttribute("fechaInicio", j.getfechaInicio());
         //Atributo fecha final
-        //getAtributo(jornadaEle, "fechaFinal", "fechaF");
         jornadaEle.setAttribute("fechaFinal", j.getfechaFinal());
         return jornadaEle;
     }
@@ -244,10 +230,8 @@ public class ParserDOMJornadas {
         //Crear elemento partido dentro de jornada
         Element partidoEle = dom.createElement("partido");
         //Atributo equipo 1
-        //getAtributo(partidoEle, "equipo1", "codigoequipo");
         partidoEle.setAttribute("equipo1", p.getEquipo1());
         //Atributo equipo 2
-        //getAtributo(partidoEle, "equipo2", "codigoequipo");
         partidoEle.setAttribute("equipo2", p.getEquipo2());
         //Crear elemento resultado dentro de partido
         Element resultadoEle = dom.createElement("resultado");
@@ -257,17 +241,6 @@ public class ParserDOMJornadas {
         return partidoEle;
 
     }
-    /*
-    private String getAtributo(Element empEl, String etiqueta, String att) {
-        String atributo = "";
-        NodeList nl = empEl.getElementsByTagName(etiqueta);
-        if (nl != null && nl.getLength() > 0) {
-            Element el = (Element) nl.item(0);
-            atributo = el.getAttribute(att);
-        }
-
-        return atributo;
-    }*/
     
     /**
      * Se encarga de parsear el fichero XML con DOM
