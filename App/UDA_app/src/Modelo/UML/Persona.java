@@ -43,6 +43,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Persona.findByTlfo", query = "SELECT p FROM Persona p WHERE p.tlfo = :tlfo")})
 public class Persona implements Serializable {
 
+    public static final String findTipo = "Persona.findByTipoPersona";
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)

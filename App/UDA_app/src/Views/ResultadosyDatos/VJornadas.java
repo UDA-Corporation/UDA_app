@@ -24,8 +24,9 @@ import javax.xml.transform.TransformerException;
  * @author danie
  */
 public class VJornadas extends javax.swing.JFrame {
-    //Jornadas en el array (indice del codigo jornadas)
-    int J = 0;
+    //La X lleva la posicion de la jornada seleccionada en el combo box, porque en el XML no aparece ordenado (por el JPA)
+    int x = 0;
+    
     /**
      * Creates new form VJornadas
      */
@@ -213,7 +214,7 @@ public class VJornadas extends javax.swing.JFrame {
             ParserSAXJornadas JornadasSAX = new ParserSAXJornadas();
             JornadasSAX.ejecutar();
         }
-        SelectorJornada.setSelectedIndex(J);
+        SelectorJornada.setSelectedIndex(x);
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -237,21 +238,26 @@ public class VJornadas extends javax.swing.JFrame {
      * @param evt Evento ocurrido en la ventana: un elemento del combobox seleccionado
      */
     private void SelectorJornadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectorJornadaActionPerformed
-        J = SelectorJornada.getSelectedIndex() * 15;
+        int J = SelectorJornada.getSelectedIndex() + 1;
+        for (int i = 0; i < 14; i++) {
+            x = i * 15;
+            if (J == Integer.parseInt(ParserSAXJornadas.Jornadas[x].toString())) break;
+        }
         Object[] columns = {"Equipo 1","Equipo 2","Resultado"};
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(columns);
-        for (int i = (J + 3); i < (J + 15); i++) {
-            int x = i + 12;
+        for (int i = (x + 3); i < (x + 15); i++) {
+            int y = i + 12;
             Object[] row = new Object[3];
-            row = Arrays.copyOfRange(Parsers.SAX.ParserSAXJornadas.Jornadas,i,x);
+            row = Arrays.copyOfRange(Parsers.SAX.ParserSAXJornadas.Jornadas,i,y);
             model.addRow(row);
             Arrays.fill(row,null);
             i += 2;
         } 
         Table.setModel(model);
-        FechaFinal.setText(Parsers.SAX.ParserSAXJornadas.Jornadas[J+1].toString());
-        FechaInicio.setText(Parsers.SAX.ParserSAXJornadas.Jornadas[J+2].toString());
+        FechaFinal.setText(Parsers.SAX.ParserSAXJornadas.Jornadas[x+1].toString());
+        FechaInicio.setText(Parsers.SAX.ParserSAXJornadas.Jornadas[x+2].toString());
+        x = 0;
     }//GEN-LAST:event_SelectorJornadaActionPerformed
 
     /**

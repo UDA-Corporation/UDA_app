@@ -8,6 +8,9 @@ package Views.VPrincipal;
 import control.controlador;
 import java.awt.Color;
 import java.awt.Image;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
@@ -383,16 +386,36 @@ public class VPrincipal extends javax.swing.JFrame {
         jmListar.setText("Listar");
 
         jMenuItem17.setText("Usuarios");
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17ActionPerformed(evt);
+            }
+        });
         jmListar.add(jMenuItem17);
 
         jMenuItem18.setText("Jugadores");
+        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem18ActionPerformed(evt);
+            }
+        });
         jmListar.add(jMenuItem18);
 
         jMenuItem19.setText("Dueños");
         jMenuItem19.setToolTipText("");
+        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem19ActionPerformed(evt);
+            }
+        });
         jmListar.add(jMenuItem19);
 
         jMenuItem20.setText("Equipos");
+        jMenuItem20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem20ActionPerformed(evt);
+            }
+        });
         jmListar.add(jMenuItem20);
         jmListar.add(jSeparator4);
 
@@ -407,6 +430,11 @@ public class VPrincipal extends javax.swing.JFrame {
         jmListar.add(jSeparator3);
 
         jMenuItem21.setText("Administradores");
+        jMenuItem21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem21ActionPerformed(evt);
+            }
+        });
         jmListar.add(jMenuItem21);
 
         jmHerramientas.add(jmListar);
@@ -571,7 +599,10 @@ public class VPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void jmClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmClasificacionActionPerformed
-        controlador.toVClasificacion(this);
+        try {
+            controlador.toVClasificacion(this);
+        } catch (IOException ex) {
+        }
     }//GEN-LAST:event_jmClasificacionActionPerformed
 
     private void jmCAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCAdminActionPerformed
@@ -595,8 +626,31 @@ public class VPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmModEquipoActionPerformed
 
     private void jmJornadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmJornadasActionPerformed
-        controlador.toVJornadas(this);
+        try {
+            controlador.toVJornadas(this);
+        } catch (IOException ex) {
+        }
     }//GEN-LAST:event_jmJornadasActionPerformed
+
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+        controlador.toVPersonas(this, "usuario");
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
+
+    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
+        controlador.toVPersonas(this, "dueno");
+    }//GEN-LAST:event_jMenuItem19ActionPerformed
+
+    private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
+        controlador.toVPersonas(this, "admin");
+    }//GEN-LAST:event_jMenuItem21ActionPerformed
+
+    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
+        controlador.toVJugadores(this);
+    }//GEN-LAST:event_jMenuItem18ActionPerformed
+
+    private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
+        controlador.toVequipos(this);
+    }//GEN-LAST:event_jMenuItem20ActionPerformed
     
     public void inicializarVentana(){
         try

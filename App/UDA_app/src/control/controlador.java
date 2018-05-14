@@ -24,6 +24,10 @@ import Excepciones.ResultadoPartido;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import Views.ResultadosyDatos.VJornadas;
+import Views.Listados.VEquipos.VEquipos;
+import Views.Listados.VPersonas.VPersonas;
+import Views.Listados.VPjugadores.VJugadores;
+import Views.JDEliminar.JDEliminar;
 
 /**
  *
@@ -48,6 +52,7 @@ public class controlador {
     public static Persona persTemp;
     public static Jugador jugTemp;
     public static Dueno dueTemp;
+    public static Equipo equipoTemp;
     public static int tipoE;
     static int formula;
     static ArrayList<Equipo> equiposTemp;
@@ -61,6 +66,7 @@ public class controlador {
     static final int PUNTOSWIN=3;
     static final int PUNTOSDRAW=1;
     static Collection <Equipo> CollectionEquiposTemp;
+    static List <Persona> personas;
 
     /**
      * @param args the command line arguments
@@ -76,7 +82,7 @@ public class controlador {
                              + "\n"
                              + "▒█▀▀█ █▀▀█ █▀▀█ █▀▀█ ░ \n"
                              + "▒█░░░ █░░█ █▄▄▀ █░░█ ▄ \n"
-                             + "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v0.7 alpha");
+                             + "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v0.8 alpha");
             VPrincipal vp = new VPrincipal();
             vp.setVisible(true);
         } catch (Exception e) {
@@ -130,16 +136,32 @@ public class controlador {
         vpunt.setVisible(true);
     }
     
-    public static void toVClasificacion(Frame ventana) {
+    public static void toVClasificacion(Frame ventana) throws IOException {
         ventana.dispose();
         VClasificacion vc = new VClasificacion();
         vc.setVisible(true);
     }
     
-    public static void toVJornadas(Frame ventana) {
+    public static void toVJornadas(Frame ventana) throws IOException {
         ventana.dispose();
         VJornadas vj = new VJornadas();
         vj.setVisible(true);
+    }
+    
+    public static void toVPersonas(javax.swing.JFrame ventana, String tipo){
+        ventana.dispose();
+        VPersonas vpers = new VPersonas(tipo);
+        vpers.setVisible(true);
+    }
+    public static void toVJugadores(javax.swing.JFrame ventana){
+        ventana.dispose();
+        VJugadores vjugs = new VJugadores();
+        vjugs.setVisible(true);
+    }
+    public static void toVequipos(javax.swing.JFrame ventana){
+        ventana.dispose();
+        VEquipos veqs = new VEquipos();
+        veqs.setVisible(true);
     }
 
     public static void JDError(Frame ventana, boolean modal, String mensaje) {
@@ -164,6 +186,17 @@ public class controlador {
 
         JDInfo jde = new JDInfo(ventana, modal, mensaje, mensaje2);
         jde.setVisible(true);
+    }
+    
+    public static void JDInfo(javax.swing.JDialog d, boolean modal, String mensaje) {
+
+        JDInfo jde = new JDInfo(d, modal, mensaje);
+        jde.setVisible(true);
+    }
+    
+    public static void JDEliminar(Frame ventana, boolean modal, String tipo) {
+        JDEliminar jdeliminar = new JDEliminar(ventana, modal, tipo);
+        jdeliminar.setVisible(true);
     }
 
     public static boolean findUsuLogin(String usuario, String pass) {
@@ -209,7 +242,12 @@ public class controlador {
     public static void findDueByDni(String dni) throws Exception{
         dueTemp = conexion.getDuenoBD().findDueno(dni);
     }
-
+    
+    public static void findEquipoByNombre(String nombre) throws Exception{
+        
+        equipoTemp = conexion.getEquipoBD().findByName(nombre.toUpperCase());
+    }
+    
     public static boolean registrarUsuario(String dni, String nombre, String apellido, String calle, String numero, String piso, String ciudad, String cp, String pais, String tel, String usuario, String pass, String tipo_persona) throws Exception {
         boolean correcto;
         
@@ -299,7 +337,7 @@ public class controlador {
 
     public static boolean altaEquipo(String nombre, String desc, int dueno, int[] indices) throws Exception{
 
-        Equipo e1 = new Equipo(Integer.parseInt(conexion.getEquipoBD().autoincrement()), nombre, desc);
+        Equipo e1 = new Equipo(Integer.parseInt(conexion.getEquipoBD().autoincrement()), nombre.toUpperCase(), desc);
         
         if(indices.length!=0)
         {
@@ -328,6 +366,110 @@ public class controlador {
         for (Liga l : conexion.getLigaBD().findLigaEntities()) {
             cb.addItem(l.getNombre());
         }
+    }
+    
+    public static String [][]llenarTablaEquipos(int ColsCont){
+        Collection <Jugador> Collectionjugadores = new ArrayList();
+        ArrayList <Jugador> arrayListJugadores;
+        equipos = conexion.getEquipoBD().findEquipoEntities();
+        String [][] listadoequipos = new String [equipos.size()][ColsCont];
+        for (int x = 0; x < equipos.size(); x++) {
+            listadoequipos[x][0] = Integer.toString(equipos.get(x).getCod());
+            listadoequipos[x][1] = equipos.get(x).getNombre();    
+            listadoequipos[x][2] = equipos.get(x).getDesripcion();
+            listadoequipos[x][3] = equipos.get(x).getPuntos();
+            listadoequipos[x][4] = equipos.get(x).getPuesto();
+            listadoequipos[x][5] = equipos.get(x).getDuenoDni().getPersona().getNombre()+" "+equipos.get(x).getDuenoDni().getPersona().getApellido();
+            for (int y = 0; y < equipos.get(x).getJugadorCollection().size(); y++) {
+                Collectionjugadores = equipos.get(x).getJugadorCollection();
+                arrayListJugadores = new ArrayList(Collectionjugadores);
+                listadoequipos[x][6]+=arrayListJugadores.get(y).getNickname()+"\n";
+            }
+        }
+        return listadoequipos;
+    }
+    public static String [][] llenarTablaJugadores(int ColsCont){
+        jugadores = conexion.getJugadorBD().findJugadorEntities();
+        String [][] listadojugadores = new String [jugadores.size()][ColsCont];
+        for (int x=0;x<jugadores.size();x++){
+            listadojugadores[x][0] = jugadores.get(x).getDni();
+            listadojugadores[x][1] = jugadores.get(x).getNickname();    
+            listadojugadores[x][2] = Integer.toString(jugadores.get(x).getSueldo());
+            listadojugadores[x][3] = jugadores.get(x).getNombre();
+            listadojugadores[x][4] = jugadores.get(x).getApellido();
+            listadojugadores[x][5] = jugadores.get(x).getCalle();
+            listadojugadores[x][6] = jugadores.get(x).getNro();
+            listadojugadores[x][7] = jugadores.get(x).getPiso();
+            listadojugadores[x][8] = jugadores.get(x).getCiudad();
+            listadojugadores[x][9] = jugadores.get(x).getCp();
+            listadojugadores[x][10] = jugadores.get(x).getPais();
+            listadojugadores[x][11] = jugadores.get(x).getTlfo();  
+            listadojugadores[x][12] = jugadores.get(x).getEquipoCod().getNombre();  
+             
+        }
+        return listadojugadores;
+    }
+    public static String [][] llenarTablaPersonas(String tipo){       
+        switch(tipo){
+            case "dueno":
+                duenos = conexion.getDuenoBD().findDuenoEntities();
+                return tablaDuenos();               
+            case "usuario":
+                personas = conexion.getPersonaBD().findByTipo("usuario");               
+                return tablaPeronas();
+            case "admin":
+                personas = conexion.getPersonaBD().findByTipo("admin");
+                return tablaPeronas();               
+        }
+        return null;
+    }
+
+    public static String [][]tablaPeronas(){       
+        String [][] listadopersonas = new String [personas.size()][11];
+        for (int x=0;x<personas.size();x++){
+            listadopersonas[x][0]=personas.get(x).getDni();
+            listadopersonas[x][1]=personas.get(x).getNombre();
+            listadopersonas[x][2]=personas.get(x).getApellido();
+            listadopersonas[x][3]=personas.get(x).getCalle();
+            listadopersonas[x][4]=personas.get(x).getNro();
+            listadopersonas[x][5]=personas.get(x).getPiso();
+            listadopersonas[x][6]=personas.get(x).getCiudad();
+            listadopersonas[x][7]=personas.get(x).getCp();
+            listadopersonas[x][8]=personas.get(x).getPais();
+            listadopersonas[x][9]=personas.get(x).getTlfo();            
+        }
+        return listadopersonas;
+    }
+    
+    public static String [][] tablaDuenos(){
+        
+        String [][] listadoDuenos = new String [conexion.getDuenoBD().getDuenoCount()][11];       
+        for (int x=0;x<duenos.size();x++){
+            listadoDuenos[x][0]=duenos.get(x).getPersona().getDni();
+            listadoDuenos[x][1]=duenos.get(x).getPersona().getNombre();
+            listadoDuenos[x][2]=duenos.get(x).getPersona().getApellido();
+            listadoDuenos[x][3]=duenos.get(x).getPersona().getCalle();
+            listadoDuenos[x][4]=duenos.get(x).getPersona().getNro();
+            listadoDuenos[x][5]=duenos.get(x).getPersona().getPiso();
+            listadoDuenos[x][6]=duenos.get(x).getPersona().getCiudad();
+            listadoDuenos[x][7]=duenos.get(x).getPersona().getCp();
+            listadoDuenos[x][8]=duenos.get(x).getPersona().getPais();
+            listadoDuenos[x][9]=duenos.get(x).getPersona().getTlfo();            
+        }
+        return listadoDuenos;
+    }
+    
+    public static void eliminarUsuario(String pk)throws Exception{
+        conexion.getPersonaBD().destroy(pk);
+    }
+    public static void eliminarJugador(String pk)throws Exception{
+        conexion.getJugadorBD().destroy(pk);
+    }
+    public static void eliminarDueno(String pk)throws Exception{
+        conexion.getPersonaBD().destroy(pk);
+    }
+    public static void eliminarEquipo(String pk)throws Exception{
+        conexion.getEquipoBD().destroy(Integer.parseInt(pk));
     }
     
     public static void recalcularClasificacion()throws Exception{
@@ -623,8 +765,6 @@ public class controlador {
             }
         }
         emparejar();
-        System.out.println("");
-
     }
 
     public static Equipo[][] generarPartidos() {

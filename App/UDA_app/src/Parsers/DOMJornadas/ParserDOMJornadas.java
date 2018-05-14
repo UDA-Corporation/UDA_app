@@ -21,7 +21,6 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 import org.xml.sax.SAXException;
 
@@ -116,7 +115,7 @@ public class ParserDOMJornadas {
         Document XMLdoc = docBuilder.newDocument();
         Element raizLiga = XMLdoc.createElement("liga");
         XMLdoc.appendChild(raizLiga);
-        raizLiga.setTextContent(" ");
+        raizLiga.setTextContent("");
         DateFormat format = new SimpleDateFormat("EEEE");
         String fecha2 = format.format(new Date());
         switch (fecha2.toLowerCase()){
@@ -175,7 +174,7 @@ public class ParserDOMJornadas {
 
             //to generate a file output use fileoutputstream instead of system.out
             XMLSerializer serializer = new XMLSerializer(
-                    new FileOutputStream(new File("BDD(Jornadas).xml")), format);
+            new FileOutputStream(new File("BDD(Jornadas).xml")), format);
 
             serializer.serialize(dom);
 
