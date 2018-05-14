@@ -66,9 +66,9 @@ public class VPrincipal extends javax.swing.JFrame {
         jmCAdmin = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jmModUsu = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
+        jmModJugador = new javax.swing.JMenuItem();
         jmModDue = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        jmModEquipo = new javax.swing.JMenuItem();
         jmEliminar = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
@@ -338,19 +338,29 @@ public class VPrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(jmModUsu);
 
-        jMenuItem12.setText("Jugador");
-        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+        jmModJugador.setText("Jugador");
+        jmModJugador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem12ActionPerformed(evt);
+                jmModJugadorActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem12);
+        jMenu3.add(jmModJugador);
 
         jmModDue.setText("Dueño");
+        jmModDue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmModDueActionPerformed(evt);
+            }
+        });
         jMenu3.add(jmModDue);
 
-        jMenuItem7.setText("Equipo");
-        jMenu3.add(jMenuItem7);
+        jmModEquipo.setText("Equipo");
+        jmModEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmModEquipoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmModEquipo);
 
         jmHerramientas.add(jMenu3);
 
@@ -430,6 +440,11 @@ public class VPrincipal extends javax.swing.JFrame {
         jmResultados.add(jmClasificacion);
 
         jmJornadas.setText("Jornadas");
+        jmJornadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmJornadasActionPerformed(evt);
+            }
+        });
         jmResultados.add(jmJornadas);
 
         jMenuBar1.add(jmResultados);
@@ -542,11 +557,10 @@ public class VPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmCDuenoActionPerformed
 
     private void jmCEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCEquipoActionPerformed
-        controlador.toVEquipo(this);
+        controlador.toVEquipo(this, 0);
     }//GEN-LAST:event_jmCEquipoActionPerformed
 
     private void jmPuntuacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmPuntuacionMouseClicked
-        // TODO add your handling code here:
         controlador.toVPuntos(this);
     }//GEN-LAST:event_jmPuntuacionMouseClicked
 
@@ -568,9 +582,21 @@ public class VPrincipal extends javax.swing.JFrame {
         controlador.toVRegistro(this, 3, "Modificar Usuario", 1);
     }//GEN-LAST:event_jmModUsuActionPerformed
 
-    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+    private void jmModJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmModJugadorActionPerformed
         controlador.toVRegistro(this, 4, "Modificar Jugador", 1);
-    }//GEN-LAST:event_jMenuItem12ActionPerformed
+    }//GEN-LAST:event_jmModJugadorActionPerformed
+
+    private void jmModDueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmModDueActionPerformed
+        controlador.toVRegistro(this, 5, "Modificar Dueño", 1);
+    }//GEN-LAST:event_jmModDueActionPerformed
+
+    private void jmModEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmModEquipoActionPerformed
+        controlador.toVEquipo(this, 1);
+    }//GEN-LAST:event_jmModEquipoActionPerformed
+
+    private void jmJornadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmJornadasActionPerformed
+        controlador.toVJornadas(this);
+    }//GEN-LAST:event_jmJornadasActionPerformed
     
     public void inicializarVentana(){
         try
@@ -686,7 +712,6 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
@@ -699,7 +724,6 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem23;
     private javax.swing.JMenuItem jMenuItem24;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -721,6 +745,8 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jmListar;
     private javax.swing.JMenuItem jmLogin;
     private javax.swing.JMenuItem jmModDue;
+    private javax.swing.JMenuItem jmModEquipo;
+    private javax.swing.JMenuItem jmModJugador;
     private javax.swing.JMenuItem jmModUsu;
     private javax.swing.JMenu jmPuntuacion;
     private javax.swing.JMenu jmRegistrar;
