@@ -5,7 +5,7 @@
  */
 package Views.ResultadosyDatos;
 
-import Parsers.DOMJornadas.ParserDOM;
+import Parsers.DOMJornadas.ParserDOMJornadas;
 import Parsers.SAX.ParserSAXJornadas;
 import control.controlador;
 import java.io.File;
@@ -100,7 +100,7 @@ public class VJornadas extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        Table.setPreferredSize(new java.awt.Dimension(300, 200));
+        Table.setPreferredSize(new java.awt.Dimension(300, 100));
         Table.setRowHeight(25);
         jScrollPane1.setViewportView(Table);
 
@@ -128,23 +128,21 @@ public class VJornadas extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(SelectorJornada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(FechaInicio)
-                        .addGap(189, 189, 189)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(FechaFinal)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
-                .addGap(167, 167, 167))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(54, 54, 54)
+                        .addComponent(SelectorJornada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(82, 82, 82)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(FechaInicio)
+                                .addGap(183, 183, 183)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(FechaFinal))
+                            .addComponent(jScrollPane1)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2)
@@ -155,7 +153,7 @@ public class VJornadas extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(394, 394, 394)
                         .addComponent(Salir)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,13 +173,12 @@ public class VJornadas extends javax.swing.JFrame {
                     .addComponent(FechaFinal))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(SelectorJornada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE))
+                        .addGap(64, 64, 64)
+                        .addComponent(SelectorJornada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addComponent(Salir)
                 .addGap(27, 27, 27))
         );
@@ -200,6 +197,10 @@ public class VJornadas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Lee si existe el XML de jornadas y llama al SAX o al DOM en funcion de su existencia, para crearlo o leerlo
+     * @param evt Evento ocurrido en la ventana: abrirse
+     */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         File xml = new File("BDD(Jornadas).xml");
         if(xml.exists() && !xml.isDirectory()) { 
@@ -207,7 +208,7 @@ public class VJornadas extends javax.swing.JFrame {
             JornadasSAX.ejecutar();
         } else {
             try {
-                ParserDOM JornadasDOM = new ParserDOM();
+                ParserDOMJornadas JornadasDOM = new ParserDOMJornadas();
                 JornadasDOM.ejecutar();
             } catch (ParserConfigurationException | TransformerException ex) {
                 Logger.getLogger(VJornadas.class.getName()).log(Level.SEVERE, null, ex);
@@ -220,14 +221,26 @@ public class VJornadas extends javax.swing.JFrame {
         SelectorJornada.setSelectedIndex(J);
     }//GEN-LAST:event_formWindowOpened
 
+    /**
+     * Llama a la ventana principal
+     * @param evt Evento ocurrido en la ventana: se esta cerrando la ventana
+     */
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         controlador.toVPrincipal(this);
     }//GEN-LAST:event_formWindowClosing
-
+    
+    /**
+     * Llama a la ventana principal
+     * @param evt Evento ocurrido en la ventana: boton salir pulsado
+     */
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         controlador.toVPrincipal(this);
     }//GEN-LAST:event_SalirActionPerformed
 
+    /**
+     * Rellena la tabla con un array rellenado de los elementos especificos de la jornada seleccionada obtenidos del array que genera el SAX con todas las jornadas
+     * @param evt Evento ocurrido en la ventana: un elemento del combobox seleccionado
+     */
     private void SelectorJornadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectorJornadaActionPerformed
         J = SelectorJornada.getSelectedIndex() * 15;
         Object[] columns = {"Equipo 1","Equipo 2","Resultado"};
