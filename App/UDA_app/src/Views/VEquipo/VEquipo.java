@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views.VEquipo;
 
 import Excepciones.*;
@@ -15,11 +10,13 @@ import javax.imageio.ImageIO;
 import javax.swing.JTextField;
 
 /**
- * 
- * @author Alejandro
- * @author Daniel
- * @author Unai
+ * @author Alejandro Diaz de Otalora
+ * @author Luis Daniel Barragues
+ * @author Unai Puelles
+ * @version 1.0
+ * @since 0.2 alpha
  */
+
 public class VEquipo extends javax.swing.JFrame {
 
     /**
@@ -209,10 +206,11 @@ public class VEquipo extends javax.swing.JFrame {
                         .addGap(44, 44, 44)
                         .addComponent(lTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(57, 57, 57)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bLupa))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bLupa, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -289,15 +287,7 @@ public class VEquipo extends javax.swing.JFrame {
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try
         {
-            if (tfNombre.getText().isEmpty())
-                throw new exceptionErroresColores(tfNombre, 1);
-            else
-                tfNombre.setBackground(new Color(255,255,204));
-            
-            if (!validar(tfNombre.getText(), "^([A-Za-z]([ ][A-Za-z])*){2,15}$"))
-                throw new exceptionErroresColores(tfNombre, 2);
-            else
-                tfNombre.setForeground(new Color(46,184,46));
+            setErroresColores();
             
             if(max<0)
                 throw new caracteresExcedidos();
@@ -305,12 +295,30 @@ public class VEquipo extends javax.swing.JFrame {
             if(cbDueno.getSelectedIndex() == 0)
                 throw new duenoVacio();
             
-            if(controlador.altaEquipo(tfNombre.getText(), taDesc.getText(), cbDueno.getSelectedIndex(), listaJugadores.getSelectedIndices()))
+            if(tipo != 1)
             {
-                controlador.JDInfo(this, true, "Equipo generado corréctamente");
-                controlador.toVPrincipal(this);
-            }
-            
+                if(controlador.altaEquipo(tfNombre.getText(), taDesc.getText(), cbDueno.getSelectedIndex(), listaJugadores.getSelectedIndices()))
+                {
+                    controlador.JDInfo(this, true, "Equipo generado corréctamente");
+                    controlador.toVPrincipal(this);
+                }
+            } 
+            else
+            {
+                
+                if(listaJugadores.getSelectedIndices().length>6 && controlador.equipoTemp.getPuesto().equals(0))
+                    throw new jugadoresObligatorios();
+                
+                controlador.equipoTemp.setJugadorCollection(null);
+                if(listaJugadores.getSelectedIndices().length != 0)
+                {
+                    for(int x = 0; x<listaJugadores.getSelectedIndices().length; x++)
+                        controlador.equipoTemp.addJugador(controlador.jugadoresUpd.get(listaJugadores.getSelectedIndices()[x]));
+                }    
+                
+                controlador.updateEquipo();
+             
+            }    
         }
         catch (exceptionErroresColores e){            
             setColorException(e.getTextField(), e.getCaso());
@@ -318,11 +326,17 @@ public class VEquipo extends javax.swing.JFrame {
         catch(caracteresExcedidos e){
             controlador.JDError(this, true, "Número de caracteres excedido en", "la descripción");
         }
+        catch(jugadoresObligatorios e){
+            controlador.JDError(this, true, "Hay que asignar 6 jugadores a un equipo que","está en una liga en curso");
+        }
         catch(duenoVacio e){
             controlador.JDError(this, true, "Seleccione un dueño");
         }
         catch(Exception e){
-            controlador.JDError(this, true, "Equipo no registrado: "+e.getClass());
+            if(tipo != 1)
+                controlador.JDError(this, true, "Equipo no registrado: "+e.getClass());
+            else
+                controlador.JDError(this, true, "Equipo no modificado: "+e.getClass());
         }
     }//GEN-LAST:event_bAceptarActionPerformed
 
@@ -344,10 +358,14 @@ public class VEquipo extends javax.swing.JFrame {
     private void bLupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLupaActionPerformed
         try
         {
-            controlador.findEquipoByNombre(tfNombre.getText());
-            if(controlador.equipoTemp==null)
-                throw new equipoNoEncontrado();
-            setTfStartUp(false, true);
+            setErroresColores();
+            if(tfNombre.getForeground().equals(new Color(46,184,46)))
+            {
+                controlador.findEquipoByNombre(tfNombre.getText());
+                if(controlador.equipoTemp==null)
+                    throw new equipoNoEncontrado();
+                setTfStartUp(false, true);
+            }
         }
         catch(equipoNoEncontrado e){
             controlador.JDError(this, true, "Nombre de equipo no encontrado");
@@ -370,7 +388,7 @@ public class VEquipo extends javax.swing.JFrame {
                 cbDueno.addItem("-- Seleccione Dueño --");
                 if(!controlador.llenarDuenos(cbDueno))
                     error = "dueños";
-                listaJugadores.setModel(controlador.llenarJugadores(listaJugadores));
+                listaJugadores.setModel(controlador.llenarJugadores(listaJugadores, 0));
                 if(listaJugadores.getModel().getSize() == 0)
                 {
                     if(error.isEmpty())
@@ -408,12 +426,32 @@ public class VEquipo extends javax.swing.JFrame {
             tfNombre.setText(controlador.equipoTemp.getNombre());
             cbDueno.addItem(controlador.equipoTemp.getDuenoDni().getPersona().getNombre());
             cbDueno.setEnabled(false);
-            listaJugadores.setModel(controlador.llenarJugadores(listaJugadores));
+            bLupa.setEnabled(a);
+            listaJugadores.setModel(controlador.llenarJugadores(listaJugadores, 1));
                 if(listaJugadores.getModel().getSize() == 0)
                 {
                     controlador.JDError(this, true, "No hay jugadores registrados, para editar el equipo");
-                }    
+                }
+                listaJugadores.setSelectedIndices(controlador.indices);
         }    
+    }
+    
+    public void setErroresColores(){
+        try
+        {
+            if (tfNombre.getText().isEmpty())
+                throw new exceptionErroresColores(tfNombre, 1);
+            else
+                tfNombre.setBackground(new Color(255,255,204));
+            
+            if (!validar(tfNombre.getText(), "^([A-Za-z]([ ][A-Za-z])*){2,15}$"))
+                throw new exceptionErroresColores(tfNombre, 2);
+            else
+                tfNombre.setForeground(new Color(46,184,46));
+        }
+        catch (exceptionErroresColores e){            
+            setColorException(e.getTextField(), e.getCaso());
+        }
     }
     
     public void setColorException(JTextField tf, int caso){

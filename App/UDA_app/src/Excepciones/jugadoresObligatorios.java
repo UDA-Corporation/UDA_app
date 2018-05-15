@@ -7,6 +7,6 @@ package Excepciones;
  * @version 1.0 
  */
 
-public class duenoVacio extends Exception{
+public class jugadoresObligatorios extends Exception{
     
 }

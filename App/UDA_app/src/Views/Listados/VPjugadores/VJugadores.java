@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views.Listados.VPjugadores;
 
 import control.controlador;
@@ -10,9 +5,13 @@ import java.awt.Image;
 import javax.imageio.ImageIO;
 
 /**
- *
- * @author 1gdaw02
+ * @author Alejandro Diaz de Otalora
+ * @author Luis Daniel Barragues
+ * @author Unai Puelles
+ * @version 1.0
+ * @since 0.7 alpha
  */
+
 public class VJugadores extends javax.swing.JFrame {
 
     /**

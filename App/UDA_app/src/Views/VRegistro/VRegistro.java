@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views.VRegistro;
 
 import java.awt.Color;
@@ -13,13 +8,15 @@ import Excepciones.*;
 import Modelo.BD.exceptions.PreexistingEntityException;
 import control.controlador;
 import java.awt.Image;
-import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /**
- *
- * @author unai-
+ * @author Alejandro Diaz de Otalora
+ * @author Luis Daniel Barragues
+ * @author Unai Puelles
+ * @version 1.0 
  */
+
 public class VRegistro extends javax.swing.JFrame {
 
     /**
@@ -94,7 +91,7 @@ public class VRegistro extends javax.swing.JFrame {
         lTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Nuevo Usuario");
+        setTitle("Registro");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
