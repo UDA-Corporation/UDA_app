@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package control;
 
 import Modelo.BD.*;
@@ -28,12 +23,15 @@ import Views.Listados.VEquipos.VEquipos;
 import Views.Listados.VPersonas.VPersonas;
 import Views.Listados.VPjugadores.VJugadores;
 import Views.JDEliminar.JDEliminar;
-import java.awt.Color;
 
 /**
- *
- * @author unai-
+ * @author Alejandro Diaz de Otalora
+ * @author Luis Daniel Barragues
+ * @author Unai Puelles
+ * @version 1.0
+ * @since 0.1 alpha
  */
+
 public class controlador {
 
     static ConexionBD conexion;
