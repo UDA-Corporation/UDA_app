@@ -1,3 +1,10 @@
+/*AUTHOR UDA CORPORATION
+*Alejandro Diaz de Otalora
+*Luis Daniel Barragues
+*Unai Puelles
+*/
+
+--DROP TABLES para eliminar las tablas
 DROP TABLE CUENTA CASCADE CONSTRAINTS;
 DROP TABLE EQUIPO CASCADE CONSTRAINTS;
 DROP TABLE EQUIPO_JUEGA CASCADE CONSTRAINTS;
@@ -8,8 +15,8 @@ DROP TABLE PARTIDO CASCADE CONSTRAINTS;
 DROP TABLE PERSONA CASCADE CONSTRAINTS;
 DROP TABLE DUENO CASCADE CONSTRAINTS;
 
-
-
+/*CREACION DE TABLAS*/
+--Creación de la tabla persona
 CREATE TABLE Persona
   (
     dni      VARCHAR2 (9) PRIMARY KEY ,
@@ -25,7 +32,7 @@ CREATE TABLE Persona
     tlfo     VARCHAR2 (9) NOT NULL 
   ) ;
   
-
+--Creación de la tabla cuenta
 CREATE TABLE Cuenta
   (
     id NVARCHAR2 (15) PRIMARY KEY ,
@@ -34,7 +41,7 @@ CREATE TABLE Cuenta
     CONSTRAINT Cuenta_Persona_FK FOREIGN KEY ( Persona_dni ) REFERENCES Persona ( dni ) 
   ) ;
 
-
+--Creación de la tabla dueño (en la que utilizamos el nombre sin "enie" ya que la base de datos no la permite)
 CREATE TABLE Dueno
   (
     dni        VARCHAR2 (9) PRIMARY KEY,
@@ -42,7 +49,7 @@ CREATE TABLE Dueno
   ) ;
   
 
-
+--Creación de la tabla dueño
 CREATE TABLE Equipo
   (
     cod        NUMBER (5) PRIMARY KEY ,
@@ -54,14 +61,14 @@ CREATE TABLE Equipo
     CONSTRAINT Equipo_Dueno_FK FOREIGN KEY ( Dueno_dni ) REFERENCES Dueno ( dni )
   ) ;
 
-
+--Creación de la tabla liga
 CREATE TABLE Liga( 
   cod NUMBER(5) PRIMARY KEY,
   nombre varchar2(15)not null
   ) ;
   
-  
-CREATE TABLE Jornadas
+--Creación de la tabla jornada  
+CREATE TABLE Jornada
   (
     cod    NUMBER (5) PRIMARY KEY ,
     fechaI   DATE NOT NULL ,
@@ -70,7 +77,7 @@ CREATE TABLE Jornadas
     CONSTRAINT Jornadas_Liga_FK FOREIGN KEY ( Liga_cod ) REFERENCES Liga ( cod )
   ) ;
   
-  
+--Creación de la tabla partido  
 CREATE TABLE Partido
   (
     cod            NUMBER (5) PRIMARY KEY ,
@@ -83,7 +90,7 @@ CREATE TABLE Partido
     CONSTRAINT Partido_Jornadas_FK FOREIGN KEY ( Jornadas_cod ) REFERENCES Jornadas ( cod )
   ) ;
   
-  
+--Creación de la tabla equipo_juega (relación entre la tabla equipo y partido)  
 CREATE TABLE Equipo_juega
   (
     Equipo_cod  NUMBER (5) NOT NULL ,
@@ -93,7 +100,7 @@ CREATE TABLE Equipo_juega
     CONSTRAINT FK_ASS_9 FOREIGN KEY ( Partido_cod ) REFERENCES Partido ( cod )    
   ) ; 
 
-
+--Creación de la tabla jugador
 CREATE TABLE Jugador
   (
     dni      VARCHAR2 (9) PRIMARY KEY ,
