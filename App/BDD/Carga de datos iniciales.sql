@@ -1,3 +1,9 @@
+/*AUTHOR UDA CORPORATION
+*Alejandro Diaz de Otalora
+*Luis Daniel Barragues
+*Unai Puelles
+*/
+
 --Insertamos las personas y asignamos su tipo (admin o usuario)
 /*Administradores*/
 INSERT INTO PERSONA VALUES ('53981435S','Daniel','Barragues','Julian de Apraiz','18','6C','Vitoria-Gasteiz','01012','Espana','admin','674563897');
