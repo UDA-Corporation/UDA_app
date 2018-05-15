@@ -25,11 +25,18 @@ public class VEquipo extends javax.swing.JFrame {
     /**
      * Creates new form VEquipo
      */
-    private static int max = 100;
-    private static int countTemp;
+    private static int max = 100, countTemp, tipo;
+    private static boolean errorG;
+    
     
     public VEquipo() {
         initComponents();
+        inicializarVentana();
+    }
+    
+    public VEquipo(int tipo){
+        initComponents();
+        this.tipo = tipo;
         inicializarVentana();
     }
 
@@ -59,11 +66,15 @@ public class VEquipo extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         listaJugadores = new javax.swing.JList<>();
         jLabel7 = new javax.swing.JLabel();
+        bLupa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -136,6 +147,13 @@ public class VEquipo extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Selección de jugadores");
 
+        bLupa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VEquipo/find_icon.png"))); // NOI18N
+        bLupa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLupaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -160,7 +178,9 @@ public class VEquipo extends javax.swing.JFrame {
                         .addGap(87, 87, 87)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tfNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bLupa, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,7 +190,7 @@ public class VEquipo extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbDueno, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(152, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(189, 189, 189)
                 .addComponent(bAceptar)
@@ -188,10 +208,11 @@ public class VEquipo extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(lTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(59, 59, 59)
+                .addGap(57, 57, 57)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bLupa))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,7 +230,7 @@ public class VEquipo extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAceptar)
                     .addComponent(bCancelar))
@@ -313,6 +334,29 @@ public class VEquipo extends javax.swing.JFrame {
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         controlador.toVPrincipal(this);
     }//GEN-LAST:event_bCancelarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(errorG)
+            controlador.toVPrincipal(this);
+        errorG = false;
+    }//GEN-LAST:event_formWindowOpened
+
+    private void bLupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLupaActionPerformed
+        try
+        {
+            controlador.findEquipoByNombre(tfNombre.getText());
+            if(controlador.equipoTemp==null)
+                throw new equipoNoEncontrado();
+            setTfStartUp(false, true);
+        }
+        catch(equipoNoEncontrado e){
+            controlador.JDError(this, true, "Nombre de equipo no encontrado");
+        }
+        catch(Exception e){
+            controlador.JDError(this, true, "Error:"+e.getMessage()+e.getClass());
+        }
+        
+    }//GEN-LAST:event_bLupaActionPerformed
     
     public void inicializarVentana(){
         try
@@ -321,28 +365,55 @@ public class VEquipo extends javax.swing.JFrame {
             Image i = ImageIO.read(getClass().getResource("/Views/recursos/logo_u_favicon.png"));
             setIconImage(i);
             setLocationRelativeTo(null);
-            cbDueno.addItem("-- Seleccione Dueño --");
-            if(!controlador.llenarDuenos(cbDueno))
-                error = "dueños";
-            listaJugadores.setModel(controlador.llenarJugadores(listaJugadores));
-            if(listaJugadores.getModel().getSize() == 0)
+            if(tipo != 1)
             {
-                if(error.isEmpty())
-                    error = "jugadores";
-                else
-                    error = "ni jugadores";
-            }    
+                cbDueno.addItem("-- Seleccione Dueño --");
+                if(!controlador.llenarDuenos(cbDueno))
+                    error = "dueños";
+                listaJugadores.setModel(controlador.llenarJugadores(listaJugadores));
+                if(listaJugadores.getModel().getSize() == 0)
+                {
+                    if(error.isEmpty())
+                        error = "jugadores";
+                    else
+                        error = "ni jugadores";
+                }    
                 
             
-            if(!error.isEmpty())
-            {
-                controlador.JDError(this, true, "No hay "+error+" registrados, para crear", "un equipo son necesarios");
-                controlador.toVPrincipal(this);
+                if(!error.isEmpty())
+                {
+                    controlador.JDError(this, true, "No hay "+error+" registrados, para crear", "un equipo son necesarios");
+                    errorG = true;
+                }
             }
+            else
+            {
+                setTfStartUp(true, false);
+            }    
+            
         }
         catch(Exception e){
             controlador.JDError(this, true, "Error inicio ventana");
         }   
+    }
+    
+    public void setTfStartUp(boolean a, boolean b){
+        tfNombre.setEnabled(a);
+        taDesc.setEnabled(b);
+        cbDueno.setEnabled(b);
+        listaJugadores.setEnabled(b);
+        if(b)
+        {
+            taDesc.setText(controlador.equipoTemp.getDesripcion());
+            tfNombre.setText(controlador.equipoTemp.getNombre());
+            cbDueno.addItem(controlador.equipoTemp.getDuenoDni().getPersona().getNombre());
+            cbDueno.setEnabled(false);
+            listaJugadores.setModel(controlador.llenarJugadores(listaJugadores));
+                if(listaJugadores.getModel().getSize() == 0)
+                {
+                    controlador.JDError(this, true, "No hay jugadores registrados, para editar el equipo");
+                }    
+        }    
     }
     
     public void setColorException(JTextField tf, int caso){
@@ -403,6 +474,7 @@ public class VEquipo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton bCancelar;
+    private javax.swing.JButton bLupa;
     private javax.swing.JComboBox<String> cbDueno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

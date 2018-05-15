@@ -8,10 +8,13 @@ package Views.ResultadosyDatos;
 import Parsers.DOMJornadas.ParserDOMJornadas;
 import Parsers.SAX.ParserSAXJornadas;
 import control.controlador;
+import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -21,14 +24,18 @@ import javax.xml.transform.TransformerException;
  * @author danie
  */
 public class VJornadas extends javax.swing.JFrame {
-    //Jornadas en el array (indice del codigo jornadas)
-    int J = 0;
+    //La X lleva la posicion de la jornada seleccionada en el combo box, porque en el XML no aparece ordenado (por el JPA)
+    int x = 0;
+    
     /**
      * Creates new form VJornadas
      */
-    public VJornadas() {
+    public VJornadas() throws IOException {
         initComponents();
         setLocationRelativeTo(null);
+        //Esta opción nos va a asignar un favicon a nusetro proyecto
+        Image i = ImageIO.read(getClass().getResource("/Views/recursos/logo_u_favicon.png"));
+        setIconImage(i);
     }
 
     /**
@@ -46,7 +53,6 @@ public class VJornadas extends javax.swing.JFrame {
         SelectorJornada = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         Table = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
         Salir = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         FechaInicio = new javax.swing.JLabel();
@@ -78,7 +84,6 @@ public class VJornadas extends javax.swing.JFrame {
             }
         });
 
-        Table.setAutoCreateRowSorter(true);
         Table.setBackground(new java.awt.Color(255, 255, 204));
         Table.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         Table.setModel(new javax.swing.table.DefaultTableModel(
@@ -103,10 +108,6 @@ public class VJornadas extends javax.swing.JFrame {
         Table.setPreferredSize(new java.awt.Dimension(300, 100));
         Table.setRowHeight(25);
         jScrollPane1.setViewportView(Table);
-
-        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("Haz click en las columnas para ordenar la tabla por ese parámetro");
 
         Salir.setText("Salir");
         Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -147,9 +148,7 @@ public class VJornadas extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(394, 394, 394)
                         .addComponent(Salir)))
@@ -160,10 +159,7 @@ public class VJornadas extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3))
+                    .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -218,7 +214,7 @@ public class VJornadas extends javax.swing.JFrame {
             ParserSAXJornadas JornadasSAX = new ParserSAXJornadas();
             JornadasSAX.ejecutar();
         }
-        SelectorJornada.setSelectedIndex(J);
+        SelectorJornada.setSelectedIndex(x);
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -242,21 +238,26 @@ public class VJornadas extends javax.swing.JFrame {
      * @param evt Evento ocurrido en la ventana: un elemento del combobox seleccionado
      */
     private void SelectorJornadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectorJornadaActionPerformed
-        J = SelectorJornada.getSelectedIndex() * 15;
+        int J = SelectorJornada.getSelectedIndex() + 1;
+        for (int i = 0; i < 14; i++) {
+            x = i * 15;
+            if (J == Integer.parseInt(ParserSAXJornadas.Jornadas[x].toString())) break;
+        }
         Object[] columns = {"Equipo 1","Equipo 2","Resultado"};
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(columns);
-        for (int i = (J + 3); i < (J + 15); i++) {
-            int x = i + 12;
+        for (int i = (x + 3); i < (x + 15); i++) {
+            int y = i + 12;
             Object[] row = new Object[3];
-            row = Arrays.copyOfRange(Parsers.SAX.ParserSAXJornadas.Jornadas,i,x);
+            row = Arrays.copyOfRange(Parsers.SAX.ParserSAXJornadas.Jornadas,i,y);
             model.addRow(row);
             Arrays.fill(row,null);
             i += 2;
         } 
         Table.setModel(model);
-        FechaFinal.setText(Parsers.SAX.ParserSAXJornadas.Jornadas[J+1].toString());
-        FechaInicio.setText(Parsers.SAX.ParserSAXJornadas.Jornadas[J+2].toString());
+        FechaFinal.setText(Parsers.SAX.ParserSAXJornadas.Jornadas[x+1].toString());
+        FechaInicio.setText(Parsers.SAX.ParserSAXJornadas.Jornadas[x+2].toString());
+        x = 0;
     }//GEN-LAST:event_SelectorJornadaActionPerformed
 
     /**
@@ -289,7 +290,11 @@ public class VJornadas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VJornadas().setVisible(true);
+                try {
+                    new VJornadas().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(VJornadas.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -302,7 +307,6 @@ public class VJornadas extends javax.swing.JFrame {
     private javax.swing.JTable Table;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;

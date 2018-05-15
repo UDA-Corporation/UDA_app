@@ -1,32 +1,199 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<liga fechaExpiracion="14-May-2018">
-    <jornada codigoJornada="11111111111111111111111111111111"
-        fechaFinal="20-11-2018" fechaInicio="10-10-2018">
-        <partido equipo1="1" equipo2="2">
-            <resultado>10-20</resultado>
+<liga fechaExpiracion="21-may-2018">
+    <jornada codigoJornada="1" fechaFinal="22-abr-2018" fechaInicio="21-abr-2018">
+        <partido equipo1="D3STROY" equipo2="FNATICX">
+            <resultado>1-2</resultado>
         </partido>
-        <partido equipo1="ALEJANDRO JOPUTA" equipo2="4">
-            <resultado>30-20</resultado>
+        <partido equipo1="BIMBA" equipo2="sERDOn">
+            <resultado/>
         </partido>
-        <partido equipo1="asdfALEJANDRO" equipo2="4">
-            <resultado>30-20</resultado>
+        <partido equipo1="HalWay" equipo2="uGAnD">
+            <resultado/>
         </partido>
-        <partido equipo1="ALEJANDROafdasd" equipo2="4">
-            <resultado>30-20</resultado>
+        <partido equipo1="xAMAZINGx" equipo2="tHeamazonX">
+            <resultado/>
         </partido>
     </jornada>
-    <jornada codigoJornada="2" fechaFinal="20-11-2018" fechaInicio="10-10-2018">
-        <partido equipo1="ALEJANDRO GAY" equipo2="4">
-            <resultado>30-20</resultado>
+    <jornada codigoJornada="2" fechaFinal="29-abr-2018" fechaInicio="28-abr-2018">
+        <partido equipo1="D3STROY" equipo2="BIMBA">
+            <resultado/>
         </partido>
-        <partido equipo1="3" equipo2="4">
-            <resultado>30-20</resultado>
+        <partido equipo1="FNATICX" equipo2="sERDOn">
+            <resultado/>
         </partido>
-        <partido equipo1="3" equipo2="4">
-            <resultado>30-20</resultado>
+        <partido equipo1="HalWay" equipo2="xAMAZINGx">
+            <resultado/>
         </partido>
-        <partido equipo1="3" equipo2="4">
-            <resultado>30-20</resultado>
+        <partido equipo1="uGAnD" equipo2="tHeamazonX">
+            <resultado/>
+        </partido>
+    </jornada>
+    <jornada codigoJornada="3" fechaFinal="06-may-2018" fechaInicio="05-may-2018">
+        <partido equipo1="D3STROY" equipo2="sERDOn">
+            <resultado/>
+        </partido>
+        <partido equipo1="FNATICX" equipo2="BIMBA">
+            <resultado/>
+        </partido>
+        <partido equipo1="HalWay" equipo2="tHeamazonX">
+            <resultado/>
+        </partido>
+        <partido equipo1="uGAnD" equipo2="xAMAZINGx">
+            <resultado/>
+        </partido>
+    </jornada>
+    <jornada codigoJornada="4" fechaFinal="13-may-2018" fechaInicio="12-may-2018">
+        <partido equipo1="D3STROY" equipo2="HalWay">
+            <resultado/>
+        </partido>
+        <partido equipo1="FNATICX" equipo2="uGAnD">
+            <resultado/>
+        </partido>
+        <partido equipo1="BIMBA" equipo2="xAMAZINGx">
+            <resultado/>
+        </partido>
+        <partido equipo1="sERDOn" equipo2="tHeamazonX">
+            <resultado/>
+        </partido>
+    </jornada>
+    <jornada codigoJornada="5" fechaFinal="20-may-2018" fechaInicio="19-may-2018">
+        <partido equipo1="D3STROY" equipo2="uGAnD">
+            <resultado/>
+        </partido>
+        <partido equipo1="FNATICX" equipo2="HalWay">
+            <resultado/>
+        </partido>
+        <partido equipo1="BIMBA" equipo2="tHeamazonX">
+            <resultado/>
+        </partido>
+        <partido equipo1="sERDOn" equipo2="xAMAZINGx">
+            <resultado/>
+        </partido>
+    </jornada>
+    <jornada codigoJornada="6" fechaFinal="27-may-2018" fechaInicio="26-may-2018">
+        <partido equipo1="D3STROY" equipo2="xAMAZINGx">
+            <resultado/>
+        </partido>
+        <partido equipo1="FNATICX" equipo2="tHeamazonX">
+            <resultado/>
+        </partido>
+        <partido equipo1="BIMBA" equipo2="HalWay">
+            <resultado/>
+        </partido>
+        <partido equipo1="sERDOn" equipo2="uGAnD">
+            <resultado/>
+        </partido>
+    </jornada>
+    <jornada codigoJornada="7" fechaFinal="03-jun-2018" fechaInicio="02-jun-2018">
+        <partido equipo1="D3STROY" equipo2="tHeamazonX">
+            <resultado/>
+        </partido>
+        <partido equipo1="FNATICX" equipo2="xAMAZINGx">
+            <resultado/>
+        </partido>
+        <partido equipo1="BIMBA" equipo2="uGAnD">
+            <resultado/>
+        </partido>
+        <partido equipo1="sERDOn" equipo2="HalWay">
+            <resultado/>
+        </partido>
+    </jornada>
+    <jornada codigoJornada="8" fechaFinal="10-jun-2018" fechaInicio="09-jun-2018">
+        <partido equipo1="D3STROY" equipo2="FNATICX">
+            <resultado/>
+        </partido>
+        <partido equipo1="BIMBA" equipo2="sERDOn">
+            <resultado/>
+        </partido>
+        <partido equipo1="HalWay" equipo2="uGAnD">
+            <resultado/>
+        </partido>
+        <partido equipo1="xAMAZINGx" equipo2="tHeamazonX">
+            <resultado/>
+        </partido>
+    </jornada>
+    <jornada codigoJornada="9" fechaFinal="17-jun-2018" fechaInicio="16-jun-2018">
+        <partido equipo1="D3STROY" equipo2="BIMBA">
+            <resultado/>
+        </partido>
+        <partido equipo1="FNATICX" equipo2="sERDOn">
+            <resultado/>
+        </partido>
+        <partido equipo1="HalWay" equipo2="xAMAZINGx">
+            <resultado/>
+        </partido>
+        <partido equipo1="uGAnD" equipo2="tHeamazonX">
+            <resultado/>
+        </partido>
+    </jornada>
+    <jornada codigoJornada="10" fechaFinal="24-jun-2018" fechaInicio="23-jun-2018">
+        <partido equipo1="FNATICX" equipo2="BIMBA">
+            <resultado/>
+        </partido>
+        <partido equipo1="D3STROY" equipo2="sERDOn">
+            <resultado/>
+        </partido>
+        <partido equipo1="uGAnD" equipo2="xAMAZINGx">
+            <resultado/>
+        </partido>
+        <partido equipo1="HalWay" equipo2="tHeamazonX">
+            <resultado/>
+        </partido>
+    </jornada>
+    <jornada codigoJornada="11" fechaFinal="01-jul-2018" fechaInicio="30-jun-2018">
+        <partido equipo1="D3STROY" equipo2="HalWay">
+            <resultado/>
+        </partido>
+        <partido equipo1="FNATICX" equipo2="uGAnD">
+            <resultado/>
+        </partido>
+        <partido equipo1="BIMBA" equipo2="xAMAZINGx">
+            <resultado/>
+        </partido>
+        <partido equipo1="sERDOn" equipo2="tHeamazonX">
+            <resultado/>
+        </partido>
+    </jornada>
+    <jornada codigoJornada="12" fechaFinal="08-jul-2018" fechaInicio="07-jul-2018">
+        <partido equipo1="FNATICX" equipo2="HalWay">
+            <resultado/>
+        </partido>
+        <partido equipo1="D3STROY" equipo2="uGAnD">
+            <resultado/>
+        </partido>
+        <partido equipo1="sERDOn" equipo2="xAMAZINGx">
+            <resultado/>
+        </partido>
+        <partido equipo1="BIMBA" equipo2="tHeamazonX">
+            <resultado/>
+        </partido>
+    </jornada>
+    <jornada codigoJornada="13" fechaFinal="15-jul-2018" fechaInicio="14-jul-2018">
+        <partido equipo1="BIMBA" equipo2="HalWay">
+            <resultado/>
+        </partido>
+        <partido equipo1="sERDOn" equipo2="uGAnD">
+            <resultado/>
+        </partido>
+        <partido equipo1="D3STROY" equipo2="xAMAZINGx">
+            <resultado/>
+        </partido>
+        <partido equipo1="FNATICX" equipo2="tHeamazonX">
+            <resultado/>
+        </partido>
+    </jornada>
+    <jornada codigoJornada="14" fechaFinal="22-jul-2018" fechaInicio="21-jul-2018">
+        <partido equipo1="sERDOn" equipo2="HalWay">
+            <resultado/>
+        </partido>
+        <partido equipo1="BIMBA" equipo2="uGAnD">
+            <resultado/>
+        </partido>
+        <partido equipo1="FNATICX" equipo2="xAMAZINGx">
+            <resultado/>
+        </partido>
+        <partido equipo1="D3STROY" equipo2="tHeamazonX">
+            <resultado/>
         </partido>
     </jornada>
 </liga>

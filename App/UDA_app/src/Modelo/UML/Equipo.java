@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Equipo.findByPuesto", query = "SELECT e FROM Equipo e WHERE e.puesto = :puesto")})
 public class Equipo implements Serializable {
 
+    public static final String findName = "Equipo.findByNombre";
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
