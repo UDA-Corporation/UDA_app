@@ -32,30 +32,30 @@ INSERT INTO DUENO VALUES ('87653149P');
 INSERT INTO DUENO VALUES ('78567456A');
 
 --Creamos las cuentas
-INSERT INTO CUENTA VALUES ('barraguesh','12345Abcde','53981435S');
-INSERT INTO CUENTA VALUES ('unaipuelles','12345Abcde','90878656R');
-INSERT INTO CUENTA VALUES ('alexddo','12345Abcde','62346572H');
+INSERT INTO CUENTA VALUES ('barraguesh','12345Abcde!','53981435S');
+INSERT INTO CUENTA VALUES ('unaipuelles','12345Abcde!','90878656R');
+INSERT INTO CUENTA VALUES ('alexddo','12345Abcde!','62346572H');
 INSERT INTO CUENTA VALUES ('a','a','00000000A');
-INSERT INTO CUENTA VALUES ('sandstorm','12345Abcde','34576287U');
-INSERT INTO CUENTA VALUES ('fnatic','12345Abcde','38274230I');
-INSERT INTO CUENTA VALUES ('AlCapo','12345Abcde','91823490O');
-INSERT INTO CUENTA VALUES ('jonlaz','12345Abcde','56345632Y');
-INSERT INTO CUENTA VALUES ('alvaros','12345Abcde','52437265I');
-INSERT INTO CUENTA VALUES ('sebashi','12345Abcde','67456938W');
-INSERT INTO CUENTA VALUES ('manu','12345Abcde','87653149P');
-INSERT INTO CUENTA VALUES ('antoniaa','12345Abcde','78567456A');
-INSERT INTO CUENTA VALUES ('Destroll3r','12345Abcde','12367487H');
-INSERT INTO CUENTA VALUES ('KingBronx','12345Abcde','90898776D');
+INSERT INTO CUENTA VALUES ('sandstorm','12345Abcde!','34576287U');
+INSERT INTO CUENTA VALUES ('fnatic','12345Abcde!','38274230I');
+INSERT INTO CUENTA VALUES ('AlCapo','12345Abcde!','91823490O');
+INSERT INTO CUENTA VALUES ('jonlaz','12345Abcde!','56345632Y');
+INSERT INTO CUENTA VALUES ('alvaros','12345Abcde!','52437265I');
+INSERT INTO CUENTA VALUES ('sebashi','12345Abcde!','67456938W');
+INSERT INTO CUENTA VALUES ('manu','12345Abcde!','87653149P');
+INSERT INTO CUENTA VALUES ('antoniaa','12345Abcde!','78567456A');
+INSERT INTO CUENTA VALUES ('Destroll3r','12345Abcde!','12367487H');
+INSERT INTO CUENTA VALUES ('KingBronx','12345Abcde!','90898776D');
 
 --Creamos los equipos
 INSERT INTO EQUIPO VALUES (1,'D3STROY','Campeones de 2015. Equipo creado por el mejor ADC de toda la liga',0,0,'34576287U');
 INSERT INTO EQUIPO VALUES (2,'FNATICX','Campeones de 2016. Los mas veteranos de la liga.',0,0,'38274230I');
 INSERT INTO EQUIPO VALUES (3,'BIMBA','Aun no han sido campeones pero prometen dar espectaculo.',0,0,'91823490O');
-INSERT INTO EQUIPO VALUES (4,'sERDOn','Invatibles durante 5 años en counter strike',0,0,'56345632Y');
-INSERT INTO EQUIPO VALUES (5,'HalWay','Nuevos en el juego pero con promesas jovenes',0,0,'52437265I');
-INSERT INTO EQUIPO VALUES (6,'uGAnD','Estilo y skill juntas',0,0,'67456938W');
-INSERT INTO EQUIPO VALUES (7,'xAMAZINGx','Promesas en el campo de batallas',0,0,'87653149P');
-INSERT INTO EQUIPO VALUES (8,'tHeamazonX','Nuevos, pero con corazon',0,0,'78567456A');
+INSERT INTO EQUIPO VALUES (4,'SERDON','Invatibles durante 5 años en counter strike',0,0,'56345632Y');
+INSERT INTO EQUIPO VALUES (5,'HALWAY','Nuevos en el juego pero con promesas jovenes',0,0,'52437265I');
+INSERT INTO EQUIPO VALUES (6,'UGAND','Estilo y skill juntas',0,0,'67456938W');
+INSERT INTO EQUIPO VALUES (7,'XAMAZINGX','Promesas en el campo de batallas',0,0,'87653149P');
+INSERT INTO EQUIPO VALUES (8,'THEAMAZONX','Nuevos, pero con corazon',0,0,'78567456A');
 
 --Insertamos los jugadores
 INSERT INTO JUGADOR VALUES ('53465723E','Gam3r',2000,'Javier', 'Andoniz','Cuba','24','5D','Vitoria-Gasteiz','01567','España','690123485',1);
