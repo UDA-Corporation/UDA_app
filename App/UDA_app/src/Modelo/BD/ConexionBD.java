@@ -1,16 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo.BD;
 
 import javax.persistence.Persistence;
 
 /**
- *
- * @author 1gdaw02
+ * @author Alejandro Diaz de Otalora
+ * @author Luis Daniel Barragues
+ * @author Unai Puelles
+ * @version 1.0 
  */
+
 public class ConexionBD {
     private CuentaJpaController CuentaBD;
     private DuenoJpaController DuenoBD;

@@ -3,6 +3,13 @@ package Modelo.BD.exceptions;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Alejandro Diaz de Otalora
+ * @author Luis Daniel Barragues
+ * @author Unai Puelles
+ * @version 1.0 
+ */
+
 public class IllegalOrphanException extends Exception {
     private List<String> messages;
     public IllegalOrphanException(List<String> messages) {

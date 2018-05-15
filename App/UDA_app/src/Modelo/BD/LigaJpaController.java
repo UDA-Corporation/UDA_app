@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo.BD;
 
 import Modelo.BD.exceptions.IllegalOrphanException;
@@ -22,9 +17,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 /**
- *
- * @author 1gdaw02
+ * @author Alejandro Diaz de Otalora
+ * @author Luis Daniel Barragues
+ * @author Unai Puelles
+ * @version 1.0 
  */
+
 public class LigaJpaController implements Serializable {
 
     public LigaJpaController(EntityManagerFactory emf) {
