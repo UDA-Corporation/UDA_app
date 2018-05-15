@@ -94,6 +94,9 @@ public class controlador {
 
     }
 
+    /**
+     * funcion que incializa algunas de las variables globales que vamos a usar
+     */
     public static void inicializar() {
         conexion = new ConexionBD();
         jornadas = new ArrayList();
@@ -103,105 +106,196 @@ public class controlador {
         fmt = new SimpleDateFormat("dd/MM/yyyy");
     }
 
+    /**
+     * 
+     * @param ventana recive la ventana desde el que es llamado este metodo
+     */
     public static void toVLogin(Frame ventana) {
         ventana.dispose();
         VLogin vl = new VLogin();
         vl.setVisible(true);
     }
 
+    /**
+     * 
+     * @param ventana recive la ventana desde el que es llamado este metodo
+     */
     public static void toVPrincipal(Frame ventana) {
         ventana.dispose();
         VPrincipal vp = new VPrincipal();
         vp.setVisible(true);
     }
 
+    /**
+     * 
+     * @param ventana recive la ventana desde el que es llamado este metodo
+     * @param tipo tipo de ventana, dependiendo de el se mostrarar y se ocultaran elementos
+     * @param titulo el titulo que recivira la ventana
+     * @param tipoventana otro tipo de ventana, dependiendo de el se redigira a una ventana o a otra
+     */
     public static void toVRegistro(Frame ventana, int tipo, String titulo, int tipoventana) {
         ventana.dispose();
         VRegistro vr = new VRegistro(tipo, titulo, tipoventana);
         vr.setVisible(true);
     }
 
+    /**
+     * 
+     * @param ventana recive la ventana desde el que es llamado este metodo
+     * @param tipo dependiendo del tipo sera una modificacion o un alta
+     */
     public static void toVEquipo(Frame ventana, int tipo) {
         ventana.dispose();
         VEquipo ve = new VEquipo(tipo);
         ve.setVisible(true);
     }
     
+    /**
+     * 
+     * @param ventana recive la ventana desde el que es llamado este metodo
+     */
     public static void toJFLiga(Frame ventana) {
         ventana.dispose();
         VLiga v = new VLiga();
         v.setVisible(true);
     }
 
+    /**
+     * 
+     * @param ventana recive la ventana desde el que es llamado este metodo
+     */
     public static void toVPuntos(javax.swing.JFrame ventana) {
         ventana.setVisible(false);
         VPuntos vpunt = new VPuntos();
         vpunt.setVisible(true);
     }
     
+    /**
+     * 
+     * @param ventana recive la ventana desde el que es llamado este metodo
+     * @throws IOException 
+     */
     public static void toVClasificacion(Frame ventana) throws IOException {
         ventana.dispose();
         VClasificacion vc = new VClasificacion();
         vc.setVisible(true);
     }
     
+    /**
+     * 
+     * @param ventana recive la ventana desde el que es llamado este metodo
+     * @throws IOException 
+     */
     public static void toVJornadas(Frame ventana) throws IOException {
         ventana.dispose();
         VJornadas vj = new VJornadas();
         vj.setVisible(true);
     }
     
+    /**
+     * 
+     * @param ventana recive la ventana desde el que es llamado este metodo
+     * @param tipo dependiendo del tipo llamara a una ventana o a otra
+     */
     public static void toVPersonas(javax.swing.JFrame ventana, String tipo){
         ventana.dispose();
         VPersonas vpers = new VPersonas(tipo);
         vpers.setVisible(true);
     }
+    
+    /**
+     * 
+     * @param ventana recive la ventana desde el que es llamado este metodo
+     */
     public static void toVJugadores(javax.swing.JFrame ventana){
         ventana.dispose();
         VJugadores vjugs = new VJugadores();
         vjugs.setVisible(true);
     }
+    
+    /**
+     * 
+     * @param ventana recive la ventana desde el que es llamado este metodo
+     */
     public static void toVequipos(javax.swing.JFrame ventana){
         ventana.dispose();
         VEquipos veqs = new VEquipos();
         veqs.setVisible(true);
     }
 
+    /**
+     * Jdialog que se usa para mostrar los errores
+     * @param ventana recive la ventana desde el que es llamado este metodo
+     * @param modal 
+     * @param mensaje mensaje que se quiere mostrar en pantalla
+     */
     public static void JDError(Frame ventana, boolean modal, String mensaje) {
-
         JDError jde = new JDError(ventana, modal, mensaje);
         jde.setVisible(true);
     }
-
+    /**
+     * Si el mensaje es demasiado largo se usara este metodo
+     * @param ventana recive la ventana desde el que es llamado este metodo
+     * @param modal 
+     * @param mensaje mensaje que se mostrara por pantalla
+     * @param mensaje2 mensaje que se mostrar por pantalla
+     */
     public static void JDError(Frame ventana, boolean modal, String mensaje, String mensaje2) {
-
         JDError jde = new JDError(ventana, modal, mensaje, mensaje2);
         jde.setVisible(true);
     }
 
+    /**
+     * Jdialog que se usa para mostrar confirmaciones o informacion
+     * @param ventana recive la ventana desde el que es llamado este metodo
+     * @param modal
+     * @param mensaje mensaje que se quiere mostrar
+     */
     public static void JDInfo(Frame ventana, boolean modal, String mensaje) {
-
         JDInfo jde = new JDInfo(ventana, modal, mensaje);
         jde.setVisible(true);
     }
 
+    /**
+     * Si el mensaje es demasiado largo se usara este metodo
+     * @param ventana recive la ventana desde el que es llamado este metodo
+     * @param modal
+     * @param mensaje mensaje que se quiere mostrar
+     * @param mensaje2 mensaje que se quiere mostrar
+     */
     public static void JDInfo(Frame ventana, boolean modal, String mensaje, String mensaje2) {
-
         JDInfo jde = new JDInfo(ventana, modal, mensaje, mensaje2);
         jde.setVisible(true);
     }
     
+    /**
+     * 
+     * @param d recive el Jdialog desde el que es llamado este metodo
+     * @param modal
+     * @param mensaje mensaje que se quiere mostrar
+     */
     public static void JDInfo(javax.swing.JDialog d, boolean modal, String mensaje) {
-
         JDInfo jde = new JDInfo(d, modal, mensaje);
         jde.setVisible(true);
     }
     
+    /**
+     * Ventana para eliminar datos de una tabla dependiendo del tipo
+     * @param ventana recive la ventana desde el que es llamado este metodo
+     * @param modal
+     * @param tipo dependiendo del tipo se eliminara de una tabla o de otra
+     */
     public static void JDEliminar(Frame ventana, boolean modal, String tipo) {
         JDEliminar jdeliminar = new JDEliminar(ventana, modal, tipo);
         jdeliminar.setVisible(true);
     }
 
+    /**
+     * Devuelve si se han encontrado los datos y el login es correcto o false si es lo contrario
+     * @param usuario nombre de usuario
+     * @param pass contraseña
+     * @return devuelve si el login es correcto o no
+     */
     public static boolean findUsuLogin(String usuario, String pass) {
 
         boolean login = false;
@@ -218,6 +312,11 @@ public class controlador {
         usu = null;
     }
 
+    /**
+     * Busca un nombre en la base de datos
+     * @param nick String que se quiere buscar
+     * @return devuelve si existe o no
+     */
     public static boolean findNickname(String nick) {
         boolean encontrado = false;
         List<Jugador> j = conexion.getJugadorBD().findJugadorEntities();
@@ -232,25 +331,63 @@ public class controlador {
 
     }
     
+    /**
+     * Busca una persona por nombre
+     * @param dni clave primaria para facilitar la busqueda
+     * @throws Exception 
+     */
     public static void findPerByDni(String dni) throws Exception{
         persTemp = conexion.getPersonaBD().findPersona(dni);
         if(!persTemp.getTipoPersona().equals("usuario"))
             persTemp = null;
     }
     
+    /**
+     * Busca un jugador por nombre
+     * @param dni clave primaria para facilitar la busqueda
+     * @throws Exception 
+     */
     public static void findJugByDni(String dni) throws Exception{
         jugTemp = conexion.getJugadorBD().findJugador(dni);
     }
     
+    /**
+     * Busca un dueño por nombre
+     * @param dni clave primaria para facilitar la busqueda
+     * @throws Exception 
+     */
     public static void findDueByDni(String dni) throws Exception{
         dueTemp = conexion.getDuenoBD().findDueno(dni);
     }
     
+    /**
+     * Busca un equipo por nombre
+     * @param nombre nombre que se desea buscar en equipo
+     * @throws Exception 
+     */
     public static void findEquipoByNombre(String nombre) throws Exception{
         
         equipoTemp = conexion.getEquipoBD().findByName(nombre.toUpperCase());
     }
     
+    /**
+     * Inserta en la tabla persona y en cuenta
+     * @param dni 
+     * @param nombre
+     * @param apellido
+     * @param calle
+     * @param numero
+     * @param piso
+     * @param ciudad
+     * @param cp
+     * @param pais
+     * @param tel
+     * @param usuario
+     * @param pass
+     * @param tipo_persona
+     * @return devuelve true o false
+     * @throws Exception 
+     */
     public static boolean registrarUsuario(String dni, String nombre, String apellido, String calle, String numero, String piso, String ciudad, String cp, String pais, String tel, String usuario, String pass, String tipo_persona) throws Exception {
         boolean correcto;
         
@@ -274,11 +411,33 @@ public class controlador {
         return correcto;
     }
 
+    /**
+     * Relaciona la tabla persona con dueño
+     * @param dni clave primaria
+     * @throws Exception 
+     */
     public static void addDueno(String dni) throws Exception {
         Dueno d = new Dueno(dni);
         conexion.getDuenoBD().create(d);
     }
 
+    /**
+     * 
+     * @param dni
+     * @param nickname
+     * @param sueldo
+     * @param nombre
+     * @param apellido
+     * @param calle
+     * @param numero
+     * @param piso
+     * @param ciudad
+     * @param cp
+     * @param pais
+     * @param tel
+     * @return
+     * @throws Exception 
+     */
     public static boolean registrarJugador(String dni, String nickname, String sueldo, String nombre, String apellido, String calle, String numero, String piso, String ciudad, String cp, String pais, String tel) throws Exception {
 
         Jugador j1 = new Jugador(dni, nickname, Integer.parseInt(sueldo), nombre, apellido, calle, numero, piso, ciudad, cp, pais, tel);
@@ -288,21 +447,37 @@ public class controlador {
         return true;
     }
     
+    /**
+     * Actualiza la persona
+     * @throws Exception 
+     */
     public static void updatePersona() throws Exception{
         conexion.getPersonaBD().edit(persTemp);
         persTemp = null;
     }
     
+    /**
+     * Actualiza el jugador
+     * @throws Exception 
+     */
     public static void updateJugador() throws Exception{
         conexion.getJugadorBD().edit(jugTemp);
         jugTemp = null;
     }
     
+    /**
+     * Actualiza el dueño
+     * @throws Exception 
+     */
     public static void updateDueno() throws Exception{
         conexion.getPersonaBD().edit(dueTemp.getPersona());
         dueTemp = null;
     }
     
+    /**
+     * Borra una persona
+     * @param dni clave primaria de la persona que se quiere eliminar
+     */
     public static void destroyRegistro(String dni) {
         try {
             conexion.getPersonaBD().destroy(dni);
@@ -311,6 +486,12 @@ public class controlador {
         }
     }
 
+    /**
+     * Rellena el comboBox de la ventana desde la que es llamado este metodo
+     * @param cb comboBox que se quiere llenar
+     * @return devuelve true si existen dueños y si no false
+     * @throws Exception 
+     */
     public static boolean llenarDuenos(javax.swing.JComboBox cb) throws Exception {
 
         duenos = conexion.getDuenoBD().findDuenoEntities();
@@ -326,6 +507,12 @@ public class controlador {
 
     }
     
+    /**
+     * Llena la lista de jugadores de la lista de jugadores de la ventana desde la que es llamado
+     * @param lista lista que se quiere llenar
+     * @param tipo dependiendo del tipo sera un alta o una modificacion
+     * @return devuelve el modelo de la lista
+     */
     public static DefaultListModel<String> llenarJugadores(javax.swing.JList lista, int tipo) {
         
         jugadores = (List) conexion.getJugadorBD().findJugadorEntities();
@@ -370,6 +557,15 @@ public class controlador {
         return model;
     }
 
+    /**
+     * 
+     * @param nombre
+     * @param desc
+     * @param dueno
+     * @param indices
+     * @return
+     * @throws Exception 
+     */
     public static boolean altaEquipo(String nombre, String desc, int dueno, int[] indices) throws Exception{
 
         Equipo e1 = new Equipo(Integer.parseInt(conexion.getEquipoBD().autoincrement()), nombre.toUpperCase(), desc);
@@ -388,6 +584,10 @@ public class controlador {
         return true;
     }
     
+    /**
+     * Actualiza el equipo
+     * @throws Exception 
+     */
     public static void updateEquipo() throws Exception{
         
         conexion.getEquipoBD().edit(equipoTemp);
@@ -397,6 +597,11 @@ public class controlador {
         jugadoresUpd = null;
     }
 
+    /**
+     * Llena la lista 
+     * @param lista
+     * @return 
+     */
     public static DefaultListModel<String> llenarLista(javax.swing.JList lista) {
         equiposBD = conexion.getEquipoBD().findEquipoEntities();
         DefaultListModel<String> model = new DefaultListModel();
@@ -406,12 +611,21 @@ public class controlador {
         return model;
     }
 
+    /**
+     * Llena el comboBox de la venta desde la que es llamado este metodo
+     * @param cb comboBoc que se quiere llenar
+     */
     public static void llenarLiga(javax.swing.JComboBox cb) {
         for (Liga l : conexion.getLigaBD().findLigaEntities()) {
             cb.addItem(l.getNombre());
         }
     }
     
+    /**
+     * Llena una tabla de todos los datos de los equipos
+     * @param ColsCont numero de columnas de la tabla
+     * @return devuelve un Array de tipo String con todos los datos
+     */
     public static String [][]llenarTablaEquipos(int ColsCont){
         Collection <Jugador> Collectionjugadores = new ArrayList();
         ArrayList <Jugador> arrayListJugadores;
@@ -432,6 +646,12 @@ public class controlador {
         }
         return listadoequipos;
     }
+    
+    /**
+     * Llena una tabla de todos los datos de los jugadores
+     * @param ColsCont numero de columnas de la tabla
+     * @return devuelve un Array de tipo String con todos los datos
+     */
     public static String [][] llenarTablaJugadores(int ColsCont){
         jugadores = conexion.getJugadorBD().findJugadorEntities();
         String [][] listadojugadores = new String [jugadores.size()][ColsCont];
@@ -453,6 +673,12 @@ public class controlador {
         }
         return listadojugadores;
     }
+    
+    /**
+     * 
+     * @param tipo dependiendo del tipo se llenara una tabla u otra
+     * @return la llamada a otro metodo que devolvera un String
+     */
     public static String [][] llenarTablaPersonas(String tipo){       
         switch(tipo){
             case "dueno":
@@ -468,6 +694,10 @@ public class controlador {
         return null;
     }
 
+    /**
+     * Llena la tabla personas
+     * @return devuelve un Array de tipo String con todos los datos
+     */
     public static String [][]tablaPeronas(){       
         String [][] listadopersonas = new String [personas.size()][11];
         for (int x=0;x<personas.size();x++){
@@ -485,6 +715,10 @@ public class controlador {
         return listadopersonas;
     }
     
+    /**
+     * Llena la tabla de los dueños
+     * @return devuelve un Array de tipo String con todos los datos
+     */
     public static String [][] tablaDuenos(){
         
         String [][] listadoDuenos = new String [conexion.getDuenoBD().getDuenoCount()][11];       
@@ -503,19 +737,46 @@ public class controlador {
         return listadoDuenos;
     }
     
+    /**
+     * Elimina un usuario
+     * @param pk clave primaria del usuario que se quiere eliminar
+     * @throws Exception 
+     */
     public static void eliminarUsuario(String pk)throws Exception{
         conexion.getPersonaBD().destroy(pk);
     }
+    
+    /**
+     * Elimina un jugador
+     * @param pk clave primaria del usuario que se quiere eliminar
+     * @throws Exception 
+     */
     public static void eliminarJugador(String pk)throws Exception{
         conexion.getJugadorBD().destroy(pk);
     }
+    
+    /**
+     * Elimina un duaño
+     * @param pk clave primaria del usuario que se quiere eliminar
+     * @throws Exception 
+     */
     public static void eliminarDueno(String pk)throws Exception{
         conexion.getPersonaBD().destroy(pk);
     }
+    
+    /**
+     * Elimina un equipo
+     * @param pk clave primaria del usuario que se quiere eliminar
+     * @throws Exception 
+     */
     public static void eliminarEquipo(String pk)throws Exception{
         conexion.getEquipoBD().destroy(Integer.parseInt(pk));
     }
     
+    /**
+     * Metodo que recalcula la clasificacion dependiendo de los puntos que tenga cada equipo
+     * @throws Exception 
+     */
     public static void recalcularClasificacion()throws Exception{
         equipos = conexion.getEquipoBD().findEquipoEntities();
         equiposTemp = new ArrayList();
@@ -539,6 +800,12 @@ public class controlador {
                 finish = true;              
         }
     }
+
+    /**
+     * Busca el equipo ya utilizado para controlar que no se repita
+     * @param e Equipo repetido
+     * @return true o false si se a encontrado o no
+     */
     public static boolean equiposReps(Equipo e){
         int x;
         for (x = 0; x < equiposTemp.size()&&!equiposTemp.get(x).equals(e); x++) {}
@@ -546,11 +813,13 @@ public class controlador {
             return false;
         return true;
     }
-    
-    public static void REllenarJornadas(String liga, javax.swing.JComboBox cbJornadas){
-        llenarJornadas(null, cbJornadas);
-    }
-    
+
+    /**
+     * LLena el combobox de la venta desde la que es llamado este metodo.
+     * Controla que las jornadas tengan una fecha anterior a la actual
+     * @param liga liga para la que se desea buscar las jornadas
+     * @param cbJornadas combobox de jornadas
+     */
     public static void llenarJornadas(String liga, javax.swing.JComboBox cbJornadas) {
         if(liga!=null)
             ligaBD = conexion.getLigaBD().findByName(liga);
@@ -581,6 +850,11 @@ public class controlador {
         }
     }
     
+    /**
+     * Busca la jornada con la fecha correspondiente a la que se recive
+     * @param date fecha que se quiere buscar
+     * @return objeto Jornada o null si no se encuentra
+     */
     public static Jornadas buscarJornada(Date date){
         for (Jornadas j : ligaBD.getJornadasCollection()){
             if(j.getFechai().equals(date))
@@ -589,6 +863,12 @@ public class controlador {
         return null;
     }
 
+    /**
+     * Controla que la jornada introducida no este reptida
+     * @param j jornada que se quiere buscar
+     * @param js ArrayList de Jornadas en el que se quiere buscar
+     * @return true o false si se a encontrado o no
+     */
     public static boolean jornadasReps(Jornadas j, ArrayList<Jornadas> js) {
         int x;
         for (x = 0; x < js.size() && !j.equals(js.get(x)); x++) {
@@ -599,7 +879,12 @@ public class controlador {
         return true;
     }
 
-    
+    /**
+     * Llena la lista de partidos de la ventana desde la que es llamado este metodo
+     * @param fecha fecha de la jornada que se quiere buscar
+     * @param cbPartidos comboBox que se quiere llenar
+     * @throws Exception 
+     */
     public static void llenarPartidos(String fecha, javax.swing.JComboBox cbPartidos) throws Exception {
         String cadena;    
         if(fecha!=null)
@@ -633,6 +918,12 @@ public class controlador {
         }
     }
     
+    /**
+     * Controla que las jornadas a las que se les hayan metido todos los recultados de todos sus
+     * partidos no se muestren en el comboBox
+     * @param j jornada que se desea buscar
+     * @return true o false si estan completos o no
+     */
     public static boolean partidosCompletos(Jornadas j){
         int cont=0;
         for (Partido p : j.getPartidoCollection())
@@ -643,26 +934,40 @@ public class controlador {
         return false;
     }
 
+    /**
+     * Secciona un string en una formato de fecha y luego la convierte a fecha
+     * @param fecha String de la fecha que se quiere convertir
+     * @return devuelte la decha en formato Date
+     * @throws Exception 
+     */
     public static Date toDate(String fecha) throws Exception {
         String cadena = "";
         int cont = 0;
-        for (int x = 0; x < fecha.length() && cont < 8; x++) {//Aqui
+        for (int x = 0; x < fecha.length() && cont < 8; x++) {
             if (Character.isDigit(fecha.charAt(x))) {
                 cadena += fecha.charAt(x);
                 cont++;
             } else if (fecha.charAt(x) == '/') {
                 cadena += fecha.charAt(x);
             }
-        }
-        SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
-        return fmt.parse(cadena);
+        } 
+       return fmt.parse(cadena);
     }
 
+    /**
+     * Convierte un String en fecha
+     * @param fecha fecha que se quiere convertir
+     * @return devuelve la fecha en formato Date
+     */
     public static String date(Date fecha) {      
         String fechaS = fmt.format(fecha);
         return fechaS;
     }
     
+    /**
+     * Llena un ArrayList de equipos temporal de los dos equipos que participan el partido
+     * @param indice indice el partido seleccionado en el comboBox
+     */
     public static void llenarTfPartido(int indice){
         equiposTemp = new ArrayList();
         int x=0;
@@ -674,13 +979,30 @@ public class controlador {
         for (Equipo e : partidoBD.getEquipoCollection()) 
             equiposTemp.add(e);
     }
+    
+    /**
+     * Llena un label con el nombre del equipo 1
+     * @return el nombre del equipo 1
+     */
     public static String le1(){
         return equiposTemp.get(0).getNombre();
     }
+    
+    /**
+     * Llena un label con el nombre del equipo 2
+     * @return el nombre del equipo 2
+     */
     public static String le2(){
         return equiposTemp.get(1).getNombre();
     }
     
+    /**
+     * Dependiendo de si el equipo 1 o el equipo 2 son nulos el ganador sera un equipo u otro
+     * si los dos son nulos habran empatado
+     * @param e1 nombre del equipo 1
+     * @param e2 nombre del equipo 2
+     * @throws Exception 
+     */
     public static void resultado(String e1, String e2)throws Exception{
         if(partidoBD.getResultado()!=null)
             throw new ResultadoPartido();
@@ -692,10 +1014,16 @@ public class controlador {
                     add(e1,false);
                 else
                     if(e1!=null&&e2!=null)
-                        add(e1,true);
-                
+                        add(e1,true);               
     }
     
+    /**
+     * Inserta los datos en el partido correspondiente
+     * @param ganador codigo del equipo ganador
+     * @param resultado resultado del partido
+     * @param empate si es empate se insertara un s si no null
+     * @throws Exception 
+     */
     public static void resultadoPartido(String ganador, String resultado, boolean empate)throws Exception{       
         for (Equipo e : partidoBD.getEquipoCollection())
             if(e.getNombre().equals(ganador)){
@@ -711,9 +1039,11 @@ public class controlador {
         conexion.getPartidoBD().edit(partidoBD);
     }
     
-    public static void StringEquipos(String Sequipo){
-        if(Sequipo==null)
-            Sequipo="catch";
+    /**
+     * Secciona el String con los dos equipos para sacar uno de los equipos y encontrar el partido correcto
+     * @param Sequipo String con los dos nombres de los equipos
+     */
+    public static void StringEquipos(String Sequipo){        
         CollectionEquiposTemp = new ArrayList ();
         System.out.println(Sequipo);
         String cadena = "";
@@ -732,14 +1062,14 @@ public class controlador {
                 }
         equiposTemp = new ArrayList(CollectionEquiposTemp);
     }
-    
-    public static void REllenarPartidos(javax.swing.JComboBox cbPartidos)throws Exception{
-        llenarPartidos(null,cbPartidos);
-    }
-    
-    
-    
-    public static void add(String aSumar,boolean both)throws Exception{      
+      
+    /**
+     * Suma puntos a los equipos dependiendo del resultado
+     * @param aSumar equipo al que hay que sumarle puntos
+     * @param both si es true habran empatado si no habra ganado uno de los dos equipos
+     * @throws Exception 
+     */
+    public static void add(String aSumar, boolean both)throws Exception{      
         for (Equipo e : equiposTemp){
             if(!both){
                 if(e.getNombre().equals(aSumar)){
@@ -753,6 +1083,12 @@ public class controlador {
         }     
     }
     
+    /**
+     * Controla que el partido introducido no este reptido
+     * @param p partido que se quiere buscar
+     * @param ps ArrayList de Partido en el que se quiere buscar
+     * @return true o false si se a encontrado o no
+     */
     public static boolean partidosReps(Partido p, ArrayList<Partido> ps) {
         int x;
         for (x = 0; x < ps.size() && !p.equals(ps.get(x)); x++) {
@@ -763,6 +1099,13 @@ public class controlador {
         return true;
     }
 
+    /**
+     * Prepara los equipos que van a jugar la liga antes de crearla
+     * @param indices indices de los equipos seleccionados
+     * @param nombre nombre que se le pondra a la liga
+     * @param calendar fecha en la que empezara
+     * @throws Exception 
+     */
     public static void indices(int[] indices, String nombre, Calendar calendar) throws Exception {
         equipos = new ArrayList();
         for (int x = 0; x < indices.length; x++) {
