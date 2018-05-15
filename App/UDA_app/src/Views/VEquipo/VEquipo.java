@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views.VEquipo;
 
 import Excepciones.*;
@@ -15,11 +10,13 @@ import javax.imageio.ImageIO;
 import javax.swing.JTextField;
 
 /**
- * 
- * @author Alejandro
- * @author Daniel
- * @author Unai
+ * @author Alejandro Diaz de Otalora
+ * @author Luis Daniel Barragues
+ * @author Unai Puelles
+ * @version 1.0
+ * @since 0.2 alpha
  */
+
 public class VEquipo extends javax.swing.JFrame {
 
     /**

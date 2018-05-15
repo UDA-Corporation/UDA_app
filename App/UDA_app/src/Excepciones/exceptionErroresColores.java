@@ -3,9 +3,12 @@ package Excepciones;
 import javax.swing.JTextField;
 
 /**
- *
- * @author UDA Corp.
+ * @author Alejandro Diaz de Otalora
+ * @author Luis Daniel Barragues
+ * @author Unai Puelles
+ * @version 1.0 
  */
+
 public class exceptionErroresColores extends Exception{
     
    private JTextField textField;
