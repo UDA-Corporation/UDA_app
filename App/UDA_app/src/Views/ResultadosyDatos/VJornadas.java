@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views.ResultadosyDatos;
 
 import Parsers.DOMJornadas.ParserDOMJornadas;
@@ -20,9 +15,13 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
 /**
- *
- * @author danie
+ * @author Alejandro Diaz de Otalora
+ * @author Luis Daniel Barragues
+ * @author Unai Puelles
+ * @version 1.0
+ * @since 0.7 alpha
  */
+
 public class VJornadas extends javax.swing.JFrame {
     //La X lleva la posicion de la jornada seleccionada en el combo box, porque en el XML no aparece ordenado (por el JPA)
     int x = 0;

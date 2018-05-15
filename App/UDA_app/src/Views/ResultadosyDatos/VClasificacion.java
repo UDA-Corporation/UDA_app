@@ -1,10 +1,3 @@
-/**
- * @author Unai Puelles
- * @author Daniel Barragues
- * @author Alejandro Diaz de Otalora
- * @version %G%
- * @since 0.7 alpha
- */
 package Views.ResultadosyDatos;
 
 import Parsers.DOMClasificacion.ParserDOMClasificacion;
@@ -20,6 +13,14 @@ import javax.imageio.ImageIO;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+
+/**
+ * @author Unai Puelles
+ * @author Daniel Barragues
+ * @author Alejandro Diaz de Otalora
+ * @version 1.0
+ * @since 0.7 alpha
+ */
 
 public class VClasificacion extends javax.swing.JFrame {
     int x = 0;

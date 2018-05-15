@@ -1,3 +1,9 @@
+/*AUTHOR UDA CORPORATION
+*Alejandro Diaz de Otalora
+*Luis Daniel Barragues
+*Unai Puelles
+*/
+
 --Insertamos las personas y asignamos su tipo (admin o usuario)
 /*Administradores*/
 INSERT INTO PERSONA VALUES ('53981435S','Daniel','Barragues','Julian de Apraiz','18','6C','Vitoria-Gasteiz','01012','Espana','admin','674563897');
@@ -73,5 +79,23 @@ INSERT INTO JUGADOR VALUES ('02834737I','SerZulXx',2100,'Imanol', 'Alcampo','Alf
 INSERT INTO JUGADOR VALUES ('01928376K','AlfoXX',1800,'Alfonso', 'Figaro','Juderia','11','3I','Vitoria-Gasteiz','01034','España','654999080',3);
 INSERT INTO JUGADOR VALUES ('62817267P','P3DRX',1900,'Pedro', 'Diaz','Santo Tomas','34','10D','Madrid','45034','España','654777657',3);
 INSERT INTO JUGADOR VALUES ('27261283S','SUDOSU',2000,'Mikel', 'Alday','General Alava','54','4I','Madrid','45098','España','678554345',3);
+
+/*Mismos jugadores sin equipos*/
+
+INSERT INTO JUGADOR VALUES ('53465713E','XGam3r',2000,'xJavier', 'Andoniz','Cuba','24','5D','Vitoria-Gasteiz','01567','España','690123485',null);
+INSERT INTO JUGADOR VALUES ('45362726R','XOcelote',1500,'xAlfredo', 'Zulueta','El retiro','24','8D','Madrid','45029','España','638980123',null);
+INSERT INTO JUGADOR VALUES ('42598737R','xManeinei',1600,'xManolo', 'Maneiro','La alamea','10','9C','Bilbao','02048','España','654987123',null);
+INSERT INTO JUGADOR VALUES ('12398748T','xDiCapio',1300,'xSergio', 'Fuentes','Peru','22','7C','Vitoria-Gasteiz','01034','España','645782345',null);
+INSERT INTO JUGADOR VALUES ('78692856G','xAlmanoZXx',1400,'xAlvaro', 'Heras','Santiago','55','7D','Vitoria-Gasteiz','01012','España','654980342',null);
+INSERT INTO JUGADOR VALUES ('90878666V','xxXTheWilXx',1500,'xAbi', 'Al-Hamad','Cuchilleria','15','6I','San Sebastian','01012','España','674534902',null);
+INSERT INTO JUGADOR VALUES ('14267577H','xxDamnx',2400,'xMaria', 'Alpino','España','71','8C','Vitoria-Gasteiz','01012','España','654345678',null);
+INSERT INTO JUGADOR VALUES ('98762886O','xLaurix',1600,'xLaura', 'Pineiro','America','43','5I','Vitoria-Gasteiz','01012','España','652987090',null);
+INSERT INTO JUGADOR VALUES ('42536792G','xSandy',1500,'xSandy', 'Alvarado','Plaza Colon','34','3D','Vitoria-Gasteiz','01012','España','666787900',null);
+INSERT INTO JUGADOR VALUES ('12398702H','xDestroY',2100,'xJon', 'Ferreiro','Parque de las Conchas','32','2I','Jaen','01012','España','673444532',null);
+INSERT INTO JUGADOR VALUES ('90988812O','xGanYxX',2200,'xJorge', 'del Pino','America Latina','34','5D','Malaga','01012','España','654567889',null);
+INSERT INTO JUGADOR VALUES ('02834727I','xSerZulXx',2100,'xImanol', 'Alcampo','Alfonso XI','41','4C','Murcia','12034','España','765333888',null);
+INSERT INTO JUGADOR VALUES ('01928336K','xAlfoXX',1800,'xAlfonso', 'Figaro','Juderia','11','3I','Vitoria-Gasteiz','01034','España','654999080',null);
+INSERT INTO JUGADOR VALUES ('62817247P','xP3DRX',1900,'xPedro', 'Diaz','Santo Tomas','34','10D','Madrid','45034','España','654777657',null);
+INSERT INTO JUGADOR VALUES ('27261253S','xSUDOSU',2000,'xMikel', 'Alday','General Alava','54','4I','Madrid','45098','España','678554345',null);
 
 COMMIT;
