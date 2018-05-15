@@ -196,9 +196,9 @@ static boolean yes = false;
                     .addComponent(tfe2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfe1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(le1)
-                    .addComponent(le2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(le2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(le1))
                 .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAceptar)
@@ -310,11 +310,11 @@ static boolean yes = false;
             controlador.llenarPartidos((String)cbJornadas.getSelectedItem(),cbPartidos);
             cbPartidos.setEnabled(true);
         }else{
-            controlador.REllenarPartidos(cbPartidos);
+            controlador.llenarPartidos(null,cbPartidos);
             if(cbPartidos.getModel().getSize()==1){
                 cbJornadas.removeAllItems();
                 cbJornadas.addItem("-- Seleccione una jornada --");
-                controlador.REllenarJornadas(null, cbJornadas);
+                controlador.llenarJornadas(null, cbJornadas);
             }
                 
         }
