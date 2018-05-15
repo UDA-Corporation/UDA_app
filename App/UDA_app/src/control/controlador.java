@@ -28,6 +28,7 @@ import Views.Listados.VEquipos.VEquipos;
 import Views.Listados.VPersonas.VPersonas;
 import Views.Listados.VPjugadores.VJugadores;
 import Views.JDEliminar.JDEliminar;
+import java.awt.Color;
 
 /**
  *
@@ -43,7 +44,7 @@ public class controlador {
     static ArrayList<Jornadas> jornadas;
     static List<Equipo> equiposBD;
     static List<Equipo> equipos;
-    static List<Jugador> jugadores;
+    public static List<Jugador> jugadores;
     static List<Partido> partidos;
     static Equipo[][] PartidosEquipo;
     static List equiposP;
@@ -53,6 +54,8 @@ public class controlador {
     public static Jugador jugTemp;
     public static Dueno dueTemp;
     public static Equipo equipoTemp;
+    public static int [] indices;
+    public static List<Jugador> jugadoresUpd;
     public static int tipoE;
     static int formula;
     static ArrayList<Equipo> equiposTemp;
@@ -323,14 +326,46 @@ public class controlador {
 
     }
     
-    public static DefaultListModel<String> llenarJugadores(javax.swing.JList lista) {
-
+    public static DefaultListModel<String> llenarJugadores(javax.swing.JList lista, int tipo) {
+        
         jugadores = (List) conexion.getJugadorBD().findJugadorEntities();
         DefaultListModel<String> model = new DefaultListModel();
-        for (Jugador ju : jugadores) {
-            if (ju.getEquipoCod() == null) {
-                model.addElement(ju.getNombre() + " " + ju.getApellido());
+        if(tipo != 1)
+        {
+            for (Jugador ju : jugadores) {
+                if (ju.getEquipoCod() == null) 
+                {
+                    model.addElement(ju.getNombre() + " " + ju.getApellido());
+                }
             }
+        }    
+        else
+        {
+//             for (Jugador ju : jugadores) 
+//             {
+//                if (ju.getEquipoCod() == null || ju.getEquipoCod().equals(equipoTemp.getCod())) 
+//                {
+//                    if(ju.getEquipoCod().equals(equipoTemp.getCod()))
+//                            
+//                    model.addElement(ju.getNombre() + " " + ju.getApellido());
+//                }   
+//            }
+            indices = new int [6];
+            jugadoresUpd = new ArrayList();
+            int contador = 0;
+            for(int x = 0; x<jugadores.size(); x++)
+            {
+                if(jugadores.get(x).getEquipoCod() == null || jugadores.get(x).getEquipoCod().equals(equipoTemp))
+                {
+                    model.addElement(jugadores.get(x).getNombre() + " " + jugadores.get(x).getApellido());
+                    jugadoresUpd.add(jugadores.get(x));
+                    if(jugadores.get(x).getEquipoCod()!= null)
+                    {
+                        indices[contador] = x;
+                        contador++;
+                    }         
+                }
+            }        
         }
         return model;
     }
@@ -351,6 +386,15 @@ public class controlador {
         jugadores = null;
         duenos = null;
         return true;
+    }
+    
+    public static void updateEquipo() throws Exception{
+        
+        conexion.getEquipoBD().edit(equipoTemp);
+        
+        indices = null;
+        equipoTemp = null;
+        jugadoresUpd = null;
     }
 
     public static DefaultListModel<String> llenarLista(javax.swing.JList lista) {
