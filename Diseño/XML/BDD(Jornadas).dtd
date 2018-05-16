@@ -1,16 +1,13 @@
 <!DOCTYPE liga [
         <!ELEMENT liga (jornada)*>
-        <!ATTLIST liga
-                xmlns:xsi CDATA #REQUIRED
-                xsi:noNamespaceSchemaLocation CDATA #REQUIRED>
-        <!ELEMENT jornada (partido)+>
+        <!ELEMENT jornada (partido)*>
         <!ATTLIST jornada
-                codigoJornada ID #REQUIRED
-                fechaI CDATA #REQUIRED
-                fechaF CDATA #REQUIRED>
-        <!ELEMENT partido (resultado)>
+                codigoJornada CDATA #REQUIRED
+                fechaFinal CDATA #REQUIRED
+                fechaInicio CDATA #REQUIRED>
+        <!ELEMENT partido (resultado)*>
         <!ATTLIST partido
-                equipo_local IDREF #REQUIRED
-                equipo_visitante IDREF #REQUIRED>
+                equipo1 CDATA #REQUIRED
+                equipo2 CDATA #REQUIRED>
         <!ELEMENT resultado (#PCDATA)>
         ]>
