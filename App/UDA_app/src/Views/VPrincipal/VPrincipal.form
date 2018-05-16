@@ -6,6 +6,9 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="MenuOpciones">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Views/VPrincipal/configuration_icon.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Opciones"/>
           </Properties>
           <Events>
@@ -15,6 +18,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmLogin">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Views/VPrincipal/login_icon.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Login"/>
               </Properties>
               <Events>
@@ -23,6 +29,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmCs">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Views/VPrincipal/loout_icon.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cerrar sesi&#xf3;n"/>
               </Properties>
               <Events>
@@ -52,6 +61,9 @@
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="jmRegistrar">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Views/VPrincipal/add_file_icon.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Registrar"/>
               </Properties>
               <SubComponents>
@@ -115,7 +127,11 @@
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Views/VPrincipal/edit_icon.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Modificar"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="jmModUsu">
@@ -154,6 +170,9 @@
             </Menu>
             <Menu class="javax.swing.JMenu" name="jmEliminar">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Views/VPrincipal/delete_icon.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Eliminar"/>
               </Properties>
               <SubComponents>
@@ -181,6 +200,9 @@
             </Menu>
             <Menu class="javax.swing.JMenu" name="jmListar">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Views/VPrincipal/info_icon.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Listar"/>
               </Properties>
               <SubComponents>
@@ -250,6 +272,9 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jmPuntuacion">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Views/VPrincipal/save_icon.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de puntuaci&#xf3;n"/>
           </Properties>
           <Events>
@@ -258,6 +283,9 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jmResultados">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Views/VPrincipal/calendar_icon.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Resultados y datos"/>
           </Properties>
           <Events>

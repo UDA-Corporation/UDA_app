@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Alejandro Diaz de Otalora
  * @author Luis Daniel Barragues
  * @author Unai Puelles
- * @version 1.0 
+ * @version %G%
  */
 
 @Entity

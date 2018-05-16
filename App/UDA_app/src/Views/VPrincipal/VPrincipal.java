@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
  * @author Alejandro Diaz de Otalora
  * @author Luis Daniel Barragues
  * @author Unai Puelles
- * @version 1.0
+ * @version %G%
  * @since 0.1 alpha
  */
 
@@ -229,6 +229,7 @@ public class VPrincipal extends javax.swing.JFrame {
                 .addGap(8, 8, 8))
         );
 
+        MenuOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/configuration_icon.png"))); // NOI18N
         MenuOpciones.setText("Opciones");
         MenuOpciones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -239,6 +240,7 @@ public class VPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jmLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/login_icon.png"))); // NOI18N
         jmLogin.setText("Login");
         jmLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,6 +249,7 @@ public class VPrincipal extends javax.swing.JFrame {
         });
         MenuOpciones.add(jmLogin);
 
+        jmCs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/loout_icon.png"))); // NOI18N
         jmCs.setText("Cerrar sesión");
         jmCs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,6 +272,7 @@ public class VPrincipal extends javax.swing.JFrame {
         jmHerramientas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/herramientas_icon.png"))); // NOI18N
         jmHerramientas.setText("Herramientas");
 
+        jmRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/add_file_icon.png"))); // NOI18N
         jmRegistrar.setText("Registrar");
 
         jmCUsuario.setText("Usuario");
@@ -325,7 +329,9 @@ public class VPrincipal extends javax.swing.JFrame {
         jmHerramientas.add(jmRegistrar);
 
         jMenu3.setBorder(null);
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/edit_icon.png"))); // NOI18N
         jMenu3.setText("Modificar");
+        jMenu3.setBorderPainted(false);
 
         jmModUsu.setText("Usuario");
         jmModUsu.addActionListener(new java.awt.event.ActionListener() {
@@ -361,6 +367,7 @@ public class VPrincipal extends javax.swing.JFrame {
 
         jmHerramientas.add(jMenu3);
 
+        jmEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/delete_icon.png"))); // NOI18N
         jmEliminar.setText("Eliminar");
 
         jMenuItem8.setText("Usuario");
@@ -377,6 +384,7 @@ public class VPrincipal extends javax.swing.JFrame {
 
         jmHerramientas.add(jmEliminar);
 
+        jmListar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/info_icon.png"))); // NOI18N
         jmListar.setText("Listar");
 
         jmListUsu.setText("Usuarios");
@@ -435,6 +443,7 @@ public class VPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jmHerramientas);
 
+        jmPuntuacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/save_icon.png"))); // NOI18N
         jmPuntuacion.setText("Gestión de puntuación");
         jmPuntuacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -443,6 +452,7 @@ public class VPrincipal extends javax.swing.JFrame {
         });
         jMenuBar1.add(jmPuntuacion);
 
+        jmResultados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/calendar_icon.png"))); // NOI18N
         jmResultados.setText("Resultados y datos");
         jmResultados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
