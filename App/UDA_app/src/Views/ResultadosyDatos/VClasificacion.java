@@ -155,8 +155,8 @@ public class VClasificacion extends javax.swing.JFrame {
                         .addComponent(jLabel3))
                     .addComponent(jLabel2))
                 .addGap(73, 73, 73)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
                 .addComponent(Salir)
                 .addContainerGap(47, Short.MAX_VALUE))
         );

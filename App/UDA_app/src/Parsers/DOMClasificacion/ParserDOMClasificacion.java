@@ -93,7 +93,7 @@ public class ParserDOMClasificacion {
         Document XMLdoc = docBuilder.newDocument();
         Element rootEle = XMLdoc.createElement("liga");
         XMLdoc.appendChild(rootEle);
-        rootEle.setTextContent(" ");
+        rootEle.setTextContent("");
         DateFormat format = new SimpleDateFormat("EEEE");
         String fecha2 = format.format(new Date());
         switch (fecha2){
