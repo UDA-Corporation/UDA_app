@@ -15,15 +15,23 @@ La aplicación esta preparada para crear ligas, equipos y jornadas, aparte de ju
 Disponemos de un tutorial para usuarios ([vídeo]()) que muestra como instalar y usar la aplicación desde una cuenta existente o nueva de usuario. Se puede descargar el ejecutable .jar comprimido desde **[aquí.]()**
 
 ## Cómo desplegar la aplicación para su desarrollo
-La aplicación está codificada en Java. El proyecto ha sido creado y editado con Netbeans. El proyecto se encuentra en App>>UDA_App .  
+La aplicación está codificada en Java. El proyecto ha sido creado y editado con Netbeans. El proyecto se encuentra en [App>>UDA_App](https://github.com/UDA-Corporation/UDA_app/tree/master/App/UDA_app).  
 <br/>
 **Lo primero:** necesitaremos crear la base de datos con las tablas necesarias. El script de SQL para la creación de la BDD está en App>>Script_BDD, lo ejecutamos y comprobamos que todo ha sido creado. Opcionalmente, podemos tambien añadir unos primeros datos iniciales con el fichero "Carga de datos iniciales" que se encuentra en la misma carpeta del script de creación, además de poder incluir los triggers SQL que se encuentran en la carpeta App>>BDD>>Triggers.  
 <br/>
 **Lo segundo:** Una vez creada la base de datos necesitamos configurar el JPA usado en el proyecto para conectarnos al servidor. Para ello editaremos el "persistence.xml" que se encuentra en App>>UDA_App>>>>src>>META-INF.  
 Se tiene que editar los campos que en la imagen aparecen como "NombreDelHost", "SID", "USUARIO" y "CONTRASEÑA", introduciendo las credenciales del servidor que se desea utilizar.  
-![Imagen](https://i.imgur.com/KFqPS2t.png)
+![Persistence.xml](https://i.imgur.com/oCqxY4k.png)
 
-Una vez hechos estos pasos podremos desplegar la aplicación en nuestro IDE para su desarrollo. Tener en cuenta que este trabajo se ha creado bajo una licencia MIT.
+Una vez hechos estos pasos podremos desplegar la aplicación en nuestro IDE para su desarrollo. Tener en cuenta que este trabajo se ha creado bajo una licencia MIT.  
+
+## Capturas de pantalla
+![Pantalla principal usuario](https://i.imgur.com/B9kRlBS.png)
+<h6 align="center">Pantalla principal (vista de usuario)<h6/>
+![Pantalla clasificacion usuario](https://i.imgur.com/u8nV2E1.png)
+<h6 align="center">Pantalla clasificación (vista de usuario)<h6/>
+![Pantalla jornadas usuario](https://i.imgur.com/44109i7.png)
+<h6 align="center">Pantalla clasificación (vista de usuario)<h6/>
 
 ## Documentación
 **Team drive con  [toda la documentación](https://docs.google.com/spreadsheets/d/1_2MhafOwp65LQePLwjUlc97uKK25Kxp-BGnyit3nX5c/edit?usp=sharing)**  
