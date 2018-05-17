@@ -23,7 +23,6 @@ import javax.xml.transform.TransformerException;
  */
 
 public class VClasificacion extends javax.swing.JFrame {
-    int x = 0;
     /**
      * Creates new form VClasificacion
      */
@@ -60,7 +59,7 @@ public class VClasificacion extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -82,21 +81,21 @@ public class VClasificacion extends javax.swing.JFrame {
         Table.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Recopilando datos...", "Recopilando datos...", "Recopilando datos...", "Recopilando datos..."},
-                {"Recopilando datos...", "Recopilando datos...", "Recopilando datos...", "Recopilando datos..."},
-                {"Recopilando datos...", "Recopilando datos...", "Recopilando datos...", "Recopilando datos..."},
-                {"Recopilando datos...", "Recopilando datos...", "Recopilando datos...", "Recopilando datos..."},
-                {"Recopilando datos...", "Recopilando datos...", "Recopilando datos...", "Recopilando datos..."},
-                {"Recopilando datos...", "Recopilando datos...", "Recopilando datos...", "Recopilando datos..."},
-                {"Recopilando datos...", "Recopilando datos...", "Recopilando datos...", "Recopilando datos..."},
-                {"Recopilando datos...", "Recopilando datos...", "Recopilando datos...", "Recopilando datos..."}
+                {"Recopilando datos...", "Recopilando datos...", "Recopilando datos..."},
+                {"Recopilando datos...", "Recopilando datos...", "Recopilando datos..."},
+                {"Recopilando datos...", "Recopilando datos...", "Recopilando datos..."},
+                {"Recopilando datos...", "Recopilando datos...", "Recopilando datos..."},
+                {"Recopilando datos...", "Recopilando datos...", "Recopilando datos..."},
+                {"Recopilando datos...", "Recopilando datos...", "Recopilando datos..."},
+                {"Recopilando datos...", "Recopilando datos...", "Recopilando datos..."},
+                {"Recopilando datos...", "Recopilando datos...", "Recopilando datos..."}
             },
             new String [] {
-                "Nombre", "Codigo de equipo", "Puntos", "Puesto"
+                "Nombre", "Puntos", "Puesto"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -155,8 +154,8 @@ public class VClasificacion extends javax.swing.JFrame {
                         .addComponent(jLabel3))
                     .addComponent(jLabel2))
                 .addGap(73, 73, 73)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
                 .addComponent(Salir)
                 .addContainerGap(47, Short.MAX_VALUE))
         );
@@ -196,19 +195,20 @@ public class VClasificacion extends javax.swing.JFrame {
             ParserSAXClasificacion ClasificacionSAXexpiradoXML = new ParserSAXClasificacion();
             ClasificacionSAXexpiradoXML.ejecutar();
         }
-        Object[] columns = {"Nombre","Codigo equipo","Puntos","Puesto"};
+        Object[] columns = {"Nombre","Puntos","Puesto"};
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(columns);
         for (int i = 0; i < 32; i++) {
-            x = x + 4;
-            Object[] row = new Object[4];
-            row = Arrays.copyOfRange(Parsers.SAX.ParserSAXClasificacion.Equipos,i,x);
+            Object[] row = new Object[3];
+            row[0] = Parsers.SAX.ParserSAXClasificacion.Equipos[i];
+            row[1] = Parsers.SAX.ParserSAXClasificacion.Equipos[i+2];
+            row[2] = Parsers.SAX.ParserSAXClasificacion.Equipos[i+3];
             i += 3;
             model.addRow(row);
             Arrays.fill(row,null);
         } 
         Table.setModel(model);
-        Table.getRowSorter().toggleSortOrder(3);
+        Table.getRowSorter().toggleSortOrder(2);
     }//GEN-LAST:event_formWindowOpened
 
     /**

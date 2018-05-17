@@ -292,11 +292,12 @@ public class VEquipo extends javax.swing.JFrame {
             if(max<0)
                 throw new caracteresExcedidos();
             
-            if(cbDueno.getSelectedIndex() == 0)
-                throw new duenoVacio();
             
             if(tipo != 1)
             {
+                if(cbDueno.getSelectedIndex() == 0)
+                    throw new duenoVacio();
+                
                 if(controlador.altaEquipo(tfNombre.getText(), taDesc.getText(), cbDueno.getSelectedIndex(), listaJugadores.getSelectedIndices()))
                 {
                     controlador.JDInfo(this, true, "Equipo generado corréctamente");
@@ -305,15 +306,15 @@ public class VEquipo extends javax.swing.JFrame {
             } 
             else
             {
-                
-                if(listaJugadores.getSelectedIndices().length>6 && controlador.equipoTemp.getPuesto().equals(0))
+                if(listaJugadores.getSelectedIndices().length<5 && !controlador.equipoTemp.getPuesto().equals(0))
                     throw new jugadoresObligatorios();
                 
                 controlador.equipoTemp.setJugadorCollection(null);
                 if(listaJugadores.getSelectedIndices().length != 0)
                 {
-                    for(int x = 0; x<listaJugadores.getSelectedIndices().length; x++)
-                        controlador.equipoTemp.addJugador(controlador.jugadoresUpd.get(listaJugadores.getSelectedIndices()[x]));
+                    int [] test=listaJugadores.getSelectedIndices();
+                    for(int x = 0; x<test.length; x++)
+                        controlador.equipoTemp.addJugador(controlador.jugadoresUpd.get(test[x]));
                 }    
                 
                 controlador.updateEquipo();
@@ -327,7 +328,7 @@ public class VEquipo extends javax.swing.JFrame {
             controlador.JDError(this, true, "Número de caracteres excedido en", "la descripción");
         }
         catch(jugadoresObligatorios e){
-            controlador.JDError(this, true, "Hay que asignar 6 jugadores a un equipo que","está en una liga en curso");
+            controlador.JDError(this, true, "Hay que asignar 5 jugadores a un equipo que","está en una liga en curso");
         }
         catch(duenoVacio e){
             controlador.JDError(this, true, "Seleccione un dueño");
@@ -415,7 +416,7 @@ public class VEquipo extends javax.swing.JFrame {
         }   
     }
     
-    public void setTfStartUp(boolean a, boolean b){
+    public void setTfStartUp(boolean a, boolean b)throws Exception{
         tfNombre.setEnabled(a);
         taDesc.setEnabled(b);
         cbDueno.setEnabled(b);

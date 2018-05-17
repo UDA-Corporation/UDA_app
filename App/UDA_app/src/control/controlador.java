@@ -23,6 +23,9 @@ import Views.Listados.VEquipos.VEquipos;
 import Views.Listados.VPersonas.VPersonas;
 import Views.Listados.VPjugadores.VJugadores;
 import Views.JDEliminar.JDEliminar;
+import Views.Listados.VLiga.VLigas;
+import Views.Listados.VPartidos.VPartidos;
+import Views.Listados.VPjornadas.VLJornadas;
 
 /**
  * @author Alejandro Diaz de Otalora
@@ -39,7 +42,7 @@ public class controlador {
     static final int NROPARTIDOSJORNADA = 8;
     static Liga liga;
     static ArrayList finde;
-    static ArrayList<Jornadas> jornadas;
+    static List<Jornadas> jornadas;
     static List<Equipo> equiposBD;
     static List<Equipo> equipos;
     public static List<Jugador> jugadores;
@@ -221,6 +224,24 @@ public class controlador {
         veqs.setVisible(true);
     }
 
+    public static void toVLigas(javax.swing.JFrame ventana){
+        ventana.dispose();
+        VLigas vlgs = new VLigas();
+        vlgs.setVisible(true);
+    }
+    
+    public static void toVpartidos(javax.swing.JFrame ventana){
+        ventana.dispose();
+        VPartidos vprs = new VPartidos();
+        vprs.setVisible(true);
+    }
+    
+    public static void toVLJornadas(javax.swing.JFrame ventana){
+        ventana.dispose();
+        VLJornadas vjrs = new VLJornadas();
+        vjrs.setVisible(true);
+    }
+    
     /**
      * Jdialog que se usa para mostrar los errores
      * @param ventana recive la ventana desde el que es llamado este metodo
@@ -299,13 +320,29 @@ public class controlador {
         boolean login = false;
         Cuenta c = conexion.getCuentaBD().findCuenta(usuario);
 
-        if (c.getPass().equals(pass)) {
+        if (codificarPass(c.getPass(), false).equals(pass)||c.getPass().equals(pass)) {
             login = true;
             usu = c;
         }
         return login;
     }
 
+    public static String codificarPass(String pass,boolean codificar){
+        String cadena="";
+        char [] cod = pass.toCharArray();       
+        for (int x = 0; x < cod.length; x++) {
+            if(codificar){
+                cod[x]+=5*4-3*2+1/2;
+                cadena+=cod[x];
+            }                
+            else{
+                cod[x]-=5*4-3*2+1/2;
+                cadena+=cod[x];
+            }
+        }        
+        return cadena;
+    }
+    
     public static void cerrarSesion() {
         usu = null;
     }
@@ -391,9 +428,8 @@ public class controlador {
         
         if(tipo_persona.equals("dueno"))
             tipo_persona=null;
-        Persona u1 = new Persona(dni, nombre, apellido, calle, numero, piso, ciudad, cp, pais, tipo_persona, tel);
-
-        Cuenta c1 = new Cuenta(usuario, pass);
+        Persona u1 = new Persona(dni, nombre, apellido, calle, numero, piso, ciudad, cp, pais, tipo_persona, tel);        
+        Cuenta c1 = new Cuenta(usuario, codificarPass(pass,true));
         c1.setPersonaDni(u1);
         tipoE = 1;
         conexion.getPersonaBD().create(u1);
@@ -420,20 +456,20 @@ public class controlador {
     }
 
     /**
-     * 
-     * @param dni
-     * @param nickname
-     * @param sueldo
-     * @param nombre
-     * @param apellido
-     * @param calle
-     * @param numero
-     * @param piso
-     * @param ciudad
-     * @param cp
-     * @param pais
-     * @param tel
-     * @return
+     * Da de alta al jugador en la base de datos
+     * @param dni dni del jugador a registrar
+     * @param nickname nick del jugador a registrar
+     * @param sueldo sueldo del jugador a registrar
+     * @param nombre nombre del jugador a registrar
+     * @param apellido apellido del jugador a registrar
+     * @param calle calle del jugador a registrar
+     * @param numero numero del jugador a registrar
+     * @param piso piso del jugador a registrar
+     * @param ciudad ciudad del jugador a registrar
+     * @param cp codigo postal del jugador a registrar
+     * @param pais pais del jugador a registrar
+     * @param tel telefono del jugador a registrar
+     * @return false o true si se inserta o no
      * @throws Exception 
      */
     public static boolean registrarJugador(String dni, String nickname, String sueldo, String nombre, String apellido, String calle, String numero, String piso, String ciudad, String cp, String pais, String tel) throws Exception {
@@ -510,8 +546,9 @@ public class controlador {
      * @param lista lista que se quiere llenar
      * @param tipo dependiendo del tipo sera un alta o una modificacion
      * @return devuelve el modelo de la lista
+     * @throws java.lang.Exception
      */
-    public static DefaultListModel<String> llenarJugadores(javax.swing.JList lista, int tipo) {
+    public static DefaultListModel<String> llenarJugadores(javax.swing.JList lista, int tipo) throws Exception{
         
         jugadores = (List) conexion.getJugadorBD().findJugadorEntities();
         DefaultListModel<String> model = new DefaultListModel();
@@ -535,7 +572,7 @@ public class controlador {
 //                    model.addElement(ju.getNombre() + " " + ju.getApellido());
 //                }   
 //            }
-            indices = new int [6];
+            indices = new int [5];
             jugadoresUpd = new ArrayList();
             int contador = 0;
             for(int x = 0; x<jugadores.size(); x++)
@@ -546,7 +583,10 @@ public class controlador {
                     jugadoresUpd.add(jugadores.get(x));
                     if(jugadores.get(x).getEquipoCod()!= null)
                     {
-                        indices[contador] = x;
+                        indices[contador] = jugadoresUpd.indexOf(jugadores.get(x));
+                        Jugador juTemp = conexion.getJugadorBD().findJugador(jugadores.get(x).getDni());
+                        juTemp.setEquipoCod(null);
+                        conexion.getJugadorBD().edit(jugTemp);
                         contador++;
                     }         
                 }
@@ -666,10 +706,61 @@ public class controlador {
             listadojugadores[x][9] = jugadores.get(x).getCp();
             listadojugadores[x][10] = jugadores.get(x).getPais();
             listadojugadores[x][11] = jugadores.get(x).getTlfo();  
-            listadojugadores[x][12] = jugadores.get(x).getEquipoCod().getNombre();  
-             
+            if(jugadores.get(x).getEquipoCod()!=null)
+                listadojugadores[x][12] = jugadores.get(x).getEquipoCod().getNombre();  
+            else 
+                listadojugadores[x][12] = "Sin equipo";  
         }
         return listadojugadores;
+    }
+    
+    public static String [][] llenarTablaLiga(int ColsCont){
+        int cont = 0;
+        String [][] listadoLigas = new String [conexion.getLigaBD().getLigaCount()][11];
+        ligasBD = conexion.getLigaBD().findLigaEntities();
+        equipos = conexion.getEquipoBD().findEquipoEntities();
+        for (int x=0;x<ligasBD.size();x++){
+            listadoLigas[x][0] = Integer.toString(ligasBD.get(x).getCod());
+            listadoLigas[x][1] = ligasBD.get(x).getNombre();
+            for (int y = 2; y < equipos.size(); y++) {
+                if(equipos.get(x).getPuesto()!=null){
+                    listadoLigas[x][cont] = equipos.get(y).getNombre();
+                    cont++;
+                }
+            }               
+        }
+        return listadoLigas;
+    }
+    
+    public static String [][] llenarTablaPartidos(int ColsCont){     
+        String [][] listadoPartidos = new String [conexion.getPartidoBD().getPartidoCount()][ColsCont];       
+        partidos = conexion.getPartidoBD().findPartidoEntities();
+        for (int x=0;x<partidos.size();x++){
+            listadoPartidos[x][0]=Integer.toString(partidos.get(x).getCod());
+            listadoPartidos[x][1]=partidos.get(x).getLugar();
+            if(partidos.get(x).getCodganador()!=null)
+                listadoPartidos[x][2]=Integer.toString(partidos.get(x).getCodganador());
+            listadoPartidos[x][3]=fmt.format(partidos.get(x).getFecha());
+            listadoPartidos[x][4]=partidos.get(x).getResultado();
+            Collection Collectionequipos = partidos.get(x).getEquipoCollection();
+            equipos = new ArrayList(Collectionequipos);
+            listadoPartidos[x][5]=equipos.get(0).getNombre();
+            listadoPartidos[x][6]=equipos.get(1).getNombre();                      
+        }
+        return listadoPartidos;
+    }
+    
+    public static String [][] llenarTablaJornadas(int ColsCont){        
+        String [][] listadoJornadas = new String [conexion.getJornadaBD().getJornadasCount()][ColsCont];
+        jornadas = conexion.getJornadaBD().findJornadasEntities();
+        int cont=1;
+        for (int x=0;x<jornadas.size();x++){
+            listadoJornadas[x][0] = "Jornada "+cont;
+            listadoJornadas[x][1] = fmt.format(jornadas.get(x).getFechai());
+            listadoJornadas[x][2] = fmt.format(jornadas.get(x).getFechaf());
+            cont++;
+        }
+        return listadoJornadas;
     }
     
     /**
@@ -1112,9 +1203,21 @@ public class controlador {
         generarLiga(nombre, calendar);
     }
 
+    /**
+     * 
+     * @param nombre
+     * @param fecha
+     * @throws Exception 
+     */
     public static void generarLiga(String nombre, Calendar fecha) throws Exception {
-        equipos = new ArrayList();
-        equipos = conexion.getEquipoBD().findEquipoEntities();
+        int cont = 1;
+        for (Equipo e : equipos){
+            e.setPuntos("0");
+            e.setPuesto(Integer.toString(cont));
+            conexion.getEquipoBD().edit(e);
+            cont++;
+        }
+        partidos = new ArrayList();
         formula = (((equipos.size() - 1) * equipos.size()) / ((equipos.size() - 1) * 2));
         PartidosEquipo = generarPartidos();
         boolean zig = true;
@@ -1242,6 +1345,7 @@ public class controlador {
                 }
             }
         }
+        PartidosEquipo = null;
         return equiposP;
     }
 
