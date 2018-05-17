@@ -16,6 +16,7 @@ import javax.swing.DefaultListModel;
 import Views.VPuntos.VPuntos;
 import java.text.SimpleDateFormat;
 import Excepciones.ResultadoPartido;
+import Excepciones.LigaExistente;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import Views.ResultadosyDatos.VJornadas;
@@ -31,7 +32,7 @@ import Views.Listados.VPjornadas.VLJornadas;
  * @author Alejandro Diaz de Otalora
  * @author Luis Daniel Barragues
  * @author Unai Puelles
- * @version 1.0
+ * @version %G%
  * @since 0.1 alpha
  */
 
@@ -572,7 +573,8 @@ public class controlador {
 //                    model.addElement(ju.getNombre() + " " + ju.getApellido());
 //                }   
 //            }
-            indices = new int [5];
+//            indices = new int [6];
+            ArrayList <Integer> intTemp = new ArrayList();
             jugadoresUpd = new ArrayList();
             int contador = 0;
             for(int x = 0; x<jugadores.size(); x++)
@@ -583,18 +585,37 @@ public class controlador {
                     jugadoresUpd.add(jugadores.get(x));
                     if(jugadores.get(x).getEquipoCod()!= null)
                     {
-                        indices[contador] = jugadoresUpd.indexOf(jugadores.get(x));
-                        Jugador juTemp = conexion.getJugadorBD().findJugador(jugadores.get(x).getDni());
-                        juTemp.setEquipoCod(null);
-                        conexion.getJugadorBD().edit(jugTemp);
-                        contador++;
+                        intTemp.add(jugadoresUpd.indexOf(jugadores.get(x)));
                     }         
                 }
-            }        
+            }    
+            indices = new int[intTemp.toArray().length];
+            for(int x = 0; x<intTemp.size(); x++)
+            {
+                indices[x] = intTemp.get(x);
+            }    
+                
         }
         return model;
     }
-
+    
+    public static void quitarEquipoJug() throws Exception{
+        Collection temp = equipoTemp.getJugadorCollection();
+        ArrayList<Jugador> aTemp = new ArrayList(temp);
+        Jugador jug;
+        
+        for(int x = 0; x<aTemp.size(); x++)
+        {
+            jug = conexion.getJugadorBD().findJugador(aTemp.get(x).getDni());
+            jug.setEquipoCod(null);
+            conexion.getJugadorBD().edit(jug);
+        }
+        
+        equipoTemp.setJugadorCollection(null);
+            
+        
+    }
+    
     /**
      * 
      * @param nombre
@@ -617,6 +638,7 @@ public class controlador {
         e1.setDuenoDni(duenos.get(dueno));
         
         conexion.getEquipoBD().create(e1);
+        equipoTemp = null;
         jugadores = null;
         duenos = null;
         return true;
@@ -669,17 +691,18 @@ public class controlador {
         ArrayList <Jugador> arrayListJugadores;
         equipos = conexion.getEquipoBD().findEquipoEntities();
         String [][] listadoequipos = new String [equipos.size()][ColsCont];
-        for (int x = 0; x < equipos.size(); x++) {
-            listadoequipos[x][0] = Integer.toString(equipos.get(x).getCod());
-            listadoequipos[x][1] = equipos.get(x).getNombre();    
-            listadoequipos[x][2] = equipos.get(x).getDesripcion();
-            listadoequipos[x][3] = equipos.get(x).getPuntos();
-            listadoequipos[x][4] = equipos.get(x).getPuesto();
-            listadoequipos[x][5] = equipos.get(x).getDuenoDni().getPersona().getNombre()+" "+equipos.get(x).getDuenoDni().getPersona().getApellido();
+        for (int z=0;z<listadoequipos.length;z++)
+            Arrays.fill(listadoequipos[z], "");
+        for (int x = 0; x < equipos.size(); x++) {            
+            listadoequipos[x][0] = equipos.get(x).getNombre();    
+            listadoequipos[x][1] = equipos.get(x).getDesripcion();
+            listadoequipos[x][2] = equipos.get(x).getPuntos();
+            listadoequipos[x][3] = equipos.get(x).getPuesto();
+            listadoequipos[x][4] = equipos.get(x).getDuenoDni().getPersona().getNombre()+" "+equipos.get(x).getDuenoDni().getPersona().getApellido();
             for (int y = 0; y < equipos.get(x).getJugadorCollection().size(); y++) {
                 Collectionjugadores = equipos.get(x).getJugadorCollection();
                 arrayListJugadores = new ArrayList(Collectionjugadores);
-                listadoequipos[x][6]+=arrayListJugadores.get(y).getNickname()+"\n";
+                listadoequipos[x][5]+=arrayListJugadores.get(y).getNickname()+", ";
             }
         }
         return listadoequipos;
@@ -719,9 +742,8 @@ public class controlador {
         String [][] listadoLigas = new String [conexion.getLigaBD().getLigaCount()][11];
         ligasBD = conexion.getLigaBD().findLigaEntities();
         equipos = conexion.getEquipoBD().findEquipoEntities();
-        for (int x=0;x<ligasBD.size();x++){
-            listadoLigas[x][0] = Integer.toString(ligasBD.get(x).getCod());
-            listadoLigas[x][1] = ligasBD.get(x).getNombre();
+        for (int x=0;x<ligasBD.size();x++){            
+            listadoLigas[x][0] = ligasBD.get(x).getNombre();
             for (int y = 2; y < equipos.size(); y++) {
                 if(equipos.get(x).getPuesto()!=null){
                     listadoLigas[x][cont] = equipos.get(y).getNombre();
@@ -735,17 +757,16 @@ public class controlador {
     public static String [][] llenarTablaPartidos(int ColsCont){     
         String [][] listadoPartidos = new String [conexion.getPartidoBD().getPartidoCount()][ColsCont];       
         partidos = conexion.getPartidoBD().findPartidoEntities();
-        for (int x=0;x<partidos.size();x++){
-            listadoPartidos[x][0]=Integer.toString(partidos.get(x).getCod());
-            listadoPartidos[x][1]=partidos.get(x).getLugar();
+        for (int x=0;x<partidos.size();x++){            
+            listadoPartidos[x][0]=partidos.get(x).getLugar();
             if(partidos.get(x).getCodganador()!=null)
-                listadoPartidos[x][2]=Integer.toString(partidos.get(x).getCodganador());
-            listadoPartidos[x][3]=fmt.format(partidos.get(x).getFecha());
-            listadoPartidos[x][4]=partidos.get(x).getResultado();
+                listadoPartidos[x][1]=Integer.toString(partidos.get(x).getCodganador());
+            listadoPartidos[x][2]=fmt.format(partidos.get(x).getFecha());
+            listadoPartidos[x][3]=partidos.get(x).getResultado();
             Collection Collectionequipos = partidos.get(x).getEquipoCollection();
             equipos = new ArrayList(Collectionequipos);
-            listadoPartidos[x][5]=equipos.get(0).getNombre();
-            listadoPartidos[x][6]=equipos.get(1).getNombre();                      
+            listadoPartidos[x][4]=equipos.get(0).getNombre();
+            listadoPartidos[x][5]=equipos.get(1).getNombre();                      
         }
         return listadoPartidos;
     }
@@ -1210,6 +1231,8 @@ public class controlador {
      * @throws Exception 
      */
     public static void generarLiga(String nombre, Calendar fecha) throws Exception {
+        if(conexion.getLigaBD().getLigaCount()==1)
+            throw new LigaExistente();
         int cont = 1;
         for (Equipo e : equipos){
             e.setPuntos("0");
