@@ -1225,15 +1225,18 @@ public class controlador {
     }
 
     /**
-     * 
-     * @param nombre
-     * @param fecha
+     * Genera la liga en su totalidad, divide las 14 jornadas en 4 partidos
+     * en los que jugaran dos equipos sin repetirse por dia y jornada
+     * @param nombre nombre que queremos darle a la liga
+     * @param fecha fecha en la que empieza
      * @throws Exception 
      */
     public static void generarLiga(String nombre, Calendar fecha) throws Exception {
+        //La liga se genera solo si no hay otra liga creada
         if(conexion.getLigaBD().getLigaCount()==1)
             throw new LigaExistente();
         int cont = 1;
+        //Al comenzar la liga se ponen los puntos de todos los equipos a 0 y el puesto del 1 al 8
         for (Equipo e : equipos){
             e.setPuntos("0");
             e.setPuesto(Integer.toString(cont));
@@ -1241,29 +1244,45 @@ public class controlador {
             cont++;
         }
         partidos = new ArrayList();
+        //Formula con la que controlamos que haya 4 partidos por jornada siempre
         formula = (((equipos.size() - 1) * equipos.size()) / ((equipos.size() - 1) * 2));
         PartidosEquipo = generarPartidos();
         boolean zig = true;
+        //Creamos el objeto liga
         liga = new Liga(codigoLiga(), nombre);
+        //Hacemos ese objeto persistente
         conexion.getLigaBD().create(liga);
         buscarFinesDeSemana(fecha);
+        //Recorremos todos los fines de semana
         for (int y = 0; y < finde.size() / 2; y += 2) {
+            //Creamos el objeto Jornada correspondiente a ese fin de semana
             Jornadas j = new Jornadas(codigoJornada(), (Date) finde.get(y), (Date) finde.get(y + 1));
+            //Asignamos la jornada a la liga
             j.setLigaCod(liga);
+            //Añadimos la jornada a un ArrayList de Jornadas
             jornadas.add(j);
+            //Hacemos persistente la jornada
             conexion.getJornadaBD().create(j);
+            //Recorremos lo que serian los 4 partidos que tiene una jornada
             for (int z = 0; z < formula / 2; z++) {
                 Partido p = null;
                 if (zig) {
+                    //Recorremos los partidos del primer dia de la jornada
                     for (int p1 = 0; p1 < formula / 2; p1++) {
+                        //Creamos el objeto partido
                         p = new Partido(codigoPartido(), "Espana", j.getFechai());
+                        //Añadimos ese partido a un ArrayList de partidos
                         partidos.add(p);
+                        //Asignamos el partido a la jornada
                         j.addPartidosCollection(p);
+                        //Y la jornada al partido
                         p.setJornadasCod(j);
+                        //Hacemos persistente el partido
                         conexion.getPartidoBD().create(p);
                         zig = false;
                     }
                 } else {
+                    //Recorremos los partidos del segundo dia de la jornada (contenido indentico a la anterior repetitiva)
                     for (int p2 = 0; p2 < formula / 2; p2++) {
                         p = new Partido(codigoPartido(), "Espana", j.getFechaf());
                         partidos.add(p);
@@ -1278,10 +1297,15 @@ public class controlador {
         emparejar();
     }
 
+    /**
+     * Realiza todas las combinaciones posibles de los equipos sin que se repitan
+     * @return Array con todas las combinaciones
+     */
     public static Equipo[][] generarPartidos() {
         boolean zig = true;
         boolean stop = false;
         int x = 0, y = 0, z = 0, t = 0, cont = 0;
+        //Creamos el Array que contendra todas las combinaciones de los equipos de dimensiones [56]((numero de equipos - 1)* numero de equipos ))[2]
         Equipo[][] equiposPartidos = new Equipo[(equipos.size()) * (equipos.size() - 1)][formula / 2];
         do {
             do {
@@ -1319,44 +1343,70 @@ public class controlador {
         return equiposPartidos;
     }
 
+    /**
+     * A partir de la fecha otorgada busca todos lo fines de semana que cubran las jornadas,
+     * una jornada por fin de semana
+     * @param calendar fecha de inicio de la liga
+     * @throws Exception 
+     */
     public static void buscarFinesDeSemana(Calendar calendar) throws Exception{
         finde = new ArrayList();        
         int x = 0;
-        while (x != (equipos.size() - 1) * 8) {
+        //El bucla para cuando x sea igual que el numero de jornadas 
+        while (x != (equipos.size() - 1) * equipos.size()) {
+            //Se encarga de añadir al ArrayList de los fines de semana solo los sabados y los domingos
             switch (calendar.get(Calendar.DAY_OF_WEEK)) {
                 case Calendar.SATURDAY:
-                case Calendar.SUNDAY:                    
-                    String formatted = fmt.format(calendar.getTime());                   
-                    finde.add(fmt.parse(formatted));
+                case Calendar.SUNDAY:
+                    //La clase calendario contiene la hora, formateamos la forma al patron indicado dd/MM/yyyy
+                    //la parseamos y la introducimos en el ArrayList que contendra las fechas de los fines de semana
+                    finde.add(fmt.parse(fmt.format(calendar.getTime())));
                     x++;
                     break;
             }
+            //Añadimos un dia al calendario
             calendar.add(Calendar.DAY_OF_YEAR, 1);
         }
     }
 
-    public static List emparejar() throws Exception {
+    /**
+     * Utiliza todas las combinaciones de los partidos y los introduce en cada fin de semana
+     * Sin que se repita ningun equipo por jornada ni dia
+     * @throws Exception 
+     */
+    public static void emparejar() throws Exception {
         boolean first = true, found = false, finished = false;
         equiposTemp = new ArrayList();
         int contador = 0, contacuatro = 0, contaTotal = 0;
+        //Recorremos el Array en su indice vertical que contiene todas las combinaciones de los partidos
         for (int x = 0; x < PartidosEquipo.length && finished == false; x++) {
             found = false;
-            for (int y = 0; y < PartidosEquipo[y].length & found == false; y++) {
+            //Recorremos el mismo Array pero en su indice horizontal
+            for (int y = 0; y < PartidosEquipo[y].length & found == false; y++){
+                //Si el partido no esta ya en el ArrayList temporal (equiposTemp) o si esa combinacion todavia no se ha introducido entra en la condicion
                 if (!equiposTemp(PartidosEquipo[x][y]) && !equiposTemp(PartidosEquipo[x][y + 1]) && PartidosEquipo[x][y] != null && PartidosEquipo[x][y + 1] != null) {
                     equiposP = new ArrayList();
+                    //Recorremos una vez mas el indice horizontal del Array de todas las combinaciones
                     for (int g = 0; g < PartidosEquipo[y].length; g++) {
+                        //Introducimos los dos equipos en un array que posteriormente se hara persistente junto con el partido
                         equiposP.add(PartidosEquipo[x][g]);
+                        //Introducimos los dos equipos ne el ArrayList temporal para controlar que no se repitan
                         equiposTemp.add(PartidosEquipo[x][g]);
+                        //Como la acabamos de usar una cominacion correctamente la hacemos null
                         PartidosEquipo[x][g] = null;
                     }
+                    //Añadimos al partido el ArrayList de sus dos equipos correspondiente
                     partidos.get(contador).setEquipoCollection(equiposP);
+                    //Editamos el partido en la base de datos
                     conexion.getPartidoBD().edit(partidos.get(contador));
                     contador++;
                     contacuatro++;
                     contaTotal++;
+                    //Cuanto el Array de combinaciones llegue a su fin finalizaremos el algoritmo
                     if (contaTotal == PartidosEquipo.length) {
                         finished = true;
                     }
+                    //Cada cuatro partidos limpiamos el ArrayList temporal para proseguir con la siguiente jornada
                     if (contacuatro == formula) {
                         contacuatro = 0;
                         x = 0;
@@ -1369,9 +1419,13 @@ public class controlador {
             }
         }
         PartidosEquipo = null;
-        return equiposP;
     }
 
+    /**
+     * Controla que los equipos no se repitan
+     * @param e Recibe el equipo que ya ha sido utilizado
+     * @return true o false si lo ha encontrado o no
+     */
     public static boolean equiposTemp(Equipo e) {
         int x;
         for (x = 0; x < equiposTemp.size() && !equiposTemp.get(x).equals(e); x++) {
@@ -1382,18 +1436,33 @@ public class controlador {
         return true;
     }
 
+    /**
+     * Se encarga de autoincrementar el codigo cogiendo el mayor de la tabla
+     * @return devuelve el codigo de la liga
+     */
     public static int codigoLiga() {
         return Integer.parseInt(conexion.getLigaBD().autoincrement());
     }
 
+    /**
+     * Se encarga de autoincrementar el codigo cogiendo el mayor de la tabla
+     * @return devuelve el codigo de la Jornada
+     */
     public static int codigoJornada() {
         return Integer.parseInt(conexion.getJornadaBD().autoincrement());
     }
 
+    /**
+     * Se encarga de autoincrementar el codigo cogiendo el mayor de la tabla
+     * @return devuelve el codigo de el partido
+     */
     public static int codigoPartido() {
         return Integer.parseInt(conexion.getPartidoBD().autoincrement());
     }
     
+    /**
+     * Salir de la aplicacion
+     */
     public static void exit(){
         System.exit(0);
     }
