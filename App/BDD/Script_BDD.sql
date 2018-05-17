@@ -41,7 +41,7 @@ CREATE TABLE Cuenta
     CONSTRAINT Cuenta_Persona_FK FOREIGN KEY ( Persona_dni ) REFERENCES Persona ( dni ) 
   ) ;
 
---Creación de la tabla dueño (en la que utilizamos el nombre sin "enie" ya que la base de datos no la permite)
+--Creación de la tabla dueño (en la que utilizamos el nombre sin "ñ" ya que la base de datos no la permite)
 CREATE TABLE Dueno
   (
     dni        VARCHAR2 (9) PRIMARY KEY,
@@ -68,7 +68,7 @@ CREATE TABLE Liga(
   ) ;
   
 --Creación de la tabla jornada  
-CREATE TABLE Jornada
+CREATE TABLE Jornadas
   (
     cod    NUMBER (5) PRIMARY KEY ,
     fechaI   DATE NOT NULL ,
