@@ -3,6 +3,7 @@ package Views.VLiga;
 import control.controlador;
 import java.awt.Image;
 import javax.imageio.ImageIO;
+import Excepciones.LigaExistente;
 
 /**
  * @author Alejandro Diaz de Otalora
@@ -167,7 +168,9 @@ public class VLiga extends javax.swing.JFrame {
                 controlador.toVPrincipal(this);
             }else
                 controlador.JDError(this, true, "Seleccione 8 equipos");
-        } catch (Exception ex) {
+        }catch (LigaExistente e){
+            controlador.JDError(this, true, "No se puede crear una liga si hay una en curso");
+        }catch (Exception ex) {
             controlador.JDError(this, true, "Errores varios");
         }
     }//GEN-LAST:event_bAceptarActionPerformed
