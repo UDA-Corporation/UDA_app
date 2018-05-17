@@ -26,11 +26,11 @@ Se tiene que editar los campos que en la imagen aparecen como "NombreDelHost", "
 Una vez hechos estos pasos podremos desplegar la aplicación en nuestro IDE para su desarrollo. Tener en cuenta que este trabajo se ha creado bajo una licencia MIT.  
 
 ## Capturas de pantalla
-![Pantalla principal usuario](https://i.imgur.com/B9kRlBS.png)
+![Imagen1](https://i.imgur.com/B9kRlBS.png)
 <h6 align="center">Pantalla principal (vista de usuario)<h6/>
-![Pantalla clasificacion usuario](https://i.imgur.com/u8nV2E1.png)
+![Imagen2](https://i.imgur.com/u8nV2E1.png)
 <h6 align="center">Pantalla clasificación (vista de usuario)<h6/>
-![Pantalla jornadas usuario](https://i.imgur.com/44109i7.png)
+![Imagen3](https://i.imgur.com/44109i7.png)
 <h6 align="center">Pantalla clasificación (vista de usuario)<h6/>
 
 ## Documentación
