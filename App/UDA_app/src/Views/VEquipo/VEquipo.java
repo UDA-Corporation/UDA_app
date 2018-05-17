@@ -89,6 +89,11 @@ public class VEquipo extends javax.swing.JFrame {
                 tfNombreCaretUpdate(evt);
             }
         });
+        tfNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfNombreActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -306,19 +311,25 @@ public class VEquipo extends javax.swing.JFrame {
             } 
             else
             {
-                if(listaJugadores.getSelectedIndices().length<5 && !controlador.equipoTemp.getPuesto().equals(0))
-                    throw new jugadoresObligatorios();
-                
-                controlador.equipoTemp.setJugadorCollection(null);
-                if(listaJugadores.getSelectedIndices().length != 0)
+                if(controlador.equipoTemp.getPuesto() != null)
                 {
-                    int [] test=listaJugadores.getSelectedIndices();
-                    for(int x = 0; x<test.length; x++)
-                        controlador.equipoTemp.addJugador(controlador.jugadoresUpd.get(test[x]));
+                    if(listaJugadores.getSelectedIndices().length<6)
+                        throw new jugadoresObligatorios();
                 }    
-                
+                if(listaJugadores.getSelectedIndices() != controlador.indices)
+                {
+                    controlador.quitarEquipoJug();
+                    if(listaJugadores.getSelectedIndices().length != 0)
+                    {
+                        int [] test=listaJugadores.getSelectedIndices();
+                        for(int x = 0; x<test.length; x++)
+                            controlador.equipoTemp.addJugador(controlador.jugadoresUpd.get(test[x]));     
+                    } 
+                }
+                controlador.equipoTemp.setDesripcion(taDesc.getText());
                 controlador.updateEquipo();
-             
+                controlador.JDInfo(this, true, "Equipo modificado corréctamente");
+                controlador.toVPrincipal(this);
             }    
         }
         catch (exceptionErroresColores e){            
@@ -328,7 +339,12 @@ public class VEquipo extends javax.swing.JFrame {
             controlador.JDError(this, true, "Número de caracteres excedido en", "la descripción");
         }
         catch(jugadoresObligatorios e){
-            controlador.JDError(this, true, "Hay que asignar 5 jugadores a un equipo que","está en una liga en curso");
+            controlador.JDError(this, true, "Hay que asignar 6 jugadores a un equipo que","está en una liga en curso");
+        }
+        catch(NullPointerException e){
+            //No es un error, porque ha introducido bien a la BDD
+            controlador.JDInfo(this, true, "Equipo modificado corréctamente");
+            controlador.toVPrincipal(this);
         }
         catch(duenoVacio e){
             controlador.JDError(this, true, "Seleccione un dueño");
@@ -337,7 +353,7 @@ public class VEquipo extends javax.swing.JFrame {
             if(tipo != 1)
                 controlador.JDError(this, true, "Equipo no registrado: "+e.getClass());
             else
-                controlador.JDError(this, true, "Equipo no modificado: "+e.getClass());
+                controlador.JDError(this, true, "Equipo no modificado: "+e.getClass()+" "+e.getMessage());
         }
     }//GEN-LAST:event_bAceptarActionPerformed
 
@@ -371,11 +387,20 @@ public class VEquipo extends javax.swing.JFrame {
         catch(equipoNoEncontrado e){
             controlador.JDError(this, true, "Nombre de equipo no encontrado");
         }
+        catch(ArrayIndexOutOfBoundsException e){
+            tfNombre.setForeground(Color.orange);
+            controlador.JDInfo(this, true, "Equipo no encontrado");
+        }
         catch(Exception e){
             controlador.JDError(this, true, "Error:"+e.getMessage()+e.getClass());
         }
         
     }//GEN-LAST:event_bLupaActionPerformed
+
+    private void tfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreActionPerformed
+        if(tipo == 1)
+            bLupa.doClick();
+    }//GEN-LAST:event_tfNombreActionPerformed
     
     public void inicializarVentana(){
         try

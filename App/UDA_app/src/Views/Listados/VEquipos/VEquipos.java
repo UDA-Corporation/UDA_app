@@ -25,9 +25,27 @@ public class VEquipos extends javax.swing.JFrame {
         jTabla.setModel(new javax.swing.table.DefaultTableModel(
                 cadena,
                 new String [] {
-                    "Cod", "Nombre", "Descripcion", "Puntos", "Puesto", "Dueño", "Jugadores"
+                    "Nombre", "Descripcion", "Puntos", "Puesto", "Dueño", "Jugadores"
                 }
         ));
+        
+        jScrollPane2.setViewportView(jTabla);
+        if (jTabla.getColumnModel().getColumnCount() > 0) {
+            jTabla.getColumnModel().getColumn(0).setMinWidth(150);
+            jTabla.getColumnModel().getColumn(0).setPreferredWidth(150);
+            jTabla.getColumnModel().getColumn(0).setMaxWidth(150);
+            jTabla.getColumnModel().getColumn(1).setPreferredWidth(10);
+            jTabla.getColumnModel().getColumn(2).setMinWidth(60);
+            jTabla.getColumnModel().getColumn(2).setPreferredWidth(60);
+            jTabla.getColumnModel().getColumn(2).setMaxWidth(60);
+            jTabla.getColumnModel().getColumn(3).setMinWidth(60);
+            jTabla.getColumnModel().getColumn(3).setPreferredWidth(60);
+            jTabla.getColumnModel().getColumn(3).setMaxWidth(60);
+            jTabla.getColumnModel().getColumn(4).setMinWidth(150);
+            jTabla.getColumnModel().getColumn(4).setPreferredWidth(150);
+            jTabla.getColumnModel().getColumn(4).setMaxWidth(150);
+            jTabla.getColumnModel().getColumn(5).setPreferredWidth(50);
+        }
     }
 
     /**
@@ -60,14 +78,14 @@ public class VEquipos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Cod", "Nombre", "Descripcion", "Puntos", "Puesto", "Dueño", "Jugadores"
+                "Nombre", "Descripcion", "Puntos", "Puesto", "Dueño", "Jugadores"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -79,6 +97,22 @@ public class VEquipos extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(jTabla);
+        if (jTabla.getColumnModel().getColumnCount() > 0) {
+            jTabla.getColumnModel().getColumn(0).setMinWidth(150);
+            jTabla.getColumnModel().getColumn(0).setPreferredWidth(150);
+            jTabla.getColumnModel().getColumn(0).setMaxWidth(150);
+            jTabla.getColumnModel().getColumn(1).setPreferredWidth(10);
+            jTabla.getColumnModel().getColumn(2).setMinWidth(60);
+            jTabla.getColumnModel().getColumn(2).setPreferredWidth(60);
+            jTabla.getColumnModel().getColumn(2).setMaxWidth(60);
+            jTabla.getColumnModel().getColumn(3).setMinWidth(60);
+            jTabla.getColumnModel().getColumn(3).setPreferredWidth(60);
+            jTabla.getColumnModel().getColumn(3).setMaxWidth(60);
+            jTabla.getColumnModel().getColumn(4).setMinWidth(150);
+            jTabla.getColumnModel().getColumn(4).setPreferredWidth(150);
+            jTabla.getColumnModel().getColumn(4).setMaxWidth(150);
+            jTabla.getColumnModel().getColumn(5).setPreferredWidth(50);
+        }
 
         jButton1.setText("Volver");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

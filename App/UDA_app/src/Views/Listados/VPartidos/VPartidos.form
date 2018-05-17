@@ -95,8 +95,7 @@
                   <Color blue="cc" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="7" rowCount="0">
-                    <Column editable="false" title="Codigo" type="java.lang.String"/>
+                  <Table columnCount="6" rowCount="0">
                     <Column editable="false" title="Lugar" type="java.lang.String"/>
                     <Column editable="false" title="Codigo Ganador" type="java.lang.String"/>
                     <Column editable="false" title="Fecha" type="java.lang.String"/>
@@ -107,11 +106,6 @@
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
