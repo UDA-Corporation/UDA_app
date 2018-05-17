@@ -1,0 +1,197 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="184094A4-AB86-B311-43DF-9C44796D7F01" name="Jugador">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>2C0B085D-66BC-B1AE-9666-0A7206291890</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="dni" id="74BE7822-05EC-6123-DD3D-56362517DD90">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>342664DE-D270-5CAC-9370-912058AB93B6</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>9</dataTypeSize>
+<ownDataTypeParameters>9,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nickname" id="30549D22-E4A8-9FE8-6C94-C6653727BBE8">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>3CF555B4-4DE1-8532-B20D-A1F3CC73D9AF</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="sueldo" id="37B93B70-144D-36FA-EC42-1BE5011D44A5">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>C4CCCE3E-C5FC-219D-07DB-43E9B5BE008A</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="5EE20441-334B-1304-30E9-894DD180BAF4">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>F71A4A13-A395-B6BF-6897-9029B88D19C1</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="apellido" id="1FE51335-5B1C-47D1-62FE-662DCB59471F">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>CFA965E4-7CA9-019F-2C76-30CB807DD155</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="calle" id="38B92708-4B80-BDDF-72BC-9169CC4DCB15">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>01B758A8-8AEC-AE04-9EFF-B56AC897AE6F</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40</dataTypeSize>
+<ownDataTypeParameters>40,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nro" id="3574A57A-14A8-C73E-D420-4B4FE2057E11">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>D1AAE9A1-4A42-44AD-6E82-8D130F8F7476</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>3</dataTypeSize>
+<ownDataTypeParameters>3,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="piso" id="3CEA4C46-7F3B-421C-82ED-39E1CDFD5797">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>6FC2C9BE-350F-D794-F267-F12FAB97AF33</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>3</dataTypeSize>
+<ownDataTypeParameters>3,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ciudad" id="FC4FBBF5-773A-7786-3084-A44977ABA84C">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>82051D69-4D45-9F81-7246-CD7B6CAE546D</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cp" id="5C9484C8-FFA6-2045-95F6-7361F413BEFC">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>EBEB5036-9364-E9E1-E109-9EE775C53741</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>5</dataTypeSize>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="pais" id="BEB1965A-A129-F49E-456F-40466413AE96">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>0348A606-F69B-87A1-B376-BA16C8BC38A5</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tlfo" id="15353154-1104-D06A-2C15-91FD846834F6">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>47A3ED78-DC5C-195C-3771-2F86B3E50013</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>9</dataTypeSize>
+<ownDataTypeParameters>9,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id" id="3FF561D4-A3B6-8265-ADB6-356E86CE63A8">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>D1BD7BE7-313B-6A1C-1CAA-CA77B5150F41</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Equipo_cod" id="50EF761E-0090-F5A7-B236-84A2C42D5596">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>D5B23D4B-D425-3ECD-2F00-8DB71241C6D3</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D628EF34-6DA0-6D4F-8BC8-8E6056A66976" referredColumn="54D3AF95-A683-B547-38AE-E09F32305A1F"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0F22E379-BFEB-7A90-3402-D2F4B9CDA3E0" name="Jugador_Equipo_FK">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>F0371BD6-34B1-EAFC-900E-59C6EB2CF1ED</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="50EF761E-0090-F5A7-B236-84A2C42D5596"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

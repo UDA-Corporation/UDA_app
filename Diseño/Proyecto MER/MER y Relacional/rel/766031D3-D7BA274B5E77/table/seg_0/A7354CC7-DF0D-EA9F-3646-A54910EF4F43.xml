@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A7354CC7-DF0D-EA9F-3646-A54910EF4F43" name="Cuenta">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>F29F0BFB-D46E-E44A-513F-D413E51157EE</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="74384004-806A-CF34-B74B-738A45F21DAA">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>40D558AE-D67C-C588-6E90-A579AE39C186</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="pass" id="29BECE4C-6486-B100-3B1F-0FE024D306FB">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>309C2503-FF68-8E3C-1C81-AA48C940554A</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>16</dataTypeSize>
+<ownDataTypeParameters>16,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Persona_dni" id="84997831-DA6C-0E23-3FB3-A50DEA0E25E9">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>13EBFD32-45E3-5416-76BA-1A92CA34AF60</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>9</dataTypeSize>
+<ownDataTypeParameters>9,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C19CAD45-47C6-47B1-33F4-2DD564FABCC7" referredColumn="B4F15A69-2BDF-A7F3-15CF-80E2A5D39FA4"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="707468C4-AA8C-5B0D-2B15-8B9F1BCCB106" name="Cuenta_PK">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>B0496FB5-AA81-05BC-0D37-03138F74E014</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="74384004-806A-CF34-B74B-738A45F21DAA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="60FDCD37-98A0-80A4-2496-E3C41886CF64" name="Cuenta_Persona_FK">
+<createdBy>1gdaw02</createdBy>
+<createdTime>2018-04-23 11:25:57 UTC</createdTime>
+<generatorID>488B4FC5-F890-904F-DE69-AA8054733B82</generatorID>
+<ownerDesignName>MER y Relacional</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="84997831-DA6C-0E23-3FB3-A50DEA0E25E9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

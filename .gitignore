@@ -1,0 +1,62 @@
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+
+*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+Java/UDA_app/nbproject/private/private.properties
+/Parsers/ParserSAX Jornadas/build/
+/Parsers/ParserDOM Jornadas - Copy/bin/build/
+/Parsers/ParserDOM Jornadas - Copy/bin/nbproject/private/
+/Parsers/ParserDOM Jornadas - Copy/nbproject/private/
+/Parsers/ParserDOM Clasificacion/bin/build/
+/Parsers/ParserDOM Clasificacion/bin/nbproject/private/
+/Parsers/ParserDOM Clasificacion/nbproject/private/
+/Parsers/ParserDOM Clasificacion/build/
+/Parsers/ParserDOM Jornadas/build/
+/Parsers/ParserDOM Clasificacion/dist/
+/App/Parsers (Legacy)/ParserDOM Clasificacion/bin/build/
+/App/Parsers (Legacy)/ParserDOM Clasificacion/bin/nbproject/private/
+/App/Parsers (Legacy)/ParserDOM Clasificacion/build/
+/App/Parsers (Legacy)/ParserDOM Clasificacion/dist/
+/App/Parsers (Legacy)/ParserDOM Clasificacion/nbproject/private/
+/App/Parsers (Legacy)/ParserDOM Jornadas/bin/build/
+/App/Parsers (Legacy)/ParserDOM Jornadas/bin/nbproject/private/
+/App/Parsers (Legacy)/ParserDOM Jornadas/build/
+/App/Parsers (Legacy)/ParserDOM Jornadas/nbproject/private/
+/App/Parsers (Legacy)/ParserSAX Clasificacion/build/
+/App/Parsers (Legacy)/ParserSAX Clasificacion/nbproject/private/
+/App/Parsers (Legacy)/ParserSAX Jornadas/build/
+/App/Parsers (Legacy)/ParserSAX Jornadas/nbproject/private/
