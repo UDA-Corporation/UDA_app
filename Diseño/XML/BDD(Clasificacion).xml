@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<liga fechaExpiracion="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BDD(Clasificacion).xsd">
+<liga fechaExpiracion="">
     <clasificacion>
         <equipo codEquipo="" puesto="" puntos=""></equipo>
     </clasificacion>
