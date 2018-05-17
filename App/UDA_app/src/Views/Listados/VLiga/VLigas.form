@@ -49,26 +49,25 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="554" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                          <Component id="jScrollPane2" min="-2" pref="1042" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="565" max="-2" attributes="0"/>
+                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="87" max="32767" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="1042" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                  <EmptySpace pref="540" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -95,16 +94,16 @@
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="10" rowCount="0">
-                    <Column editable="false" title="DNI" type="java.lang.String"/>
+                    <Column editable="false" title="Codigo" type="java.lang.String"/>
                     <Column editable="false" title="Nombre" type="java.lang.String"/>
-                    <Column editable="false" title="Apellido" type="java.lang.String"/>
-                    <Column editable="false" title="Calle" type="java.lang.String"/>
-                    <Column editable="false" title="Numero" type="java.lang.String"/>
-                    <Column editable="false" title="Piso" type="java.lang.String"/>
-                    <Column editable="false" title="Ciudad" type="java.lang.String"/>
-                    <Column editable="false" title="Codigo Postal" type="java.lang.String"/>
-                    <Column editable="false" title="Pais" type="java.lang.String"/>
-                    <Column editable="false" title="Telefono" type="java.lang.String"/>
+                    <Column editable="true" title="Equipo 1" type="java.lang.Object"/>
+                    <Column editable="true" title="Equipo 2" type="java.lang.Object"/>
+                    <Column editable="true" title="Equipo 3" type="java.lang.Object"/>
+                    <Column editable="true" title="Equipo 4" type="java.lang.Object"/>
+                    <Column editable="true" title="Equipo 5" type="java.lang.Object"/>
+                    <Column editable="true" title="Equipo 6" type="java.lang.Object"/>
+                    <Column editable="true" title="Equipo 7" type="java.lang.Object"/>
+                    <Column editable="true" title="Equipo 8" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
