@@ -17,6 +17,10 @@ import Views.VPuntos.VPuntos;
 import java.text.SimpleDateFormat;
 import Excepciones.ResultadoPartido;
 import Excepciones.LigaExistente;
+import Parsers.DOMClasificacion.ParserDOMClasificacion;
+import Parsers.DOMJornadas.ParserDOMJornadas;
+import Parsers.SAX.ParserSAXClasificacion;
+import Parsers.SAX.ParserSAXJornadas;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import Views.ResultadosyDatos.VJornadas;
@@ -27,6 +31,13 @@ import Views.JDEliminar.JDEliminar;
 import Views.Listados.VLiga.VLigas;
 import Views.Listados.VPartidos.VPartidos;
 import Views.Listados.VPjornadas.VLJornadas;
+import static Views.ResultadosyDatos.VJornadas.x;
+import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 
 /**
  * @author Alejandro Diaz de Otalora
@@ -72,6 +83,7 @@ public class controlador {
     static final int PUNTOSDRAW=1;
     static Collection <Equipo> CollectionEquiposTemp;
     static List <Persona> personas;
+    public static DefaultTableModel model = new DefaultTableModel();
 
     /**
      * @param args the command line arguments
@@ -87,7 +99,7 @@ public class controlador {
                              + "\n"
                              + "▒█▀▀█ █▀▀█ █▀▀█ █▀▀█ ░ \n"
                              + "▒█░░░ █░░█ █▄▄▀ █░░█ ▄ \n"
-                             + "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v0.8 alpha");
+                             + "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v1.0");
             VPrincipal vp = new VPrincipal();
             vp.setVisible(true);
         } catch (Exception e) {
@@ -1502,6 +1514,78 @@ public class controlador {
         return Integer.parseInt(conexion.getPartidoBD().autoincrement());
     }
     
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Resultados y datos ">
+    public static void inicioVJornadas() {
+        File xml = new File("BDD(Jornadas).xml");
+        if(xml.exists() && !xml.isDirectory()) { 
+            ParserSAXJornadas JornadasSAX = new ParserSAXJornadas();
+            JornadasSAX.ejecutar();
+        } else {
+            try {
+                ParserDOMJornadas JornadasDOM = new ParserDOMJornadas();
+                JornadasDOM.ejecutar();
+            } catch (ParserConfigurationException | TransformerException ex) {
+                Logger.getLogger(VJornadas.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+        }
+        if (ParserSAXJornadas.Jornadasexpirado){
+            ParserSAXJornadas JornadasSAX = new ParserSAXJornadas();
+            JornadasSAX.ejecutar();
+        }
+    }
+    
+    public static void inicioVClasificacion() {
+        control.controlador.model.setRowCount(0);
+        control.controlador.model.setColumnCount(0);
+        File xml = new File("BDD(Clasificacion).xml");
+        if(xml.exists() && !xml.isDirectory()) { 
+            ParserSAXClasificacion ClasificacionSAX = new ParserSAXClasificacion();
+            ClasificacionSAX.ejecutar();
+        } else {
+            try {
+                ParserDOMClasificacion ClasificacionDOM = new ParserDOMClasificacion();
+                ClasificacionDOM.ejecutar();
+            } catch (ParserConfigurationException | TransformerException ex) {
+                Logger.getLogger(VClasificacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (ParserSAXClasificacion.Clasificacionexpirado){
+            ParserSAXClasificacion ClasificacionSAXexpiradoXML = new ParserSAXClasificacion();
+            ClasificacionSAXexpiradoXML.ejecutar();
+        }
+        Object[] columns = {"Nombre","Puntos","Puesto"};
+        model.setColumnIdentifiers(columns);
+        for (int i = 0; i < 32; i++) {
+            Object[] row = new Object[3];
+            row[0] = Parsers.SAX.ParserSAXClasificacion.Equipos[i];
+            row[1] = Parsers.SAX.ParserSAXClasificacion.Equipos[i+2];
+            row[2] = Parsers.SAX.ParserSAXClasificacion.Equipos[i+3];
+            i += 3;
+            model.addRow(row);
+            Arrays.fill(row,null);
+        } 
+    }
+    
+    public static void rellenarTablaJornadas(int J) {
+        control.controlador.model.setRowCount(0);
+        control.controlador.model.setColumnCount(0);
+        for (int i = 0; i < 14; i++) {
+            x = i * 15;
+            if (J == Integer.parseInt(ParserSAXJornadas.Jornadas[x].toString())) break;
+        }
+        Object[] columns = {"Equipo 1","Equipo 2","Resultado"};
+        model.setColumnIdentifiers(columns);
+        for (int i = (x + 3); i < (x + 15); i++) {
+            int y = i + 12;
+            Object[] row = new Object[3];
+            row = Arrays.copyOfRange(Parsers.SAX.ParserSAXJornadas.Jornadas,i,y);
+            model.addRow(row);
+            Arrays.fill(row,null);
+            i += 2;
+        }
+    }
     //</editor-fold>
     
     /**
