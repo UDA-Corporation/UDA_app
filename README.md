@@ -21,7 +21,7 @@ La aplicación está codificada en Java. El proyecto ha sido creado y editado co
 <br/>
 **Lo segundo:** Una vez creada la base de datos necesitamos configurar el JPA usado en el proyecto para conectarnos al servidor. Para ello editaremos el "persistence.xml" que se encuentra en App>>UDA_App>>>>src>>META-INF.  
 Se tiene que editar los campos que en la imagen aparecen como "NombreDelHost", "SID", "USUARIO" y "CONTRASEÑA", introduciendo las credenciales del servidor que se desea utilizar.  
-![Persistence.xml](/Diseño/Media/Persistence.png)
+![Persistence.xml](/Diseño/Media/Persistence.PNG)
 
 Una vez hechos estos pasos podremos desplegar la aplicación en nuestro IDE para su desarrollo. Tener en cuenta que este trabajo se ha creado bajo una licencia MIT.  
 
@@ -33,7 +33,7 @@ Una vez hechos estos pasos podremos desplegar la aplicación en nuestro IDE para
 <h6 align="center">Pantalla de consulta de clasificación (vista de usuario)</h6>
 
 ![VJornadas](/Diseño/Media/VJornadas.PNG)
-Pantalla de consulta de jornadas (vista de usuario)
+<h6 align="center">Pantalla de consulta de jornadas (vista de usuario)</h6>
 
 ## Documentación
 **Team drive con  [toda la documentación](https://docs.google.com/spreadsheets/d/1_2MhafOwp65LQePLwjUlc97uKK25Kxp-BGnyit3nX5c/edit?usp=sharing)**  
@@ -41,8 +41,8 @@ Pantalla de consulta de jornadas (vista de usuario)
 | Links específicos |
 | ------------- |
 | Planificación detallada [link](https://drive.google.com/open?id=1_2MhafOwp65LQePLwjUlc97uKK25Kxp-BGnyit3nX5c) |
-| Documento de implementación del blog [link]()
-| Estructura del fichero log [link](https://github.com/UDA-Corporation/UDA_app/tree/master/Script%20de%20red)
+| Documento de implementación del blog (con anexo de copia de seguridad) [link]() |
+| Estructura del fichero log [link](https://github.com/UDA-Corporation/UDA_app/tree/master/Script%20de%20red) |
 | MER [link](https://drive.google.com/a/jesusobrero.org/file/d/1UigJAmIbGuey9hzkApBd60lq5uMZcHzZ/view?usp=sharing) |
 | Casos de uso [link](https://drive.google.com/drive/folders/1VF7uAJGxh_eSb2wDG8RIVdB9CUqk9YqM) |
 | Modelo relacional [link](https://drive.google.com/a/jesusobrero.org/file/d/1A5lJ1eHHtMEf3xqWgLJHsitGZEUDiK-n/view?usp=sharing) |
