@@ -22,7 +22,12 @@ public class VPartidos extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setFavicon();        
-        String cadena [][] = controlador.llenarTablaPartidos(jTabla.getColumnCount());        
+        String cadena[][]=null;
+        try{
+            cadena = controlador.llenarTablaPartidos(jTabla.getColumnCount());
+        }catch (Exception e){
+            controlador.JDError(this, true, "Errores");
+        }
         jTabla.setModel(new javax.swing.table.DefaultTableModel(
                 cadena,
                 new String [] {

@@ -381,56 +381,55 @@ public class VRegistro extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tfDni, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                    .addComponent(tfApellido)
+                    .addComponent(tfNro)
+                    .addComponent(tfCiudad)
+                    .addComponent(tfPais))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
+                        .addComponent(bLupa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfDni, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
-                            .addComponent(tfApellido)
-                            .addComponent(tfNro)
-                            .addComponent(tfCiudad)
-                            .addComponent(tfPais))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(bLupa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(tfTel, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(tfCp))
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(tfPiso))
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(tfNombre))
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(tfCalle)))))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jpCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jpJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(tfTel, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(tfCp))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(tfPiso))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(tfNombre))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(tfCalle))))))
                 .addContainerGap(65, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jpJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(194, 194, 194))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -470,11 +469,10 @@ public class VRegistro extends javax.swing.JFrame {
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(bLupa))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addComponent(jpCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jpJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jpCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jpJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         bAceptar.setText("Aceptar");
@@ -810,6 +808,10 @@ public class VRegistro extends javax.swing.JFrame {
         coloresDefault(tfDni);
     }//GEN-LAST:event_tfDniCaretUpdate
 
+    /**
+     * Función que se ejecuta cuando la ventana se está cerrando que lleva a la ventana correspondiente
+     * @param evt Evento proporcinado de la ventana
+     */
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         if(tipoventana == 1)
             controlador.toVPrincipal(this);
@@ -817,10 +819,18 @@ public class VRegistro extends javax.swing.JFrame {
             controlador.toVLogin(this);
     }//GEN-LAST:event_formWindowClosing
 
+    /**
+     * Actualización realizada en el text field pass2 que pone los colores default al mismo
+     * @param evt Evento proporcinado de la ventana
+     */
     private void tfPass2CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfPass2CaretUpdate
         coloresDefault(tfPass2);
     }//GEN-LAST:event_tfPass2CaretUpdate
 
+    /**
+     * Action performed del botón cancelar que redirige a la ventana correspondiente
+     * @param evt Evento proporcinado de la ventana
+     */
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         if(tipoventana == 1)
             controlador.toVPrincipal(this);
@@ -828,22 +838,45 @@ public class VRegistro extends javax.swing.JFrame {
             controlador.toVLogin(this);
     }//GEN-LAST:event_bCancelarActionPerformed
 
+    /**
+     * Actualización realizada en el text field pass2 que pone los colores default al mismo
+     * @param evt Evento proporcinado de la ventana
+     */
     private void tfPass2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPass2ActionPerformed
         bAceptar.doClick();
     }//GEN-LAST:event_tfPass2ActionPerformed
 
+    /**
+     * Actualización realizada en el text field nickname que pone los colores default al mismo
+     * @param evt Evento proporcinado de la ventana
+     */
     private void tfNicknameCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfNicknameCaretUpdate
         coloresDefault(tfNickname);
     }//GEN-LAST:event_tfNicknameCaretUpdate
 
+    /**
+     * Actualización realizada en el text field sueldo que pone los colores default al mismo
+     * @param evt Evento proporcinado de la ventana
+     */
     private void tfSueldoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tfSueldoCaretUpdate
         coloresDefault(tfSueldo);
     }//GEN-LAST:event_tfSueldoCaretUpdate
 
+    /**
+     * Action performed del text field sueldo que hace click al botón aceptar
+     * @param evt Evento proporcinado de la ventana
+     */
     private void tfSueldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSueldoActionPerformed
         bAceptar.doClick();
     }//GEN-LAST:event_tfSueldoActionPerformed
 
+    /**
+     * Action performed del botón lupa que hace la busqueda según el tipo que hemos proporcionado en el constructor
+     * @param evt Evento proporcinado de la ventana
+     * @exception camposIncorrectos salta cuando los campos son incorrectos
+     * @exception dniNoEncontrado salta cuando no se ha encontrado e dni introducido
+     * @exception jugadoresEquipo salta cuando el jugador introducido no se encuentra en el equipo del dueño que ha hecho login
+     */
     private void bLupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLupaActionPerformed
         try
         {
@@ -860,7 +893,9 @@ public class VRegistro extends javax.swing.JFrame {
                     break;
                     
                     case 4:
-                        controlador.findJugByDni(tfDni.getText());
+                        if(!controlador.findJugByDni(tfDni.getText()))
+                            throw new jugadoresEquipo();
+                            
                         if(controlador.jugTemp == null)
                             throw new dniNoEncontrado();
                     break;
@@ -885,21 +920,37 @@ public class VRegistro extends javax.swing.JFrame {
             tfDni.setForeground(Color.orange);
             controlador.JDError(this, true, "El dni introducido no existe");
         }
+        catch(jugadoresEquipo e){
+            tfNombre.setForeground(Color.orange);
+            controlador.JDError(this, true, "El jugador introducido no se encuentra en ", "uno de tus equipos");
+        }
         catch(Exception e){
             controlador.JDError(this, true, "Error: "+e.getMessage()+e.getClass());
         }
     }//GEN-LAST:event_bLupaActionPerformed
 
+    /**
+     * Action performed del text field dni que hace click en el botón lupa dependiendo el tipo de la ventana
+     * @param evt Evento proporcinado de la ventana
+     */
     private void tfDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDniActionPerformed
         if(tipo <=2)
             bLupa.doClick();
     }//GEN-LAST:event_tfDniActionPerformed
     
+    /**
+     * Establece los colores por defecto de los text fields
+     * @param tf text field al que se le queire restablecer el color
+     */
     public void coloresDefault(JTextField tf){
         tf.setForeground(Color.black);
         tf.setBackground(new Color(255,255,204));
     }
     
+    /**
+     * Inicializa la ventana sugún el tipo de opción que vamos a realizar
+     * @param mensaje va a ser el título que le vamos a asignar a la ventana
+     */
     public void inicializarVentana(String mensaje) {
         boolean cambio = false;
         setLocationRelativeTo(null);
@@ -919,6 +970,7 @@ public class VRegistro extends javax.swing.JFrame {
             
             case 2:
                 jpCuenta.setVisible(false);
+                jpJugador.setVisible(true);
             break;
             
             case 3:
@@ -949,6 +1001,11 @@ public class VRegistro extends javax.swing.JFrame {
         
     }
     
+    /**
+     * Inicialización de los text fields y los botones según el tipo de ventana
+     * @param a boolean para visualizar una parte o ocultar
+     * @param b boolean para visualizar o ocultar otra parte
+     */
     public void setTfStartUp(boolean a, boolean b){
         tfDni.setEnabled(a);
         bAceptar.setEnabled(b);
@@ -996,6 +1053,11 @@ public class VRegistro extends javax.swing.JFrame {
         
     }
     
+    /**
+     * Establecer el color de error según el error que tenga
+     * @param tf text field al que se le aplica
+     * @param patt expresión regular con la que se va a validar
+     */
     public void setErroresColores(JTextField tf, String patt){
         try
         {
@@ -1014,6 +1076,11 @@ public class VRegistro extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * El tipo de color que se le va a asignar al text field según el tipo de error
+     * @param tf text field al que se le aplica
+     * @param caso caso que es
+     */
     public void setColorException(JTextField tf, int caso){
         Color rojo = new Color(255,77,77);
         if (caso == 1)
@@ -1025,6 +1092,12 @@ public class VRegistro extends javax.swing.JFrame {
             tf.setForeground(rojo);
     }
     
+    /**
+     * fución para validar un string
+     * @param cadena string que va a validar
+     * @param patt expresión regular que va a validar el string
+     * @return retorna un boleano que dice si coincide la expresión regular con la cadena o no
+     */
     public boolean validar(String cadena, String patt){
         boolean match = false;
         Pattern pat = Pattern.compile(patt);
@@ -1035,6 +1108,7 @@ public class VRegistro extends javax.swing.JFrame {
     }
     
     /**
+     * Main de la ventana generado automáticamente
      * @param args the command line arguments
      */
     public static void main(String args[]) {

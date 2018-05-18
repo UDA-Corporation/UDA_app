@@ -38,6 +38,7 @@ import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+import Excepciones.JugadoresInsuficientes;
 
 /**
  * @author Alejandro Diaz de Otalora
@@ -409,8 +410,28 @@ public class controlador {
      * @param dni clave primaria para facilitar la busqueda
      * @throws Exception 
      */
-    public static void findJugByDni(String dni) throws Exception{
+    public static boolean findJugByDni(String dni) throws Exception{
+        boolean encontrado = true;
         jugTemp = conexion.getJugadorBD().findJugador(dni);
+        
+        //Signifia que es dueño el que está haciendo la consulta
+        if(usu.getPersonaDni().getTipoPersona() == null)
+        {
+            encontrado = false;
+            equipos = conexion.getEquipoBD().findEquipoEntities();
+            
+            for(Equipo eq : equipos)
+            {
+                if(eq.getDuenoDni().getDni().equals(usu.getPersonaDni().getDni()))
+                {
+                    if(eq.getCod().equals(jugTemp.getEquipoCod().getCod()))
+                    {
+                        encontrado = true;
+                    }    
+                }    
+            }
+        } 
+        return encontrado;
     }
     
     /**
@@ -427,9 +448,21 @@ public class controlador {
      * @param nombre nombre que se desea buscar en equipo
      * @throws Exception 
      */
-    public static void findEquipoByNombre(String nombre) throws Exception{
-        
+    public static boolean findEquipoByNombre(String nombre) throws Exception{
+        boolean encontrado = true;
         equipoTemp = conexion.getEquipoBD().findByName(nombre.toUpperCase());
+        
+        //Signifia que es dueño el que está haciendo la consulta
+        if(usu.getPersonaDni().getTipoPersona() == null)
+        {
+            encontrado = false;
+            
+            if(equipoTemp.getDuenoDni().getDni().equals(usu.getPersonaDni().getDni()))
+                {
+                    encontrado = true;    
+                } 
+        } 
+        return encontrado;
     }
     
     
@@ -578,9 +611,30 @@ public class controlador {
      * @throws Exception 
      */
     public static void eliminarEquipo(String pk)throws Exception{
-        conexion.getEquipoBD().destroy(Integer.parseInt(pk));
+        Equipo e = conexion.getEquipoBD().findByName(pk);
+        conexion.getEquipoBD().destroy(e.getCod());
     }
 
+    public static void eliminarLiga(String pk)throws Exception{
+        equipos = conexion.getEquipoBD().findEquipoEntities();       
+        for (Equipo e : equipos)
+            e.setPartidoCollection(null);
+        ligaBD = conexion.getLigaBD().findByName(pk);
+        Collection Cjornadas = ligaBD.getJornadasCollection();
+        jornadas = new ArrayList(Cjornadas);
+        for (Jornadas j : jornadas){
+            Collection Cpartidos = j.getPartidoCollection();
+            partidos = new ArrayList(Cpartidos);
+            for (Partido p : partidos) {
+                p.setEquipoCollection(null);
+                conexion.getPartidoBD().destroy(p.getCod());
+            }
+            j.setPartidoCollection(null);
+            conexion.getJornadaBD().destroy(j.getCod());
+        }
+        ligaBD.setJornadasCollection(null);
+        conexion.getLigaBD().destroy(ligaBD.getCod());
+    }
     /**
      * Borra una persona
      * @param dni clave primaria de la persona que se quiere eliminar
@@ -1031,8 +1085,7 @@ public class controlador {
      * @param Sequipo String con los dos nombres de los equipos
      */
     public static void StringEquipos(String Sequipo){        
-        CollectionEquiposTemp = new ArrayList ();
-        System.out.println(Sequipo);
+        CollectionEquiposTemp = new ArrayList ();        
         String cadena = "";
         boolean finish = false;        
         for (int x=0;x<Sequipo.length()&&finish==false;x++)
@@ -1285,9 +1338,17 @@ public class controlador {
      * @throws Exception 
      */
     public static void generarLiga(String nombre, Calendar fecha) throws Exception {
-        //La liga se genera solo si no hay otra liga creada
+        String cadena="";
+        //La liga se genera solo si no hay otra liga creada        
         if(conexion.getLigaBD().getLigaCount()==1)
             throw new LigaExistente();
+        for (Equipo e : equipos){
+            if(e.getJugadorCollection().size()!=6)
+                cadena+=e.getNombre()+", ";
+            if(!cadena.equalsIgnoreCase(""))
+                throw new JugadoresInsuficientes(cadena);
+        }
+        
         int cont = 1;
         //Al comenzar la liga se ponen los puntos de todos los equipos a 0 y el puesto del 1 al 8
         for (Equipo e : equipos){
@@ -1302,7 +1363,7 @@ public class controlador {
         PartidosEquipo = generarPartidos();
         boolean zig = true;
         //Creamos el objeto liga
-        liga = new Liga(codigoLiga(), nombre);
+        liga = new Liga(codigoLiga(), nombre.toUpperCase());
         //Hacemos ese objeto persistente
         conexion.getLigaBD().create(liga);
         buscarFinesDeSemana(fecha);
