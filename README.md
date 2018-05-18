@@ -12,7 +12,7 @@
 La aplicación esta preparada para crear ligas, equipos y jornadas, aparte de jugadores, dueños de los distintos equipos, usuarios que consultarán la clasificación y el estado de las jornadas y los administradores, que podrán crear todo lo anterior, modificarlo y eliminarlo en caso de ser necesario.
 
 ## Instalación
-Disponemos de un tutorial para usuarios ([vídeo]()) que muestra como instalar y usar la aplicación desde una cuenta existente o nueva de usuario. Se puede descargar el ejecutable .jar comprimido desde **[aquí.]()**
+Disponemos de un tutorial para usuarios ([vídeo]()) que muestra como instalar y usar la aplicación desde una cuenta existente o nueva de usuario. Se puede descargar el ejecutable .jar comprimido desde **[aquí.](/App/UDA_app?raw=true)**
 
 ## Cómo desplegar la aplicación para su desarrollo
 La aplicación está codificada en Java. El proyecto ha sido creado y editado con Netbeans. El proyecto se encuentra en [App>>UDA_App](/App/UDA_app).  
@@ -44,7 +44,7 @@ Una vez hechos estos pasos podremos desplegar la aplicación en nuestro IDE para
 | ------------- |
 | Planificación detallada [link](https://drive.google.com/open?id=1_2MhafOwp65LQePLwjUlc97uKK25Kxp-BGnyit3nX5c) |
 | Documento de implementación del blog (con anexo de copia de seguridad) [link](/Documentacion/Documentación%20de%20la%20implementación%20del%20blog.docx?raw=true) |
-| Manual del administrador [link](/Documentacion/Manual%20del%20administrador.docx) |
+| Manual del administrador [link](/Documentacion/Manual%20del%20administrador.docx?raw=true) |
 | Estructura del fichero log [link](/Script%20de%20red) |
 | MER [link](/Documentacion/MER%20y%20Relacional/MER.pdf) |
 | Modelo relacional [link](/Documentacion/MER%20y%20Relacional/Modelo_relacional.pdf) |
