@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="/Diseño/Media/Icono.png" height="150" width="128" alt="Logo"/>
+  <img src="/Documentacion/Media/Icono.png" height="150" width="128" alt="Logo"/>
   <br/>
   UDA App
 </h1>
@@ -27,16 +27,17 @@ Se tiene que editar los campos que en la imagen aparecen como "NombreDelHost", "
 Una vez hechos estos pasos podremos desplegar la aplicación en nuestro IDE para su desarrollo. Tener en cuenta que este trabajo se ha creado bajo una licencia MIT.  
 
 ## Capturas de pantalla  
-![VPrincipal](/Diseño/Media/VPrincipal.PNG)
+![VPrincipal](/Documentacion/Media/VPrincipal.png)
 <h6 align="center">Pantalla principal (vista de usuario)</h6>
 
-![VClasificacion](/Diseño/Media/VClasificacion.PNG)
+![VClasificacion](/Documentacion/Media/VClasificacion.PNG)
 <h6 align="center">Pantalla de consulta de clasificación (vista de usuario)</h6>
 
-![VJornadas](/Diseño/Media/VJornadas.PNG)
+![VJornadas](/Documentacion/Media/VJornadas.PNG)
 <h6 align="center">Pantalla de consulta de jornadas (vista de usuario)</h6>
 
 ## Documentación
+**Documentación del proyecto [link](/Documentacion)**
 **Team drive con  [toda la documentación](https://docs.google.com/spreadsheets/d/1_2MhafOwp65LQePLwjUlc97uKK25Kxp-BGnyit3nX5c/edit?usp=sharing)**  
 
 | Links específicos |
