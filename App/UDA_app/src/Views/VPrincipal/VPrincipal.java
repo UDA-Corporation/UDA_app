@@ -4,6 +4,8 @@ import control.controlador;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
@@ -67,10 +69,10 @@ public class VPrincipal extends javax.swing.JFrame {
         jmModDue = new javax.swing.JMenuItem();
         jmModEquipo = new javax.swing.JMenuItem();
         jmEliminar = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
-        jMenuItem16 = new javax.swing.JMenuItem();
+        jmDelUsu = new javax.swing.JMenuItem();
+        jmDelJug = new javax.swing.JMenuItem();
+        jmDelDue = new javax.swing.JMenuItem();
+        jmDelEquipo = new javax.swing.JMenuItem();
         jmListar = new javax.swing.JMenu();
         jmListUsu = new javax.swing.JMenuItem();
         jmListJug = new javax.swing.JMenuItem();
@@ -370,17 +372,37 @@ public class VPrincipal extends javax.swing.JFrame {
         jmEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/VPrincipal/delete_icon.png"))); // NOI18N
         jmEliminar.setText("Eliminar");
 
-        jMenuItem8.setText("Usuario");
-        jmEliminar.add(jMenuItem8);
+        jmDelUsu.setText("Usuario");
+        jmDelUsu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmDelUsuActionPerformed(evt);
+            }
+        });
+        jmEliminar.add(jmDelUsu);
 
-        jMenuItem14.setText("Jugador");
-        jmEliminar.add(jMenuItem14);
+        jmDelJug.setText("Jugador");
+        jmDelJug.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmDelJugActionPerformed(evt);
+            }
+        });
+        jmEliminar.add(jmDelJug);
 
-        jMenuItem15.setText("Dueño");
-        jmEliminar.add(jMenuItem15);
+        jmDelDue.setText("Dueño");
+        jmDelDue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmDelDueActionPerformed(evt);
+            }
+        });
+        jmEliminar.add(jmDelDue);
 
-        jMenuItem16.setText("Equipo");
-        jmEliminar.add(jMenuItem16);
+        jmDelEquipo.setText("Equipo");
+        jmDelEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmDelEquipoActionPerformed(evt);
+            }
+        });
+        jmEliminar.add(jmDelEquipo);
 
         jmHerramientas.add(jmEliminar);
 
@@ -422,12 +444,27 @@ public class VPrincipal extends javax.swing.JFrame {
         jmListar.add(jSeparator4);
 
         jmListLig.setText("Ligas");
+        jmListLig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmListLigActionPerformed(evt);
+            }
+        });
         jmListar.add(jmListLig);
 
         jmListPart.setText("Partidos");
+        jmListPart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmListPartActionPerformed(evt);
+            }
+        });
         jmListar.add(jmListPart);
 
         jmListJorn.setText("Jornadas");
+        jmListJorn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmListJornActionPerformed(evt);
+            }
+        });
         jmListar.add(jmListJorn);
         jmListar.add(jSeparator3);
 
@@ -777,6 +814,68 @@ public class VPrincipal extends javax.swing.JFrame {
     private void jmListEquiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmListEquiActionPerformed
         controlador.toVequipos(this);
     }//GEN-LAST:event_jmListEquiActionPerformed
+
+    /**
+     * Action performed del java menu eliminar usuario que lleva a la ventana JDEliminar
+     * @param evt Evento proporcinado de la ventana
+     */
+    private void jmDelUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmDelUsuActionPerformed
+        controlador.JDEliminar(this, true, "usuario");
+    }//GEN-LAST:event_jmDelUsuActionPerformed
+
+    /**
+     * Action performed del java menu eliminar jugador que lleva a la ventana JDEliminar
+     * @param evt Evento proporcinado de la ventana
+     */
+    private void jmDelJugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmDelJugActionPerformed
+        controlador.JDEliminar(this, true, "jugador");
+    }//GEN-LAST:event_jmDelJugActionPerformed
+
+    /**
+     * Action performed del java menu eliminar dueño que lleva a la ventana JDEliminar
+     * @param evt Evento proporcinado de la ventana
+     */
+    private void jmDelDueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmDelDueActionPerformed
+        controlador.JDEliminar(this, true, "dueno");
+    }//GEN-LAST:event_jmDelDueActionPerformed
+
+    /**
+     * Action performed del java menu eliminar equipo que lleva a la ventana JDEliminar
+     * @param evt Evento proporcinado de la ventana
+     */
+    private void jmDelEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmDelEquipoActionPerformed
+        controlador.JDEliminar(this, true, "equipo");
+    }//GEN-LAST:event_jmDelEquipoActionPerformed
+
+    /**
+     * Action performed del java menu listar liga que lleva a la ventana VLigas
+     * @param evt Evento proporcinado de la ventana
+     */
+    private void jmListLigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmListLigActionPerformed
+        controlador.toVLigas(this);
+    }//GEN-LAST:event_jmListLigActionPerformed
+
+    /**
+     * Action performed del java menu listar partido que lleva a la ventana Vpartidos
+     * @param evt Evento proporcinado de la ventana
+     */
+    private void jmListPartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmListPartActionPerformed
+        controlador.toVpartidos(this);
+    }//GEN-LAST:event_jmListPartActionPerformed
+
+    /**
+     * Action performed del java menu listar jornadas que lleva a la ventana VJornadas
+     * @param evt Evento proporcinado de la ventana
+     */
+    private void jmListJornActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmListJornActionPerformed
+        try 
+        {
+            controlador.toVJornadas(this);
+        } 
+        catch (IOException e) {
+            controlador.JDError(this, true, e.getClass()+" "+e.getMessage());
+        }
+    }//GEN-LAST:event_jmListJornActionPerformed
     
     /**
      * Función que establece la ventana si ha habido un inicio de sesión o no habilitando o desabilitando funciones dependiendo del tipo de usuario
@@ -899,10 +998,6 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem16;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
@@ -917,6 +1012,10 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmCUsuario;
     private javax.swing.JMenuItem jmClasificacion;
     private javax.swing.JMenuItem jmCs;
+    private javax.swing.JMenuItem jmDelDue;
+    private javax.swing.JMenuItem jmDelEquipo;
+    private javax.swing.JMenuItem jmDelJug;
+    private javax.swing.JMenuItem jmDelUsu;
     private javax.swing.JMenu jmEliminar;
     private javax.swing.JMenu jmHerramientas;
     private javax.swing.JMenuItem jmJornadas;
