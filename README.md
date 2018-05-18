@@ -26,12 +26,12 @@ Se tiene que editar los campos que en la imagen aparecen como "NombreDelHost", "
 Una vez hechos estos pasos podremos desplegar la aplicación en nuestro IDE para su desarrollo. Tener en cuenta que este trabajo se ha creado bajo una licencia MIT.  
 
 ## Capturas de pantalla
-![Imagen1](https://i.imgur.com/B9kRlBS.png)
+![VPrincipal](https://i.imgur.com/B9kRlBS.png)
 <h6 align="center">Pantalla principal (vista de usuario)<h6/>
-![Imagen2](https://i.imgur.com/u8nV2E1.png)
-<h6 align="center">Pantalla clasificación (vista de usuario)<h6/>
-![Imagen3](https://i.imgur.com/44109i7.png)
-<h6 align="center">Pantalla clasificación (vista de usuario)<h6/>
+![VClasificacion](https://i.imgur.com/bKxivtG.png)
+<h6 align="center">Pantalla de consulta de clasificación (vista de usuario)<h6/>
+![VJornadas](https://i.imgur.com/2LTr5ll.png)
+<h6 align="center">Pantalla de consulta de jornadas (vista de usuario)<h6/>
 
 ## Documentación
 **Team drive con  [toda la documentación](https://docs.google.com/spreadsheets/d/1_2MhafOwp65LQePLwjUlc97uKK25Kxp-BGnyit3nX5c/edit?usp=sharing)**  
