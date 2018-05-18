@@ -46,7 +46,5 @@ public class controladorTest {
         boolean expResult = true;
         boolean result = controlador.findUsuLogin(usuario, pass);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        
     }
 }

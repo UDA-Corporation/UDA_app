@@ -1,5 +1,6 @@
 package Views.VLiga;
 
+import Excepciones.JugadoresInsuficientes;
 import control.controlador;
 import java.awt.Image;
 import javax.imageio.ImageIO;
@@ -168,6 +169,8 @@ public class VLiga extends javax.swing.JFrame {
                 controlador.toVPrincipal(this);
             }else
                 controlador.JDError(this, true, "Seleccione 8 equipos");
+        }catch (JugadoresInsuficientes e){
+            controlador.JDError(this, true, "Los equipos: "+e.getMensaje()+"no tienen jugadores suficientes");
         }catch (LigaExistente e){
             controlador.JDError(this, true, "No se puede crear una liga si hay una en curso");
         }catch (Exception ex) {
