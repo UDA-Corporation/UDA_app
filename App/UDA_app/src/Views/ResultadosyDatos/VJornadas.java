@@ -1,18 +1,13 @@
 package Views.ResultadosyDatos;
 
-import Parsers.DOMJornadas.ParserDOMJornadas;
-import Parsers.SAX.ParserSAXJornadas;
 import control.controlador;
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.table.DefaultTableModel;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
+import static control.controlador.inicioVJornadas;
+import static control.controlador.rellenarTablaJornadas;
 
 /**
  * @author Alejandro Diaz de Otalora
@@ -24,7 +19,7 @@ import javax.xml.transform.TransformerException;
 
 public class VJornadas extends javax.swing.JFrame {
     //La X lleva la posicion de la jornada seleccionada en el combo box, porque en el XML no aparece ordenado (por el JPA)
-    int x = 0;
+    public static int x = 0;
     
     /**
      * Creates new form VJornadas
@@ -197,22 +192,7 @@ public class VJornadas extends javax.swing.JFrame {
      * @param evt Evento ocurrido en la ventana: abrirse
      */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        File xml = new File("BDD(Jornadas).xml");
-        if(xml.exists() && !xml.isDirectory()) { 
-            ParserSAXJornadas JornadasSAX = new ParserSAXJornadas();
-            JornadasSAX.ejecutar();
-        } else {
-            try {
-                ParserDOMJornadas JornadasDOM = new ParserDOMJornadas();
-                JornadasDOM.ejecutar();
-            } catch (ParserConfigurationException | TransformerException ex) {
-                Logger.getLogger(VJornadas.class.getName()).log(Level.SEVERE, null, ex);
-            } 
-        }
-        if (ParserSAXJornadas.Jornadasexpirado){
-            ParserSAXJornadas JornadasSAX = new ParserSAXJornadas();
-            JornadasSAX.ejecutar();
-        }
+        inicioVJornadas();
         SelectorJornada.setSelectedIndex(x);
     }//GEN-LAST:event_formWindowOpened
 
@@ -238,24 +218,10 @@ public class VJornadas extends javax.swing.JFrame {
      */
     private void SelectorJornadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectorJornadaActionPerformed
         int J = SelectorJornada.getSelectedIndex() + 1;
-        for (int i = 0; i < 14; i++) {
-            x = i * 15;
-            if (J == Integer.parseInt(ParserSAXJornadas.Jornadas[x].toString())) break;
-        }
-        Object[] columns = {"Equipo 1","Equipo 2","Resultado"};
-        DefaultTableModel model = new DefaultTableModel();
-        model.setColumnIdentifiers(columns);
-        for (int i = (x + 3); i < (x + 15); i++) {
-            int y = i + 12;
-            Object[] row = new Object[3];
-            row = Arrays.copyOfRange(Parsers.SAX.ParserSAXJornadas.Jornadas,i,y);
-            model.addRow(row);
-            Arrays.fill(row,null);
-            i += 2;
-        } 
-        Table.setModel(model);
+        rellenarTablaJornadas(J);
         FechaFinal.setText(Parsers.SAX.ParserSAXJornadas.Jornadas[x+1].toString());
         FechaInicio.setText(Parsers.SAX.ParserSAXJornadas.Jornadas[x+2].toString());
+        Table.setModel(control.controlador.model);
         x = 0;
     }//GEN-LAST:event_SelectorJornadaActionPerformed
 
