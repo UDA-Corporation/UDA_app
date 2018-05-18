@@ -4,8 +4,6 @@ import control.controlador;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
@@ -73,6 +71,8 @@ public class VPrincipal extends javax.swing.JFrame {
         jmDelJug = new javax.swing.JMenuItem();
         jmDelDue = new javax.swing.JMenuItem();
         jmDelEquipo = new javax.swing.JMenuItem();
+        jSeparator5 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jmListar = new javax.swing.JMenu();
         jmListUsu = new javax.swing.JMenuItem();
         jmListJug = new javax.swing.JMenuItem();
@@ -403,6 +403,15 @@ public class VPrincipal extends javax.swing.JFrame {
             }
         });
         jmEliminar.add(jmDelEquipo);
+        jmEliminar.add(jSeparator5);
+
+        jMenuItem1.setText("Eliminar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jmEliminar.add(jMenuItem1);
 
         jmHerramientas.add(jmEliminar);
 
@@ -868,14 +877,12 @@ public class VPrincipal extends javax.swing.JFrame {
      * @param evt Evento proporcinado de la ventana
      */
     private void jmListJornActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmListJornActionPerformed
-        try 
-        {
-            controlador.toVJornadas(this);
-        } 
-        catch (IOException e) {
-            controlador.JDError(this, true, e.getClass()+" "+e.getMessage());
-        }
+        controlador.toVLJornadas(this);     
     }//GEN-LAST:event_jmListJornActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        controlador.JDEliminar(this, true, "liga");
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
     
     /**
      * Función que establece la ventana si ha habido un inicio de sesión o no habilitando o desabilitando funciones dependiendo del tipo de usuario
@@ -906,36 +913,37 @@ public class VPrincipal extends javax.swing.JFrame {
             }
             else
             {
-                switch(controlador.usu.getPersonaDni().getTipoPersona())
+                if(controlador.usu.getPersonaDni().getTipoPersona() != null)
                 {
-                    case "admin": 
-                        setInicioSesion();
-                    break;
+                    switch(controlador.usu.getPersonaDni().getTipoPersona())
+                    {
+                        case "admin": 
+                            setInicioSesion();
+                        break;
                     
-                    case "usuario":
-                        setInicioSesion();
-                        jmHerramientas.setVisible(false);
-                        jmPuntuacion.setVisible(false);
-                    break;
-                
-                    default:
-                        setInicioSesion();
-                        jmRegistrar.setVisible(false);
-                        jmListar.setVisible(false);
-                        jmEliminar.setVisible(false);
-                        jmModUsu.setVisible(false);
-                        jmModDue.setVisible(false);
-                        jmPuntuacion.setVisible(false);
-                    break;
-                                
+                        case "usuario":
+                            setInicioSesion();
+                            jmHerramientas.setVisible(false);
+                            jmPuntuacion.setVisible(false);
+                        break;
+                    } 
+                }    
+                else
+                {
+                    setInicioSesion();
+                    jmRegistrar.setVisible(false);
+                    jmListar.setVisible(false);
+                    jmEliminar.setVisible(false);
+                    jmModUsu.setVisible(false);
+                    jmModDue.setVisible(false);
+                    jmPuntuacion.setVisible(false);
+                }               
             }
-            }    
-            
         }
         catch(Exception e){
             controlador.JDError(this, true, "Error en ventana principal");
         }
-        
+
     }
     
     /**
@@ -998,12 +1006,14 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JMenuItem jmCAdmin;
     private javax.swing.JMenuItem jmCDueno;
     private javax.swing.JMenuItem jmCEquipo;

@@ -17,6 +17,10 @@ import Views.VPuntos.VPuntos;
 import java.text.SimpleDateFormat;
 import Excepciones.ResultadoPartido;
 import Excepciones.LigaExistente;
+import Parsers.DOMClasificacion.ParserDOMClasificacion;
+import Parsers.DOMJornadas.ParserDOMJornadas;
+import Parsers.SAX.ParserSAXClasificacion;
+import Parsers.SAX.ParserSAXJornadas;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import Views.ResultadosyDatos.VJornadas;
@@ -27,6 +31,14 @@ import Views.JDEliminar.JDEliminar;
 import Views.Listados.VLiga.VLigas;
 import Views.Listados.VPartidos.VPartidos;
 import Views.Listados.VPjornadas.VLJornadas;
+import static Views.ResultadosyDatos.VJornadas.x;
+import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import Excepciones.JugadoresInsuficientes;
 
 /**
  * @author Alejandro Diaz de Otalora
@@ -72,6 +84,7 @@ public class controlador {
     static final int PUNTOSDRAW=1;
     static Collection <Equipo> CollectionEquiposTemp;
     static List <Persona> personas;
+    public static DefaultTableModel model = new DefaultTableModel();
 
     /**
      * @param args the command line arguments
@@ -87,7 +100,7 @@ public class controlador {
                              + "\n"
                              + "▒█▀▀█ █▀▀█ █▀▀█ █▀▀█ ░ \n"
                              + "▒█░░░ █░░█ █▄▄▀ █░░█ ▄ \n"
-                             + "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v0.8 alpha");
+                             + "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v1.0");
             VPrincipal vp = new VPrincipal();
             vp.setVisible(true);
         } catch (Exception e) {
@@ -397,8 +410,28 @@ public class controlador {
      * @param dni clave primaria para facilitar la busqueda
      * @throws Exception 
      */
-    public static void findJugByDni(String dni) throws Exception{
+    public static boolean findJugByDni(String dni) throws Exception{
+        boolean encontrado = true;
         jugTemp = conexion.getJugadorBD().findJugador(dni);
+        
+        //Signifia que es dueño el que está haciendo la consulta
+        if(usu.getPersonaDni().getTipoPersona() == null)
+        {
+            encontrado = false;
+            equipos = conexion.getEquipoBD().findEquipoEntities();
+            
+            for(Equipo eq : equipos)
+            {
+                if(eq.getDuenoDni().getDni().equals(usu.getPersonaDni().getDni()))
+                {
+                    if(eq.getCod().equals(jugTemp.getEquipoCod().getCod()))
+                    {
+                        encontrado = true;
+                    }    
+                }    
+            }
+        } 
+        return encontrado;
     }
     
     /**
@@ -415,9 +448,21 @@ public class controlador {
      * @param nombre nombre que se desea buscar en equipo
      * @throws Exception 
      */
-    public static void findEquipoByNombre(String nombre) throws Exception{
-        
+    public static boolean findEquipoByNombre(String nombre) throws Exception{
+        boolean encontrado = true;
         equipoTemp = conexion.getEquipoBD().findByName(nombre.toUpperCase());
+        
+        //Signifia que es dueño el que está haciendo la consulta
+        if(usu.getPersonaDni().getTipoPersona() == null)
+        {
+            encontrado = false;
+            
+            if(equipoTemp.getDuenoDni().getDni().equals(usu.getPersonaDni().getDni()))
+                {
+                    encontrado = true;    
+                } 
+        } 
+        return encontrado;
     }
     
     
@@ -566,9 +611,30 @@ public class controlador {
      * @throws Exception 
      */
     public static void eliminarEquipo(String pk)throws Exception{
-        conexion.getEquipoBD().destroy(Integer.parseInt(pk));
+        Equipo e = conexion.getEquipoBD().findByName(pk);
+        conexion.getEquipoBD().destroy(e.getCod());
     }
 
+    public static void eliminarLiga(String pk)throws Exception{
+        equipos = conexion.getEquipoBD().findEquipoEntities();       
+        for (Equipo e : equipos)
+            e.setPartidoCollection(null);
+        ligaBD = conexion.getLigaBD().findByName(pk);
+        Collection Cjornadas = ligaBD.getJornadasCollection();
+        jornadas = new ArrayList(Cjornadas);
+        for (Jornadas j : jornadas){
+            Collection Cpartidos = j.getPartidoCollection();
+            partidos = new ArrayList(Cpartidos);
+            for (Partido p : partidos) {
+                p.setEquipoCollection(null);
+                conexion.getPartidoBD().destroy(p.getCod());
+            }
+            j.setPartidoCollection(null);
+            conexion.getJornadaBD().destroy(j.getCod());
+        }
+        ligaBD.setJornadasCollection(null);
+        conexion.getLigaBD().destroy(ligaBD.getCod());
+    }
     /**
      * Borra una persona
      * @param dni clave primaria de la persona que se quiere eliminar
@@ -1019,8 +1085,7 @@ public class controlador {
      * @param Sequipo String con los dos nombres de los equipos
      */
     public static void StringEquipos(String Sequipo){        
-        CollectionEquiposTemp = new ArrayList ();
-        System.out.println(Sequipo);
+        CollectionEquiposTemp = new ArrayList ();        
         String cadena = "";
         boolean finish = false;        
         for (int x=0;x<Sequipo.length()&&finish==false;x++)
@@ -1273,9 +1338,17 @@ public class controlador {
      * @throws Exception 
      */
     public static void generarLiga(String nombre, Calendar fecha) throws Exception {
-        //La liga se genera solo si no hay otra liga creada
+        String cadena="";
+        //La liga se genera solo si no hay otra liga creada        
         if(conexion.getLigaBD().getLigaCount()==1)
             throw new LigaExistente();
+        for (Equipo e : equipos){
+            if(e.getJugadorCollection().size()!=6)
+                cadena+=e.getNombre()+", ";
+            if(!cadena.equalsIgnoreCase(""))
+                throw new JugadoresInsuficientes(cadena);
+        }
+        
         int cont = 1;
         //Al comenzar la liga se ponen los puntos de todos los equipos a 0 y el puesto del 1 al 8
         for (Equipo e : equipos){
@@ -1290,7 +1363,7 @@ public class controlador {
         PartidosEquipo = generarPartidos();
         boolean zig = true;
         //Creamos el objeto liga
-        liga = new Liga(codigoLiga(), nombre);
+        liga = new Liga(codigoLiga(), nombre.toUpperCase());
         //Hacemos ese objeto persistente
         conexion.getLigaBD().create(liga);
         buscarFinesDeSemana(fecha);
@@ -1502,6 +1575,78 @@ public class controlador {
         return Integer.parseInt(conexion.getPartidoBD().autoincrement());
     }
     
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Resultados y datos ">
+    public static void inicioVJornadas() {
+        File xml = new File("BDD(Jornadas).xml");
+        if(xml.exists() && !xml.isDirectory()) { 
+            ParserSAXJornadas JornadasSAX = new ParserSAXJornadas();
+            JornadasSAX.ejecutar();
+        } else {
+            try {
+                ParserDOMJornadas JornadasDOM = new ParserDOMJornadas();
+                JornadasDOM.ejecutar();
+            } catch (ParserConfigurationException | TransformerException ex) {
+                Logger.getLogger(VJornadas.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+        }
+        if (ParserSAXJornadas.Jornadasexpirado){
+            ParserSAXJornadas JornadasSAX = new ParserSAXJornadas();
+            JornadasSAX.ejecutar();
+        }
+    }
+    
+    public static void inicioVClasificacion() {
+        control.controlador.model.setRowCount(0);
+        control.controlador.model.setColumnCount(0);
+        File xml = new File("BDD(Clasificacion).xml");
+        if(xml.exists() && !xml.isDirectory()) { 
+            ParserSAXClasificacion ClasificacionSAX = new ParserSAXClasificacion();
+            ClasificacionSAX.ejecutar();
+        } else {
+            try {
+                ParserDOMClasificacion ClasificacionDOM = new ParserDOMClasificacion();
+                ClasificacionDOM.ejecutar();
+            } catch (ParserConfigurationException | TransformerException ex) {
+                Logger.getLogger(VClasificacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (ParserSAXClasificacion.Clasificacionexpirado){
+            ParserSAXClasificacion ClasificacionSAXexpiradoXML = new ParserSAXClasificacion();
+            ClasificacionSAXexpiradoXML.ejecutar();
+        }
+        Object[] columns = {"Nombre","Puntos","Puesto"};
+        model.setColumnIdentifiers(columns);
+        for (int i = 0; i < 32; i++) {
+            Object[] row = new Object[3];
+            row[0] = Parsers.SAX.ParserSAXClasificacion.Equipos[i];
+            row[1] = Parsers.SAX.ParserSAXClasificacion.Equipos[i+2];
+            row[2] = Parsers.SAX.ParserSAXClasificacion.Equipos[i+3];
+            i += 3;
+            model.addRow(row);
+            Arrays.fill(row,null);
+        } 
+    }
+    
+    public static void rellenarTablaJornadas(int J) {
+        control.controlador.model.setRowCount(0);
+        control.controlador.model.setColumnCount(0);
+        for (int i = 0; i < 14; i++) {
+            x = i * 15;
+            if (J == Integer.parseInt(ParserSAXJornadas.Jornadas[x].toString())) break;
+        }
+        Object[] columns = {"Equipo 1","Equipo 2","Resultado"};
+        model.setColumnIdentifiers(columns);
+        for (int i = (x + 3); i < (x + 15); i++) {
+            int y = i + 12;
+            Object[] row = new Object[3];
+            row = Arrays.copyOfRange(Parsers.SAX.ParserSAXJornadas.Jornadas,i,y);
+            model.addRow(row);
+            Arrays.fill(row,null);
+            i += 2;
+        }
+    }
     //</editor-fold>
     
     /**
