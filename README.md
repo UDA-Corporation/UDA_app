@@ -43,11 +43,12 @@ Una vez hechos estos pasos podremos desplegar la aplicación en nuestro IDE para
 | Links específicos |
 | ------------- |
 | Planificación detallada [link](https://drive.google.com/open?id=1_2MhafOwp65LQePLwjUlc97uKK25Kxp-BGnyit3nX5c) |
-| Documento de implementación del blog (con anexo de copia de seguridad) [link]() |
+| Documento de implementación del blog (con anexo de copia de seguridad) [link](/Documentacion/Documentación%20de%20la%20implementación%20del%20blog.docx) |
+| Manual del administrador [link](/Documentacion/Manual%20del%20administrador.docx) |
 | Estructura del fichero log [link](/Script%20de%20red) |
 | MER [link](https://drive.google.com/a/jesusobrero.org/file/d/1UigJAmIbGuey9hzkApBd60lq5uMZcHzZ/view?usp=sharing) |
-| Casos de uso [link](https://drive.google.com/drive/folders/1VF7uAJGxh_eSb2wDG8RIVdB9CUqk9YqM) |
 | Modelo relacional [link](https://drive.google.com/a/jesusobrero.org/file/d/1A5lJ1eHHtMEf3xqWgLJHsitGZEUDiK-n/view?usp=sharing) |
+| Casos de uso [link](https://drive.google.com/drive/folders/1VF7uAJGxh_eSb2wDG8RIVdB9CUqk9YqM) |
 | Dirección del blog: [10.1.2.1](https://10.1.2.1) |
 
 ###### Realizado por UDA Corp. bajo licencia [MIT](https://github.com/Barraguesh/UDA_app/blob/master/LICENSE). 2018.
