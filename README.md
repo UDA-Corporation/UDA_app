@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="/Diseño/Media/Icono.PNG" height="150" width="128" alt="Logo"/>
+  <img src="/Diseño/Media/Icono.png" height="150" width="128" alt="Logo"/>
   <br/>
   UDA App
 </h1>
@@ -21,16 +21,16 @@ La aplicación está codificada en Java. El proyecto ha sido creado y editado co
 <br/>
 **Lo segundo:** Una vez creada la base de datos necesitamos configurar el JPA usado en el proyecto para conectarnos al servidor. Para ello editaremos el "persistence.xml" que se encuentra en App>>UDA_App>>>>src>>META-INF.  
 Se tiene que editar los campos que en la imagen aparecen como "NombreDelHost", "SID", "USUARIO" y "CONTRASEÑA", introduciendo las credenciales del servidor que se desea utilizar.  
-![Persistence.xml](/Diseño/Media/Persistence.PNG)
+![Persistence.xml](/Diseño/Media/Persistence.png)
 
 Una vez hechos estos pasos podremos desplegar la aplicación en nuestro IDE para su desarrollo. Tener en cuenta que este trabajo se ha creado bajo una licencia MIT.  
 
 ## Capturas de pantalla  
-![VPrincipal](/Diseño/Media/VPrincipal.PNG)
+![VPrincipal](/Diseño/Media/VPrincipal.png)
 Pantalla principal (vista de usuario)
-![VClasificacion](/Diseño/Media/VClasificacion.PNG)
+![VClasificacion](/Diseño/Media/VClasificacion.png)
 Pantalla de consulta de clasificación (vista de usuario)
-![VJornadas](/Diseño/Media/VJornadas.PNG)
+![VJornadas](/Diseño/Media/VJornadas.png)
 Pantalla de consulta de jornadas (vista de usuario)
 
 ## Documentación
