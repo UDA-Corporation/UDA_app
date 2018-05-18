@@ -28,9 +28,9 @@ Una vez hechos estos pasos podremos desplegar la aplicación en nuestro IDE para
 ## Capturas de pantalla
 ![VPrincipal](/Diseño/Media/VPrincipal.png)
 <h6 align="center">Pantalla principal (vista de usuario)<h6/>
-![VClasificacion](https://i.imgur.com/bKxivtG.png)
+![VClasificacion](/Diseño/Media/VClasificacion.png)
 <h6 align="center">Pantalla de consulta de clasificación (vista de usuario)<h6/>
-![VJornadas](https://i.imgur.com/2LTr5ll.png)
+![VJornadas](/Diseño/Media/VJornadas.png)
 <h6 align="center">Pantalla de consulta de jornadas (vista de usuario)<h6/>
 
 ## Documentación
