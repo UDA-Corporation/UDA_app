@@ -37,7 +37,7 @@ Una vez hechos estos pasos podremos desplegar la aplicación en nuestro IDE para
 <h6 align="center">Pantalla de consulta de jornadas (vista de usuario)</h6>
 
 ## Documentación
-**Documentación del proyecto [link](/Documentacion)**
+**Documentación del proyecto [link](/Documentacion)**  
 **Team drive con  [toda la documentación](https://docs.google.com/spreadsheets/d/1_2MhafOwp65LQePLwjUlc97uKK25Kxp-BGnyit3nX5c/edit?usp=sharing)**  
 
 | Links específicos |
