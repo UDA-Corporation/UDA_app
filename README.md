@@ -22,7 +22,7 @@ La aplicación está codificada en Java. El proyecto ha sido creado y editado co
 **Lo segundo:** Una vez creada la base de datos necesitamos configurar el JPA usado en el proyecto para conectarnos al servidor. Para ello editaremos el "persistence.xml" que se encuentra en App>>UDA_App>>>>src>>META-INF.  
 Se tiene que editar los campos que en la imagen aparecen como "NombreDelHost", "SID", "USUARIO" y "CONTRASEÑA", introduciendo las credenciales del servidor que se desea utilizar.  
 
-![Persistence.xml](/Diseño/Media/Persistence.PNG)
+![Persistence.xml](/Documentacion/Media/Persistence.PNG)
 
 Una vez hechos estos pasos podremos desplegar la aplicación en nuestro IDE para su desarrollo. Tener en cuenta que este trabajo se ha creado bajo una licencia MIT.  
 
