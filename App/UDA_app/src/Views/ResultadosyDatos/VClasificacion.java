@@ -1,18 +1,11 @@
 package Views.ResultadosyDatos;
 
-import Parsers.DOMClasificacion.ParserDOMClasificacion;
-import Parsers.SAX.ParserSAXClasificacion;
 import control.controlador;
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.table.DefaultTableModel;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
 
 /**
  * @author Unai Puelles
@@ -179,35 +172,8 @@ public class VClasificacion extends javax.swing.JFrame {
      * @param evt El evento ocurrido en la ventana
      */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        File xml = new File("BDD(Clasificacion).xml");
-        if(xml.exists() && !xml.isDirectory()) { 
-            ParserSAXClasificacion ClasificacionSAX = new ParserSAXClasificacion();
-            ClasificacionSAX.ejecutar();
-        } else {
-            try {
-                ParserDOMClasificacion ClasificacionDOM = new ParserDOMClasificacion();
-                ClasificacionDOM.ejecutar();
-            } catch (ParserConfigurationException | TransformerException ex) {
-                Logger.getLogger(VClasificacion.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        if (ParserSAXClasificacion.Clasificacionexpirado){
-            ParserSAXClasificacion ClasificacionSAXexpiradoXML = new ParserSAXClasificacion();
-            ClasificacionSAXexpiradoXML.ejecutar();
-        }
-        Object[] columns = {"Nombre","Puntos","Puesto"};
-        DefaultTableModel model = new DefaultTableModel();
-        model.setColumnIdentifiers(columns);
-        for (int i = 0; i < 32; i++) {
-            Object[] row = new Object[3];
-            row[0] = Parsers.SAX.ParserSAXClasificacion.Equipos[i];
-            row[1] = Parsers.SAX.ParserSAXClasificacion.Equipos[i+2];
-            row[2] = Parsers.SAX.ParserSAXClasificacion.Equipos[i+3];
-            i += 3;
-            model.addRow(row);
-            Arrays.fill(row,null);
-        } 
-        Table.setModel(model);
+        controlador.inicioVClasificacion();
+        Table.setModel(controlador.model);
         Table.getRowSorter().toggleSortOrder(2);
     }//GEN-LAST:event_formWindowOpened
 
