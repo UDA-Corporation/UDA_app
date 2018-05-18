@@ -5,7 +5,6 @@
  */
 package Views.VRegistro;
 
-import javax.swing.JTextField;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -50,7 +49,5 @@ public class VRegistroTest {
         boolean expResult = true;
         boolean result = instance.validar(cadena, patt);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 }
