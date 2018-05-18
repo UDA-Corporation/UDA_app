@@ -26,7 +26,7 @@ Se tiene que editar los campos que en la imagen aparecen como "NombreDelHost", "
 Una vez hechos estos pasos podremos desplegar la aplicación en nuestro IDE para su desarrollo. Tener en cuenta que este trabajo se ha creado bajo una licencia MIT.  
 
 ## Capturas de pantalla
-![VPrincipal](https://i.imgur.com/B9kRlBS.png)
+![VPrincipal](/Diseño/Media/VPrincipal.png)
 <h6 align="center">Pantalla principal (vista de usuario)<h6/>
 ![VClasificacion](https://i.imgur.com/bKxivtG.png)
 <h6 align="center">Pantalla de consulta de clasificación (vista de usuario)<h6/>
