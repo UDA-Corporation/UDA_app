@@ -108,6 +108,8 @@ public class controlador {
         fmt = new SimpleDateFormat("dd/MM/yyyy");
     }
 
+    //<editor-fold defaultstate="collapsed" desc=" Control de ventanas ">
+    
     /**
      * 
      * @param ventana recive la ventana desde el que es llamado este metodo
@@ -243,6 +245,10 @@ public class controlador {
         vjrs.setVisible(true);
     }
     
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" JDialogs ">
+    
     /**
      * Jdialog que se usa para mostrar los errores
      * @param ventana recive la ventana desde el que es llamado este metodo
@@ -310,6 +316,10 @@ public class controlador {
         jdeliminar.setVisible(true);
     }
 
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc=" Login Logout ">
+    
     /**
      * Devuelve si se han encontrado los datos y el login es correcto o false si es lo contrario
      * @param usuario nombre de usuario
@@ -327,7 +337,7 @@ public class controlador {
         }
         return login;
     }
-
+    
     public static String codificarPass(String pass,boolean codificar){
         String cadena="";
         char [] cod = pass.toCharArray();       
@@ -348,6 +358,10 @@ public class controlador {
         usu = null;
     }
 
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Buscar ">
+    
     /**
      * Busca un nombre en la base de datos
      * @param nick String que se quiere buscar
@@ -406,6 +420,11 @@ public class controlador {
         equipoTemp = conexion.getEquipoBD().findByName(nombre.toUpperCase());
     }
     
+    
+//</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc=" Altas ">
+    
     /**
      * Inserta en la tabla persona y en cuenta
      * @param dni 
@@ -445,7 +464,7 @@ public class controlador {
         correcto = true;
         return correcto;
     }
-
+    
     /**
      * Relaciona la tabla persona con dueño
      * @param dni clave primaria
@@ -455,7 +474,7 @@ public class controlador {
         Dueno d = new Dueno(dni);
         conexion.getDuenoBD().create(d);
     }
-
+    
     /**
      * Da de alta al jugador en la base de datos
      * @param dni dni del jugador a registrar
@@ -483,32 +502,73 @@ public class controlador {
     }
     
     /**
-     * Actualiza la persona
+     * 
+     * @param nombre
+     * @param desc
+     * @param dueno
+     * @param indices
+     * @return
      * @throws Exception 
      */
-    public static void updatePersona() throws Exception{
-        conexion.getPersonaBD().edit(persTemp);
-        persTemp = null;
+    public static boolean altaEquipo(String nombre, String desc, int dueno, int[] indices) throws Exception{
+
+        Equipo e1 = new Equipo(Integer.parseInt(conexion.getEquipoBD().autoincrement()), nombre.toUpperCase(), desc);
+        
+        if(indices.length!=0)
+        {
+            for(int x = 0; x<indices.length; x++)
+                e1.addJugador(jugadores.get(indices[x]));
+        }    
+        
+        e1.setDuenoDni(duenos.get(dueno));
+        
+        conexion.getEquipoBD().create(e1);
+        equipoTemp = null;
+        jugadores = null;
+        duenos = null;
+        return true;
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Eliminar ">
+    
+    /**
+     * Elimina un usuario
+     * @param pk clave primaria del usuario que se quiere eliminar
+     * @throws Exception 
+     */
+    public static void eliminarUsuario(String pk)throws Exception{
+        conexion.getPersonaBD().destroy(pk);
     }
     
     /**
-     * Actualiza el jugador
+     * Elimina un jugador
+     * @param pk clave primaria del usuario que se quiere eliminar
      * @throws Exception 
      */
-    public static void updateJugador() throws Exception{
-        conexion.getJugadorBD().edit(jugTemp);
-        jugTemp = null;
+    public static void eliminarJugador(String pk)throws Exception{
+        conexion.getJugadorBD().destroy(pk);
     }
     
     /**
-     * Actualiza el dueño
+     * Elimina un duaño
+     * @param pk clave primaria del usuario que se quiere eliminar
      * @throws Exception 
      */
-    public static void updateDueno() throws Exception{
-        conexion.getPersonaBD().edit(dueTemp.getPersona());
-        dueTemp = null;
+    public static void eliminarDueno(String pk)throws Exception{
+        conexion.getPersonaBD().destroy(pk);
     }
     
+    /**
+     * Elimina un equipo
+     * @param pk clave primaria del usuario que se quiere eliminar
+     * @throws Exception 
+     */
+    public static void eliminarEquipo(String pk)throws Exception{
+        conexion.getEquipoBD().destroy(Integer.parseInt(pk));
+    }
+
     /**
      * Borra una persona
      * @param dni clave primaria de la persona que se quiere eliminar
@@ -520,7 +580,11 @@ public class controlador {
 
         }
     }
-
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" VEquipo ">
+    
     /**
      * Rellena el comboBox de la ventana desde la que es llamado este metodo
      * @param cb comboBox que se quiere llenar
@@ -616,33 +680,9 @@ public class controlador {
         
     }
     
-    /**
-     * 
-     * @param nombre
-     * @param desc
-     * @param dueno
-     * @param indices
-     * @return
-     * @throws Exception 
-     */
-    public static boolean altaEquipo(String nombre, String desc, int dueno, int[] indices) throws Exception{
-
-        Equipo e1 = new Equipo(Integer.parseInt(conexion.getEquipoBD().autoincrement()), nombre.toUpperCase(), desc);
-        
-        if(indices.length!=0)
-        {
-            for(int x = 0; x<indices.length; x++)
-                e1.addJugador(jugadores.get(indices[x]));
-        }    
-        
-        e1.setDuenoDni(duenos.get(dueno));
-        
-        conexion.getEquipoBD().create(e1);
-        equipoTemp = null;
-        jugadores = null;
-        duenos = null;
-        return true;
-    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Update ">
     
     /**
      * Actualiza el equipo
@@ -658,6 +698,37 @@ public class controlador {
     }
 
     /**
+     * Actualiza la persona
+     * @throws Exception 
+     */
+    public static void updatePersona() throws Exception{
+        conexion.getPersonaBD().edit(persTemp);
+        persTemp = null;
+    }
+    
+    /**
+     * Actualiza el jugador
+     * @throws Exception 
+     */
+    public static void updateJugador() throws Exception{
+        conexion.getJugadorBD().edit(jugTemp);
+        jugTemp = null;
+    }
+    
+    /**
+     * Actualiza el dueño
+     * @throws Exception 
+     */
+    public static void updateDueno() throws Exception{
+        conexion.getPersonaBD().edit(dueTemp.getPersona());
+        dueTemp = null;
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Ventana liga ">
+    
+    /**
      * Llena la lista 
      * @param lista
      * @return 
@@ -670,7 +741,194 @@ public class controlador {
         });
         return model;
     }
+    
+    
+//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Ventana Puntos ">
+    
+    /**
+     * LLena el combobox de la venta desde la que es llamado este metodo.
+     * Controla que las jornadas tengan una fecha anterior a la actual
+     * @param liga liga para la que se desea buscar las jornadas
+     * @param cbJornadas combobox de jornadas
+     */
+    public static void llenarJornadas(String liga, javax.swing.JComboBox cbJornadas) {
+        if(liga!=null)
+            ligaBD = conexion.getLigaBD().findByName(liga);
+        boolean finish = false;
+        String cadena = "";
+        ArrayList<Jornadas> jornadasTemp = new ArrayList();
+        int min, done = 0;
+        Jornadas jMin = null;
+        for (int x = 1; finish != true; x++) {
+            min = 100;
+            for (Jornadas j : ligaBD.getJornadasCollection()) {
+                if (j.getCod() < min && !jornadasReps(j, jornadasTemp)) {
+                    min = j.getCod();
+                    jMin = j;
+                }
+            }
+            if (x == ligaBD.getJornadasCollection().size()) {
+                finish = true;
+            } else {
+                if (jMin.getFechaf().before(date)) {
+                    jornadasTemp.add(jMin);
+                    cadena = date(jMin.getFechai()) + " " + date(jMin.getFechaf());
+                    if(!partidosCompletos(jMin))
+                        cbJornadas.addItem(cadena);
+                }
 
+            }
+        }
+    }
+    
+    /**
+     * Busca la jornada con la fecha correspondiente a la que se recive
+     * @param date fecha que se quiere buscar
+     * @return objeto Jornada o null si no se encuentra
+     */
+    public static Jornadas buscarJornada(Date date){
+        for (Jornadas j : ligaBD.getJornadasCollection()){
+            if(j.getFechai().equals(date))
+                return j;
+        }        
+        return null;
+    }
+
+    /**
+     * Controla que la jornada introducida no este reptida
+     * @param j jornada que se quiere buscar
+     * @param js ArrayList de Jornadas en el que se quiere buscar
+     * @return true o false si se a encontrado o no
+     */
+    public static boolean jornadasReps(Jornadas j, ArrayList<Jornadas> js) {
+        int x;
+        for (x = 0; x < js.size() && !j.equals(js.get(x)); x++) {
+        }
+        if (x == js.size()) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Llena la lista de partidos de la ventana desde la que es llamado este metodo
+     * @param fecha fecha de la jornada que se quiere buscar
+     * @param cbPartidos comboBox que se quiere llenar
+     * @throws Exception 
+     */
+    public static void llenarPartidos(String fecha, javax.swing.JComboBox cbPartidos) throws Exception {
+        String cadena;    
+        if(fecha!=null)
+            jornadaBD = buscarJornada(toDate(fecha));
+        ArrayList<Partido> partidosTemp = new ArrayList();
+        boolean finish = false;
+        int min;
+        Partido pMin = null;
+        for (int x = 0; finish != true; x++) {
+            min = 100;
+            cadena = "";
+            for (Partido p : jornadaBD.getPartidoCollection()) {
+                if (p.getCod() < min && !partidosReps(p, partidosTemp)) {
+                    min = p.getCod();
+                    pMin = p;
+                }
+            }
+            if (x == jornadaBD.getPartidoCollection().size()) {
+                finish = true;
+            } else {
+                if (pMin.getFecha().before(date)) {
+                    partidosTemp.add(pMin);
+                    partidoBD = conexion.getPartidoBD().findPartido(pMin.getCod());
+                    for (Equipo e : partidoBD.getEquipoCollection()) {
+                        cadena += e.getNombre() + " ";
+                    }
+                    if(partidoBD.getResultado()==null)
+                        cbPartidos.addItem(cadena);
+                }
+            }
+        }
+    }
+    
+    /**
+     * Controla que las jornadas a las que se les hayan metido todos los recultados de todos sus
+     * partidos no se muestren en el comboBox
+     * @param j jornada que se desea buscar
+     * @return true o false si estan completos o no
+     */
+    public static boolean partidosCompletos(Jornadas j){
+        int cont=0;
+        for (Partido p : j.getPartidoCollection())
+            if(p.getResultado()!=null)
+                cont++;      
+        if(cont==4)
+            return true;
+        return false;
+    }
+
+    /**
+     * Secciona un string en una formato de fecha y luego la convierte a fecha
+     * @param fecha String de la fecha que se quiere convertir
+     * @return devuelte la decha en formato Date
+     * @throws Exception 
+     */
+    public static Date toDate(String fecha) throws Exception {
+        String cadena = "";
+        int cont = 0;
+        for (int x = 0; x < fecha.length() && cont < 8; x++) {
+            if (Character.isDigit(fecha.charAt(x))) {
+                cadena += fecha.charAt(x);
+                cont++;
+            } else if (fecha.charAt(x) == '/') {
+                cadena += fecha.charAt(x);
+            }
+        } 
+       return fmt.parse(cadena);
+    }
+
+    /**
+     * Convierte un String en fecha
+     * @param fecha fecha que se quiere convertir
+     * @return devuelve la fecha en formato Date
+     */
+    public static String date(Date fecha) {      
+        String fechaS = fmt.format(fecha);
+        return fechaS;
+    }
+    
+    /**
+     * Metodo que recalcula la clasificacion dependiendo de los puntos que tenga cada equipo
+     * @throws Exception 
+     */
+    public static void recalcularClasificacion()throws Exception{
+        equipos = conexion.getEquipoBD().findEquipoEntities();
+        equiposTemp = new ArrayList();
+        boolean finish = false;
+        int max;
+        Equipo eMax = null;
+        for (int x = equipos.size();finish!=true; x--) {
+            max = 100;
+            for (Equipo e : equipos){
+                if(Integer.parseInt(e.getPuntos())<=max&&!equiposTemp(e)){
+                    max = Integer.parseInt(e.getPuntos());
+                    eMax=e;
+                }
+            }
+            if(x!=0){
+                eMax.setPuesto(Integer.toString(x));
+                conexion.getEquipoBD().edit(eMax);
+                equiposTemp.add(eMax);
+            }
+            else
+                finish = true;              
+        }
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Resultados de partidos ">
+    
     /**
      * Llena el comboBox de la venta desde la que es llamado este metodo
      * @param cb comboBoc que se quiere llenar
@@ -680,6 +938,146 @@ public class controlador {
             cb.addItem(l.getNombre());
         }
     }
+    
+    /**
+     * Llena un ArrayList de equipos temporal de los dos equipos que participan el partido
+     * @param indice indice el partido seleccionado en el comboBox
+     */
+    public static void llenarTfPartido(int indice){
+        equiposTemp = new ArrayList();
+        int x=0;
+        for (Partido p : jornadaBD.getPartidoCollection()){
+            x++;
+            if(x == indice)
+                partidoBD = p;
+        }
+        for (Equipo e : partidoBD.getEquipoCollection()) 
+            equiposTemp.add(e);
+    }
+    
+    /**
+     * Llena un label con el nombre del equipo 1
+     * @return el nombre del equipo 1
+     */
+    public static String le1(){
+        return equiposTemp.get(0).getNombre();
+    }
+    
+    /**
+     * Llena un label con el nombre del equipo 2
+     * @return el nombre del equipo 2
+     */
+    public static String le2(){
+        return equiposTemp.get(1).getNombre();
+    }
+    
+    /**
+     * Dependiendo de si el equipo 1 o el equipo 2 son nulos el ganador sera un equipo u otro
+     * si los dos son nulos habran empatado
+     * @param e1 nombre del equipo 1
+     * @param e2 nombre del equipo 2
+     * @throws Exception 
+     */
+    public static void resultado(String e1, String e2)throws Exception{
+        if(partidoBD.getResultado()!=null)
+            throw new ResultadoPartido();
+        else
+            if(e1==null)
+                add(e2,false);
+            else
+                if(e2==null)
+                    add(e1,false);
+                else
+                    if(e1!=null&&e2!=null)
+                        add(e1,true);               
+    }
+    
+    /**
+     * Inserta los datos en el partido correspondiente
+     * @param ganador codigo del equipo ganador
+     * @param resultado resultado del partido
+     * @param empate si es empate se insertara un s si no null
+     * @throws Exception 
+     */
+    public static void resultadoPartido(String ganador, String resultado, boolean empate)throws Exception{       
+        for (Equipo e : partidoBD.getEquipoCollection())
+            if(e.getNombre().equals(ganador)){
+                if(!empate){
+                partidoBD.setCodganador(e.getCod());
+                partidoBD.setEmpate(null);
+                partidoBD.setResultado(resultado);
+            }else{
+                partidoBD.setEmpate("s");
+                partidoBD.setResultado(resultado);
+            }       
+        }
+        conexion.getPartidoBD().edit(partidoBD);
+    }
+    
+    /**
+     * Secciona el String con los dos equipos para sacar uno de los equipos y encontrar el partido correcto
+     * @param Sequipo String con los dos nombres de los equipos
+     */
+    public static void StringEquipos(String Sequipo){        
+        CollectionEquiposTemp = new ArrayList ();
+        System.out.println(Sequipo);
+        String cadena = "";
+        boolean finish = false;        
+        for (int x=0;x<Sequipo.length()&&finish==false;x++)
+            if(Character.isAlphabetic(Sequipo.charAt(x))||Character.isDigit(Sequipo.charAt(x)))
+                cadena+=Sequipo.charAt(x);
+            else
+                if(Sequipo.charAt(x)==' ')
+                    finish = true;
+        for (Partido p : jornadaBD.getPartidoCollection())
+            for (Equipo e : p.getEquipoCollection())
+                if(e.getNombre().equalsIgnoreCase(cadena)){
+                    CollectionEquiposTemp = p.getEquipoCollection();
+                    partidoBD=p;
+                }
+        equiposTemp = new ArrayList(CollectionEquiposTemp);
+    }
+      
+    /**
+     * Suma puntos a los equipos dependiendo del resultado
+     * @param aSumar equipo al que hay que sumarle puntos
+     * @param both si es true habran empatado si no habra ganado uno de los dos equipos
+     * @throws Exception 
+     */
+    public static void add(String aSumar, boolean both)throws Exception{      
+        for (Equipo e : equiposTemp){
+            if(!both){
+                if(e.getNombre().equals(aSumar)){
+                    e.addPuntos(PUNTOSWIN);
+                    conexion.getEquipoBD().edit(e);
+                }
+            }else{
+                e.addPuntos(PUNTOSDRAW);
+                conexion.getEquipoBD().edit(e);
+            }
+        }     
+    }
+    
+    /**
+     * Controla que el partido introducido no este reptido
+     * @param p partido que se quiere buscar
+     * @param ps ArrayList de Partido en el que se quiere buscar
+     * @return true o false si se a encontrado o no
+     */
+    public static boolean partidosReps(Partido p, ArrayList<Partido> ps) {
+        int x;
+        for (x = 0; x < ps.size() && !p.equals(ps.get(x)); x++) {
+        }
+        if (x == ps.size()) {
+            return false;
+        }
+        return true;
+    }
+    
+    
+//</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc=" Tablas ">
     
     /**
      * Llena una tabla de todos los datos de los equipos
@@ -847,368 +1245,11 @@ public class controlador {
         return listadoDuenos;
     }
     
-    /**
-     * Elimina un usuario
-     * @param pk clave primaria del usuario que se quiere eliminar
-     * @throws Exception 
-     */
-    public static void eliminarUsuario(String pk)throws Exception{
-        conexion.getPersonaBD().destroy(pk);
-    }
     
-    /**
-     * Elimina un jugador
-     * @param pk clave primaria del usuario que se quiere eliminar
-     * @throws Exception 
-     */
-    public static void eliminarJugador(String pk)throws Exception{
-        conexion.getJugadorBD().destroy(pk);
-    }
+//</editor-fold>
     
-    /**
-     * Elimina un duaño
-     * @param pk clave primaria del usuario que se quiere eliminar
-     * @throws Exception 
-     */
-    public static void eliminarDueno(String pk)throws Exception{
-        conexion.getPersonaBD().destroy(pk);
-    }
+    //<editor-fold defaultstate="collapsed" desc=" Algoritmo Liga ">
     
-    /**
-     * Elimina un equipo
-     * @param pk clave primaria del usuario que se quiere eliminar
-     * @throws Exception 
-     */
-    public static void eliminarEquipo(String pk)throws Exception{
-        conexion.getEquipoBD().destroy(Integer.parseInt(pk));
-    }
-    
-    /**
-     * Metodo que recalcula la clasificacion dependiendo de los puntos que tenga cada equipo
-     * @throws Exception 
-     */
-    public static void recalcularClasificacion()throws Exception{
-        equipos = conexion.getEquipoBD().findEquipoEntities();
-        equiposTemp = new ArrayList();
-        boolean finish = false;
-        int max;
-        Equipo eMax = null;
-        for (int x = equipos.size();finish!=true; x--) {
-            max = 100;
-            for (Equipo e : equipos){
-                if(Integer.parseInt(e.getPuntos())<=max&&!equiposReps(e)){
-                    max = Integer.parseInt(e.getPuntos());
-                    eMax=e;
-                }
-            }
-            if(x!=0){
-                eMax.setPuesto(Integer.toString(x));
-                conexion.getEquipoBD().edit(eMax);
-                equiposTemp.add(eMax);
-            }
-            else
-                finish = true;              
-        }
-    }
-
-    /**
-     * Busca el equipo ya utilizado para controlar que no se repita
-     * @param e Equipo repetido
-     * @return true o false si se a encontrado o no
-     */
-    public static boolean equiposReps(Equipo e){
-        int x;
-        for (x = 0; x < equiposTemp.size()&&!equiposTemp.get(x).equals(e); x++) {}
-        if(x==equiposTemp.size())
-            return false;
-        return true;
-    }
-
-    /**
-     * LLena el combobox de la venta desde la que es llamado este metodo.
-     * Controla que las jornadas tengan una fecha anterior a la actual
-     * @param liga liga para la que se desea buscar las jornadas
-     * @param cbJornadas combobox de jornadas
-     */
-    public static void llenarJornadas(String liga, javax.swing.JComboBox cbJornadas) {
-        if(liga!=null)
-            ligaBD = conexion.getLigaBD().findByName(liga);
-        boolean finish = false;
-        String cadena = "";
-        ArrayList<Jornadas> jornadasTemp = new ArrayList();
-        int min, done = 0;
-        Jornadas jMin = null;
-        for (int x = 1; finish != true; x++) {
-            min = 100;
-            for (Jornadas j : ligaBD.getJornadasCollection()) {
-                if (j.getCod() < min && !jornadasReps(j, jornadasTemp)) {
-                    min = j.getCod();
-                    jMin = j;
-                }
-            }
-            if (x == ligaBD.getJornadasCollection().size()) {
-                finish = true;
-            } else {
-                if (jMin.getFechaf().before(date)) {
-                    jornadasTemp.add(jMin);
-                    cadena = date(jMin.getFechai()) + " " + date(jMin.getFechaf());
-                    if(!partidosCompletos(jMin))
-                        cbJornadas.addItem(cadena);
-                }
-
-            }
-        }
-    }
-    
-    /**
-     * Busca la jornada con la fecha correspondiente a la que se recive
-     * @param date fecha que se quiere buscar
-     * @return objeto Jornada o null si no se encuentra
-     */
-    public static Jornadas buscarJornada(Date date){
-        for (Jornadas j : ligaBD.getJornadasCollection()){
-            if(j.getFechai().equals(date))
-                return j;
-        }        
-        return null;
-    }
-
-    /**
-     * Controla que la jornada introducida no este reptida
-     * @param j jornada que se quiere buscar
-     * @param js ArrayList de Jornadas en el que se quiere buscar
-     * @return true o false si se a encontrado o no
-     */
-    public static boolean jornadasReps(Jornadas j, ArrayList<Jornadas> js) {
-        int x;
-        for (x = 0; x < js.size() && !j.equals(js.get(x)); x++) {
-        }
-        if (x == js.size()) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * Llena la lista de partidos de la ventana desde la que es llamado este metodo
-     * @param fecha fecha de la jornada que se quiere buscar
-     * @param cbPartidos comboBox que se quiere llenar
-     * @throws Exception 
-     */
-    public static void llenarPartidos(String fecha, javax.swing.JComboBox cbPartidos) throws Exception {
-        String cadena;    
-        if(fecha!=null)
-            jornadaBD = buscarJornada(toDate(fecha));
-        ArrayList<Partido> partidosTemp = new ArrayList();
-        boolean finish = false;
-        int min;
-        Partido pMin = null;
-        for (int x = 0; finish != true; x++) {
-            min = 100;
-            cadena = "";
-            for (Partido p : jornadaBD.getPartidoCollection()) {
-                if (p.getCod() < min && !partidosReps(p, partidosTemp)) {
-                    min = p.getCod();
-                    pMin = p;
-                }
-            }
-            if (x == jornadaBD.getPartidoCollection().size()) {
-                finish = true;
-            } else {
-                if (pMin.getFecha().before(date)) {
-                    partidosTemp.add(pMin);
-                    partidoBD = conexion.getPartidoBD().findPartido(pMin.getCod());
-                    for (Equipo e : partidoBD.getEquipoCollection()) {
-                        cadena += e.getNombre() + " ";
-                    }
-                    if(partidoBD.getResultado()==null)
-                        cbPartidos.addItem(cadena);
-                }
-            }
-        }
-    }
-    
-    /**
-     * Controla que las jornadas a las que se les hayan metido todos los recultados de todos sus
-     * partidos no se muestren en el comboBox
-     * @param j jornada que se desea buscar
-     * @return true o false si estan completos o no
-     */
-    public static boolean partidosCompletos(Jornadas j){
-        int cont=0;
-        for (Partido p : j.getPartidoCollection())
-            if(p.getResultado()!=null)
-                cont++;      
-        if(cont==4)
-            return true;
-        return false;
-    }
-
-    /**
-     * Secciona un string en una formato de fecha y luego la convierte a fecha
-     * @param fecha String de la fecha que se quiere convertir
-     * @return devuelte la decha en formato Date
-     * @throws Exception 
-     */
-    public static Date toDate(String fecha) throws Exception {
-        String cadena = "";
-        int cont = 0;
-        for (int x = 0; x < fecha.length() && cont < 8; x++) {
-            if (Character.isDigit(fecha.charAt(x))) {
-                cadena += fecha.charAt(x);
-                cont++;
-            } else if (fecha.charAt(x) == '/') {
-                cadena += fecha.charAt(x);
-            }
-        } 
-       return fmt.parse(cadena);
-    }
-
-    /**
-     * Convierte un String en fecha
-     * @param fecha fecha que se quiere convertir
-     * @return devuelve la fecha en formato Date
-     */
-    public static String date(Date fecha) {      
-        String fechaS = fmt.format(fecha);
-        return fechaS;
-    }
-    
-    /**
-     * Llena un ArrayList de equipos temporal de los dos equipos que participan el partido
-     * @param indice indice el partido seleccionado en el comboBox
-     */
-    public static void llenarTfPartido(int indice){
-        equiposTemp = new ArrayList();
-        int x=0;
-        for (Partido p : jornadaBD.getPartidoCollection()){
-            x++;
-            if(x == indice)
-                partidoBD = p;
-        }
-        for (Equipo e : partidoBD.getEquipoCollection()) 
-            equiposTemp.add(e);
-    }
-    
-    /**
-     * Llena un label con el nombre del equipo 1
-     * @return el nombre del equipo 1
-     */
-    public static String le1(){
-        return equiposTemp.get(0).getNombre();
-    }
-    
-    /**
-     * Llena un label con el nombre del equipo 2
-     * @return el nombre del equipo 2
-     */
-    public static String le2(){
-        return equiposTemp.get(1).getNombre();
-    }
-    
-    /**
-     * Dependiendo de si el equipo 1 o el equipo 2 son nulos el ganador sera un equipo u otro
-     * si los dos son nulos habran empatado
-     * @param e1 nombre del equipo 1
-     * @param e2 nombre del equipo 2
-     * @throws Exception 
-     */
-    public static void resultado(String e1, String e2)throws Exception{
-        if(partidoBD.getResultado()!=null)
-            throw new ResultadoPartido();
-        else
-            if(e1==null)
-                add(e2,false);
-            else
-                if(e2==null)
-                    add(e1,false);
-                else
-                    if(e1!=null&&e2!=null)
-                        add(e1,true);               
-    }
-    
-    /**
-     * Inserta los datos en el partido correspondiente
-     * @param ganador codigo del equipo ganador
-     * @param resultado resultado del partido
-     * @param empate si es empate se insertara un s si no null
-     * @throws Exception 
-     */
-    public static void resultadoPartido(String ganador, String resultado, boolean empate)throws Exception{       
-        for (Equipo e : partidoBD.getEquipoCollection())
-            if(e.getNombre().equals(ganador)){
-                if(!empate){
-                partidoBD.setCodganador(e.getCod());
-                partidoBD.setEmpate(null);
-                partidoBD.setResultado(resultado);
-            }else{
-                partidoBD.setEmpate("s");
-                partidoBD.setResultado(resultado);
-            }       
-        }
-        conexion.getPartidoBD().edit(partidoBD);
-    }
-    
-    /**
-     * Secciona el String con los dos equipos para sacar uno de los equipos y encontrar el partido correcto
-     * @param Sequipo String con los dos nombres de los equipos
-     */
-    public static void StringEquipos(String Sequipo){        
-        CollectionEquiposTemp = new ArrayList ();
-        System.out.println(Sequipo);
-        String cadena = "";
-        boolean finish = false;        
-        for (int x=0;x<Sequipo.length()&&finish==false;x++)
-            if(Character.isAlphabetic(Sequipo.charAt(x))||Character.isDigit(Sequipo.charAt(x)))
-                cadena+=Sequipo.charAt(x);
-            else
-                if(Sequipo.charAt(x)==' ')
-                    finish = true;
-        for (Partido p : jornadaBD.getPartidoCollection())
-            for (Equipo e : p.getEquipoCollection())
-                if(e.getNombre().equalsIgnoreCase(cadena)){
-                    CollectionEquiposTemp = p.getEquipoCollection();
-                    partidoBD=p;
-                }
-        equiposTemp = new ArrayList(CollectionEquiposTemp);
-    }
-      
-    /**
-     * Suma puntos a los equipos dependiendo del resultado
-     * @param aSumar equipo al que hay que sumarle puntos
-     * @param both si es true habran empatado si no habra ganado uno de los dos equipos
-     * @throws Exception 
-     */
-    public static void add(String aSumar, boolean both)throws Exception{      
-        for (Equipo e : equiposTemp){
-            if(!both){
-                if(e.getNombre().equals(aSumar)){
-                    e.addPuntos(PUNTOSWIN);
-                    conexion.getEquipoBD().edit(e);
-                }
-            }else{
-                e.addPuntos(PUNTOSDRAW);
-                conexion.getEquipoBD().edit(e);
-            }
-        }     
-    }
-    
-    /**
-     * Controla que el partido introducido no este reptido
-     * @param p partido que se quiere buscar
-     * @param ps ArrayList de Partido en el que se quiere buscar
-     * @return true o false si se a encontrado o no
-     */
-    public static boolean partidosReps(Partido p, ArrayList<Partido> ps) {
-        int x;
-        for (x = 0; x < ps.size() && !p.equals(ps.get(x)); x++) {
-        }
-        if (x == ps.size()) {
-            return false;
-        }
-        return true;
-    }
-
     /**
      * Prepara los equipos que van a jugar la liga antes de crearla
      * @param indices indices de los equipos seleccionados
@@ -1225,15 +1266,18 @@ public class controlador {
     }
 
     /**
-     * 
-     * @param nombre
-     * @param fecha
+     * Genera la liga en su totalidad, divide las 14 jornadas en 4 partidos
+     * en los que jugaran dos equipos sin repetirse por dia y jornada
+     * @param nombre nombre que queremos darle a la liga
+     * @param fecha fecha en la que empieza
      * @throws Exception 
      */
     public static void generarLiga(String nombre, Calendar fecha) throws Exception {
+        //La liga se genera solo si no hay otra liga creada
         if(conexion.getLigaBD().getLigaCount()==1)
             throw new LigaExistente();
         int cont = 1;
+        //Al comenzar la liga se ponen los puntos de todos los equipos a 0 y el puesto del 1 al 8
         for (Equipo e : equipos){
             e.setPuntos("0");
             e.setPuesto(Integer.toString(cont));
@@ -1241,29 +1285,45 @@ public class controlador {
             cont++;
         }
         partidos = new ArrayList();
+        //Formula con la que controlamos que haya 4 partidos por jornada siempre
         formula = (((equipos.size() - 1) * equipos.size()) / ((equipos.size() - 1) * 2));
         PartidosEquipo = generarPartidos();
         boolean zig = true;
+        //Creamos el objeto liga
         liga = new Liga(codigoLiga(), nombre);
+        //Hacemos ese objeto persistente
         conexion.getLigaBD().create(liga);
         buscarFinesDeSemana(fecha);
+        //Recorremos todos los fines de semana
         for (int y = 0; y < finde.size() / 2; y += 2) {
+            //Creamos el objeto Jornada correspondiente a ese fin de semana
             Jornadas j = new Jornadas(codigoJornada(), (Date) finde.get(y), (Date) finde.get(y + 1));
+            //Asignamos la jornada a la liga
             j.setLigaCod(liga);
+            //Añadimos la jornada a un ArrayList de Jornadas
             jornadas.add(j);
+            //Hacemos persistente la jornada
             conexion.getJornadaBD().create(j);
+            //Recorremos lo que serian los 4 partidos que tiene una jornada
             for (int z = 0; z < formula / 2; z++) {
                 Partido p = null;
                 if (zig) {
+                    //Recorremos los partidos del primer dia de la jornada
                     for (int p1 = 0; p1 < formula / 2; p1++) {
+                        //Creamos el objeto partido
                         p = new Partido(codigoPartido(), "Espana", j.getFechai());
+                        //Añadimos ese partido a un ArrayList de partidos
                         partidos.add(p);
+                        //Asignamos el partido a la jornada
                         j.addPartidosCollection(p);
+                        //Y la jornada al partido
                         p.setJornadasCod(j);
+                        //Hacemos persistente el partido
                         conexion.getPartidoBD().create(p);
                         zig = false;
                     }
                 } else {
+                    //Recorremos los partidos del segundo dia de la jornada (contenido indentico a la anterior repetitiva)
                     for (int p2 = 0; p2 < formula / 2; p2++) {
                         p = new Partido(codigoPartido(), "Espana", j.getFechaf());
                         partidos.add(p);
@@ -1278,10 +1338,15 @@ public class controlador {
         emparejar();
     }
 
+    /**
+     * Realiza todas las combinaciones posibles de los equipos sin que se repitan
+     * @return Array con todas las combinaciones
+     */
     public static Equipo[][] generarPartidos() {
         boolean zig = true;
         boolean stop = false;
         int x = 0, y = 0, z = 0, t = 0, cont = 0;
+        //Creamos el Array que contendra todas las combinaciones de los equipos de dimensiones [56]((numero de equipos - 1)* numero de equipos ))[2]
         Equipo[][] equiposPartidos = new Equipo[(equipos.size()) * (equipos.size() - 1)][formula / 2];
         do {
             do {
@@ -1319,44 +1384,70 @@ public class controlador {
         return equiposPartidos;
     }
 
+    /**
+     * A partir de la fecha otorgada busca todos lo fines de semana que cubran las jornadas,
+     * una jornada por fin de semana
+     * @param calendar fecha de inicio de la liga
+     * @throws Exception 
+     */
     public static void buscarFinesDeSemana(Calendar calendar) throws Exception{
         finde = new ArrayList();        
         int x = 0;
-        while (x != (equipos.size() - 1) * 8) {
+        //El bucla para cuando x sea igual que el numero de jornadas 
+        while (x != (equipos.size() - 1) * equipos.size()) {
+            //Se encarga de añadir al ArrayList de los fines de semana solo los sabados y los domingos
             switch (calendar.get(Calendar.DAY_OF_WEEK)) {
                 case Calendar.SATURDAY:
-                case Calendar.SUNDAY:                    
-                    String formatted = fmt.format(calendar.getTime());                   
-                    finde.add(fmt.parse(formatted));
+                case Calendar.SUNDAY:
+                    //La clase calendario contiene la hora, formateamos la forma al patron indicado dd/MM/yyyy
+                    //la parseamos y la introducimos en el ArrayList que contendra las fechas de los fines de semana
+                    finde.add(fmt.parse(fmt.format(calendar.getTime())));
                     x++;
                     break;
             }
+            //Añadimos un dia al calendario
             calendar.add(Calendar.DAY_OF_YEAR, 1);
         }
     }
 
-    public static List emparejar() throws Exception {
+    /**
+     * Utiliza todas las combinaciones de los partidos y los introduce en cada fin de semana
+     * Sin que se repita ningun equipo por jornada ni dia
+     * @throws Exception 
+     */
+    public static void emparejar() throws Exception {
         boolean first = true, found = false, finished = false;
         equiposTemp = new ArrayList();
         int contador = 0, contacuatro = 0, contaTotal = 0;
+        //Recorremos el Array en su indice vertical que contiene todas las combinaciones de los partidos
         for (int x = 0; x < PartidosEquipo.length && finished == false; x++) {
             found = false;
-            for (int y = 0; y < PartidosEquipo[y].length & found == false; y++) {
+            //Recorremos el mismo Array pero en su indice horizontal
+            for (int y = 0; y < PartidosEquipo[y].length & found == false; y++){
+                //Si el partido no esta ya en el ArrayList temporal (equiposTemp) o si esa combinacion todavia no se ha introducido entra en la condicion
                 if (!equiposTemp(PartidosEquipo[x][y]) && !equiposTemp(PartidosEquipo[x][y + 1]) && PartidosEquipo[x][y] != null && PartidosEquipo[x][y + 1] != null) {
                     equiposP = new ArrayList();
+                    //Recorremos una vez mas el indice horizontal del Array de todas las combinaciones
                     for (int g = 0; g < PartidosEquipo[y].length; g++) {
+                        //Introducimos los dos equipos en un array que posteriormente se hara persistente junto con el partido
                         equiposP.add(PartidosEquipo[x][g]);
+                        //Introducimos los dos equipos ne el ArrayList temporal para controlar que no se repitan
                         equiposTemp.add(PartidosEquipo[x][g]);
+                        //Como la acabamos de usar una cominacion correctamente la hacemos null
                         PartidosEquipo[x][g] = null;
                     }
+                    //Añadimos al partido el ArrayList de sus dos equipos correspondiente
                     partidos.get(contador).setEquipoCollection(equiposP);
+                    //Editamos el partido en la base de datos
                     conexion.getPartidoBD().edit(partidos.get(contador));
                     contador++;
                     contacuatro++;
                     contaTotal++;
+                    //Cuanto el Array de combinaciones llegue a su fin finalizaremos el algoritmo
                     if (contaTotal == PartidosEquipo.length) {
                         finished = true;
                     }
+                    //Cada cuatro partidos limpiamos el ArrayList temporal para proseguir con la siguiente jornada
                     if (contacuatro == formula) {
                         contacuatro = 0;
                         x = 0;
@@ -1369,33 +1460,54 @@ public class controlador {
             }
         }
         PartidosEquipo = null;
-        return equiposP;
     }
 
+    /**
+     * Controla que los equipos no se repitan
+     * @param e Recibe el equipo que ya ha sido utilizado
+     * @return true o false si lo ha encontrado o no
+     */
     public static boolean equiposTemp(Equipo e) {
         int x;
-        for (x = 0; x < equiposTemp.size() && !equiposTemp.get(x).equals(e); x++) {
-        }
-        if (x == equiposTemp.size()) {
-            return false;
-        }
+        for (x = 0; x < equiposTemp.size() && !equiposTemp.get(x).equals(e); x++) {}
+        if (x == equiposTemp.size()) 
+            return false;        
         return true;
     }
-
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Codigos autoincrementales ">
+    
+    /**
+     * Se encarga de autoincrementar el codigo cogiendo el mayor de la tabla
+     * @return devuelve el codigo de la liga
+     */
     public static int codigoLiga() {
         return Integer.parseInt(conexion.getLigaBD().autoincrement());
     }
 
+    /**
+     * Se encarga de autoincrementar el codigo cogiendo el mayor de la tabla
+     * @return devuelve el codigo de la Jornada
+     */
     public static int codigoJornada() {
         return Integer.parseInt(conexion.getJornadaBD().autoincrement());
     }
 
+    /**
+     * Se encarga de autoincrementar el codigo cogiendo el mayor de la tabla
+     * @return devuelve el codigo de el partido
+     */
     public static int codigoPartido() {
         return Integer.parseInt(conexion.getPartidoBD().autoincrement());
     }
     
+    //</editor-fold>
+    
+    /**
+     * Salir de la aplicacion
+     */
     public static void exit(){
         System.exit(0);
     }
-    
 }
