@@ -204,6 +204,11 @@ public class LigaJpaController implements Serializable {
             em.close();
         }
     }
+    
+    /**
+     * Autoincrementa el codigo de la liga
+     * @return codigo
+     */
     public String autoincrement(){
         try{
             String jpql="select max(cod) from liga";
@@ -216,6 +221,12 @@ public class LigaJpaController implements Serializable {
             return "1";
         }           
     }
+    
+    /**
+     * Busca la liga por nombre
+     * @param name nombre de la liga
+     * @return objeto liga
+     */
     public Liga findByName(String name){       
             Query consulta = this.getEntityManager().createNamedQuery(Liga.findName);
             consulta.setParameter("nombre", name);
