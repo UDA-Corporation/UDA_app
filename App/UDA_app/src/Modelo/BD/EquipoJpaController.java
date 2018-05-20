@@ -274,6 +274,10 @@ public class EquipoJpaController implements Serializable {
         }
     }
     
+    /**
+     * Autoincrementa el codigo del equipo
+     * @return codigo
+     */
     public String autoincrement(){
         try{
             String jpql="select max(cod) from equipo";
@@ -287,6 +291,11 @@ public class EquipoJpaController implements Serializable {
         }           
     }
     
+    /**
+     * Busca al equipo por nombre
+     * @param name nombre del equipo
+     * @return objeto equipo
+     */
     public Equipo findByName(String name){       
             Query consulta = this.getEntityManager().createNamedQuery(Equipo.findName);
             consulta.setParameter("nombre", name);

@@ -210,6 +210,11 @@ public class PartidoJpaController implements Serializable {
             em.close();
         }
     }
+    
+    /**
+     * Autoincrementa el codigo del partido cogiendo el maximo + 1
+     * @return codigo
+     */
     public String autoincrement(){
         try{
             String jpql="select max(cod) from partido";
