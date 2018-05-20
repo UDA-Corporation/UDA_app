@@ -247,6 +247,12 @@ public class PersonaJpaController implements Serializable {
             em.close();
         }
     }
+    
+    /**
+     * Busca la persona por tipo en la base de datos
+     * @param tipo tipo de la persona
+     * @return objeto persona
+     */
     public List <Persona> findByTipo(String tipo){        
         Query consulta = this.getEntityManager().createNamedQuery(Persona.findTipo);
         consulta.setParameter("tipoPersona", tipo);
