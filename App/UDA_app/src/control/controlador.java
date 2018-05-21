@@ -100,7 +100,7 @@ public class controlador {
                              + "\n"
                              + "▒█▀▀█ █▀▀█ █▀▀█ █▀▀█ ░ \n"
                              + "▒█░░░ █░░█ █▄▄▀ █░░█ ▄ \n"
-                             + "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v1.0");
+                             + "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v1.1");
             VPrincipal vp = new VPrincipal();
             vp.setVisible(true);
         } catch (Exception e) {
@@ -283,7 +283,7 @@ public class controlador {
         JDError jde = new JDError(ventana, modal, mensaje, mensaje2);
         jde.setVisible(true);
     }
-
+    
     /**
      * Jdialog que se usa para mostrar confirmaciones o informacion
      * @param ventana recive la ventana desde el que es llamado este metodo
@@ -401,8 +401,11 @@ public class controlador {
      */
     public static void findPerByDni(String dni) throws Exception{
         persTemp = conexion.getPersonaBD().findPersona(dni);
-        if(!persTemp.getTipoPersona().equals("usuario"))
-            persTemp = null;
+        if(persTemp != null)
+        {
+            if(!persTemp.getTipoPersona().equals("usuario"))
+                persTemp = null;
+        }    
     }
     
     /**
@@ -1344,10 +1347,10 @@ public class controlador {
             throw new LigaExistente();
         for (Equipo e : equipos){
             if(e.getJugadorCollection().size()!=6)
-                cadena+=e.getNombre()+", ";
-            if(!cadena.equalsIgnoreCase(""))
-                throw new JugadoresInsuficientes(cadena);
+                cadena+=e.getNombre()+", ";            
         }
+        if(!cadena.equalsIgnoreCase(""))
+            throw new JugadoresInsuficientes(cadena);
         
         int cont = 1;
         //Al comenzar la liga se ponen los puntos de todos los equipos a 0 y el puesto del 1 al 8
