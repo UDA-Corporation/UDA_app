@@ -16,7 +16,7 @@ import javax.imageio.ImageIO;
 public class VPartidos extends javax.swing.JFrame {
 
     /**
-     * Creates new form VPersonas
+     * Crea una nueva ventana VPartidos
      */
     public VPartidos() {
         initComponents();
@@ -140,14 +140,25 @@ public class VPartidos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Action performed que lleva a la ventana VPrincipal
+     * @param evt Evento proporcinado de la ventana
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         controlador.toVPrincipal(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * Evento que cuando se está cerrando la ventana redirige a la ventana VPrincipal
+     * @param evt Evento proporcinado de la ventana
+     */
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         controlador.toVPrincipal(this);
     }//GEN-LAST:event_formWindowClosing
 
+    /**
+     * Establece el favicon a la ventana
+     */
     public void setFavicon(){
         
         try {
