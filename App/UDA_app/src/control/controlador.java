@@ -100,7 +100,7 @@ public class controlador {
                              + "\n"
                              + "▒█▀▀█ █▀▀█ █▀▀█ █▀▀█ ░ \n"
                              + "▒█░░░ █░░█ █▄▄▀ █░░█ ▄ \n"
-                             + "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v1.0");
+                             + "▒█▄▄█ ▀▀▀▀ ▀░▀▀ █▀▀▀ █ \n v1.1");
             VPrincipal vp = new VPrincipal();
             vp.setVisible(true);
         } catch (Exception e) {
@@ -401,8 +401,11 @@ public class controlador {
      */
     public static void findPerByDni(String dni) throws Exception{
         persTemp = conexion.getPersonaBD().findPersona(dni);
-        if(!persTemp.getTipoPersona().equals("usuario"))
-            persTemp = null;
+        if(persTemp != null)
+        {
+            if(!persTemp.getTipoPersona().equals("usuario"))
+                persTemp = null;
+        }    
     }
     
     /**
