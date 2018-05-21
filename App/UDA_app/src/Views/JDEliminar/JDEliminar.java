@@ -39,6 +39,7 @@ static String tipo;
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        tfPK.requestFocus();
         this.tipo = tipo;
         if(tipo.equalsIgnoreCase("equipo"))
             lTitulo.setText("Introduce el nombre del equipo que quieres elimiar");
@@ -101,8 +102,8 @@ static String tipo;
                         .addGap(165, 165, 165)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfPK, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(189, Short.MAX_VALUE))
+                            .addComponent(tfPK, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,19 +141,18 @@ static String tipo;
         try{
             if(!tfPK.getText().equalsIgnoreCase("")){
                 tipo();
-                controlador.JDInfo(this, true, tipo+" eliminado correctamente");
+                controlador.JDInfo(this, true, tipo + " eliminado correctamente");
                 this.dispose();
             }else
                 throw new camposIncorrectos();
         }catch(camposIncorrectos e){
             controlador.JDError(new javax.swing.JFrame(), true, "Debes introducir un valor");
         }catch(NonexistentEntityException e){
-            controlador.JDError(new javax.swing.JFrame(), true, tipo+" no encontrado");
+            controlador.JDError(new javax.swing.JFrame(), true, tipo + " no encontrado");
         }catch(ArrayIndexOutOfBoundsException e){
             controlador.JDError(new javax.swing.JFrame(), true, "Equipo no encontrado");
         }catch(Exception e){
-            controlador.JDError(new javax.swing.JFrame(), true, "Problemas eliminando");
-            e.printStackTrace();
+            controlador.JDError(new javax.swing.JFrame(), true, "Problemas eliminando");            
         }
     }//GEN-LAST:event_bAActionPerformed
 
