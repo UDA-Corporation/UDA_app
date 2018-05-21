@@ -234,6 +234,11 @@ public class JornadasJpaController implements Serializable {
             em.close();
         }
     }
+    
+    /**
+     * Autoincrementa el codigo de la jornada
+     * @return codigo
+     */
     public String autoincrement(){
         try{
             String jpql="select max(cod) from jornadas";
@@ -246,17 +251,5 @@ public class JornadasJpaController implements Serializable {
             return "1";
         }           
     }
-    public void finByLiga(Liga l){
         
-    }
-    public List <Jornadas> findByName(){
-        EntityManager em = getEntityManager();
-        Query cons = em.createNamedQuery("Liga.findByNombre");        
-        return cons.getResultList();
-    }
-    public Jornadas findByDate(Date date){
-        Query cons = this.getEntityManager().createNamedQuery(Jornadas.findByDate);  
-        cons.setParameter("fechai", date);
-        return (Jornadas) cons.getResultList().get(0);
-    }
 }
