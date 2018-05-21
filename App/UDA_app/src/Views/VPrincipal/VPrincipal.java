@@ -405,7 +405,7 @@ public class VPrincipal extends javax.swing.JFrame {
         jmEliminar.add(jmDelEquipo);
         jmEliminar.add(jSeparator5);
 
-        jMenuItem1.setText("Eliminar");
+        jMenuItem1.setText("Liga");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
