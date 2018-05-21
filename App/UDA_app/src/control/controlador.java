@@ -283,7 +283,7 @@ public class controlador {
         JDError jde = new JDError(ventana, modal, mensaje, mensaje2);
         jde.setVisible(true);
     }
-
+    
     /**
      * Jdialog que se usa para mostrar confirmaciones o informacion
      * @param ventana recive la ventana desde el que es llamado este metodo
@@ -1347,10 +1347,10 @@ public class controlador {
             throw new LigaExistente();
         for (Equipo e : equipos){
             if(e.getJugadorCollection().size()!=6)
-                cadena+=e.getNombre()+", ";
-            if(!cadena.equalsIgnoreCase(""))
-                throw new JugadoresInsuficientes(cadena);
+                cadena+=e.getNombre()+", ";            
         }
+        if(!cadena.equalsIgnoreCase(""))
+            throw new JugadoresInsuficientes(cadena);
         
         int cont = 1;
         //Al comenzar la liga se ponen los puntos de todos los equipos a 0 y el puesto del 1 al 8
