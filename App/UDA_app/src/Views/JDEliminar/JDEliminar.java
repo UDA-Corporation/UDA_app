@@ -141,7 +141,7 @@ static String tipo;
         try{
             if(!tfPK.getText().equalsIgnoreCase("")){
                 tipo();
-                controlador.JDInfo(this, true, tipo + " eliminado correctamente");
+                controlador.JDInfo(this, true, tipo + " eliminado/a correctamente");
                 this.dispose();
             }else
                 throw new camposIncorrectos();
@@ -150,7 +150,10 @@ static String tipo;
         }catch(NonexistentEntityException e){
             controlador.JDError(new javax.swing.JFrame(), true, tipo + " no encontrado");
         }catch(ArrayIndexOutOfBoundsException e){
-            controlador.JDError(new javax.swing.JFrame(), true, "Equipo no encontrado");
+            if(!tipo.equalsIgnoreCase("liga"))
+                controlador.JDError(new javax.swing.JFrame(), true, "Equipo no encontrado");
+            else
+                controlador.JDError(new javax.swing.JFrame(), true, "Liga no encontrada");
         }catch(Exception e){
             controlador.JDError(new javax.swing.JFrame(), true, "Problemas eliminando");            
         }

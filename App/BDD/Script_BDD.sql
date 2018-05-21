@@ -85,7 +85,7 @@ CREATE TABLE Partido
     codGanador     NUMBER (5),
     empate         VARCHAR2(1),
     fecha          DATE NOT NULL ,
-    resultado      VARCHAR2(4),
+    resultado      VARCHAR2(5),
     Jornadas_cod    NUMBER (5)NOT NULL,
     CONSTRAINT Partido_Jornadas_FK FOREIGN KEY ( Jornadas_cod ) REFERENCES Jornadas ( cod )
   ) ;
