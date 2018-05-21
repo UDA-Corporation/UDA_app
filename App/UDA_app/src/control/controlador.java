@@ -71,6 +71,7 @@ public class controlador {
     public static int [] indices;
     public static List<Jugador> jugadoresUpd;
     public static int tipoE;
+    public static boolean dobleAutent;
     static int formula;
     static ArrayList<Equipo> equiposTemp;
     static Liga ligaBD;
@@ -641,10 +642,16 @@ public class controlador {
      * @throws Exception 
      */
     public static void eliminarLiga(String pk)throws Exception{
-        equipos = conexion.getEquipoBD().findEquipoEntities();       
-        for (Equipo e : equipos)
-            e.setPartidoCollection(null);
+        
         ligaBD = conexion.getLigaBD().findByName(pk);
+        equipos = conexion.getEquipoBD().findEquipoEntities();       
+        for (Equipo e : equipos){
+            e.setPartidoCollection(null);
+            e.setPuntos("0");
+            e.setPuesto(null);
+            e.setPartidoCollection(new ArrayList());
+            conexion.getEquipoBD().edit(e);
+        }        
         Collection Cjornadas = ligaBD.getJornadasCollection();
         jornadas = new ArrayList(Cjornadas);
         for (Jornadas j : jornadas){
@@ -1094,18 +1101,21 @@ public class controlador {
      * @param empate si es empate se insertara un s si no null
      * @throws Exception 
      */
-    public static void resultadoPartido(String ganador, String resultado, boolean empate)throws Exception{       
+    public static void resultadoPartido(String ganador, String resultado, boolean empate)throws Exception{      
+        boolean finished = false;
         for (Equipo e : partidoBD.getEquipoCollection())
-            if(e.getNombre().equals(ganador)){
-                if(!empate){
-                partidoBD.setCodganador(e.getCod());
-                partidoBD.setEmpate(null);
-                partidoBD.setResultado(resultado);
-            }else{
-                partidoBD.setEmpate("s");
-                partidoBD.setResultado(resultado);
-            }       
-        }
+            if(!finished){
+                if(e.getNombre().equals(ganador)){                
+                    partidoBD.setCodganador(e.getCod());
+                    partidoBD.setEmpate(null);
+                    partidoBD.setResultado(resultado);     
+                    finished = true;
+                }else{                
+                    partidoBD.setEmpate("s");
+                    partidoBD.setResultado(resultado);      
+                    finished = true;
+                }
+            }
         conexion.getPartidoBD().edit(partidoBD);
     }
     
@@ -1391,8 +1401,7 @@ public class controlador {
                 cadena+=e.getNombre()+", ";            
         }
         if(!cadena.equalsIgnoreCase(""))
-            throw new JugadoresInsuficientes(cadena);
-        
+            throw new JugadoresInsuficientes(cadena);        
         int cont = 1;
         //Al comenzar la liga se ponen los puntos de todos los equipos a 0 y el puesto del 1 al 8
         for (Equipo e : equipos){

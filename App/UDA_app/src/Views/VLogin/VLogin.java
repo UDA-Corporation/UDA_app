@@ -182,7 +182,7 @@ public class VLogin extends javax.swing.JFrame {
                     throw new Exception();
                 
                 throw new Exception();
-            }
+                }
             controlador.toVPrincipal(this);
             
         
