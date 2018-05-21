@@ -246,12 +246,20 @@ public class controlador {
         vlgs.setVisible(true);
     }
     
+    /**
+     * 
+     * @param ventana recive la ventana desde el que es llamado este metodo
+     */
     public static void toVpartidos(javax.swing.JFrame ventana){
         ventana.dispose();
         VPartidos vprs = new VPartidos();
         vprs.setVisible(true);
     }
     
+    /**
+     * 
+     * @param ventana recive la ventana desde el que es llamado este metodo
+     */
     public static void toVLJornadas(javax.swing.JFrame ventana){
         ventana.dispose();
         VLJornadas vjrs = new VLJornadas();
@@ -351,6 +359,12 @@ public class controlador {
         return login;
     }
     
+    /**
+     * Codifica la contraseña introducida por el usuario para guardarla en la base de datos
+     * @param pass contraseña a codificar 
+     * @param codificar true o false si hay que codificar o descodificar
+     * @return la contraseña codificada
+     */
     public static String codificarPass(String pass,boolean codificar){
         String cadena="";
         char [] cod = pass.toCharArray();       
@@ -367,6 +381,9 @@ public class controlador {
         return cadena;
     }
     
+    /**
+     * Cierra la sesion
+     */
     public static void cerrarSesion() {
         usu = null;
     }
@@ -475,19 +492,19 @@ public class controlador {
     
     /**
      * Inserta en la tabla persona y en cuenta
-     * @param dni 
-     * @param nombre
-     * @param apellido
-     * @param calle
-     * @param numero
-     * @param piso
-     * @param ciudad
-     * @param cp
-     * @param pais
-     * @param tel
-     * @param usuario
-     * @param pass
-     * @param tipo_persona
+     * @param dni dni de la persona a registrar
+     * @param nombre nombre de la persona a registrar
+     * @param apellido apellido de la persona a registrar
+     * @param calle calle de la persona a registrar
+     * @param numero numero de la persona a registrar
+     * @param piso piso de la persona a registrar
+     * @param ciudad ciudad de la persona a registrar
+     * @param cp codigo postal de la persona a registrar
+     * @param pais pais de la persona a registrar
+     * @param tel telefono de la persona a registrar
+     * @param usuario usuario de la persona a registrar
+     * @param pass contraseña de la persona a registrar
+     * @param tipo_persona tipo de la persona a registrar
      * @return devuelve true o false
      * @throws Exception 
      */
@@ -550,12 +567,12 @@ public class controlador {
     }
     
     /**
-     * 
-     * @param nombre
-     * @param desc
-     * @param dueno
-     * @param indices
-     * @return
+     * Crea el equipo con sus jugadores
+     * @param nombre nombre del equipo a registrar
+     * @param desc descripcion del equipo a registrar
+     * @param dueno dueno del equipo a registrar
+     * @param indices jugadores del equipo a registrar
+     * @return true o false
      * @throws Exception 
      */
     public static boolean altaEquipo(String nombre, String desc, int dueno, int[] indices) throws Exception{
@@ -618,6 +635,11 @@ public class controlador {
         conexion.getEquipoBD().destroy(e.getCod());
     }
 
+    /**
+     * Borra la liga entera quitando los partidos las jornadas y la liga
+     * @param pk nombre de la liga a liminar
+     * @throws Exception 
+     */
     public static void eliminarLiga(String pk)throws Exception{
         equipos = conexion.getEquipoBD().findEquipoEntities();       
         for (Equipo e : equipos)
@@ -648,6 +670,50 @@ public class controlador {
         } catch (Exception e) {
 
         }
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Update ">
+    
+    /**
+     * Actualiza el equipo
+     * @throws Exception 
+     */
+    public static void updateEquipo() throws Exception{
+        
+        conexion.getEquipoBD().edit(equipoTemp);
+        
+        indices = null;
+        equipoTemp = null;
+        jugadoresUpd = null;
+    }
+
+    /**
+     * Actualiza la persona
+     * @throws Exception 
+     */
+    public static void updatePersona() throws Exception{
+        conexion.getPersonaBD().edit(persTemp);
+        persTemp = null;
+    }
+    
+    /**
+     * Actualiza el jugador
+     * @throws Exception 
+     */
+    public static void updateJugador() throws Exception{
+        conexion.getJugadorBD().edit(jugTemp);
+        jugTemp = null;
+    }
+    
+    /**
+     * Actualiza el dueño
+     * @throws Exception 
+     */
+    public static void updateDueno() throws Exception{
+        conexion.getPersonaBD().edit(dueTemp.getPersona());
+        dueTemp = null;
     }
     
     //</editor-fold>
@@ -732,6 +798,10 @@ public class controlador {
         return model;
     }
     
+    /**
+     * Quita la relacion entre jugadores y equipos para eliminar el equipo sin problemas
+     * @throws Exception 
+     */
     public static void quitarEquipoJug() throws Exception{
         Collection temp = equipoTemp.getJugadorCollection();
         ArrayList<Jugador> aTemp = new ArrayList(temp);
@@ -750,57 +820,13 @@ public class controlador {
     }
     
     //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc=" Update ">
-    
-    /**
-     * Actualiza el equipo
-     * @throws Exception 
-     */
-    public static void updateEquipo() throws Exception{
-        
-        conexion.getEquipoBD().edit(equipoTemp);
-        
-        indices = null;
-        equipoTemp = null;
-        jugadoresUpd = null;
-    }
-
-    /**
-     * Actualiza la persona
-     * @throws Exception 
-     */
-    public static void updatePersona() throws Exception{
-        conexion.getPersonaBD().edit(persTemp);
-        persTemp = null;
-    }
-    
-    /**
-     * Actualiza el jugador
-     * @throws Exception 
-     */
-    public static void updateJugador() throws Exception{
-        conexion.getJugadorBD().edit(jugTemp);
-        jugTemp = null;
-    }
-    
-    /**
-     * Actualiza el dueño
-     * @throws Exception 
-     */
-    public static void updateDueno() throws Exception{
-        conexion.getPersonaBD().edit(dueTemp.getPersona());
-        dueTemp = null;
-    }
-    
-    //</editor-fold>
-    
+     
     //<editor-fold defaultstate="collapsed" desc=" Ventana liga ">
     
     /**
      * Llena la lista 
-     * @param lista
-     * @return 
+     * @param lista lista a llenar 
+     * @return modelo de la lista
      */
     public static DefaultListModel<String> llenarLista(javax.swing.JList lista) {
         equiposBD = conexion.getEquipoBD().findEquipoEntities();
@@ -1203,6 +1229,11 @@ public class controlador {
         return listadojugadores;
     }
     
+    /**
+     * Llena una tabla de todos los datos de la liga
+     * @param ColsCont numero de columas de la tabla
+     * @return listado de la liga
+     */
     public static String [][] llenarTablaLiga(int ColsCont){
         int cont = 0;
         String [][] listadoLigas = new String [conexion.getLigaBD().getLigaCount()][11];
@@ -1220,6 +1251,11 @@ public class controlador {
         return listadoLigas;
     }
     
+    /**
+     * Llena una tabla de todos los datos de los partidos
+     * @param ColsCont numero de columnas
+     * @return listado de los partidos
+     */
     public static String [][] llenarTablaPartidos(int ColsCont){     
         String [][] listadoPartidos = new String [conexion.getPartidoBD().getPartidoCount()][ColsCont];       
         partidos = conexion.getPartidoBD().findPartidoEntities();
@@ -1237,6 +1273,11 @@ public class controlador {
         return listadoPartidos;
     }
     
+    /**
+     * Llena una tabla de todos los datos de las jornadas
+     * @param ColsCont numero de columnas
+     * @return listado de las jornadas
+     */
     public static String [][] llenarTablaJornadas(int ColsCont){        
         String [][] listadoJornadas = new String [conexion.getJornadaBD().getJornadasCount()][ColsCont];
         jornadas = conexion.getJornadaBD().findJornadasEntities();
@@ -1492,7 +1533,7 @@ public class controlador {
      * @throws Exception 
      */
     public static void emparejar() throws Exception {
-        boolean first = true, found = false, finished = false;
+        boolean found, finished = false;
         equiposTemp = new ArrayList();
         int contador = 0, contacuatro = 0, contaTotal = 0;
         //Recorremos el Array en su indice vertical que contiene todas las combinaciones de los partidos
@@ -1552,35 +1593,11 @@ public class controlador {
     }
     //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc=" Codigos autoincrementales ">
-    
-    /**
-     * Se encarga de autoincrementar el codigo cogiendo el mayor de la tabla
-     * @return devuelve el codigo de la liga
-     */
-    public static int codigoLiga() {
-        return Integer.parseInt(conexion.getLigaBD().autoincrement());
-    }
-
-    /**
-     * Se encarga de autoincrementar el codigo cogiendo el mayor de la tabla
-     * @return devuelve el codigo de la Jornada
-     */
-    public static int codigoJornada() {
-        return Integer.parseInt(conexion.getJornadaBD().autoincrement());
-    }
-
-    /**
-     * Se encarga de autoincrementar el codigo cogiendo el mayor de la tabla
-     * @return devuelve el codigo de el partido
-     */
-    public static int codigoPartido() {
-        return Integer.parseInt(conexion.getPartidoBD().autoincrement());
-    }
-    
-    //</editor-fold>
-    
     //<editor-fold defaultstate="collapsed" desc=" Resultados y datos ">
+    
+    /**
+     * Inicializa el parser de jornadas
+     */
     public static void inicioVJornadas() {
         File xml = new File("BDD(Jornadas).xml");
         if(xml.exists() && !xml.isDirectory()) { 
@@ -1600,6 +1617,9 @@ public class controlador {
         }
     }
     
+    /**
+     * Inicializa el parser de clasificacion
+     */
     public static void inicioVClasificacion() {
         control.controlador.model.setRowCount(0);
         control.controlador.model.setColumnCount(0);
@@ -1632,6 +1652,10 @@ public class controlador {
         } 
     }
     
+    /**
+     * Llena la tabla jornadas con la jornada determinada
+     * @param J numero de la jornada
+     */
     public static void rellenarTablaJornadas(int J) {
         control.controlador.model.setRowCount(0);
         control.controlador.model.setColumnCount(0);
@@ -1652,6 +1676,34 @@ public class controlador {
     }
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc=" Codigos autoincrementales ">
+    
+    /**
+     * Se encarga de autoincrementar el codigo cogiendo el mayor de la tabla
+     * @return devuelve el codigo de la liga
+     */
+    public static int codigoLiga() {
+        return Integer.parseInt(conexion.getLigaBD().autoincrement());
+    }
+
+    /**
+     * Se encarga de autoincrementar el codigo cogiendo el mayor de la tabla
+     * @return devuelve el codigo de la Jornada
+     */
+    public static int codigoJornada() {
+        return Integer.parseInt(conexion.getJornadaBD().autoincrement());
+    }
+
+    /**
+     * Se encarga de autoincrementar el codigo cogiendo el mayor de la tabla
+     * @return devuelve el codigo de el partido
+     */
+    public static int codigoPartido() {
+        return Integer.parseInt(conexion.getPartidoBD().autoincrement());
+    }
+    
+    //</editor-fold>
+     
     /**
      * Salir de la aplicacion
      */

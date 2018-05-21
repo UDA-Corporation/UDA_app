@@ -46,6 +46,7 @@ Una vez hechos estos pasos podremos desplegar la aplicación en nuestro IDE para
 | Documento de implementación del blog (anexo de realización de copias de seguridad incluido) [link](/Documentacion/Documentación%20de%20la%20implementación%20del%20blog.pdf) |
 | Manual del administrador [link](/Documentacion/Manual%20del%20administrador.pdf) |
 | Estructura del fichero log [link](/Script%20de%20red) |
+| Documentación Javadoc [link](/App/Javadoc.zip?raw=true) |
 | MER [link](/Documentacion/MER%20y%20Relacional/MER.pdf) |
 | Modelo relacional [link](/Documentacion/MER%20y%20Relacional/Modelo_relacional.pdf) |
 | Diagramas UML [link](/Documentacion/Diagramas%20UML) |
