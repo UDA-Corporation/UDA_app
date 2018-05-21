@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<liga fechaExpiracion="21-may-2018">
+<liga fechaExpiracion="28-may-2018">
     <clasificacion>
-        <equipo codEquipo="1" puesto="3" puntos="0">D3STROY</equipo>
-        <equipo codEquipo="2" puesto="2" puntos="3">FNATICX</equipo>
-        <equipo codEquipo="3" puesto="1" puntos="6">BIMBA</equipo>
-        <equipo codEquipo="4" puesto="4" puntos="0">SERDON</equipo>
-        <equipo codEquipo="5" puesto="5" puntos="0">HALWAY</equipo>
-        <equipo codEquipo="6" puesto="6" puntos="0">UGAND</equipo>
-        <equipo codEquipo="7" puesto="7" puntos="0">XAMAZINGX</equipo>
-        <equipo codEquipo="8" puesto="8" puntos="0">THEAMAZONX</equipo>
+        <equipo codEquipo="1" puesto="1" puntos="6">D3STROY</equipo>
+        <equipo codEquipo="2" puesto="3" puntos="3">FNATICX</equipo>
+        <equipo codEquipo="3" puesto="6" puntos="0">BIMBA</equipo>
+        <equipo codEquipo="4" puesto="4" puntos="3">SERDON</equipo>
+        <equipo codEquipo="5" puesto="7" puntos="0">HALWAY</equipo>
+        <equipo codEquipo="6" puesto="2" puntos="6">UGAND</equipo>
+        <equipo codEquipo="7" puesto="8" puntos="0">XAMAZINGX</equipo>
+        <equipo codEquipo="8" puesto="5" puntos="3">THEAMAZONX</equipo>
     </clasificacion>
 </liga>

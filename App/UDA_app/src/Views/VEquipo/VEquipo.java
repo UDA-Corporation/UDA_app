@@ -167,8 +167,8 @@ public class VEquipo extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addGap(72, 72, 72)
-                .addComponent(lTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 139, Short.MAX_VALUE))
+                .addComponent(lTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -478,6 +478,7 @@ public class VEquipo extends javax.swing.JFrame {
             }
             else
             {
+                lTitulo.setText("Modificar equipo");
                 setTfStartUp(true, false);
             }    
             
@@ -498,6 +499,7 @@ public class VEquipo extends javax.swing.JFrame {
         taDesc.setEnabled(b);
         cbDueno.setEnabled(b);
         listaJugadores.setEnabled(b);
+        bAceptar.setEnabled(b);
         if(b)
         {
             taDesc.setText(controlador.equipoTemp.getDesripcion());
