@@ -17,7 +17,7 @@ Disponemos de un tutorial para usuarios (**[vídeo](Documentacion/Manual%20de%20
 ## Cómo desplegar la aplicación para su desarrollo
 La aplicación está codificada en Java. El proyecto ha sido creado y editado con Netbeans. El proyecto se encuentra en [App>>UDA_App](/App/UDA_app).  
 <br/>
-**Lo primero:** necesitaremos crear la base de datos con las tablas necesarias. El script de SQL para la creación de la BDD está en App>>Script_BDD, lo ejecutamos y comprobamos que todo ha sido creado. Opcionalmente, podemos tambien añadir unos primeros datos iniciales con el fichero "Carga de datos iniciales" que se encuentra en la misma carpeta del script de creación, además de poder incluir los triggers SQL que se encuentran en la carpeta App>>BDD>>Triggers.  
+**Lo primero:** necesitaremos crear la base de datos con las tablas necesarias. El script de SQL para la creación de la BDD está en App>>Script_BDD, lo ejecutamos y comprobamos que todo ha sido creado. Opcionalmente, podemos tambien añadir unos primeros datos iniciales con el fichero "Carga de datos iniciales" que se encuentra en la misma carpeta del script de creación.  
 <br/>
 **Lo segundo:** Una vez creada la base de datos necesitamos configurar el JPA usado en el proyecto para conectarnos al servidor. Para ello editaremos el "persistence.xml" que se encuentra en App>>UDA_App>>>>src>>META-INF.  
 Se tiene que editar los campos que en la imagen aparecen como "NombreDelHost", "SID", "USUARIO" y "CONTRASEÑA", introduciendo las credenciales del servidor que se desea utilizar.  
