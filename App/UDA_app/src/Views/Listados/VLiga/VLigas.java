@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
  * @author Alejandro Diaz de Otalora
  * @author Luis Daniel Barragues
  * @author Unai Puelles
- * @version &G&
+ * @version %G%
  * @since 0.7 alpha
  */
 

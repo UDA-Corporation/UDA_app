@@ -12,7 +12,7 @@
 La aplicación esta preparada para crear ligas, equipos y jornadas, aparte de jugadores, dueños de los distintos equipos, usuarios que consultarán la clasificación y el estado de las jornadas y los administradores, que podrán crear todo lo anterior, modificarlo y eliminarlo en caso de ser necesario.
 
 ## Instalación
-Disponemos de un tutorial para usuarios (**[vídeo](Documentacion/Manual%20de%20usuario.mp4?raw=true)**) que muestra como instalar y usar la aplicación desde una cuenta existente o nueva de usuario. Se puede descargar el ejecutable .jar comprimido desde **[aquí.](/App/UDA_app.zip?raw=true)**
+Disponemos de un tutorial para usuarios (**[vídeo](Documentacion/Manual%20de%20usuario.mp4?raw=true)**) que muestra como instalar y usar la aplicación desde una cuenta existente o nueva de usuario. Se puede descargar el ejecutable .jar comprimido desde **[aquí.](/App/UDA_App.zip?raw=true)**
 
 ## Cómo desplegar la aplicación para su desarrollo
 La aplicación está codificada en Java. El proyecto ha sido creado y editado con Netbeans. El proyecto se encuentra en [App>>UDA_App](/App/UDA_app).  
@@ -46,6 +46,7 @@ Una vez hechos estos pasos podremos desplegar la aplicación en nuestro IDE para
 | Documento de implementación del blog (anexo de realización de copias de seguridad incluido) [link](/Documentacion/Documentación%20de%20la%20implementación%20del%20blog.pdf) |
 | Manual del administrador [link](/Documentacion/Manual%20del%20administrador.pdf) |
 | Estructura del fichero log [link](/Script%20de%20red) |
+| Documentación Javadoc [link](/App/Javadoc.zip?raw=true) |
 | MER [link](/Documentacion/MER%20y%20Relacional/MER.pdf) |
 | Modelo relacional [link](/Documentacion/MER%20y%20Relacional/Modelo_relacional.pdf) |
 | Diagramas UML [link](/Documentacion/Diagramas%20UML) |

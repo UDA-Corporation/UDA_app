@@ -294,7 +294,9 @@ static boolean yes = false;
                             resultado=tfe1.getText()+"-"+tfe2.getText();
                             controlador.resultadoPartido(null, resultado, true);
                         }                
-                }                  
+                }  
+            else
+                throw new ResultadoFMT();
             controlador.JDInfo(this, true, "Resultado introducido correctamente");
             controlador.recalcularClasificacion();
             yes=false;
@@ -380,6 +382,8 @@ static boolean yes = false;
         else 
             if(!digito(tfe2.getText()))
                 return false;
+        if((tfe1.getText()+tfe2.getText()).length()>4)
+            return false;
         return true;
     }
     
