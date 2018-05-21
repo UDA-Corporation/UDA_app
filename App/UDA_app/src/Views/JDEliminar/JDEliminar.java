@@ -42,12 +42,12 @@ static String tipo;
         tfPK.requestFocus();
         this.tipo = tipo;
         if(tipo.equalsIgnoreCase("equipo"))
-            lTitulo.setText("Introduce el nombre del equipo que quieres elimiar");
+            lTitulo.setText("Introduce el nombre del equipo que quieres eliminar");
         else
             if(!tipo.equalsIgnoreCase("liga"))
-                lTitulo.setText("Introduce el dni o el codigo del " + tipo + " que quieres elimiar");
+                lTitulo.setText("Introduce el dni o el codigo del " + tipo + " que quieres eliminar");
             else
-                lTitulo.setText("Introduce el nombre de la liga que quieres elimiar");
+                lTitulo.setText("Introduce el nombre de la liga que quieres eliminar");
     }      
 
     /**
@@ -101,9 +101,9 @@ static String tipo;
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(165, 165, 165)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfPK, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(95, Short.MAX_VALUE))
+                            .addComponent(tfPK, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
