@@ -583,7 +583,7 @@ public class controlador {
         if(indices.length!=0)
         {
             for(int x = 0; x<indices.length; x++)
-                e1.addJugador(jugadores.get(indices[x]));
+                e1.addJugador(jugadoresUpd.get(indices[x]));
         }    
         
         e1.setDuenoDni(duenos.get(dueno));
@@ -592,6 +592,7 @@ public class controlador {
         equipoTemp = null;
         jugadores = null;
         duenos = null;
+        jugadoresUpd = null;
         return true;
     }
     
@@ -759,12 +760,15 @@ public class controlador {
         
         jugadores = (List) conexion.getJugadorBD().findJugadorEntities();
         DefaultListModel<String> model = new DefaultListModel();
+        
         if(tipo != 1)
         {
+            jugadoresUpd = new ArrayList();
             for (Jugador ju : jugadores) {
                 if (ju.getEquipoCod() == null) 
                 {
                     model.addElement(ju.getNombre() + " " + ju.getApellido());
+                    jugadoresUpd.add(ju);
                 }
             }
         }    
@@ -1379,7 +1383,7 @@ public class controlador {
     public static void indices(int[] indices, String nombre, Calendar calendar) throws Exception {
         equipos = new ArrayList();
         for (int x = 0; x < indices.length; x++) {
-            equipos.add(equiposBD.get(x));
+            equipos.add(equiposBD.get(indices[x]));
         }
         generarLiga(nombre, calendar);
     }
