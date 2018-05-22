@@ -633,8 +633,9 @@ public class controlador {
      * @throws Exception 
      */
     public static void eliminarEquipo(String pk)throws Exception{
-        Equipo e = conexion.getEquipoBD().findByName(pk);
-        conexion.getEquipoBD().destroy(e.getCod());
+        equipoTemp = conexion.getEquipoBD().findByName(pk);
+        quitarEquipoJug();
+        conexion.getEquipoBD().destroy(equipoTemp.getCod());
     }
 
     /**
