@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<liga>
-    <jornada codigoJornada=""
-        fechaFinal="" fechaInicio="">
+<liga xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BDD(Jornadas).xsd">
+    <jornada codigoJornada="" fechaFinal="" fechaInicio="">
         <partido equipo1="" equipo2="">
             <resultado></resultado>
         </partido>
