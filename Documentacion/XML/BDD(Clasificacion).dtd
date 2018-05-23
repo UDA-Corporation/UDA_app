@@ -1,12 +1,11 @@
 <!DOCTYPE liga [
         <!ELEMENT liga (clasificacion)*>
         <!ATTLIST liga
-                xmlns:xsi CDATA #REQUIRED
-                xsi:noNamespaceSchemaLocation CDATA #REQUIRED>
+                fechaExpiracion CDATA #REQUIRED>
         <!ELEMENT clasificacion (equipo)*>
-        <!ELEMENT equipo (nombre, puntos, puesto)*>
+        <!ELEMENT equipo (#PCDATA)>
         <!ATTLIST equipo
-                codEquipo ID #REQUIRED>
-        <!ELEMENT nombre (#PCDATA) >
-        <!ELEMENT puntos (#PCDATA)>
-        <!ELEMENT puesto (#PCDATA)>
+                codEquipo CDATA #REQUIRED
+                puesto CDATA #REQUIRED
+                puntos CDATA #REQUIRED>
+        ]>
