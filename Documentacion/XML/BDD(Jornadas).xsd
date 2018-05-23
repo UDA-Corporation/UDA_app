@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:element name="liga" type="tipo_liga"/>
-    <xs:complexType name="tipo_liga">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="liga" type="Tipo_Liga"/>
+    <xs:complexType name="Tipo_Liga">
         <xs:sequence>
-            <xs:element type="tipo_jornada" name="jornada"/>
+            <xs:element type="Tipo_Jornada" name="jornada"/>
         </xs:sequence>
     </xs:complexType>
-    <xs:complexType name="tipo_jornada">
+    <xs:complexType name="Tipo_Jornada">
         <xs:sequence>
-            <xs:element type="tipo_partido" name="partido"/>
+            <xs:element type="Tipo_Partido" name="partido"/>
         </xs:sequence>
         <xs:attribute type="xs:string" name="codigoJornada"/>
-        <xs:attribute type="xs:string" name="fechaI"/>
-        <xs:attribute type="xs:string" name="fechaF"/>
+        <xs:attribute type="xs:string" name="fechaFinal"/>
+        <xs:attribute type="xs:string" name="fechaInicio"/>
     </xs:complexType>
-    <xs:complexType name="tipo_partido">
+    <xs:complexType name="Tipo_Partido">
         <xs:sequence>
             <xs:element type="xs:string" name="resultado"/>
         </xs:sequence>
-        <xs:attribute type="xs:string" name="equipo_local"/>
-        <xs:attribute type="xs:string" name="equipo_visitante"/>
-      </xs:complexType>
+        <xs:attribute type="xs:string" name="equipo1"/>
+        <xs:attribute type="xs:string" name="equipo2"/>
+    </xs:complexType>
 </xs:schema>
